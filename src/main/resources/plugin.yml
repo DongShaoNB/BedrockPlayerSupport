@@ -1,0 +1,10 @@
+name: CMIBedrockSupport
+version: '${project.version}'
+main: cn.dsnbo.cmibedrocksupport.CMIBedrockSupport
+api-version: 1.13
+depend:
+  - CMI
+  - floodgate
+authors: [ DongShaoNB ]
+description: Support bedrock player use cmi click message
+website: www.dsnbo.cn
