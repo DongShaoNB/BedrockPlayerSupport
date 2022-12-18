@@ -1,6 +1,5 @@
 package cn.dsnbo.cmibedrocksupport;
 
-import com.Zrips.CMI.Modules.tp.TpManager;
 import com.Zrips.CMI.events.CMIPlayerTeleportRequestEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -28,6 +27,8 @@ public final class CMIBedrockSupport extends JavaPlugin implements Listener {
         isCMIEnabled = !(Bukkit.getPluginManager().getPlugin("CMI") == null);
         isFloodgateEnabled = !(Bukkit.getPluginManager().getPlugin("Floodgate") == null);
         Bukkit.getPluginManager().registerEvents(this, this);
+        new Metrics(this, 17106);
+        getLogger().info("感谢选择使用本插件，作者: DongShaoNB，QQ群: 159323818");
     }
 
     @Override
