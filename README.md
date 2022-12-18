@@ -14,7 +14,9 @@
 ## 使用方法
 
 直接丢进 plugins 文件夹即可  
-需要前置: [floodgate][2]  [CMI][1] 和 [EssentialsX][3] 二选一
+需要前置: 
+    - [floodgate][2](必要)  
+    - [CMI][1] 和 [EssentialsX][3](二选一)
 
 ------
 
