@@ -1,41 +1,17 @@
-package cn.dsnbo.cmibedrocksupport;
+package cn.dsnbo.bedrockplayersupport;
 
 import com.Zrips.CMI.events.CMIPlayerTeleportRequestEvent;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.geysermc.cumulus.SimpleForm;
 import org.geysermc.cumulus.response.SimpleFormResponse;
 import org.geysermc.floodgate.api.FloodgateApi;
 
 import java.util.UUID;
 
-
-public final class CMIBedrockSupport extends JavaPlugin implements Listener {
-
-    public static Plugin Plugin;
-    public boolean isCMIEnabled;
-    public boolean isFloodgateEnabled;
-
-    @Override
-    public void onEnable() {
-        Plugin = CMIBedrockSupport.getProvidingPlugin(CMIBedrockSupport.class);
-        isCMIEnabled = !(Bukkit.getPluginManager().getPlugin("CMI") == null);
-        isFloodgateEnabled = !(Bukkit.getPluginManager().getPlugin("Floodgate") == null);
-        Bukkit.getPluginManager().registerEvents(this, this);
-        new Metrics(this, 17106);
-        getLogger().info("感谢选择使用本插件，作者: DongShaoNB，QQ群: 159323818");
-    }
-
-    @Override
-    public void onDisable() {
-
-    }
-
+public class CMITeleportListener implements Listener {
     @EventHandler
     public void CMIPlayerTeleportRequestEvent(CMIPlayerTeleportRequestEvent e) {
         String RequestType = e.getAction().name();

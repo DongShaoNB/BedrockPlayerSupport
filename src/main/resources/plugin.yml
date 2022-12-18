@@ -1,10 +1,12 @@
-name: CMIBedrockSupport
+name: BedrockPlayerSupport
 version: '${project.version}'
-main: cn.dsnbo.cmibedrocksupport.CMIBedrockSupport
+main: cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport
 api-version: 1.13
 depend:
-  - CMI
   - floodgate
+softdepend:
+  - CMI
+  - Essentials
 authors: [ DongShaoNB ]
-description: Support bedrock player use cmi click message
+description: Support bedrock player fast use java plugin
 website: www.dsnbo.cn
