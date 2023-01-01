@@ -1,4 +1,4 @@
-package cn.dsnbo.bedrockplayersupport;
+package cn.dsnbo.bedrockplayersupport.listeners;
 
 import net.ess3.api.events.TPARequestEvent;
 import org.bukkit.ChatColor;
@@ -32,9 +32,9 @@ public class EssXTeleportListener implements Listener {
                             if (response.isCorrect()) {
                                 int ButtonId = response.getClickedButtonId();
                                 if (ButtonId == 0) {
-                                    TeleportLocationPlayer.chat("/tpaccept");
+                                    TeleportLocationPlayer.performCommand("tpaccept");
                                 } else if (ButtonId == 1) {
-                                    TeleportLocationPlayer.chat("/tpdeny");
+                                    TeleportLocationPlayer.performCommand("tpdeny");
                                 }
                             }
                         });
@@ -50,9 +50,9 @@ public class EssXTeleportListener implements Listener {
                             if (response.isCorrect()) {
                                 int ButtonId = response.getClickedButtonId();
                                 if (ButtonId == 0) {
-                                    TeleportLocationPlayer.chat("/tpaccept");
+                                    TeleportLocationPlayer.chat("tpaccept");
                                 } else if (ButtonId == 1) {
-                                    TeleportLocationPlayer.chat("/tpdeny");
+                                    TeleportLocationPlayer.chat("tpdeny");
                                 }
                             }
                         });

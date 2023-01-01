@@ -1,4 +1,4 @@
-package cn.dsnbo.bedrockplayersupport;
+package cn.dsnbo.bedrockplayersupport.listeners;
 
 import com.Zrips.CMI.events.CMIPlayerTeleportRequestEvent;
 import org.bukkit.ChatColor;
@@ -31,9 +31,9 @@ public class CMITeleportListener implements Listener {
                             if (response.isCorrect()) {
                                 int ButtonId = response.getClickedButtonId();
                                 if (ButtonId == 0) {
-                                    TeleportLocationPlayer.chat("/cmi tpaccept");
+                                    TeleportLocationPlayer.performCommand("cmi tpaccept");
                                 } else if (ButtonId == 1) {
-                                    TeleportLocationPlayer.chat("/cmi tpdeny");
+                                    TeleportLocationPlayer.performCommand("cmi tpdeny");
                                 }
                             }
                         });
@@ -50,9 +50,9 @@ public class CMITeleportListener implements Listener {
                             if (response.isCorrect()) {
                                 int ButtonId = response.getClickedButtonId();
                                 if (ButtonId == 0) {
-                                    TeleportLocationPlayer.chat("/cmi tpaccept");
+                                    TeleportLocationPlayer.chat("cmi tpaccept");
                                 } else if (ButtonId == 1) {
-                                    TeleportLocationPlayer.chat("/cmi tpdeny");
+                                    TeleportLocationPlayer.chat("cmi tpdeny");
                                 }
                             }
                         });
