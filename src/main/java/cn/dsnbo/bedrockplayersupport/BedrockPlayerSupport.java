@@ -16,7 +16,7 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
     public boolean isEssXEnabled;
     public boolean isAuthMeEnabled;
     public boolean isFloodgateEnabled;
-    public static String Version = "1.2";
+    public static String Version = "1.3";
 
     @Override
     public void onEnable() {

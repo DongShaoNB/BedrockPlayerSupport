@@ -18,7 +18,9 @@ public class Forms {
                     if (response.isCorrect()) {
                         String password = response.getInput(0);
                         if (password.isEmpty()) {
-                            openLoginForm(player);
+                            if (!AuthMeApi.getInstance().isAuthenticated(player)) {
+                                openLoginForm(player);
+                            }
                         } else {
                             player.performCommand("login " + password);
                         }
@@ -40,7 +42,9 @@ public class Forms {
                     if (response.isCorrect()) {
                         String password = response.getInput(0);
                         if (password.isEmpty()) {
-                            openRegisterForm(player);
+                            if (!AuthMeApi.getInstance().isRegistered(player.getName())) {
+                                openRegisterForm(player);
+                            }
                         } else {
                             player.performCommand("register " + password + " " + password);
                         }
