@@ -99,7 +99,7 @@
             <artifactId>CMI</artifactId>
             <version>9.0.0.0</version>
             <scope>system</scope>
-            <systemPath>${pom.basedir}/libs/CMI9.0.0.0API.jar</systemPath>
+            <systemPath>${basedir}/libs/CMI9.0.0.0API.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>net.essentialsx</groupId>
