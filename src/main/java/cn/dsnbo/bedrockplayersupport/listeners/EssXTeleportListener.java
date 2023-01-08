@@ -50,9 +50,9 @@ public class EssXTeleportListener implements Listener {
                             if (response.isCorrect()) {
                                 int ButtonId = response.getClickedButtonId();
                                 if (ButtonId == 0) {
-                                    TeleportLocationPlayer.chat("tpaccept");
+                                    TeleportLocationPlayer.performCommand("tpaccept");
                                 } else if (ButtonId == 1) {
-                                    TeleportLocationPlayer.chat("tpdeny");
+                                    TeleportLocationPlayer.performCommand("tpdeny");
                                 }
                             }
                         });

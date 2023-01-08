@@ -50,9 +50,9 @@ public class CMITeleportListener implements Listener {
                             if (response.isCorrect()) {
                                 int ButtonId = response.getClickedButtonId();
                                 if (ButtonId == 0) {
-                                    TeleportLocationPlayer.chat("cmi tpaccept");
+                                    TeleportLocationPlayer.performCommand("cmi tpaccept");
                                 } else if (ButtonId == 1) {
-                                    TeleportLocationPlayer.chat("cmi tpdeny");
+                                    TeleportLocationPlayer.performCommand("cmi tpdeny");
                                 }
                             }
                         });
