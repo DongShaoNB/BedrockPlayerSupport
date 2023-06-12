@@ -9,15 +9,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.geysermc.cumulus.CustomForm;
-import org.geysermc.cumulus.response.CustomFormResponse;
 import org.geysermc.floodgate.api.FloodgateApi;
 
-import static org.bukkit.Bukkit.getLogger;
-
+/**
+ * @author DongShaoNB
+ */
 public class PlayerListener implements Listener {
     @EventHandler
-    public void PlayerJoinEvent(PlayerJoinEvent e) {
+    public void onPlayerJoinEvent(PlayerJoinEvent e) {
         Player player = e.getPlayer();
         if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
             if (!AuthMeApi.getInstance().isAuthenticated(player)) {

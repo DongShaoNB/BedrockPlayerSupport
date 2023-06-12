@@ -9,52 +9,72 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+
+/**
+ * @author DongShaoNB
+ */
 public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
 
-    public static Plugin Plugin;
-    public boolean isCMIEnabled;
-    public boolean isEssXEnabled;
-    public boolean isAuthMeEnabled;
-    public boolean isFloodgateEnabled;
-    public static String Version = "1.4";
+    public static BedrockPlayerSupport Plugin;
+    private boolean isCmiEnabled;
+    private boolean isEssxEnabled;
+    private boolean isAuthMeEnabled;
+    private boolean isFloodgateEnabled;
+    private static final String VERSION = "1.5";
 
     @Override
     public void onEnable() {
-        saveDefaultConfig();
-        getLogger().info("感谢选择使用本插件，作者: DongShaoNB，QQ群: 159323818");
-        Plugin = BedrockPlayerSupport.getProvidingPlugin(BedrockPlayerSupport.class);
-        isCMIEnabled = !(Bukkit.getPluginManager().getPlugin("CMI") == null);
-        isEssXEnabled = !(Bukkit.getPluginManager().getPlugin("Essentials") == null);
-        isAuthMeEnabled = !(Bukkit.getPluginManager().getPlugin("Authme") == null);
-        isFloodgateEnabled = !(Bukkit.getPluginManager().getPlugin("Floodgate") == null);
+        Plugin = this;
+        saveResource();
+        Update.updateConfig();
+        getLogger().info("§b感谢选择使用本插件，作者: DongShaoNB，QQ群: 159323818");
+        isCmiEnabled = !(Bukkit.getPluginManager().getPlugin("CMI") == null);
+        isEssxEnabled = !(Bukkit.getPluginManager().getPlugin("Essentials") == null);
+        isAuthMeEnabled = !(Bukkit.getPluginManager().getPlugin("AuthMe") == null);
+        isFloodgateEnabled = !(Bukkit.getPluginManager().getPlugin("floodgate") == null);
         new Metrics(this, 17107);
-        if (isCMIEnabled) {
+        if (isCmiEnabled) {
             Bukkit.getPluginManager().registerEvents(new CMITeleportListener(), this);
-        } else if (isEssXEnabled) {
+        } else if (isEssxEnabled) {
             Bukkit.getPluginManager().registerEvents(new EssXTeleportListener(), this);
         }
+
+        getLogger().info("-----------------");
+        getLogger().info("§b检测支持插件是否启用: ");
+        if (isFloodgateEnabled) {
+            getLogger().info("§bfloodgate: §atrue");
+        } else {
+            getLogger().info("§bfloodgate: §cfalse");
+        }
+
+        if (isCmiEnabled) {
+            getLogger().info("§bCMI: §atrue");
+        } else {
+            getLogger().info("§bCMI: §cfalse");
+        }
+
+        if (isEssxEnabled) {
+            getLogger().info("§bEssentials: §atrue");
+        } else {
+            getLogger().info("§bEssentials: §cfalse");
+        }
+
+        if (isAuthMeEnabled) {
+            getLogger().info("§bAuthMe: §atrue");
+        } else {
+            getLogger().info("§bAuthMe: §cfalse");
+        }
+        getLogger().info("-----------------");
 
         if (getConfig().getBoolean("login.enable")) {
             if (isAuthMeEnabled) {
                 Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
-            } else {
-                getLogger().warning("你在配置文件中启用了基岩版登录支持，但没有检测到本插件支持的登录插件，已自动关闭该功能!");
             }
         }
 
         if (getConfig().getBoolean("check-update")) {
-            String latestVersion = Update.getLatestVersion();
-            if (latestVersion != null) {
-                if (!Version.equals(latestVersion)) {
-                    Bukkit.getConsoleSender().sendMessage("[BedrockPlayerSupport] §2有新版本可以更新!");
-                    Bukkit.getConsoleSender().sendMessage("[BedrockPlayerSupport] §2当前版本: " + Version + " | 最新版本: " + latestVersion);
-                } else {
-                    Bukkit.getConsoleSender().sendMessage("[BedrockPlayerSupport] §2插件是最新版本，继续保持哦~");
-                }
-            } else {
-                getLogger().warning("§4无法检测更新，请检查网络情况，尝试访问: https://update.dsnbo.cn/ 是否正常");
-            }
-
+            Update.checkUpdate();
         }
 
     }
@@ -63,4 +83,25 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
     public void onDisable() {
 
     }
+
+    public static void saveResource() {
+        getInstance().saveDefaultConfig();
+        File updateFolder = new File(BedrockPlayerSupport.getUpdateFolder());
+        if (!updateFolder.exists()) {
+            updateFolder.mkdir();
+        }
+    }
+
+    public static String getUpdateFolder() {
+        return getInstance().getDataFolder() + "/update";
+    }
+
+    public static String getVersion() {
+        return VERSION;
+    }
+
+    public static BedrockPlayerSupport getInstance() {
+        return Plugin;
+    }
+
 }
