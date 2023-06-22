@@ -1,8 +1,14 @@
-# 检查更新
+# 自动检查更新
 check-update: true
+# 是否启用基岩版玩家TPA菜单
+bedrock-player-teleport-menu: true
 # 登录系统支持
 login:
-  # 是否启用基岩版玩家进服自动登录
+  # 是否启用基岩版玩家进服自动登录 (仅支持AuthMe)
+  # 请注意，注册仍需玩家手动注册，后续登录才可以自动登录
   enable: false
   # 自动登录时发送给基岩版玩家的信息
   auto-message: "&a检测到你是基岩版玩家，已自动登录!"
+
+# 配置文件版本 (请不要自己修改该值!!!)
+config-version: 2

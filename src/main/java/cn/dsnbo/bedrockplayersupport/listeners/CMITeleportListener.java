@@ -11,16 +11,19 @@ import org.geysermc.floodgate.api.FloodgateApi;
 
 import java.util.UUID;
 
+/**
+ * @author DongShaoNB
+ */
 public class CMITeleportListener implements Listener {
     @EventHandler
-    public void CMIPlayerTeleportRequestEvent(CMIPlayerTeleportRequestEvent e) {
-        String RequestType = e.getAction().name();
+    public void onCmiPlayerTeleportRequestEvent(CMIPlayerTeleportRequestEvent e) {
+        String requestType = e.getAction().name();
         Player postTeleportPlayer = e.getWhoOffers().getPlayer();
-        Player TeleportLocationPlayer = e.getWhoAccepts().getPlayer();
-        UUID TeleportLocationPlayerUUID = TeleportLocationPlayer.getUniqueId();
-        if (FloodgateApi.getInstance().isFloodgatePlayer(TeleportLocationPlayerUUID)) {
-            if (RequestType.equals("tpa")) {
-                SimpleForm.Builder TeleportForm = SimpleForm.builder()
+        Player teleportLocationPlayer = e.getWhoAccepts().getPlayer();
+        UUID teleportLocationPlayerUuid = teleportLocationPlayer.getUniqueId();
+        if (FloodgateApi.getInstance().isFloodgatePlayer(teleportLocationPlayerUuid)) {
+            if ("tpa".equals(requestType)) {
+                SimpleForm.Builder teleportForm = SimpleForm.builder()
                         .title(ChatColor.DARK_PURPLE + "有玩家请求传送到你的位置")
                         .content(ChatColor.WHITE + "玩家 " + postTeleportPlayer.getName() + " 请求传送到你所在的位置\n\n\n\n\n\n")
                         .button(ChatColor.GREEN + "同意")
@@ -29,17 +32,17 @@ public class CMITeleportListener implements Listener {
                         .responseHandler((form, result) -> {
                             SimpleFormResponse response = form.parseResponse(result);
                             if (response.isCorrect()) {
-                                int ButtonId = response.getClickedButtonId();
-                                if (ButtonId == 0) {
-                                    TeleportLocationPlayer.performCommand("cmi tpaccept");
-                                } else if (ButtonId == 1) {
-                                    TeleportLocationPlayer.performCommand("cmi tpdeny");
+                                int buttonId = response.getClickedButtonId();
+                                if (buttonId == 0) {
+                                    teleportLocationPlayer.performCommand("cmi tpaccept");
+                                } else if (buttonId == 1) {
+                                    teleportLocationPlayer.performCommand("cmi tpdeny");
                                 }
                             }
                         });
-                FloodgateApi.getInstance().sendForm(TeleportLocationPlayerUUID, TeleportForm);
-            } else if (RequestType.equals("tpahere")) {
-                SimpleForm.Builder TeleportForm = SimpleForm.builder()
+                FloodgateApi.getInstance().sendForm(teleportLocationPlayerUuid, teleportForm);
+            } else if ("tpahere".equals(requestType)) {
+                SimpleForm.Builder teleportForm = SimpleForm.builder()
                         .title(ChatColor.DARK_PURPLE + "有玩家请求你传送到他的位置")
                         .content(ChatColor.WHITE + "玩家 " + postTeleportPlayer.getName() + " 请求你传送到他所在的位置\n\n\n\n\n\n")
                         .button(ChatColor.GREEN + "同意")
@@ -48,15 +51,15 @@ public class CMITeleportListener implements Listener {
                         .responseHandler((form, result) -> {
                             SimpleFormResponse response = form.parseResponse(result);
                             if (response.isCorrect()) {
-                                int ButtonId = response.getClickedButtonId();
-                                if (ButtonId == 0) {
-                                    TeleportLocationPlayer.performCommand("cmi tpaccept");
-                                } else if (ButtonId == 1) {
-                                    TeleportLocationPlayer.performCommand("cmi tpdeny");
+                                int buttonId = response.getClickedButtonId();
+                                if (buttonId == 0) {
+                                    teleportLocationPlayer.performCommand("cmi tpaccept");
+                                } else if (buttonId == 1) {
+                                    teleportLocationPlayer.performCommand("cmi tpdeny");
                                 }
                             }
                         });
-                FloodgateApi.getInstance().sendForm(TeleportLocationPlayerUUID, TeleportForm);
+                FloodgateApi.getInstance().sendForm(teleportLocationPlayerUuid, teleportForm);
             }
 
         }

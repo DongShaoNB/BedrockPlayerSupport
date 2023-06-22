@@ -11,17 +11,20 @@ import org.geysermc.floodgate.api.FloodgateApi;
 
 import java.util.UUID;
 
+/**
+ * @author DongShaoNB
+ */
 public class EssXTeleportListener implements Listener {
     @EventHandler
-    public void TeleportWarmupEvent(TPARequestEvent e){
+    public void onTeleportWarmupEvent(TPARequestEvent e){
         boolean isTeleportHere = e.isTeleportHere();
         Player postTeleportPlayer = e.getRequester().getPlayer();
-        Player TeleportLocationPlayer = e.getTarget().getBase();
-        UUID TeleportLocationPlayerUUID = TeleportLocationPlayer.getUniqueId();
-        if (FloodgateApi.getInstance().isFloodgatePlayer(TeleportLocationPlayerUUID)) {
-            SimpleForm.Builder TeleportForm;
+        Player teleportLocationPlayer = e.getTarget().getBase();
+        UUID teleportLocationPlayerUuid = teleportLocationPlayer.getUniqueId();
+        if (FloodgateApi.getInstance().isFloodgatePlayer(teleportLocationPlayerUuid)) {
+            SimpleForm.Builder teleportForm;
             if (!isTeleportHere) {
-                TeleportForm = SimpleForm.builder()
+                teleportForm = SimpleForm.builder()
                         .title(ChatColor.DARK_PURPLE + "有玩家请求传送到你的位置")
                         .content(ChatColor.WHITE + "玩家 " + postTeleportPlayer.getName() + " 请求传送到你所在的位置\n\n\n\n\n\n")
                         .button(ChatColor.GREEN + "同意")
@@ -30,16 +33,16 @@ public class EssXTeleportListener implements Listener {
                         .responseHandler((form, result) -> {
                             SimpleFormResponse response = form.parseResponse(result);
                             if (response.isCorrect()) {
-                                int ButtonId = response.getClickedButtonId();
-                                if (ButtonId == 0) {
-                                    TeleportLocationPlayer.performCommand("tpaccept");
-                                } else if (ButtonId == 1) {
-                                    TeleportLocationPlayer.performCommand("tpdeny");
+                                int buttonId = response.getClickedButtonId();
+                                if (buttonId == 0) {
+                                    teleportLocationPlayer.chat("/tpaccept");
+                                } else if (buttonId == 1) {
+                                    teleportLocationPlayer.chat("/tpdeny");
                                 }
                             }
                         });
             } else {
-                TeleportForm = SimpleForm.builder()
+                teleportForm = SimpleForm.builder()
                         .title(ChatColor.DARK_PURPLE + "有玩家请求你传送到他的位置")
                         .content(ChatColor.WHITE + "玩家 " + postTeleportPlayer.getName() + " 请求你传送到他所在的位置\n\n\n\n\n\n")
                         .button(ChatColor.GREEN + "同意")
@@ -48,16 +51,16 @@ public class EssXTeleportListener implements Listener {
                         .responseHandler((form, result) -> {
                             SimpleFormResponse response = form.parseResponse(result);
                             if (response.isCorrect()) {
-                                int ButtonId = response.getClickedButtonId();
-                                if (ButtonId == 0) {
-                                    TeleportLocationPlayer.performCommand("tpaccept");
-                                } else if (ButtonId == 1) {
-                                    TeleportLocationPlayer.performCommand("tpdeny");
+                                int buttonId = response.getClickedButtonId();
+                                if (buttonId == 0) {
+                                    teleportLocationPlayer.chat("/tpaccept");
+                                } else if (buttonId == 1) {
+                                    teleportLocationPlayer.chat("/tpdeny");
                                 }
                             }
                         });
             }
-            FloodgateApi.getInstance().sendForm(TeleportLocationPlayerUUID, TeleportForm);
+            FloodgateApi.getInstance().sendForm(teleportLocationPlayerUuid, teleportForm);
 
         }
 

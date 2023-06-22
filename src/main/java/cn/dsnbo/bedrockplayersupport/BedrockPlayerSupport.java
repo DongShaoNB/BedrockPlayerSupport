@@ -1,12 +1,13 @@
 package cn.dsnbo.bedrockplayersupport;
 
+import cn.dsnbo.bedrockplayersupport.command.tpaCommand;
+import cn.dsnbo.bedrockplayersupport.command.tpahereCommand;
 import cn.dsnbo.bedrockplayersupport.listeners.PlayerListener;
 import cn.dsnbo.bedrockplayersupport.listeners.CMITeleportListener;
 import cn.dsnbo.bedrockplayersupport.listeners.EssXTeleportListener;
 import cn.dsnbo.bedrockplayersupport.utils.Update;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -16,7 +17,7 @@ import java.io.File;
  */
 public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
 
-    public static BedrockPlayerSupport Plugin;
+    private static BedrockPlayerSupport Plugin;
     private boolean isCmiEnabled;
     private boolean isEssxEnabled;
     private boolean isAuthMeEnabled;
@@ -28,6 +29,10 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
         Plugin = this;
         saveResource();
         Update.updateConfig();
+        if (getConfig().getBoolean("bedrock-player-teleport-menu")) {
+            getCommand("tpagui").setExecutor(new tpaCommand());
+            getCommand("tpaheregui").setExecutor(new tpahereCommand());
+        }
         getLogger().info("§b感谢选择使用本插件，作者: DongShaoNB，QQ群: 159323818");
         isCmiEnabled = !(Bukkit.getPluginManager().getPlugin("CMI") == null);
         isEssxEnabled = !(Bukkit.getPluginManager().getPlugin("Essentials") == null);
