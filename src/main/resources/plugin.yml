@@ -15,3 +15,5 @@ website: www.dsnbo.cn
 commands:
   tpagui:
     description: "Bedrock player teleport menu"
+  tpaheregui:
+    description: "Bedrock player teleport here menu"

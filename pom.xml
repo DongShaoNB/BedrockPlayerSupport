@@ -6,7 +6,7 @@
 
     <groupId>cn.dsnbo</groupId>
     <artifactId>BedrockPlayerSupport</artifactId>
-    <version>1.5</version>
+    <version>1.5.1</version>
     <packaging>jar</packaging>
 
     <name>BedrockPlayerSupport</name>
