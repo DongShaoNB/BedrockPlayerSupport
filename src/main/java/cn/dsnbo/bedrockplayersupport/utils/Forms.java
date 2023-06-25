@@ -20,7 +20,7 @@ public class Forms {
 
         for (Player player1 : Bukkit.getOnlinePlayers()) {
             if (player1 != player) {
-                simpleForm.button(player1.getDisplayName());
+                simpleForm.button(player1.getName());
             }
         }
         FloodgateApi.getInstance().getPlayer(player.getUniqueId()).sendForm(simpleForm);
@@ -36,7 +36,7 @@ public class Forms {
 
         for (Player player1 : Bukkit.getOnlinePlayers()) {
             if (player1 != player) {
-                simpleForm.button(player1.getDisplayName());
+                simpleForm.button(player1.getName());
             }
         }
         FloodgateApi.getInstance().getPlayer(player.getUniqueId()).sendForm(simpleForm);
