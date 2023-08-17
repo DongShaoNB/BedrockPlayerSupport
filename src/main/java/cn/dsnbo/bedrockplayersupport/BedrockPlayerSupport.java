@@ -2,9 +2,8 @@ package cn.dsnbo.bedrockplayersupport;
 
 import cn.dsnbo.bedrockplayersupport.command.TpaCommand;
 import cn.dsnbo.bedrockplayersupport.command.TpaHereCommand;
-import cn.dsnbo.bedrockplayersupport.listeners.PlayerListener;
-import cn.dsnbo.bedrockplayersupport.listeners.CMITeleportListener;
-import cn.dsnbo.bedrockplayersupport.listeners.EssXTeleportListener;
+import cn.dsnbo.bedrockplayersupport.listeners.login.OtherLoginListener;
+import cn.dsnbo.bedrockplayersupport.listeners.teleport.HuskHomesTeleportListener;
 import cn.dsnbo.bedrockplayersupport.listeners.login.AuthMeListener;
 import cn.dsnbo.bedrockplayersupport.listeners.teleport.CMITeleportListener;
 import cn.dsnbo.bedrockplayersupport.listeners.teleport.EssXTeleportListener;
@@ -48,6 +47,7 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
             Bukkit.getPluginManager().registerEvents(new CMITeleportListener(), this);
         } else if (isEssxEnabled) {
             Bukkit.getPluginManager().registerEvents(new EssXTeleportListener(), this);
+        checkSupportPluginLoadStatus();
         }
 
         getLogger().info("-----------------");
@@ -78,8 +78,31 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
         getLogger().info("-----------------");
 
         if (getConfig().getBoolean("login.enable")) {
-            if (isAuthMeEnabled) {
-                Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
+            switch (getConfig().getString("login.plugin").toLowerCase()) {
+                default -> {
+                    File file = new File(getDataFolder(), "/config.yml");
+                    if (isAuthMeEnabled) {
+                        getConfig().set("login.plugin", "authme");
+                        Bukkit.getPluginManager().registerEvents(new AuthMeListener(), this);
+                        getLogger().info("§a已开启基岩版玩家自动登录功能,使用插件: AuthMe");
+                    } else {
+                        getConfig().set("login.enable", "false");
+                        getLogger().warning("§e检测不到支持的登录插件,已关闭自动登录功能!");
+                    }
+                    try {
+                        getConfig().save(file);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                case "authme" -> {
+                    Bukkit.getPluginManager().registerEvents(new AuthMeListener(), this);
+                    getLogger().info("§a已开启基岩版玩家自动登录功能,使用插件: AuthMe");
+                }
+                case "other" -> {
+                    Bukkit.getPluginManager().registerEvents(new OtherLoginListener(), this);
+                    getLogger().info("§a已开启基岩版玩家自动登录功能,使用插件: 其他(控制台使用命令强制登录)");
+                }
             }
         }
 
