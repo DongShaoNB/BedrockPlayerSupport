@@ -10,8 +10,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-
 /**
  * @author DongShaoNB
  */
@@ -22,12 +20,11 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
     private boolean isEssxEnabled;
     private boolean isAuthMeEnabled;
     private boolean isFloodgateEnabled;
-    private static final String VERSION = "1.5.2";
 
     @Override
     public void onEnable() {
         Plugin = this;
-        saveResource();
+        saveDefaultConfig();
         Update.updateConfig();
         if (getConfig().getBoolean("bedrock-player-teleport-menu")) {
             getCommand("tpagui").setExecutor(new tpaCommand());
@@ -87,22 +84,6 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
 
-    }
-
-    public static void saveResource() {
-        getInstance().saveDefaultConfig();
-        File updateFolder = new File(BedrockPlayerSupport.getUpdateFolder());
-        if (!updateFolder.exists()) {
-            updateFolder.mkdir();
-        }
-    }
-
-    public static String getUpdateFolder() {
-        return getInstance().getDataFolder() + "/update";
-    }
-
-    public static String getVersion() {
-        return VERSION;
     }
 
     public static BedrockPlayerSupport getInstance() {

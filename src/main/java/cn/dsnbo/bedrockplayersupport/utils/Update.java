@@ -26,9 +26,10 @@ public class Update {
             }
 
             if (latestVersion != null) {
-                if (!BedrockPlayerSupport.getVersion().equals(latestVersion)) {
+                String nowVersion = BedrockPlayerSupport.getInstance().getDescription().getVersion();
+                if (!nowVersion.equals(latestVersion)) {
                     BedrockPlayerSupport.getInstance().getLogger().info("§a有新版本可以更新!");
-                    BedrockPlayerSupport.getInstance().getLogger().info("§a当前版本: " + BedrockPlayerSupport.getVersion() + " | 最新版本: " + latestVersion);
+                    BedrockPlayerSupport.getInstance().getLogger().info("§a当前版本: " + nowVersion + " | 最新版本: " + latestVersion);
                 } else {
                     BedrockPlayerSupport.getInstance().getLogger().info("§a插件是最新版本，继续保持哦~");
                 }
@@ -40,23 +41,30 @@ public class Update {
     }
 
     public static void updateConfig() {
-        File oldConfigFile = new File(BedrockPlayerSupport.getUpdateFolder(), "/config.yml");
-        File newConfigFile = new File(BedrockPlayerSupport.getInstance().getDataFolder(), "/config.yml");
-        if (oldConfigFile.exists()) {
-            oldConfigFile.delete();
-        }
-        FileUtil.copy(newConfigFile, oldConfigFile);
-        BedrockPlayerSupport.getInstance().saveResource("config.yml", true);
-        YamlConfiguration oldConfig = YamlConfiguration.loadConfiguration(oldConfigFile);
-        YamlConfiguration newConfig = YamlConfiguration.loadConfiguration(newConfigFile);
-        for (String key : oldConfig.getKeys(true)) {
-            newConfig.set(key, oldConfig.get(key));
-        }
-        try {
-            newConfig.save(newConfigFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-            BedrockPlayerSupport.getInstance().getLogger().warning("§e无法更新配置文件，请前往GitHub或QQ群提交该报错!");
+        File configFile = new File(BedrockPlayerSupport.getInstance().getDataFolder(), "/config.yml");
+        YamlConfiguration configuration = YamlConfiguration.loadConfiguration(configFile);
+        if (!configuration.getString("config-version").equals(BedrockPlayerSupport.getInstance().getDescription().getVersion())) {
+            File oldConfigFile = new File(BedrockPlayerSupport.getInstance().getDataFolder(), "/old_config.yml");
+            if (oldConfigFile.exists()) {
+                oldConfigFile.delete();
+            }
+            while (configFile.renameTo(oldConfigFile)) {
+                BedrockPlayerSupport.getInstance().saveResource("config.yml", true);
+                YamlConfiguration newConfig = YamlConfiguration.loadConfiguration(configFile);
+                YamlConfiguration oldConfig = YamlConfiguration.loadConfiguration(oldConfigFile);
+                for (String key : oldConfig.getKeys(true)) {
+                    if (!"config-version".equalsIgnoreCase(key)) {
+                        newConfig.set(key, oldConfig.get(key));
+                    }
+                }
+                try {
+                    newConfig.save(configFile);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    BedrockPlayerSupport.getInstance().getLogger().warning("§e无法更新配置文件，请前往GitHub或QQ群提交该报错!");
+                }
+                break;
+            }
         }
     }
 
