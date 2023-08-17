@@ -1,4 +1,4 @@
-package cn.dsnbo.bedrockplayersupport.listeners;
+package cn.dsnbo.bedrockplayersupport.listeners.login;
 
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import fr.xephi.authme.api.v3.AuthMeApi;
@@ -11,7 +11,7 @@ import org.geysermc.floodgate.api.FloodgateApi;
 /**
  * @author DongShaoNB
  */
-public class PlayerListener implements Listener {
+public class AuthMeListener implements Listener {
     @EventHandler
     public void onPlayerJoinEvent(PlayerJoinEvent e) {
         Player player = e.getPlayer();

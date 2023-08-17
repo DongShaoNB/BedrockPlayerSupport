@@ -1,4 +1,4 @@
-package cn.dsnbo.bedrockplayersupport.listeners;
+package cn.dsnbo.bedrockplayersupport.listeners.teleport;
 
 import net.ess3.api.events.TPARequestEvent;
 import org.bukkit.ChatColor;

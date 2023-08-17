@@ -11,7 +11,7 @@ import org.geysermc.floodgate.api.FloodgateApi;
 /**
  * @author DongShaoNB
  */
-public class tpaCommand implements CommandExecutor {
+public class TpaCommand implements CommandExecutor {
     /**
      * Executes the given command, returning its success
      *
