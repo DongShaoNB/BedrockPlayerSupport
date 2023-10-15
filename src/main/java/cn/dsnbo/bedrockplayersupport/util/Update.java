@@ -1,9 +1,9 @@
-package cn.dsnbo.bedrockplayersupport.utils;
+package cn.dsnbo.bedrockplayersupport.util;
 
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.MemorySection;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.util.FileUtil;
 
 import java.io.*;
 import java.net.URL;
@@ -42,30 +42,39 @@ public class Update {
 
     public static void updateConfig() {
         File configFile = new File(BedrockPlayerSupport.getInstance().getDataFolder(), "/config.yml");
-        YamlConfiguration configuration = YamlConfiguration.loadConfiguration(configFile);
-        if (!configuration.getString("config-version").equals(BedrockPlayerSupport.getInstance().getDescription().getVersion())) {
+        YamlConfiguration config = YamlConfiguration.loadConfiguration(configFile);
+        if (!config.getString("config-version").equals(BedrockPlayerSupport.getInstance().getDescription().getVersion())) {
+            BedrockPlayerSupport.getInstance().getLogger().info("正在更新配置文件到最新版本(当前版本: {nowVersion} 内置版本: {latestVersion})"
+                    .replace("{nowVersion}", config.getString("config-version"))
+                    .replace("{latestVersion}", BedrockPlayerSupport.getInstance().getDescription().getVersion()));
             File oldConfigFile = new File(BedrockPlayerSupport.getInstance().getDataFolder(), "/old_config.yml");
+
             if (oldConfigFile.exists()) {
                 oldConfigFile.delete();
             }
-            while (configFile.renameTo(oldConfigFile)) {
-                BedrockPlayerSupport.getInstance().saveResource("config.yml", true);
-                YamlConfiguration newConfig = YamlConfiguration.loadConfiguration(configFile);
+
+            if (configFile.renameTo(oldConfigFile)) {
+                BedrockPlayerSupport.getInstance().saveResource("config.yml", false);
+                config = YamlConfiguration.loadConfiguration(configFile);
                 YamlConfiguration oldConfig = YamlConfiguration.loadConfiguration(oldConfigFile);
                 for (String key : oldConfig.getKeys(true)) {
-                    if (!"config-version".equalsIgnoreCase(key)) {
-                        newConfig.set(key, oldConfig.get(key));
+                    if (!"config-version".equalsIgnoreCase(key) && oldConfig.get(key).getClass() != MemorySection.class) {
+                        config.set(key, oldConfig.get(key));
                     }
                 }
+
                 try {
-                    newConfig.save(configFile);
+                    config.save(configFile);
+                    config = YamlConfiguration.loadConfiguration(configFile);
+                    if (config.getString("config-version").equals(BedrockPlayerSupport.getInstance().getDescription().getVersion())) {
+                        BedrockPlayerSupport.getInstance().getLogger().info("成功更新配置文件");
+                    }
                 } catch (IOException e) {
+                    BedrockPlayerSupport.getInstance().getLogger().warning("配置文件更新失败，请将问题反馈至作者");
                     e.printStackTrace();
-                    BedrockPlayerSupport.getInstance().getLogger().warning("§e无法更新配置文件，请前往GitHub或QQ群提交该报错!");
                 }
-                break;
             }
         }
     }
-
 }
+

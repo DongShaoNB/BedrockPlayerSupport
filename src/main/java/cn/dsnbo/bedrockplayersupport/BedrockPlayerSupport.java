@@ -8,6 +8,7 @@ import cn.dsnbo.bedrockplayersupport.listeners.login.AuthMeListener;
 import cn.dsnbo.bedrockplayersupport.listeners.teleport.CMITeleportListener;
 import cn.dsnbo.bedrockplayersupport.listeners.teleport.EssXTeleportListener;
 import cn.dsnbo.bedrockplayersupport.utils.Update;
+import cn.dsnbo.bedrockplayersupport.util.Update;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
