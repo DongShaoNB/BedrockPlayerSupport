@@ -1,4 +1,4 @@
-package cn.dsnbo.bedrockplayersupport.listeners.teleport;
+package cn.dsnbo.bedrockplayersupport.listener.teleport;
 
 import com.Zrips.CMI.events.CMIPlayerTeleportRequestEvent;
 import org.bukkit.ChatColor;

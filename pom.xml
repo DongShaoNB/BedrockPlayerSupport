@@ -6,14 +6,14 @@
 
     <groupId>cn.dsnbo</groupId>
     <artifactId>BedrockPlayerSupport</artifactId>
-    <version>1.5.2</version>
+    <version>1.6.0</version>
     <packaging>jar</packaging>
 
     <name>BedrockPlayerSupport</name>
 
     <description>Support bedrock player fast use java plugin</description>
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <url>www.dsnbo.cn</url>
@@ -59,9 +59,10 @@
             <id>spigotmc-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
+        <!-- floodgate -->
         <repository>
             <id>opencollab-snapshot</id>
-            <url>https://repo.opencollab.dev/maven-snapshots/</url>
+            <url>https://repo.opencollab.dev/main/</url>
         </repository>
         <repository>
             <id>sonatype</id>
@@ -75,9 +76,15 @@
             <id>paper-repo</id>
             <url>https://papermc.io/repo/repository/maven-public/</url>
         </repository>
+        <!-- AuthMe -->
         <repository>
             <id>codemc-repo</id>
             <url>https://repo.codemc.org/repository/maven-public/</url>
+        </repository>
+        <!-- HuskHomes -->
+        <repository>
+            <id>william278.net</id>
+            <url>https://repo.william278.net/releases</url>
         </repository>
     </repositories>
 
@@ -91,15 +98,15 @@
         <dependency>
             <groupId>org.geysermc.floodgate</groupId>
             <artifactId>api</artifactId>
-            <version>2.2.0-SNAPSHOT</version>
+            <version>2.2.2-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.zrips</groupId>
-            <artifactId>CMI</artifactId>
-            <version>9.0.0.0</version>
+            <artifactId>cmi</artifactId>
+            <version>9.6.4.1</version>
             <scope>system</scope>
-            <systemPath>${basedir}/libs/CMI9.0.0.0API.jar</systemPath>
+            <systemPath>${basedir}/libs/CMI-API9.6.4.1.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>net.essentialsx</groupId>
@@ -111,6 +118,18 @@
             <groupId>fr.xephi</groupId>
             <artifactId>authme</artifactId>
             <version>5.6.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.william278</groupId>
+            <artifactId>huskhomes</artifactId>
+            <version>4.4.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

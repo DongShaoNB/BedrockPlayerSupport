@@ -1,4 +1,5 @@
 name: BedrockPlayerSupport
+prefix: BedrockPlayerSupport
 version: '${project.version}'
 main: cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport
 api-version: 1.13
@@ -7,6 +8,7 @@ depend:
 softdepend:
   - CMI
   - Essentials
+  - HuskHomes
   - AuthMe
 authors: [ DongShaoNB ]
 description: Support bedrock player fast use java plugin

@@ -1,4 +1,4 @@
-package cn.dsnbo.bedrockplayersupport.listeners.login;
+package cn.dsnbo.bedrockplayersupport.listener.login;
 
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import fr.xephi.authme.api.v3.AuthMeApi;

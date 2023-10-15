@@ -28,13 +28,13 @@ public class Update {
             if (latestVersion != null) {
                 String nowVersion = BedrockPlayerSupport.getInstance().getDescription().getVersion();
                 if (!nowVersion.equals(latestVersion)) {
-                    BedrockPlayerSupport.getInstance().getLogger().info("§a有新版本可以更新!");
-                    BedrockPlayerSupport.getInstance().getLogger().info("§a当前版本: " + nowVersion + " | 最新版本: " + latestVersion);
+                    BedrockPlayerSupport.getInstance().getLogger().info("有新版本可以更新!");
+                    BedrockPlayerSupport.getInstance().getLogger().info("当前版本: " + nowVersion + " | 最新版本: " + latestVersion);
                 } else {
-                    BedrockPlayerSupport.getInstance().getLogger().info("§a插件是最新版本，继续保持哦~");
+                    BedrockPlayerSupport.getInstance().getLogger().info("插件是最新版本，继续保持哦~");
                 }
             } else {
-                BedrockPlayerSupport.getInstance().getLogger().warning("§4无法检测更新，请检查网络情况，尝试访问 https://update.dsnbo.cn/BedrockPlayerSupport/version 是否正常");
+                BedrockPlayerSupport.getInstance().getLogger().warning("无法检测更新，请检查网络情况，尝试访问 https://update.dsnbo.cn/BedrockPlayerSupport/version 是否正常");
             }
         });
 
