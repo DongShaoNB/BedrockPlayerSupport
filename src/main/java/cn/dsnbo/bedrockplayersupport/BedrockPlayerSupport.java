@@ -6,7 +6,7 @@ import cn.dsnbo.bedrockplayersupport.listener.login.OtherLoginListener;
 import cn.dsnbo.bedrockplayersupport.listener.teleport.HuskHomesTeleportListener;
 import cn.dsnbo.bedrockplayersupport.listener.login.AuthMeListener;
 import cn.dsnbo.bedrockplayersupport.listener.teleport.CMITeleportListener;
-import cn.dsnbo.bedrockplayersupport.listener.teleport.EssTeleportListener;
+import cn.dsnbo.bedrockplayersupport.listener.teleport.EssXTeleportListener;
 import cn.dsnbo.bedrockplayersupport.util.Update;
 import lombok.Getter;
 import org.bukkit.Bukkit;
@@ -61,13 +61,16 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
                 Bukkit.getPluginManager().registerEvents(new CMITeleportListener(), this);
                 getLogger().info("检测到CMI基础插件，已注册相关监听器");
             }
-            case "essentials" -> {
-                Bukkit.getPluginManager().registerEvents(new EssTeleportListener(), this);
-                getLogger().info("检测到Essentials基础插件，已注册相关监听器");
+            case "essentialsx" -> {
+                Bukkit.getPluginManager().registerEvents(new EssXTeleportListener(), this);
+                getLogger().info("检测到EssentialsX基础插件，已注册相关监听器");
             }
             case "huskhomes" -> {
                 Bukkit.getPluginManager().registerEvents(new HuskHomesTeleportListener(), this);
                 getLogger().info("检测到HuskHomes基础插件，已注册相关监听器");
+            }
+            case "disable" -> {
+                getLogger().info("已关闭基础插件功能(配置文件设置)");
             }
             default -> {
                 File file = new File(getDataFolder(), "/config.yml");
@@ -76,9 +79,9 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
                     Bukkit.getPluginManager().registerEvents(new CMITeleportListener(), this);
                     getLogger().info("检测到CMI基础插件，已注册相关监听器");
                 } else if (isEssxEnabled) {
-                    getConfig().set("basic-plugin", "essentials");
-                    Bukkit.getPluginManager().registerEvents(new EssTeleportListener(), this);
-                    getLogger().info("检测到Essentials基础插件，已注册相关监听器");
+                    getConfig().set("basic-plugin", "essentialsx");
+                    Bukkit.getPluginManager().registerEvents(new EssXTeleportListener(), this);
+                    getLogger().info("检测到EssentialsX基础插件，已注册相关监听器");
                 } else if (isHuskHomesEnabled) {
                     getConfig().set("basic-plugin", "huskhomes");
                     Bukkit.getPluginManager().registerEvents(new HuskHomesTeleportListener(), this);
@@ -141,7 +144,7 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
         getLogger().info("检测支持插件是否启用: ");
         getLogger().info("floodgate: " + isFloodgateEnabled);
         getLogger().info("CMI: " + isCmiEnabled);
-        getLogger().info("Essentials: " + isEssxEnabled);
+        getLogger().info("EssentialsX: " + isEssxEnabled);
         getLogger().info("HuskHomes: " + isHuskHomesEnabled);
         getLogger().info("AuthMe: " + isAuthMeEnabled);
         getLogger().info("-----------------");
