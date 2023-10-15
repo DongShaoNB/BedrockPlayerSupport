@@ -14,7 +14,7 @@ import java.util.UUID;
 /**
  * @author DongShaoNB
  */
-public class EssXTeleportListener implements Listener {
+public class EssTeleportListener implements Listener {
     @EventHandler
     public void onTeleportWarmupEvent(TPARequestEvent e){
         boolean isTeleportHere = e.isTeleportHere();

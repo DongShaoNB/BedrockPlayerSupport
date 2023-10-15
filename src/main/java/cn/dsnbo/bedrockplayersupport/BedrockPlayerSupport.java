@@ -6,7 +6,7 @@ import cn.dsnbo.bedrockplayersupport.listener.login.OtherLoginListener;
 import cn.dsnbo.bedrockplayersupport.listener.teleport.HuskHomesTeleportListener;
 import cn.dsnbo.bedrockplayersupport.listener.login.AuthMeListener;
 import cn.dsnbo.bedrockplayersupport.listener.teleport.CMITeleportListener;
-import cn.dsnbo.bedrockplayersupport.listener.teleport.EssXTeleportListener;
+import cn.dsnbo.bedrockplayersupport.listener.teleport.EssTeleportListener;
 import cn.dsnbo.bedrockplayersupport.util.Update;
 import lombok.Getter;
 import org.bukkit.Bukkit;
@@ -59,27 +59,33 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
         switch (getConfig().getString("basic-plugin").toLowerCase()) {
             case "cmi" -> {
                 Bukkit.getPluginManager().registerEvents(new CMITeleportListener(), this);
+                getLogger().info("检测到CMI基础插件，已注册相关监听器");
             }
-            case "essentialsx" -> {
-                Bukkit.getPluginManager().registerEvents(new EssXTeleportListener(), this);
+            case "essentials" -> {
+                Bukkit.getPluginManager().registerEvents(new EssTeleportListener(), this);
+                getLogger().info("检测到Essentials基础插件，已注册相关监听器");
             }
             case "huskhomes" -> {
                 Bukkit.getPluginManager().registerEvents(new HuskHomesTeleportListener(), this);
+                getLogger().info("检测到HuskHomes基础插件，已注册相关监听器");
             }
             default -> {
                 File file = new File(getDataFolder(), "/config.yml");
                 if (isCmiEnabled) {
                     getConfig().set("basic-plugin", "cmi");
                     Bukkit.getPluginManager().registerEvents(new CMITeleportListener(), this);
+                    getLogger().info("检测到CMI基础插件，已注册相关监听器");
                 } else if (isEssxEnabled) {
-                    getConfig().set("basic-plugin", "essentialsx");
-                    Bukkit.getPluginManager().registerEvents(new EssXTeleportListener(), this);
+                    getConfig().set("basic-plugin", "essentials");
+                    Bukkit.getPluginManager().registerEvents(new EssTeleportListener(), this);
+                    getLogger().info("检测到Essentials基础插件，已注册相关监听器");
                 } else if (isHuskHomesEnabled) {
                     getConfig().set("basic-plugin", "huskhomes");
                     Bukkit.getPluginManager().registerEvents(new HuskHomesTeleportListener(), this);
+                    getLogger().info("检测到HuskHomes基础插件，已注册相关监听器");
                 } else {
                     getConfig().set("basic-plugin", "disable");
-                    getLogger().warning("检测不到支持的基础插件,已关闭相关功能!");
+                    getLogger().warning("检测不到支持的基础插件，已关闭相关功能");
                 }
 
                 try {
