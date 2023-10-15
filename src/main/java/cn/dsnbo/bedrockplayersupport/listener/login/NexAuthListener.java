@@ -19,7 +19,7 @@ public class NexAuthListener implements Listener {
     public void onPlayerJoinEvent(PlayerJoinEvent e) {
         Player player = e.getPlayer();
         if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
-            if (AuthPlayer.getOrCreate(player).getState() != PlayerState.LOGGED_IN && AuthPlayer.getOrCreate(player).isRegistered()) {
+            if (AuthPlayer.getOrCreate(player).getState() == PlayerState.IN_LOGIN && AuthPlayer.getOrCreate(player).isRegistered()) {
                 NexAuthAPI.getAuthManager().login(player);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', BedrockPlayerSupport.getInstance().getConfig().getString("login.auto-message")));
             }
