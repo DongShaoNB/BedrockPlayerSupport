@@ -16,7 +16,7 @@ login:
   # 请注意，注册仍需玩家手动注册，后续登录才可以自动登录
   # 默认值: false
   enable: false
-  # 使用的登录插件 (可选值: auto/authme/other)
+  # 使用的登录插件 (可选值: auto/authme/catseedlogin/nexauth/other)
   # 如果是AuthMe请填写authme 其他则为other
   # 当选择auto时如果服务器有安装AuthMe插件则自动更改为authme 否则自动关闭该功能
   # 如果不需要此功能 请将上方的enable设置为false

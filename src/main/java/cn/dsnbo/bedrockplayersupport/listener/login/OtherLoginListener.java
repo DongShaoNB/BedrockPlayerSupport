@@ -2,6 +2,7 @@ package cn.dsnbo.bedrockplayersupport.listener.login;
 
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,6 +20,7 @@ public class OtherLoginListener implements Listener {
         if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
             Bukkit.dispatchCommand(Bukkit.getServer().getConsoleSender(), BedrockPlayerSupport.getInstance().getConfig().getString("login.forcelogin-command")
                     .replace("%player%", player.getName()));
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', BedrockPlayerSupport.getInstance().getConfig().getString("login.auto-message")));
         }
     }
 

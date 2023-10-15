@@ -2,6 +2,8 @@ package cn.dsnbo.bedrockplayersupport;
 
 import cn.dsnbo.bedrockplayersupport.command.TpaCommand;
 import cn.dsnbo.bedrockplayersupport.command.TpaHereCommand;
+import cn.dsnbo.bedrockplayersupport.listener.login.CatSeedLoginListener;
+import cn.dsnbo.bedrockplayersupport.listener.login.NexAuthListener;
 import cn.dsnbo.bedrockplayersupport.listener.login.OtherLoginListener;
 import cn.dsnbo.bedrockplayersupport.listener.teleport.HuskHomesTeleportListener;
 import cn.dsnbo.bedrockplayersupport.listener.login.AuthMeListener;
@@ -27,6 +29,8 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
     private boolean isEssxEnabled;
     private boolean isHuskHomesEnabled;
     private boolean isAuthMeEnabled;
+    private boolean isCatSeedLoginEnabled;
+    private boolean isNexAuthEnabled;
     private boolean isFloodgateEnabled;
 
 
@@ -52,6 +56,8 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
         isEssxEnabled = !(Bukkit.getPluginManager().getPlugin("Essentials") == null);
         isHuskHomesEnabled = !(Bukkit.getPluginManager().getPlugin("HuskHomes") == null);
         isAuthMeEnabled = !(Bukkit.getPluginManager().getPlugin("AuthMe") == null);
+        isCatSeedLoginEnabled = !(Bukkit.getPluginManager().getPlugin("CatSeedLogin") == null);
+        isNexAuthEnabled = !(Bukkit.getPluginManager().getPlugin("NexAuth") == null);
         isFloodgateEnabled = !(Bukkit.getPluginManager().getPlugin("floodgate") == null);
     }
 
@@ -102,6 +108,14 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
                     Bukkit.getPluginManager().registerEvents(new AuthMeListener(), this);
                     getLogger().info("已开启基岩版玩家自动登录功能，使用插件: AuthMe");
                 }
+                case "catseedlogin" -> {
+                    Bukkit.getPluginManager().registerEvents(new CatSeedLoginListener(), this);
+                    getLogger().info("已开启基岩版玩家自动登录功能，使用插件: CatSeedLogin");
+                }
+                case "nexauth" -> {
+                    Bukkit.getPluginManager().registerEvents(new NexAuthListener(), this);
+                    getLogger().info("已开启基岩版玩家自动登录功能，使用插件: NexAuth");
+                }
                 case "other" -> {
                     Bukkit.getPluginManager().registerEvents(new OtherLoginListener(), this);
                     getLogger().info("已开启基岩版玩家自动登录功能，使用插件: 其他(控制台使用命令强制登录)");
@@ -112,6 +126,14 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
                         getConfig().set("login.plugin", "authme");
                         Bukkit.getPluginManager().registerEvents(new AuthMeListener(), this);
                         getLogger().info("已开启基岩版玩家自动登录功能，使用插件: AuthMe");
+                    } else if (isCatSeedLoginEnabled) {
+                        getConfig().set("login.plugin", "catseedlogin");
+                        Bukkit.getPluginManager().registerEvents(new CatSeedLoginListener(), this);
+                        getLogger().info("已开启基岩版玩家自动登录功能，使用插件: CatSeedLogin");
+                    } else if (isNexAuthEnabled) {
+                        getConfig().set("login.plugin", "nexauth");
+                        Bukkit.getPluginManager().registerEvents(new NexAuthListener(), this);
+                        getLogger().info("已开启基岩版玩家自动登录功能，使用插件: NexAuth");
                     } else {
                         getConfig().set("login.enable", "false");
                         getLogger().warning("检测不到支持的登录插件，已关闭自动登录功能!");
@@ -144,6 +166,8 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
         getLogger().info("Essentials: " + isEssxEnabled);
         getLogger().info("HuskHomes: " + isHuskHomesEnabled);
         getLogger().info("AuthMe: " + isAuthMeEnabled);
+        getLogger().info("CatSeedLogin: " + isCatSeedLoginEnabled);
+        getLogger().info("NexAuth: " + isNexAuthEnabled);
         getLogger().info("-----------------");
     }
 

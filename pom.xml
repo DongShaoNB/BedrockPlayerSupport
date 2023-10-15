@@ -23,7 +23,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.11.0</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -31,8 +31,18 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
+                <version>3.5.1</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -41,6 +51,7 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <minimizeJar>true</minimizeJar>
                         </configuration>
                     </execution>
                 </executions>
@@ -86,6 +97,11 @@
             <id>william278.net</id>
             <url>https://repo.william278.net/releases</url>
         </repository>
+        <!-- CatSeedLogin -->
+        <repository>
+            <id>jitpack-repo</id>
+            <url>https://www.jitpack.io/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -111,13 +127,7 @@
         <dependency>
             <groupId>net.essentialsx</groupId>
             <artifactId>EssentialsX</artifactId>
-            <version>2.19.7</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>fr.xephi</groupId>
-            <artifactId>authme</artifactId>
-            <version>5.6.0-SNAPSHOT</version>
+            <version>2.20.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -131,6 +141,32 @@
             <artifactId>lombok</artifactId>
             <version>1.18.30</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>fr.xephi</groupId>
+            <artifactId>authme</artifactId>
+            <version>5.6.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.CatSeed</groupId>
+            <artifactId>CatSeedLogin</artifactId>
+            <version>1.4.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>su.nexmedia.auth</groupId>
+            <artifactId>NexAuth</artifactId>
+            <version>2.0.3</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/libs/NexAuth-2.0.3.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>su.nexmedia.engine</groupId>
+            <artifactId>NexEngine</artifactId>
+            <version>2.2.12</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/libs/NexEngine.jar</systemPath>
         </dependency>
     </dependencies>
 </project>
