@@ -7,7 +7,7 @@ assignees: DongShaoNB
 
 ---
 
-**j简述BUG**
+**简述BUG**
 简单的描述BUG
 
 **复现步骤**
