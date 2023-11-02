@@ -66,17 +66,21 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
             case "cmi" -> {
                 Bukkit.getPluginManager().registerEvents(new CMITeleportListener(), this);
                 getLogger().info("检测到CMI基础插件，已注册相关监听器");
+                break;
             }
             case "essentialsx" -> {
                 Bukkit.getPluginManager().registerEvents(new EssXTeleportListener(), this);
                 getLogger().info("检测到EssentialsX基础插件，已注册相关监听器");
+                break;
             }
             case "huskhomes" -> {
                 Bukkit.getPluginManager().registerEvents(new HuskHomesTeleportListener(), this);
                 getLogger().info("检测到HuskHomes基础插件，已注册相关监听器");
+                break;
             }
             case "disable" -> {
                 getLogger().info("已关闭基础插件功能(配置文件设置)");
+                break;
             }
             default -> {
                 File file = new File(getDataFolder(), "/config.yml");
@@ -102,6 +106,7 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                break;
             }
         }
 
@@ -110,18 +115,22 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
                 case "authme" -> {
                     Bukkit.getPluginManager().registerEvents(new AuthMeListener(), this);
                     getLogger().info("已开启基岩版玩家自动登录功能，使用插件: AuthMe");
+                    break;
                 }
                 case "catseedlogin" -> {
                     Bukkit.getPluginManager().registerEvents(new CatSeedLoginListener(), this);
                     getLogger().info("已开启基岩版玩家自动登录功能，使用插件: CatSeedLogin");
+                    break;
                 }
                 case "nexauth" -> {
                     Bukkit.getPluginManager().registerEvents(new NexAuthListener(), this);
                     getLogger().info("已开启基岩版玩家自动登录功能，使用插件: NexAuth");
+                    break;
                 }
                 case "other" -> {
                     Bukkit.getPluginManager().registerEvents(new OtherLoginListener(), this);
                     getLogger().info("已开启基岩版玩家自动登录功能，使用插件: 其他(控制台使用命令强制登录)");
+                    break;
                 }
                 default -> {
                     File file = new File(getDataFolder(), "/config.yml");
@@ -146,6 +155,7 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    break;
                 }
             }
         }

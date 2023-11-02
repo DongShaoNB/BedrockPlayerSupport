@@ -1,7 +1,6 @@
 package cn.dsnbo.bedrockplayersupport.listener.login;
 
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
-import cn.dsnbo.bedrockplayersupport.util.Forms;
 import fr.xephi.authme.api.v3.AuthMeApi;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
