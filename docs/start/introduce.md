@@ -5,6 +5,6 @@ BedrockPlayerSupport 是一个优化基岩版玩家体验的插件，给服务�
   
 给部分主流登录插件(AuthMe/CatSeedLogin/NexAuth)单独添加了基岩版玩家自动登录功能，其他登录插件也可以在配置文件中设置强制登录命令实现上述功能
 
-![TPAGUI.png](../img/show_1.png)
-![TPA.png](../img/show_2.png)
-![TPAGUI.png](../img/show_3.png)
+![TPAGUI.png](https://z1.ax1x.com/2023/11/02/piKRLWQ.png)
+![TPA.png](https://z1.ax1x.com/2023/11/02/piKROzj.png)
+![TPAGUI.png](https://z1.ax1x.com/2023/11/02/piKRqJg.png)
