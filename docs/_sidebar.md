@@ -6,3 +6,7 @@
 - 配置
 
     - [配置文件](config/config.md)
+
+- 其他
+  
+    - [联系我们](other/contactus.md)
