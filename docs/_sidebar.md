@@ -9,4 +9,4 @@
 
 - 其他
   
-    - [联系我们](other/contactus.md)
+    - [联系我们](other/contact.md)

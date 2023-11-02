@@ -39,4 +39,4 @@ login:
 config-version: ${project.version}
 ```
 
-**插件自带的配置文件已在每个选项上方写了详细说明 仍有不懂可以添加[QQ群](other/contactus.md) @群主**
+**插件自带的配置文件已在每个选项上方写了详细说明 仍有不懂可以添加[QQ群](other/contact.md) @群主**
