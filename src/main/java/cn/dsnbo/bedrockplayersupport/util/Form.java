@@ -7,10 +7,13 @@ import org.geysermc.cumulus.form.CustomForm;
 import org.geysermc.cumulus.form.SimpleForm;
 import org.geysermc.floodgate.api.FloodgateApi;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author DongShaoNB
  */
-public class Forms {
+public class Form {
 
     public static void openRegisterForm(Player player) {
         CustomForm.Builder customForm = CustomForm.builder()
@@ -53,5 +56,22 @@ public class Forms {
         }
         FloodgateApi.getInstance().getPlayer(player.getUniqueId()).sendForm(simpleForm);
 
+    }
+
+    public static void openBedrockMsgMenu(Player player) {
+        List<String> onlinePlayerName = new ArrayList<>();
+        for (Player onlinePlayer: Bukkit.getOnlinePlayers()) {
+            if (onlinePlayer != player) {
+                onlinePlayerName.add(onlinePlayer.getName());
+            }
+        }
+        CustomForm.Builder customForm = CustomForm.builder()
+                .title("§6§l信息菜单")
+                .dropdown("§a请选择接收信息的玩家", onlinePlayerName)
+                .input("§a请填写要发送的信息")
+                .validResultHandler(((response, customFormResponse) -> {
+                    player.chat("/msg " + onlinePlayerName.get(customFormResponse.asDropdown(0)) + " " + customFormResponse.asInput(1));
+                }));
+        FloodgateApi.getInstance().getPlayer(player.getUniqueId()).sendForm(customForm);
     }
 }

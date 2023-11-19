@@ -21,3 +21,5 @@ commands:
     description: "Bedrock player teleport menu"
   tpaheregui:
     description: "Bedrock player teleport here menu"
+  msggui:
+    description: "Bedrock player msg menu"

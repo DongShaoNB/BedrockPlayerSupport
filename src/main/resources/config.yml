@@ -4,6 +4,8 @@ check-update: true
 # 是否启用基岩版玩家TPA菜单(/tpagui /tpaheregui)
 # 默认值: true
 bedrock-player-teleport-menu: true
+# 是否启用基岩版玩家MSG菜单(/msggui)
+bedrock-player-msg-menu: true
 # 基础插件(可选值: auto/cmi/essentialsx/huskhomes/disable)
 # 当选择auto时按照优先级自动修改为(cmi/essentialsx/huskhomes)其中之一
 # 不需要此请设置为disable
