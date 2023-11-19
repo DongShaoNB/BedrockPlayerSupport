@@ -3,6 +3,7 @@ prefix: BedrockPlayerSupport
 version: '${project.version}'
 main: cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport
 api-version: 1.13
+folia-supported: true
 depend:
   - floodgate
 softdepend:
