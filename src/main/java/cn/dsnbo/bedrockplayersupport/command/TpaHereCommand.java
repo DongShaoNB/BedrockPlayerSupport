@@ -1,6 +1,6 @@
 package cn.dsnbo.bedrockplayersupport.command;
 
-import cn.dsnbo.bedrockplayersupport.util.Forms;
+import cn.dsnbo.bedrockplayersupport.util.Form;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,11 +15,10 @@ public class TpaHereCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
+        if (sender instanceof Player player) {
             if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
-                if (!(Bukkit.getOnlinePlayers().size() <= 1)) {
-                    Forms.openBedrockTeleportHereMenu(player);
+                if (Bukkit.getOnlinePlayers().size() > 1) {
+                    Form.openBedrockTeleportHereMenu(player);
                 } else {
                     player.sendMessage("§c当前没有其他玩家在线!");
                 }
