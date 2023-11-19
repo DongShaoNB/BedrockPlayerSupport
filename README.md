@@ -8,6 +8,7 @@
  1. 当基岩版玩家收到 tpa/tpahere 申请时会弹出GUI让玩家选择 同意/拒绝/忽略 (CMI/EssentialsX/HuskHomes)
  2. 基岩版玩家使用指令 /tpagui (/tpaheregui) 弹出基岩版玩家专属表单选择要 tpa (tpahere) 的玩家 
  3. 基岩版玩家进服登录时直接跳过基岩版玩家登录环节 (AuthMe/CatSeedLogin/NexAuth/Others)
+ 4. 基岩版玩家使用指令 /msggui 弹出基岩版玩家专属表单发送信息 (/msg的表单)
 
 详细介绍: [文档](https://dongshaonb.github.io/BedrockPlayerSupport/#/start/introduce)
 
