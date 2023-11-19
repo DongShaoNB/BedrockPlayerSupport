@@ -23,6 +23,6 @@
 ## 联系作者
 QQ群: 159323818
 
-[![Security Status](https://www.murphysec.com/platform3/v31/badge/1713605476427284480.svg)](https://www.murphysec.com/console/report/1713600058921631744/1713605476427284480)
+[![Security Status](https://www.murphysec.com/platform3/v31/badge/1720045751254962176.svg)](https://www.murphysec.com/console/report/1668310671825125376/1720045751254962176)
 
   [1]: https://github.com/GeyserMC/Floodgate
