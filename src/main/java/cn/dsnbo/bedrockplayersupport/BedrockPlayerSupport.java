@@ -52,7 +52,23 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
         loadConfig();
         printSupportPluginLoadStatus();
         getLogger().info("感谢选择使用本插件，作者: DongShaoNB，QQ群: 159323818");
-        new Metrics(this, 17107);
+        Metrics metrics = new Metrics(this, 17107);
+        metrics.addCustomChart(new Metrics.SimplePie("basic_plugin", () -> {
+            switch (getBasicPlugin()) {
+                case CMI -> {
+                    return "CMI";
+                }
+                case EssentialsX -> {
+                    return "EssentialsX";
+                }
+                case HuskHomes -> {
+                    return "HuskHomes";
+                }
+                default -> {
+                    return "NONE";
+                }
+            }
+        }));
     }
 
     @Override
