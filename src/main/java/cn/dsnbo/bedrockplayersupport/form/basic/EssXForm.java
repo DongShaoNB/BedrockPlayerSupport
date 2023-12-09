@@ -1,25 +1,22 @@
-package cn.dsnbo.bedrockplayersupport.form;
+package cn.dsnbo.bedrockplayersupport.form.basic;
 
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
-import com.Zrips.CMI.CMI;
-import com.Zrips.CMI.Containers.CMIUser;
-import com.Zrips.CMI.Modules.Homes.CmiHome;
+import com.earth2me.essentials.Essentials;
+import com.earth2me.essentials.User;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.geysermc.cumulus.form.SimpleForm;
 
-import java.util.LinkedHashMap;
-
-public class CMIForm {
+public class EssXForm {
 
     public static void sendHomeForm(Player player) {
-        CMIUser cmiUser = CMI.getInstance().getPlayerManager().getUser(player);
-        LinkedHashMap<String, CmiHome> playerHomesList = cmiUser.getHomes();
+        User user = new User(player, (Essentials) Bukkit.getPluginManager().getPlugin("Essentials"));
         SimpleForm.Builder form = SimpleForm.builder()
                 .title("§6§l我的家")
                 .validResultHandler(simpleFormResponse -> {
                     player.chat("/home " + simpleFormResponse.clickedButton().text());
                 });
-        for (String homeName : playerHomesList.keySet()) {
+        for (String homeName: user.getHomes()) {
             form.button(homeName);
         }
         BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), form);

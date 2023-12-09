@@ -11,7 +11,7 @@ import org.geysermc.floodgate.api.FloodgateApi;
 /**
  * @author DongShaoNB
  */
-public class MsgCommand implements CommandExecutor {
+public class MsgGuiCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -23,8 +23,8 @@ public class MsgCommand implements CommandExecutor {
                     player.sendMessage("§c当前没有其他玩家在线!");
                 }
             } else {
-            player.sendMessage("§c你不是基岩版玩家!");
-        }
+                player.sendMessage("§c你不是基岩版玩家!");
+            }
         }
         return false;
     }

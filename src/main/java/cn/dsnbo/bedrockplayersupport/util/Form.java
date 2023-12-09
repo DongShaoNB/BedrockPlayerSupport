@@ -17,20 +17,10 @@ import java.util.UUID;
  */
 public class Form {
 
-    public static void openRegisterForm(Player player) {
-        CustomForm.Builder customForm = CustomForm.builder()
-                .title("§6§l注册菜单")
-                .input("§b密码", "请输入注册密码")
-                .validResultHandler(((customForm1, customFormResponse) -> {
-                    AuthMeApi.getInstance().registerPlayer(player.getName(), customFormResponse.asInput(0));
-                }));
-        BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), customForm);
-    }
-
     public static void openBedrockTeleportMenu(Player player) {
         UUID uuid = player.getUniqueId();
         List<String> onlinePlayerNameList = new ArrayList<>();
-        for (Player onlinePlayer: Bukkit.getOnlinePlayers()) {
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             if (onlinePlayer != player) {
                 onlinePlayerNameList.add(onlinePlayer.getName());
             }
@@ -83,7 +73,7 @@ public class Form {
 
     public static void openBedrockMsgMenu(Player player) {
         List<String> onlinePlayerName = new ArrayList<>();
-        for (Player onlinePlayer: Bukkit.getOnlinePlayers()) {
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             if (onlinePlayer != player) {
                 onlinePlayerName.add(onlinePlayer.getName());
             }
@@ -97,4 +87,5 @@ public class Form {
                 }));
         BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), customForm);
     }
+
 }

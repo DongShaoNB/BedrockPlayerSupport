@@ -1,4 +1,4 @@
-package cn.dsnbo.bedrockplayersupport.form;
+package cn.dsnbo.bedrockplayersupport.form.basic;
 
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import net.william278.huskhomes.api.HuskHomesAPI;

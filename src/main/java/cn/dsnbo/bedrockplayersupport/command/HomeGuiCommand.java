@@ -1,10 +1,9 @@
 package cn.dsnbo.bedrockplayersupport.command;
 
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
-import cn.dsnbo.bedrockplayersupport.form.CMIForm;
-import cn.dsnbo.bedrockplayersupport.form.EssXForm;
-import cn.dsnbo.bedrockplayersupport.form.HuskHomesForm;
-import org.bukkit.Bukkit;
+import cn.dsnbo.bedrockplayersupport.form.basic.CMIForm;
+import cn.dsnbo.bedrockplayersupport.form.basic.EssXForm;
+import cn.dsnbo.bedrockplayersupport.form.basic.HuskHomesForm;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
