@@ -1,0 +1,31 @@
+package cn.dsnbo.bedrockplayersupport.command;
+
+import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
+import cn.dsnbo.bedrockplayersupport.form.CMIForm;
+import cn.dsnbo.bedrockplayersupport.form.EssXForm;
+import cn.dsnbo.bedrockplayersupport.form.HuskHomesForm;
+import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.geysermc.floodgate.api.FloodgateApi;
+
+public class HomeGuiCommand implements CommandExecutor {
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (sender instanceof Player player) {
+            if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
+                switch (BedrockPlayerSupport.getBasicPlugin()) {
+                    case CMI -> CMIForm.sendHomeForm(player);
+                    case EssentialsX -> EssXForm.sendHomeForm(player);
+                    case HuskHomes -> HuskHomesForm.sendHomeForm(player);
+                }
+            } else {
+                player.sendMessage("§c你不是基岩版玩家!");
+            }
+        }
+        return false;
+    }
+}

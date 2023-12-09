@@ -21,3 +21,5 @@ commands:
     description: "Bedrock player teleport form"
   msggui:
     description: "Bedrock player msg form"
+  homegui:
+    description: "Bedrock player home form"

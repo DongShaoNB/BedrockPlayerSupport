@@ -141,10 +141,17 @@
         </dependency>
         <dependency>
             <groupId>com.zrips</groupId>
-            <artifactId>cmi</artifactId>
-            <version>9.6.4.1</version>
+            <artifactId>cmi-api</artifactId>
+            <version>9.6.5.0</version>
             <scope>system</scope>
-            <systemPath>${basedir}/lib/CMI-API9.6.4.1.jar</systemPath>
+            <systemPath>${basedir}/lib/CMI-API9.6.5.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.zrips</groupId>
+            <artifactId>cmi-lib</artifactId>
+            <version>1.4.4.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/CMILib1.4.4.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>net.essentialsx</groupId>
@@ -155,7 +162,7 @@
         <dependency>
             <groupId>net.william278</groupId>
             <artifactId>huskhomes</artifactId>
-            <version>4.4.5</version>
+            <version>4.5.3</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
