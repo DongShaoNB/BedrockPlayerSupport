@@ -15,6 +15,7 @@ import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.geysermc.floodgate.api.FloodgateApi;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,6 +27,8 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
 
     @Getter
     public static BedrockPlayerSupport instance;
+    @Getter
+    public static FloodgateApi floodgateApi;
     private boolean isCmiEnabled;
     private boolean isEssxEnabled;
     private boolean isHuskHomesEnabled;
@@ -38,6 +41,7 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         instance = this;
+        floodgateApi = FloodgateApi.getInstance();
         loadDependLoadStatus();
         saveDefaultConfig();
         Update.updateConfig();

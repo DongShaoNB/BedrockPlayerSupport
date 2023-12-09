@@ -1,14 +1,16 @@
 package cn.dsnbo.bedrockplayersupport.util;
 
+import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
+import cn.dsnbo.bedrockplayersupport.TeleportType;
 import fr.xephi.authme.api.v3.AuthMeApi;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.geysermc.cumulus.form.CustomForm;
 import org.geysermc.cumulus.form.SimpleForm;
-import org.geysermc.floodgate.api.FloodgateApi;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author DongShaoNB
@@ -17,12 +19,12 @@ public class Form {
 
     public static void openRegisterForm(Player player) {
         CustomForm.Builder customForm = CustomForm.builder()
-                .title("§a§l注册菜单")
+                .title("§6§l注册菜单")
                 .input("§b密码", "请输入注册密码")
                 .validResultHandler(((customForm1, customFormResponse) -> {
                     AuthMeApi.getInstance().registerPlayer(player.getName(), customFormResponse.asInput(0));
                 }));
-        FloodgateApi.getInstance().sendForm(player.getUniqueId(), customForm);
+        BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), customForm);
     }
 
     public static void openBedrockTeleportMenu(Player player) {
@@ -38,7 +40,7 @@ public class Form {
                 simpleForm.button(player1.getName());
             }
         }
-        FloodgateApi.getInstance().getPlayer(player.getUniqueId()).sendForm(simpleForm);
+        BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), simpleForm);
     }
 
     public static void openBedrockTeleportHereMenu(Player player) {
@@ -54,8 +56,42 @@ public class Form {
                 simpleForm.button(player1.getName());
             }
         }
-        FloodgateApi.getInstance().getPlayer(player.getUniqueId()).sendForm(simpleForm);
+        BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), simpleForm);
 
+    }
+
+    public static void openBedrockTeleportRequestMenu(TeleportType tpType, Player requestor, Player receiver) {
+        SimpleForm.Builder form = null;
+        String requestorName = requestor.getName();
+        UUID receiverUuid = receiver.getUniqueId();
+        if (tpType == TeleportType.Tpa) {
+            form = SimpleForm.builder()
+                    .title("§6§l玩家请求传送到你的位置 §f(TPA)")
+                    .content("玩家 " + requestorName + " 请求传送到你的位置\n\n\n\n")
+                    .button("§a同意")
+                    .button("§c拒绝")
+                    .button("§e忽略")
+                    .validResultHandler((simpleForm, result) -> {
+                        switch (result.clickedButtonId()) {
+                            case 0 -> receiver.chat("/tpaccept");
+                            case 1 -> receiver.chat("/tpdeny");
+                        }
+                    });
+        } else if (tpType == TeleportType.TpaHere) {
+            form = SimpleForm.builder()
+                    .title("§6§l玩家请求你传送到他的位置 §f(TPAHERE)")
+                    .content("玩家 " + requestorName + " 请求你传送到他的位置\n\n\n\n")
+                    .button("§a同意")
+                    .button("§c拒绝")
+                    .button("§e忽略")
+                    .validResultHandler((simpleForm, result) -> {
+                        switch (result.clickedButtonId()) {
+                            case 0 -> receiver.chat("/tpaccept");
+                            case 1 -> receiver.chat("/tpdeny");
+                        }
+                    });
+        }
+        BedrockPlayerSupport.getFloodgateApi().sendForm(receiverUuid, form);
     }
 
     public static void openBedrockMsgMenu(Player player) {
@@ -72,6 +108,6 @@ public class Form {
                 .validResultHandler(((response, customFormResponse) -> {
                     player.chat("/msg " + onlinePlayerName.get(customFormResponse.asDropdown(0)) + " " + customFormResponse.asInput(1));
                 }));
-        FloodgateApi.getInstance().getPlayer(player.getUniqueId()).sendForm(customForm);
+        BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), customForm);
     }
 }
