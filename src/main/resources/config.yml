@@ -1,7 +1,16 @@
+# -----------------------------------------------------------
+# BedrockPlayerSupport | Made by DongShaoNB
+# GitHub: https://github.com/DongShaoNB/BedrockPlayerSupport
+# Docs: https://dongshaonb.github.io/BedrockPlayerSupport/#/
+# -----------------------------------------------------------
+
 # 自动检查更新
 # 默认值: true
 check-update: true
-# 是否启用基岩版玩家TPA菜单(/tpagui /tpaheregui)
+# 是否在插件启动时在控制台输出支持的插件的加载状态
+# 默认值: true
+logging-support-plugin-status: true
+# 是否启用基岩版玩家TP菜单(/tpgui)
 # 默认值: true
 bedrock-player-teleport-menu: true
 # 是否启用基岩版玩家MSG菜单(/msggui)

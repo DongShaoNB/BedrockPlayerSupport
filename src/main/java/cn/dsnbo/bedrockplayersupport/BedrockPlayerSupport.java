@@ -169,16 +169,18 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
     }
 
     private void printSupportPluginLoadStatus() {
-        getLogger().info("-----------------");
-        getLogger().info("检测支持插件是否启用: ");
-        getLogger().info("floodgate: " + isFloodgateEnabled);
-        getLogger().info("CMI: " + isCmiEnabled);
-        getLogger().info("EssentialsX: " + isEssxEnabled);
-        getLogger().info("HuskHomes: " + isHuskHomesEnabled);
-        getLogger().info("AuthMe: " + isAuthMeEnabled);
-        getLogger().info("CatSeedLogin: " + isCatSeedLoginEnabled);
-        getLogger().info("NexAuth: " + isNexAuthEnabled);
-        getLogger().info("-----------------");
+        if (getConfig().getBoolean("logging-support-plugin-status")) {
+            getLogger().info("-----------------");
+            getLogger().info("检测支持插件是否启用: ");
+            getLogger().info("floodgate: " + isFloodgateEnabled);
+            getLogger().info("CMI: " + isCmiEnabled);
+            getLogger().info("EssentialsX: " + isEssxEnabled);
+            getLogger().info("HuskHomes: " + isHuskHomesEnabled);
+            getLogger().info("AuthMe: " + isAuthMeEnabled);
+            getLogger().info("CatSeedLogin: " + isCatSeedLoginEnabled);
+            getLogger().info("NexAuth: " + isNexAuthEnabled);
+            getLogger().info("-----------------");
+        }
     }
 
 }
