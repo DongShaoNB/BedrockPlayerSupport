@@ -1,8 +1,7 @@
 package cn.dsnbo.bedrockplayersupport;
 
 import cn.dsnbo.bedrockplayersupport.command.MsgCommand;
-import cn.dsnbo.bedrockplayersupport.command.TpaCommand;
-import cn.dsnbo.bedrockplayersupport.command.TpaHereCommand;
+import cn.dsnbo.bedrockplayersupport.command.TpGuiCommand;
 import cn.dsnbo.bedrockplayersupport.listener.login.CatSeedLoginListener;
 import cn.dsnbo.bedrockplayersupport.listener.login.NexAuthListener;
 import cn.dsnbo.bedrockplayersupport.listener.login.OtherLoginListener;
@@ -160,8 +159,7 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
         }
 
         if (getConfig().getBoolean("bedrock-player-teleport-menu")) {
-            getCommand("tpagui").setExecutor(new TpaCommand());
-            getCommand("tpaheregui").setExecutor(new TpaHereCommand());
+            getCommand("tpgui").setExecutor(new TpGuiCommand());
         }
 
         if (getConfig().getBoolean("bedrock-player-msg-menu")) {

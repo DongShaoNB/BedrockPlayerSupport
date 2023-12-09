@@ -6,6 +6,7 @@ import fr.xephi.authme.api.v3.AuthMeApi;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.geysermc.cumulus.form.CustomForm;
+import org.geysermc.cumulus.form.ModalForm;
 import org.geysermc.cumulus.form.SimpleForm;
 
 import java.util.ArrayList;
@@ -28,49 +29,37 @@ public class Form {
     }
 
     public static void openBedrockTeleportMenu(Player player) {
-        SimpleForm.Builder simpleForm = SimpleForm.builder()
-                .title("§6§l传送菜单")
-                .content("§a请选择要传送的玩家")
-                .validResultHandler((response, simpleFormResponse) -> {
-                    player.chat("/tpa " + simpleFormResponse.clickedButton().text());
-                });
-
-        for (Player player1 : Bukkit.getOnlinePlayers()) {
-            if (player1 != player) {
-                simpleForm.button(player1.getName());
+        UUID uuid = player.getUniqueId();
+        List<String> onlinePlayerNameList = new ArrayList<>();
+        for (Player onlinePlayer: Bukkit.getOnlinePlayers()) {
+            if (onlinePlayer != player) {
+                onlinePlayerNameList.add(onlinePlayer.getName());
             }
         }
-        BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), simpleForm);
-    }
-
-    public static void openBedrockTeleportHereMenu(Player player) {
-        SimpleForm.Builder simpleForm = SimpleForm.builder()
+        CustomForm.Builder form = CustomForm.builder()
                 .title("§6§l传送菜单")
-                .content("§a请选择要传送到你身边的玩家")
-                .validResultHandler((response, simpleFormResponse) -> {
-                    player.chat("/tpahere " + simpleFormResponse.clickedButton().text());
+                .dropdown("请选择传送类型", List.of("TPA", "TPAHERE"))
+                .dropdown("请选择要传送的玩家", onlinePlayerNameList)
+                .validResultHandler((customForm, customFormResponse) -> {
+                    if (customFormResponse.asDropdown(0) == 0) {
+                        player.chat("/tpa " + onlinePlayerNameList.get(customFormResponse.asDropdown(1)));
+                    } else if (customFormResponse.asDropdown(0) == 1) {
+                        player.chat("/tpahere " + onlinePlayerNameList.get(customFormResponse.asDropdown(1)));
+                    }
                 });
-
-        for (Player player1 : Bukkit.getOnlinePlayers()) {
-            if (player1 != player) {
-                simpleForm.button(player1.getName());
-            }
-        }
-        BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), simpleForm);
-
+        BedrockPlayerSupport.getFloodgateApi().sendForm(uuid, form);
     }
 
     public static void openBedrockTeleportRequestMenu(TeleportType tpType, Player requestor, Player receiver) {
-        SimpleForm.Builder form = null;
+        ModalForm.Builder form = null;
         String requestorName = requestor.getName();
         UUID receiverUuid = receiver.getUniqueId();
         if (tpType == TeleportType.Tpa) {
-            form = SimpleForm.builder()
+            form = ModalForm.builder()
                     .title("§6§l玩家请求传送到你的位置 §f(TPA)")
-                    .content("玩家 " + requestorName + " 请求传送到你的位置\n\n\n\n")
-                    .button("§a同意")
-                    .button("§c拒绝")
-                    .button("§e忽略")
+                    .content("玩家 " + requestorName + " 请求传送到你的位置")
+                    .button1("§a同意")
+                    .button2("§c拒绝")
                     .validResultHandler((simpleForm, result) -> {
                         switch (result.clickedButtonId()) {
                             case 0 -> receiver.chat("/tpaccept");
@@ -78,12 +67,11 @@ public class Form {
                         }
                     });
         } else if (tpType == TeleportType.TpaHere) {
-            form = SimpleForm.builder()
+            form = ModalForm.builder()
                     .title("§6§l玩家请求你传送到他的位置 §f(TPAHERE)")
-                    .content("玩家 " + requestorName + " 请求你传送到他的位置\n\n\n\n")
-                    .button("§a同意")
-                    .button("§c拒绝")
-                    .button("§e忽略")
+                    .content("玩家 " + requestorName + " 请求你传送到他的位置")
+                    .button1("§a同意")
+                    .button2("§c拒绝")
                     .validResultHandler((simpleForm, result) -> {
                         switch (result.clickedButtonId()) {
                             case 0 -> receiver.chat("/tpaccept");

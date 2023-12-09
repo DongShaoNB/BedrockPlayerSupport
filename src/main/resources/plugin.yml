@@ -18,9 +18,7 @@ description: Support bedrock player fast use java plugin
 website: www.dsnbo.cn
 
 commands:
-  tpagui:
-    description: "Bedrock player teleport menu"
-  tpaheregui:
-    description: "Bedrock player teleport here menu"
+  tpgui:
+    description: "Bedrock player teleport form"
   msggui:
     description: "Bedrock player msg menu"
