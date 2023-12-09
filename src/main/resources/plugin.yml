@@ -1,5 +1,4 @@
 name: BedrockPlayerSupport
-prefix: BedrockPlayerSupport
 version: '${project.version}'
 main: cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport
 api-version: 1.13
@@ -14,11 +13,11 @@ softdepend:
   - CatSeedLogin
   - NexAuth
 authors: [ DongShaoNB ]
-description: Support bedrock player fast use java plugin
+description: Make it easier for bedrock player to use plugins
 website: www.dsnbo.cn
 
 commands:
   tpgui:
     description: "Bedrock player teleport form"
   msggui:
-    description: "Bedrock player msg menu"
+    description: "Bedrock player msg form"

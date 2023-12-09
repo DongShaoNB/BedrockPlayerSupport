@@ -7,7 +7,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.geysermc.cumulus.form.CustomForm;
 import org.geysermc.cumulus.form.ModalForm;
-import org.geysermc.cumulus.form.SimpleForm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +37,8 @@ public class Form {
         }
         CustomForm.Builder form = CustomForm.builder()
                 .title("§6§l传送菜单")
-                .dropdown("请选择传送类型", List.of("TPA", "TPAHERE"))
-                .dropdown("请选择要传送的玩家", onlinePlayerNameList)
+                .dropdown("§a请选择传送类型", List.of("TPA", "TPAHERE"))
+                .dropdown("§a请选择要传送的玩家", onlinePlayerNameList)
                 .validResultHandler((customForm, customFormResponse) -> {
                     if (customFormResponse.asDropdown(0) == 0) {
                         player.chat("/tpa " + onlinePlayerNameList.get(customFormResponse.asDropdown(1)));
