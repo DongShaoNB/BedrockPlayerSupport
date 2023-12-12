@@ -1,12 +1,30 @@
 # 配置文件
 
 ```
+# -----------------------------------------------------------
+# BedrockPlayerSupport | Made by DongShaoNB
+# GitHub: https://github.com/DongShaoNB/BedrockPlayerSupport
+# Docs: https://dongshaonb.github.io/BedrockPlayerSupport/#/
+# -----------------------------------------------------------
+
 # 自动检查更新
 # 默认值: true
 check-update: true
-# 是否启用基岩版玩家TPA菜单(/tpagui /tpaheregui)
+# 是否在插件启动时在控制台输出支持的插件的加载状态
+# 默认值: true
+logging-support-plugin-status: true
+# 是否启用基岩版玩家TP菜单(/tpgui)
+# 如果没有基础插件，该选项不会生效(即不会启用)
 # 默认值: true
 bedrock-player-teleport-menu: true
+# 是否启用基岩版玩家MSG菜单(/msggui)
+# 如果没有基础插件，该选项不会生效(即不会启用)
+# 默认值: true
+bedrock-player-msg-menu: true
+# 是否启用基岩版玩家HOME菜单(/homegui)
+# 如果没有基础插件，该选项不会生效(即不会启用)
+# 默认值: true
+bedrock-player-home-menu: true
 # 基础插件(可选值: auto/cmi/essentialsx/huskhomes/disable)
 # 当选择auto时按照优先级自动修改为(cmi/essentialsx/huskhomes)其中之一
 # 不需要此请设置为disable
