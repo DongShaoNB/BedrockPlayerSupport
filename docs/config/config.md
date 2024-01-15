@@ -1,60 +1,64 @@
 # 配置文件
 
 ```
-# -----------------------------------------------------------
-# BedrockPlayerSupport | Made by DongShaoNB
-# GitHub: https://github.com/DongShaoNB/BedrockPlayerSupport
-# Docs: https://dongshaonb.github.io/BedrockPlayerSupport/#/
-# -----------------------------------------------------------
+ #  -----------------------------------------------------------
+ #  BedrockPlayerSupport|Made by DongShaoNB
+ #  GitHub: https://github.com/DongShaoNB/BedrockPlayerSupport
+ #  Docs: https://dongshaonb.github.io/BedrockPlayerSupport/#/
+ #  -----------------------------------------------------------
+plugin:
+   # 启动服务器时检测更新
+  check-update: true
+   # 启动服务器时输出支持的插件的运行状态
+  logging-support-plugin-status: true
+   # 填写正在使用的基础插件
+   # 可选值: auto/cmi/essentialsx/huskhomes/none
+   # auto为自动检测 none为没有基础插件(即关闭功能)
+  basic: 'auto'
+   # 填写正在使用的登录插件
+   # 可选值: auto/authme/catseedlogin/nexauth/other/none
+   # auto为自动检测 other为其他登录插件 none为没有登录插件(即关闭功能)
+   # 当使用其他登录插件时 无法使用自动注册功能 只能使用自动登录功能
+  auth: 'auto'
 
-# 自动检查更新
-# 默认值: true
-check-update: true
-# 是否在插件启动时在控制台输出支持的插件的加载状态
-# 默认值: true
-logging-support-plugin-status: true
-# 是否启用基岩版玩家TP菜单(/tpgui)
-# 如果没有基础插件，该选项不会生效(即不会启用)
-# 默认值: true
-bedrock-player-teleport-menu: true
-# 是否启用基岩版玩家MSG菜单(/msggui)
-# 如果没有基础插件，该选项不会生效(即不会启用)
-# 默认值: true
-bedrock-player-msg-menu: true
-# 是否启用基岩版玩家HOME菜单(/homegui)
-# 如果没有基础插件，该选项不会生效(即不会启用)
-# 默认值: true
-bedrock-player-home-menu: true
-# 基础插件(可选值: auto/cmi/essentialsx/huskhomes/disable)
-# 当选择auto时按照优先级自动修改为(cmi/essentialsx/huskhomes)其中之一
-# 不需要此请设置为disable
-# 不区分大小写 请注意有没有写漏字母!
-# 默认值: auto
-basic-plugin: "auto"
-# 登录系统支持
-login:
-  # 是否启用基岩版玩家进服自动登录
-  # 请注意，注册仍需玩家手动注册，后续登录才可以自动登录
-  # 默认值: false
-  enable: false
-  # 使用的登录插件 (可选值: auto/authme/catseedlogin/nexauth/other)
-  # 如果是AuthMe请填写authme 其他则为other
-  # 当选择auto时如果服务器有安装AuthMe插件则自动更改为authme 否则自动关闭该功能
-  # 如果不需要此功能 请将上方的enable设置为false
-  # 不区分大小写 请注意有没有写漏字母!
-  # 默认值: auto
-  plugin: "auto"
-  # 当plugin设置为other时 将会调用这里设置的命令在控制台为基岩版玩家自动登录
-  # 如果你的登录插件没有强制登录命令 请关闭此功能
-  # 可用变量: %player%: 玩家名
-  # 默认值: "forcelogin %player%"
-  forcelogin-command: "forcelogin %player%"
-  # 自动登录时发送给基岩版玩家的信息
-  # 默认值: "&a检测到你是基岩版玩家，已自动登录!"
-  auto-message: "&a检测到你是基岩版玩家，已自动登录!"
+form:
+  teleport:
+     # 启用基岩版TP表单(/tpgui)
+    enable: true
 
-# 配置文件版本 (请不要自己修改该值!!!)
-config-version: ${project.version}
+  msg:
+     # 启用基岩版MSG表单(/msggui)
+    enable: true
+
+  home:
+     # 启用基岩版HOME表单(/homegui)
+    enable: true
+
+  back:
+     # 启用基岩版BACK表单(玩家死亡复活后自动弹出)
+    enable: true
+
+
+auth:
+  register:
+     # 启用基岩版玩家注册功能
+    enable: false
+     # 随机的密码的长度
+    password-length: 16
+     # 注册成功后发送给玩家的信息
+     # 可用变量: %password% 随机的密码
+    message: '&a检测到你是基岩版玩家, 已自动注册! 密码为 %password%, 使用 /changepassword 命令修改密码'
+
+  login:
+     # 启用基岩版玩家登录功能
+    enable: false
+     # 自动登录命令(控制台发送)
+     # 登录插件设置为other时会调用此处命令
+     # 在此处填写你使用的登录插件的强制登录命令
+     # 可用变量: %playerName% 玩家名
+    command: 'forcelogin %playerName%'
+     # 登录成功后发送给玩家的信息
+    message: '&a检测到你是基岩版玩家, 已自动登录!'
 ```
 
 **插件自带的配置文件已在每个选项上方写了详细说明 仍有不懂可以添加[QQ群](other/contact.md) @群主**
