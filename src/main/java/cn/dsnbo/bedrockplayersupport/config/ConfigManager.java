@@ -9,6 +9,7 @@ import space.arim.dazzleconf.ext.snakeyaml.CommentMode;
 import space.arim.dazzleconf.ext.snakeyaml.SnakeYamlConfigurationFactory;
 import space.arim.dazzleconf.ext.snakeyaml.SnakeYamlOptions;
 import space.arim.dazzleconf.helper.ConfigurationHelper;
+import space.arim.dazzleconf.sorter.AnnotationBasedSorter;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -33,7 +34,7 @@ public final class ConfigManager<C> {
 				.build();
 		ConfigurationFactory<C> configFactory = SnakeYamlConfigurationFactory.create(
 				configClass,
-				ConfigurationOptions.defaults(), // change this if desired
+				new ConfigurationOptions.Builder().sorter(new AnnotationBasedSorter()).build(), // change this if desired
 				yamlOptions);
 		return new ConfigManager<>(new ConfigurationHelper<>(configFolder, fileName, configFactory));
 	}

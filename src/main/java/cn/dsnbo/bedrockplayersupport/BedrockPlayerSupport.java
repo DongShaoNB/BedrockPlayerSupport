@@ -154,7 +154,7 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
                 case "authme" -> {
                     if (isAuthMeEnabled) {
                         Bukkit.getPluginManager().registerEvents(new AuthMeListener(), this);
-                        getLogger().info("已开启基岩版玩家自动登录功能, 使用插件: AuthMe");
+                        getLogger().info("已开启基岩版玩家自动验证功能, 使用插件: AuthMe");
                     } else {
                         getLogger().warning("配置文件设置了AuthMe登录插件, 但没有检测到AuthMe, 已关闭相关功能");
                     }
@@ -162,7 +162,7 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
                 case "catseedlogin" -> {
                     if (isCatSeedLoginEnabled) {
                         Bukkit.getPluginManager().registerEvents(new CatSeedLoginListener(), this);
-                        getLogger().info("已开启基岩版玩家自动登录功能, 使用插件: CatSeedLogin");
+                        getLogger().info("已开启基岩版玩家自动验证功能, 使用插件: CatSeedLogin");
                     } else {
                         getLogger().warning("配置文件设置了CatSeedLogin登录插件, 但没有检测到CatSeedLogin, 已关闭相关功能");
                     }
@@ -170,27 +170,27 @@ public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
                 case "nexauth" -> {
                     if (isNexAuthEnabled) {
                         Bukkit.getPluginManager().registerEvents(new NexAuthListener(), this);
-                        getLogger().info("已开启基岩版玩家自动登录功能, 使用插件: NexAuth");
+                        getLogger().info("已开启基岩版玩家自动验证功能, 使用插件: NexAuth");
                     } else {
                         getLogger().warning("配置文件设置了NexAuth登录插件, 但没有检测到NexAuth, 已关闭相关功能");
                     }
                 }
                 case "other" -> {
                     Bukkit.getPluginManager().registerEvents(new OtherAuthListener(), this);
-                    getLogger().info("已开启基岩版玩家自动登录功能, 使用插件: Other");
+                    getLogger().info("已开启基岩版玩家自动验证功能, 使用插件: Other");
                 }
                 default -> {
                     if (isAuthMeEnabled) {
                         Bukkit.getPluginManager().registerEvents(new AuthMeListener(), this);
-                        getLogger().info("已开启基岩版玩家自动登录功能, 使用插件: AuthMe");
+                        getLogger().info("已开启基岩版玩家自动验证功能, 使用插件: AuthMe");
                     } else if (isCatSeedLoginEnabled) {
                         Bukkit.getPluginManager().registerEvents(new CatSeedLoginListener(), this);
-                        getLogger().info("已开启基岩版玩家自动登录功能, 使用插件: CatSeedLogin");
+                        getLogger().info("已开启基岩版玩家自动验证功能, 使用插件: CatSeedLogin");
                     } else if (isNexAuthEnabled) {
                         Bukkit.getPluginManager().registerEvents(new NexAuthListener(), this);
-                        getLogger().info("已开启基岩版玩家自动登录功能, 使用插件: NexAuth");
+                        getLogger().info("已开启基岩版玩家自动验证功能, 使用插件: NexAuth");
                     } else {
-                        getLogger().warning("检测不到支持的登录插件, 已关闭自动登录功能!");
+                        getLogger().warning("检测不到支持的登录插件, 已关闭自动验证功能!");
                     }
                 }
             }
