@@ -6,7 +6,7 @@
 
     <groupId>cn.dsnbo</groupId>
     <artifactId>BedrockPlayerSupport</artifactId>
-    <version>1.7.1</version>
+    <version>1.8.0</version>
     <packaging>jar</packaging>
 
     <name>BedrockPlayerSupport</name>
@@ -55,6 +55,10 @@
                                 <relocation>
                                     <pattern>com.tcoded.folialib</pattern>
                                     <shadedPattern>cn.dsnbo.bedrockplayersupport.lib.folialib</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>space.arim.dazzleconf</pattern>
+                                    <shadedPattern>cn.dsnbo.bedrockplayersupport.lib.dazzleconf</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
@@ -196,6 +200,11 @@
             <version>2.2.12</version>
             <scope>system</scope>
             <systemPath>${basedir}/lib/NexEngine.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>space.arim.dazzleconf</groupId>
+            <artifactId>dazzleconf-ext-snakeyaml</artifactId>
+            <version>1.3.0-M2</version>
         </dependency>
     </dependencies>
 </project>

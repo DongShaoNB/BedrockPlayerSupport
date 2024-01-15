@@ -11,14 +11,14 @@ import org.geysermc.floodgate.api.FloodgateApi;
 /**
  * @author DongShaoNB
  */
-public class TpGuiCommand implements CommandExecutor {
+public class MsgFormCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player player) {
             if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
                 if (Bukkit.getOnlinePlayers().size() > 1) {
-                    Form.openBedrockTeleportMenu(player);
+                    Form.openBedrockMsgMenu(player);
                 } else {
                     player.sendMessage("§c当前没有其他玩家在线!");
                 }
