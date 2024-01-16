@@ -1,25 +1,26 @@
 package cn.dsnbo.bedrockplayersupport.command;
 
-import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
-import cn.dsnbo.bedrockplayersupport.form.basic.CMIForm;
-import cn.dsnbo.bedrockplayersupport.form.basic.EssXForm;
-import cn.dsnbo.bedrockplayersupport.form.basic.HuskHomesForm;
+import cn.dsnbo.bedrockplayersupport.util.Form;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.geysermc.floodgate.api.FloodgateApi;
 
-public class HomeGuiCommand implements CommandExecutor {
+/**
+ * @author DongShaoNB
+ */
+public class TpFormCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player player) {
             if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
-                switch (BedrockPlayerSupport.getBasicPlugin()) {
-                    case CMI -> CMIForm.sendHomeForm(player);
-                    case EssentialsX -> EssXForm.sendHomeForm(player);
-                    case HuskHomes -> HuskHomesForm.sendHomeForm(player);
+                if (Bukkit.getOnlinePlayers().size() > 1) {
+                    Form.openBedrockTeleportMenu(player);
+                } else {
+                    player.sendMessage("§c当前没有其他玩家在线!");
                 }
             } else {
                 player.sendMessage("§c你不是基岩版玩家!");
@@ -27,4 +28,5 @@ public class HomeGuiCommand implements CommandExecutor {
         }
         return false;
     }
+
 }

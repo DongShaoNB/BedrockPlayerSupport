@@ -1,6 +1,6 @@
 # 安装插件
 ## 环境
-适用服务端: `Bukkit, Spigot及其分支`  
+适用服务端: `Spigot及其分支` `Folia`  
 适用版本: `1.13+`
 ## 前置
 [floodgate](https://github.com/GeyserMC/Floodgate)
@@ -14,4 +14,4 @@
 [GitHub Action](https://github.com/DongShaoNB/BedrockPlayerSupport/actions/workflows/maven.yml)
 
 ## 安装
-直接将插件放进 `plugins` 文件夹即可
+直接将插件放进 `plugins` 文件夹，修改配置文件即可

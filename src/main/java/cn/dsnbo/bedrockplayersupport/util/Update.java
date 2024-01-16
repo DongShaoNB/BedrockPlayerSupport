@@ -47,42 +47,5 @@ public class Update {
             BedrockPlayerSupport.getInstance().getLogger().warning("无法检测更新，请检查网络情况，尝试访问 https://update.dsnbo.cn/BedrockPlayerSupport/version 是否正常");
         }
     }
-
-    public static void updateConfig() {
-        File configFile = new File(BedrockPlayerSupport.getInstance().getDataFolder(), "/config.yml");
-        YamlConfiguration config = YamlConfiguration.loadConfiguration(configFile);
-        if (!config.getString("config-version").equals(BedrockPlayerSupport.getInstance().getDescription().getVersion())) {
-            BedrockPlayerSupport.getInstance().getLogger().info("正在更新配置文件到最新版本(当前版本: {nowVersion} 内置版本: {latestVersion})"
-                    .replace("{nowVersion}", config.getString("config-version"))
-                    .replace("{latestVersion}", BedrockPlayerSupport.getInstance().getDescription().getVersion()));
-            File oldConfigFile = new File(BedrockPlayerSupport.getInstance().getDataFolder(), "/old_config.yml");
-
-            if (oldConfigFile.exists()) {
-                oldConfigFile.delete();
-            }
-
-            if (configFile.renameTo(oldConfigFile)) {
-                BedrockPlayerSupport.getInstance().saveResource("config.yml", false);
-                config = YamlConfiguration.loadConfiguration(configFile);
-                YamlConfiguration oldConfig = YamlConfiguration.loadConfiguration(oldConfigFile);
-                for (String key : oldConfig.getKeys(true)) {
-                    if (!"config-version".equalsIgnoreCase(key) && oldConfig.get(key).getClass() != MemorySection.class) {
-                        config.set(key, oldConfig.get(key));
-                    }
-                }
-
-                try {
-                    config.save(configFile);
-                    config = YamlConfiguration.loadConfiguration(configFile);
-                    if (config.getString("config-version").equals(BedrockPlayerSupport.getInstance().getDescription().getVersion())) {
-                        BedrockPlayerSupport.getInstance().getLogger().info("成功更新配置文件");
-                    }
-                } catch (IOException e) {
-                    BedrockPlayerSupport.getInstance().getLogger().warning("配置文件更新失败，请将问题反馈至作者");
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
 }
 

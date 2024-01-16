@@ -26,7 +26,7 @@ public class Form {
             }
         }
         CustomForm.Builder form = CustomForm.builder()
-                .title("§6§l传送菜单")
+                .title("§6§l传送表单")
                 .dropdown("§a请选择传送类型", List.of("TPA", "TPAHERE"))
                 .dropdown("§a请选择要传送的玩家", onlinePlayerNameList)
                 .validResultHandler((customForm, customFormResponse) -> {
@@ -49,8 +49,8 @@ public class Form {
                     .content("玩家 " + requestorName + " 请求传送到你的位置")
                     .button1("§a同意")
                     .button2("§c拒绝")
-                    .validResultHandler((simpleForm, result) -> {
-                        switch (result.clickedButtonId()) {
+                    .validResultHandler((modalForm, modalFormResponse) -> {
+                        switch (modalFormResponse.clickedButtonId()) {
                             case 0 -> receiver.chat("/tpaccept");
                             case 1 -> receiver.chat("/tpdeny");
                         }
@@ -61,8 +61,8 @@ public class Form {
                     .content("玩家 " + requestorName + " 请求你传送到他的位置")
                     .button1("§a同意")
                     .button2("§c拒绝")
-                    .validResultHandler((simpleForm, result) -> {
-                        switch (result.clickedButtonId()) {
+                    .validResultHandler((modalForm, modalFormResponse) -> {
+                        switch (modalFormResponse.clickedButtonId()) {
                             case 0 -> receiver.chat("/tpaccept");
                             case 1 -> receiver.chat("/tpdeny");
                         }
@@ -78,14 +78,28 @@ public class Form {
                 onlinePlayerName.add(onlinePlayer.getName());
             }
         }
-        CustomForm.Builder customForm = CustomForm.builder()
-                .title("§6§l信息菜单")
+        CustomForm.Builder form = CustomForm.builder()
+                .title("§6§l信息表单")
                 .dropdown("§a请选择接收信息的玩家", onlinePlayerName)
                 .input("§a请填写要发送的信息")
                 .validResultHandler(((response, customFormResponse) -> {
                     player.chat("/msg " + onlinePlayerName.get(customFormResponse.asDropdown(0)) + " " + customFormResponse.asInput(1));
                 }));
-        BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), customForm);
+        BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), form);
+    }
+
+    public static void openBedrockBackForm(Player player) {
+        ModalForm.Builder form = ModalForm.builder()
+                .title("§6§l返回死亡点表单")
+                .content("是否返回上个死亡点")
+                .button1("是")
+                .button2("否")
+                .validResultHandler(((modalForm, modalFormResponse) -> {
+                    switch (modalFormResponse.clickedButtonId()) {
+                        case 0 -> player.chat("/back");
+                    }
+                }));
+        BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), form);
     }
 
 }

@@ -1,6 +1,8 @@
 package cn.dsnbo.bedrockplayersupport.listener.login;
 
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
+import cn.dsnbo.bedrockplayersupport.config.Config;
+import cn.dsnbo.bedrockplayersupport.util.StringRandom;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,12 +18,24 @@ import su.nexmedia.auth.auth.impl.PlayerState;
  */
 public class NexAuthListener implements Listener {
     @EventHandler
-    public void onPlayerJoinEvent(PlayerJoinEvent e) {
-        Player player = e.getPlayer();
+    public void onPlayerJoinEvent(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        Config config = BedrockPlayerSupport.getMainConfigManager().getConfigData();
         if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
-            if (AuthPlayer.getOrCreate(player).getState() == PlayerState.IN_LOGIN && AuthPlayer.getOrCreate(player).isRegistered()) {
-                NexAuthAPI.getAuthManager().login(player);
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', BedrockPlayerSupport.getInstance().getConfig().getString("login.auto-message")));
+            if (AuthPlayer.getOrCreate(player).isRegistered()) {
+                if (AuthPlayer.getOrCreate(player).getState() == PlayerState.IN_LOGIN) {
+                    if (config.enableLogin()) {
+                        NexAuthAPI.getAuthManager().login(player);
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.loginMessage()));
+                    }
+                }
+            } else {
+                if (config.enableRegister()) {
+                    String password = StringRandom.random(config.passwordLength());
+                    NexAuthAPI.getAuthManager().register(player, password);
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.registerMessage()
+                            .replace("%password%", password)));
+                }
             }
         }
     }
