@@ -7,6 +7,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.geysermc.cumulus.form.SimpleForm;
 
+/**
+ * @author DongShaoNB
+ */
 public class EssXForm {
 
     public static void sendHomeForm(Player player) {

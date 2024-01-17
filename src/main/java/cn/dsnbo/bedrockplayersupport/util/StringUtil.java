@@ -5,9 +5,11 @@ import java.util.Random;
 /**
  * @author DongShaoNB
  */
-public class StringRandom {
+public class StringUtil {
 
-    public static String random(int length) {
+    private StringUtil() {}
+
+    public static String randomString(int length) {
         String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         Random random = new Random();
         StringBuilder stringBuilder = new StringBuilder();

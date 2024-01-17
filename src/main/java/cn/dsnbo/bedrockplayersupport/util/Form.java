@@ -92,8 +92,8 @@ public class Form {
         ModalForm.Builder form = ModalForm.builder()
                 .title("§6§l返回死亡点表单")
                 .content("是否返回上个死亡点")
-                .button1("是")
-                .button2("否")
+                .button1("§a是")
+                .button2("§c否")
                 .validResultHandler(((modalForm, modalFormResponse) -> {
                     switch (modalFormResponse.clickedButtonId()) {
                         case 0 -> player.chat("/back");

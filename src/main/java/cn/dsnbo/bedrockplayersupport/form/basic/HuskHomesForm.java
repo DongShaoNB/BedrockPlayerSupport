@@ -10,6 +10,9 @@ import org.geysermc.cumulus.form.SimpleForm;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * @author DongShaoNB
+ */
 public class HuskHomesForm {
 
     public static void sendHomeForm(Player player) {

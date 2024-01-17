@@ -16,14 +16,13 @@ import cn.dsnbo.bedrockplayersupport.listener.teleport.EssXTeleportListener;
 import cn.dsnbo.bedrockplayersupport.util.Update;
 import lombok.Getter;
 import org.bukkit.Bukkit;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.geysermc.floodgate.api.FloodgateApi;
 
 /**
  * @author DongShaoNB
  */
-public final class BedrockPlayerSupport extends JavaPlugin implements Listener {
+public final class BedrockPlayerSupport extends JavaPlugin {
 
     @Getter
     private static BedrockPlayerSupport instance;

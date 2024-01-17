@@ -2,7 +2,7 @@ package cn.dsnbo.bedrockplayersupport.listener.login;
 
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import cn.dsnbo.bedrockplayersupport.config.Config;
-import cn.dsnbo.bedrockplayersupport.util.StringRandom;
+import cn.dsnbo.bedrockplayersupport.util.StringUtil;
 import fr.xephi.authme.api.v3.AuthMeApi;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -33,7 +33,7 @@ public class AuthMeListener implements Listener {
                     }
                 } else {
                     if (config.enableRegister()) {
-                        String password = StringRandom.random(config.passwordLength());
+                        String password = StringUtil.randomString(config.passwordLength());
                         AuthMeApi.getInstance().registerPlayer(playerName, password);
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.registerMessage()
                                 .replace("%password%", password)));

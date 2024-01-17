@@ -11,6 +11,9 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 
 import java.util.UUID;
 
+/**
+ * @author DongShaoNB
+ */
 public class PlayerListener implements Listener {
 
     @EventHandler

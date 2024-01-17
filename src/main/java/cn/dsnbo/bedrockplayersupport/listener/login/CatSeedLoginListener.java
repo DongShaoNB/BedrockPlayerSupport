@@ -8,7 +8,7 @@ import cc.baka9.catseedlogin.bukkit.object.LoginPlayer;
 import cc.baka9.catseedlogin.bukkit.object.LoginPlayerHelper;
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import cc.baka9.catseedlogin.bukkit.CatSeedLoginAPI;
-import cn.dsnbo.bedrockplayersupport.util.StringRandom;
+import cn.dsnbo.bedrockplayersupport.util.StringUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -43,7 +43,7 @@ public class CatSeedLoginListener implements Listener {
             } else {
                 if (config.enableRegister()) {
                     try {
-                        String password = StringRandom.random(config.passwordLength());
+                        String password = StringUtil.randomString(config.passwordLength());
                         String currentIp = player.getAddress().getAddress().getHostAddress();
                         List<LoginPlayer> LoginPlayerListlikeByIp = CatSeedLogin.sql.getLikeByIp(currentIp);
                         if (LoginPlayerListlikeByIp.size() >= Config.Settings.IpRegisterCountLimit) {

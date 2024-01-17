@@ -2,7 +2,7 @@ package cn.dsnbo.bedrockplayersupport.listener.login;
 
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import cn.dsnbo.bedrockplayersupport.config.Config;
-import cn.dsnbo.bedrockplayersupport.util.StringRandom;
+import cn.dsnbo.bedrockplayersupport.util.StringUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,7 +31,7 @@ public class NexAuthListener implements Listener {
                 }
             } else {
                 if (config.enableRegister()) {
-                    String password = StringRandom.random(config.passwordLength());
+                    String password = StringUtil.randomString(config.passwordLength());
                     NexAuthAPI.getAuthManager().register(player, password);
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.registerMessage()
                             .replace("%password%", password)));
