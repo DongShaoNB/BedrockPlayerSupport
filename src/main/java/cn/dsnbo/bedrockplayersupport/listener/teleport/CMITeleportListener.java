@@ -1,7 +1,8 @@
 package cn.dsnbo.bedrockplayersupport.listener.teleport;
 
+import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import cn.dsnbo.bedrockplayersupport.TeleportType;
-import cn.dsnbo.bedrockplayersupport.util.Form;
+import cn.dsnbo.bedrockplayersupport.form.MainForm;
 import com.Zrips.CMI.Modules.tp.TpManager;
 import com.Zrips.CMI.events.CMIPlayerTeleportRequestEvent;
 import org.bukkit.entity.Player;
@@ -23,9 +24,9 @@ public class CMITeleportListener implements Listener {
         UUID teleportLocationPlayerUuid = receiver.getUniqueId();
         if (FloodgateApi.getInstance().isFloodgatePlayer(teleportLocationPlayerUuid)) {
             if (tpAction == TpManager.TpAction.tpa) {
-                Form.openBedrockTeleportRequestMenu(TeleportType.Tpa, requestor, receiver);
+                MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.Tpa, requestor, receiver);
             } else if (tpAction == TpManager.TpAction.tpahere) {
-                Form.openBedrockTeleportRequestMenu(TeleportType.TpaHere, requestor, receiver);
+                MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.TpaHere, requestor, receiver);
             }
         }
     }

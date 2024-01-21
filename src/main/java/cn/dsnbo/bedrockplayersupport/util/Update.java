@@ -3,8 +3,6 @@ package cn.dsnbo.bedrockplayersupport.util;
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import com.tcoded.folialib.FoliaLib;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.MemorySection;
-import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.*;
 import java.net.URL;

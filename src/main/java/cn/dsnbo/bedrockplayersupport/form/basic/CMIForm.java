@@ -9,6 +9,9 @@ import org.geysermc.cumulus.form.SimpleForm;
 
 import java.util.LinkedHashMap;
 
+/**
+ * @author DongShaoNB
+ */
 public class CMIForm {
 
     public static void sendHomeForm(Player player) {

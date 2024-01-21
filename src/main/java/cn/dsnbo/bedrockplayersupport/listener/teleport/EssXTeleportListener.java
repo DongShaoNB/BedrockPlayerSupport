@@ -1,7 +1,7 @@
 package cn.dsnbo.bedrockplayersupport.listener.teleport;
 
 import cn.dsnbo.bedrockplayersupport.TeleportType;
-import cn.dsnbo.bedrockplayersupport.util.Form;
+import cn.dsnbo.bedrockplayersupport.form.MainForm;
 import net.ess3.api.events.TPARequestEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,9 +22,9 @@ public class EssXTeleportListener implements Listener {
         UUID receiverUuid = receiver.getUniqueId();
         if (FloodgateApi.getInstance().isFloodgatePlayer(receiverUuid)) {
             if (!isTeleportHere) {
-                Form.openBedrockTeleportRequestMenu(TeleportType.Tpa, requestor, receiver);
+                MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.Tpa, requestor, receiver);
             } else {
-                Form.openBedrockTeleportRequestMenu(TeleportType.TpaHere, requestor, receiver);
+                MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.TpaHere, requestor, receiver);
             }
         }
 

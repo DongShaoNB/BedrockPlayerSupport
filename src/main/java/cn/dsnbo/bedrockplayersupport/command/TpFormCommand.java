@@ -1,6 +1,6 @@
 package cn.dsnbo.bedrockplayersupport.command;
 
-import cn.dsnbo.bedrockplayersupport.util.Form;
+import cn.dsnbo.bedrockplayersupport.form.MainForm;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -18,7 +18,7 @@ public class TpFormCommand implements CommandExecutor {
         if (sender instanceof Player player) {
             if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
                 if (Bukkit.getOnlinePlayers().size() > 1) {
-                    Form.openBedrockTeleportMenu(player);
+                    MainForm.getInstance().openBedrockTeleportForm(player);
                 } else {
                     player.sendMessage("§c当前没有其他玩家在线!");
                 }

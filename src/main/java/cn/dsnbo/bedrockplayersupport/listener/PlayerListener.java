@@ -2,7 +2,7 @@ package cn.dsnbo.bedrockplayersupport.listener;
 
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import cn.dsnbo.bedrockplayersupport.config.Config;
-import cn.dsnbo.bedrockplayersupport.util.Form;
+import cn.dsnbo.bedrockplayersupport.form.MainForm;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -24,7 +24,7 @@ public class PlayerListener implements Listener {
         if (BedrockPlayerSupport.getFloodgateApi().isFloodgatePlayer(uuid)) {
             if (config.enableBackForm()) {
                 Bukkit.getScheduler().runTaskLaterAsynchronously(BedrockPlayerSupport.getInstance(), () -> {
-                    Form.openBedrockBackForm(player);
+                    MainForm.getInstance().openBedrockBackForm(player);
                 }, 20L);
             }
         }

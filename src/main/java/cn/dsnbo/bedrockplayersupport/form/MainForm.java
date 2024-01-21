@@ -1,8 +1,11 @@
-package cn.dsnbo.bedrockplayersupport.util;
+package cn.dsnbo.bedrockplayersupport.form;
 
+import cn.dsnbo.bedrockplayersupport.BasicPlugin;
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import cn.dsnbo.bedrockplayersupport.TeleportType;
-import fr.xephi.authme.api.v3.AuthMeApi;
+import lombok.Getter;
+import net.william278.huskhomes.BukkitHuskHomes;
+import net.william278.huskhomes.user.OnlineUser;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.geysermc.cumulus.form.CustomForm;
@@ -15,14 +18,33 @@ import java.util.UUID;
 /**
  * @author DongShaoNB
  */
-public class Form {
+public class MainForm {
 
-    public static void openBedrockTeleportMenu(Player player) {
+    @Getter
+    private static MainForm instance;
+
+    public MainForm() {
+        loadMainForm();
+    }
+
+    public void loadMainForm() {
+        instance = this;
+    }
+
+
+    public void openBedrockTeleportForm(Player player) {
         UUID uuid = player.getUniqueId();
         List<String> onlinePlayerNameList = new ArrayList<>();
-        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-            if (onlinePlayer != player) {
-                onlinePlayerNameList.add(onlinePlayer.getName());
+        if (BedrockPlayerSupport.getBasicPlugin() == BasicPlugin.HuskHomes && BedrockPlayerSupport.getMainConfigManager().getConfigData().enableCrossServer()) {
+            BukkitHuskHomes bukkitHuskHomes = (BukkitHuskHomes) Bukkit.getPluginManager().getPlugin("Huskhomes");
+            for (OnlineUser onlineUser: bukkitHuskHomes.getOnlineUsers()) {
+                onlinePlayerNameList.add(onlineUser.getUsername());
+            }
+        } else {
+            for (Player onlinePlayer: Bukkit.getOnlinePlayers()) {
+                if (onlinePlayer != player) {
+                    onlinePlayerNameList.add(onlinePlayer.getName());
+                }
             }
         }
         CustomForm.Builder form = CustomForm.builder()
@@ -39,7 +61,7 @@ public class Form {
         BedrockPlayerSupport.getFloodgateApi().sendForm(uuid, form);
     }
 
-    public static void openBedrockTeleportRequestMenu(TeleportType tpType, Player requestor, Player receiver) {
+    public void openBedrockTeleportHereForm(TeleportType tpType, Player requestor, Player receiver) {
         ModalForm.Builder form = null;
         String requestorName = requestor.getName();
         UUID receiverUuid = receiver.getUniqueId();
@@ -71,7 +93,7 @@ public class Form {
         BedrockPlayerSupport.getFloodgateApi().sendForm(receiverUuid, form);
     }
 
-    public static void openBedrockMsgMenu(Player player) {
+    public void openBedrockMsgForm(Player player) {
         List<String> onlinePlayerName = new ArrayList<>();
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             if (onlinePlayer != player) {
@@ -88,7 +110,7 @@ public class Form {
         BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), form);
     }
 
-    public static void openBedrockBackForm(Player player) {
+    public void openBedrockBackForm(Player player) {
         ModalForm.Builder form = ModalForm.builder()
                 .title("§6§l返回死亡点表单")
                 .content("是否返回上个死亡点")

@@ -1,7 +1,7 @@
 package cn.dsnbo.bedrockplayersupport.listener.teleport;
 
 import cn.dsnbo.bedrockplayersupport.TeleportType;
-import cn.dsnbo.bedrockplayersupport.util.Form;
+import cn.dsnbo.bedrockplayersupport.form.MainForm;
 import net.william278.huskhomes.event.ReceiveTeleportRequestEvent;
 import net.william278.huskhomes.teleport.TeleportRequest;
 import org.bukkit.Bukkit;
@@ -20,9 +20,9 @@ public class HuskHomesTeleportListener implements Listener {
         Player requestor = Bukkit.getPlayer(event.getRequest().getRequesterName());
         Player receiver = Bukkit.getPlayer(event.getRecipient().getUuid());
         if (requestType == TeleportRequest.Type.TPA) {
-            Form.openBedrockTeleportRequestMenu(TeleportType.Tpa, requestor, receiver);
+            MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.Tpa, requestor, receiver);
         } else if (requestType == TeleportRequest.Type.TPA_HERE) {
-            Form.openBedrockTeleportRequestMenu(TeleportType.TpaHere, requestor, receiver);
+            MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.TpaHere, requestor, receiver);
         }
     }
 
