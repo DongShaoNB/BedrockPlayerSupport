@@ -36,7 +36,14 @@
 ## 交流群
 QQ群: 159323818
 
+-----
+
+## 感谢
+感谢 [JetBrains][5] 对本项目的支持！  
+![JetBrains Logo (Main) logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)
+
   [1]: https://dongshaonb.github.io/BedrockPlayerSupport/#/start/introduce
   [2]: https://github.com/GeyserMC/Floodgate
   [3]: https://github.com/DongShaoNB/BedrockPlayerSupport/issues/new?assignees=DongShaoNB&labels=&projects=&template=%E5%8A%9F%E8%83%BD%E9%9C%80%E6%B1%82.md&title=
   [4]: https://github.com/DongShaoNB/BedrockPlayerSupport/issues/new?assignees=DongShaoNB&labels=&projects=&template=bug%E5%8F%8D%E9%A6%88.md&title=
+  [5]: https://jb.gg/OpenSourceSupport
