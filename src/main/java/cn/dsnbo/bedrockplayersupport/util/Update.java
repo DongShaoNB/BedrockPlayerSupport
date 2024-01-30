@@ -4,46 +4,34 @@ import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import com.tcoded.folialib.FoliaLib;
 import org.bukkit.Bukkit;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
+import java.util.function.Consumer;
 
 /**
  * @author DongShaoNB
  */
 public class Update {
-    public static void checkUpdate() {
+    private static final int spigotResourceId = 1145141919; // Spigot resource id
+    public static void checkUpdate(Consumer<String> consumer) {
         try {
             Class.forName("io.papermc.paper.threadedregions.RegionizedServer");
             FoliaLib foliaLib = new FoliaLib(BedrockPlayerSupport.getInstance());
-            foliaLib.getImpl().runAsync((task) -> checkUpdateV());
+            foliaLib.getImpl().runAsync((task) -> getVersion(consumer));
         } catch (ClassNotFoundException e) {
-            Bukkit.getScheduler().runTaskAsynchronously(BedrockPlayerSupport.getInstance(), Update::checkUpdateV);
+            Bukkit.getScheduler().runTaskAsynchronously(BedrockPlayerSupport.getInstance(), () -> getVersion(consumer));
         }
     }
 
-    public static void checkUpdateV() {
-        String latestVersion;
-        try {
-            URL url = new URL("https://update.dsnbo.cn/BedrockPlayerSupport/version");
-            InputStream inputStream = url.openStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-            latestVersion = bufferedReader.readLine();
-        } catch (Exception e) {
-            latestVersion = null;
-        }
-
-        if (latestVersion != null) {
-            String nowVersion = BedrockPlayerSupport.getInstance().getDescription().getVersion();
-            if (!nowVersion.equals(latestVersion)) {
-                BedrockPlayerSupport.getInstance().getLogger().info("有新版本可以更新!");
-                BedrockPlayerSupport.getInstance().getLogger().info("当前版本: " + nowVersion + " | 最新版本: " + latestVersion);
-            } else {
-                BedrockPlayerSupport.getInstance().getLogger().info("插件是最新版本，继续保持哦~");
+    public static void getVersion(final Consumer<String> consumer) {
+        try (InputStream is = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + spigotResourceId + "/~").openStream(); Scanner scann = new Scanner(is)) {
+            if (scann.hasNext()) {
+                consumer.accept(scann.next());
             }
-        } else {
-            BedrockPlayerSupport.getInstance().getLogger().warning("无法检测更新，请检查网络情况，尝试访问 https://update.dsnbo.cn/BedrockPlayerSupport/version 是否正常");
+        } catch (IOException e) {
+            BedrockPlayerSupport.getInstance().getLogger().info("Unable to check for updates: " + e.getMessage());
         }
-    }
-}
+    }}
 
