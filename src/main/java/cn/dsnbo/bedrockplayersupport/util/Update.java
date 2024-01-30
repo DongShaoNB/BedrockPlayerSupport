@@ -49,7 +49,7 @@ public class Update {
     }
     private static boolean isUpdateAvailable(String latestVersion) {
         String[] latestVersionArray = latestVersion.substring(1).split("\\.");
-        String[] currentVersionArray = currentVersion.substring(1).split("\\.");
+        String[] currentVersionArray = currentVersion.split("\\.");
         for (int i = 0; i < Math.min(currentVersionArray.length, latestVersionArray.length); i++) {
             int currentPart = Integer.parseInt(currentVersionArray[i]);
             int latestPart = Integer.parseInt(latestVersionArray[i]);
