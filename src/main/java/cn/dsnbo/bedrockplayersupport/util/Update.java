@@ -4,14 +4,16 @@ import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import com.tcoded.folialib.FoliaLib;
 import org.bukkit.Bukkit;
 
-import java.io.*;
+import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 /**
  * @author DongShaoNB
  */
 public class Update {
+    private static final String currentVersion = BedrockPlayerSupport.getInstance().getDescription().getVersion();
     public static void checkUpdate() {
         try {
             Class.forName("io.papermc.paper.threadedregions.RegionizedServer");
@@ -23,27 +25,37 @@ public class Update {
     }
 
     public static void checkUpdateV() {
-        String latestVersion;
+        String owner = "DongShaoNB";
+        String repo = "BedrockPlayerSupport";
         try {
-            URL url = new URL("https://update.dsnbo.cn/BedrockPlayerSupport/version");
-            InputStream inputStream = url.openStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-            latestVersion = bufferedReader.readLine();
-        } catch (Exception e) {
-            latestVersion = null;
-        }
-
-        if (latestVersion != null) {
-            String nowVersion = BedrockPlayerSupport.getInstance().getDescription().getVersion();
-            if (!nowVersion.equals(latestVersion)) {
+            URL url = new URL("https://api.github.com/repos/" + owner + "/" + repo + "/releases/latest");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(10000); // 设置连接超时为10秒
+            conn.setReadTimeout(10000); // 设置读取超时为10秒
+            Scanner scanner = new Scanner(conn.getInputStream());
+            String response = scanner.useDelimiter("\\Z").next();
+            scanner.close();
+            String latestVersion = response.substring(response.indexOf("tag_name") + 11);
+            latestVersion = latestVersion.substring(0, latestVersion.indexOf("\""));
+            if (isUpdateAvailable(latestVersion)) {
                 BedrockPlayerSupport.getInstance().getLogger().info("有新版本可以更新!");
-                BedrockPlayerSupport.getInstance().getLogger().info("当前版本: " + nowVersion + " | 最新版本: " + latestVersion);
+                BedrockPlayerSupport.getInstance().getLogger().info("当前版本: " + currentVersion + " | 最新版本: " + latestVersion);
             } else {
                 BedrockPlayerSupport.getInstance().getLogger().info("插件是最新版本，继续保持哦~");
             }
-        } else {
-            BedrockPlayerSupport.getInstance().getLogger().warning("无法检测更新，请检查网络情况，尝试访问 https://update.dsnbo.cn/BedrockPlayerSupport/version 是否正常");
+        } catch (IOException e) {
+            BedrockPlayerSupport.getInstance().getLogger().warning("无法检测更新，请检查网络情况");
         }
+    }
+    private static boolean isUpdateAvailable(String latestVersion) {
+        String[] latestVersionArray = latestVersion.substring(1).split("\\.");
+        String[] currentVersionArray = currentVersion.substring(1).split("\\.");
+        for (int i = 0; i < Math.min(currentVersionArray.length, latestVersionArray.length); i++) {
+            int currentPart = Integer.parseInt(currentVersionArray[i]);
+            int latestPart = Integer.parseInt(latestVersionArray[i]);
+            if (latestPart > currentPart) return true;
+        }
+        return false;
     }
 }
 
