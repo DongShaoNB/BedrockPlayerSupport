@@ -81,15 +81,16 @@ public final class BedrockPlayerSupport extends JavaPlugin {
     mainConfigManager = ConfigManager.create(getDataFolder().toPath(), "config.yml", Config.class);
     getMainConfigManager().reloadConfig();
     Config config = getMainConfigManager().getConfigData();
-    if (config.checkUpdate()) {
-      Update.checkUpdate(version -> {
-        if (getDescription().getVersion().equals(version)) {
-          getLogger().info("当前版本已经是最新");
-        } else {
-          getLogger().info("检测到新版本, 请更新插件");
-        }
-      });
-    }
+    // Temporary disable version checker to prepare for bug fix release
+//    if (config.checkUpdate()) {
+//      Update.checkUpdate(version -> {
+//        if (getDescription().getVersion().equals(version)) {
+//          getLogger().info("当前版本已经是最新");
+//        } else {
+//          getLogger().info("检测到新版本, 请更新插件");
+//        }
+//      });
+//    }
     if (config.enableTeleportForm()) {
       getCommand("tpgui").setExecutor(new TpFormCommand());
     }
