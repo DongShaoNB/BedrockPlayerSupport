@@ -84,14 +84,17 @@
       <id>opencollab-snapshot</id>
       <url>https://repo.opencollab.dev/main/</url>
     </repository>
+    <!-- Maven Central -->
     <repository>
       <id>sonatype</id>
       <url>https://oss.sonatype.org/content/groups/public/</url>
     </repository>
+    <!-- EssentialsX -->
     <repository>
       <id>essentials-releases</id>
       <url>https://repo.essentialsx.net/releases/</url>
     </repository>
+    <!-- PaperMC -->
     <repository>
       <id>paper-repo</id>
       <url>https://papermc.io/repo/repository/maven-public/</url>
