@@ -53,8 +53,8 @@
               <createDependencyReducedPom>false</createDependencyReducedPom>
               <relocations>
                 <relocation>
-                  <pattern>com.tcoded.folialib</pattern>
-                  <shadedPattern>cn.dsnbo.bedrockplayersupport.lib.folialib</shadedPattern>
+                  <pattern>com.github.Anon8281</pattern>
+                  <shadedPattern>cn.dsnbo.bedrockplayersupport.lib.universalScheduler</shadedPattern>
                 </relocation>
                 <relocation>
                   <pattern>space.arim.dazzleconf</pattern>
@@ -126,18 +126,6 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>dev.folia</groupId>
-      <artifactId>folia-api</artifactId>
-      <version>1.19.4-R0.1-SNAPSHOT</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.tcoded</groupId>
-      <artifactId>FoliaLib</artifactId>
-      <version>0.3.1</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
       <groupId>org.geysermc.floodgate</groupId>
       <artifactId>api</artifactId>
       <version>2.2.2-SNAPSHOT</version>
@@ -186,6 +174,11 @@
       <artifactId>CatSeedLogin</artifactId>
       <version>1.4.1</version>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.Anon8281</groupId>
+      <artifactId>UniversalScheduler</artifactId>
+      <version>0.1.6</version>
     </dependency>
     <dependency>
       <groupId>su.nexmedia.auth</groupId>

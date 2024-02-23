@@ -117,8 +117,8 @@ public class MainForm {
                 .button1("§a是")
                 .button2("§c否")
                 .validResultHandler(((modalForm, modalFormResponse) -> {
-                    switch (modalFormResponse.clickedButtonId()) {
-                        case 0 -> player.chat("/back");
+                    if (modalFormResponse.clickedButtonId() == 0) {
+                        player.chat("/back");
                     }
                 }));
         BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), form);

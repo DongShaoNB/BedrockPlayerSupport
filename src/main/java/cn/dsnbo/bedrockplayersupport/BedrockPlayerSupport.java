@@ -15,6 +15,8 @@ import cn.dsnbo.bedrockplayersupport.listener.login.AuthMeListener;
 import cn.dsnbo.bedrockplayersupport.listener.teleport.CMITeleportListener;
 import cn.dsnbo.bedrockplayersupport.listener.teleport.EssXTeleportListener;
 import cn.dsnbo.bedrockplayersupport.util.Update;
+import com.github.Anon8281.universalScheduler.UniversalScheduler;
+import com.github.Anon8281.universalScheduler.scheduling.schedulers.TaskScheduler;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -33,6 +35,8 @@ public final class BedrockPlayerSupport extends JavaPlugin {
   private static BasicPlugin basicPlugin;
   @Getter
   private static ConfigManager<Config> mainConfigManager;
+  @Getter
+  private static TaskScheduler scheduler;
   private boolean isCmiEnabled;
   private boolean isEssxEnabled;
   private boolean isHuskHomesEnabled;
@@ -42,9 +46,11 @@ public final class BedrockPlayerSupport extends JavaPlugin {
   private boolean isFloodgateEnabled;
 
 
+
   @Override
   public void onEnable() {
     instance = this;
+    scheduler = UniversalScheduler.getScheduler(this);
     floodgateApi = FloodgateApi.getInstance();
     new MainForm();
     loadConfig();
@@ -156,6 +162,7 @@ public final class BedrockPlayerSupport extends JavaPlugin {
       }
     }
   }
+
 
   private void registerAuthListener() {
     if (getMainConfigManager().getConfigData().enableLogin()
