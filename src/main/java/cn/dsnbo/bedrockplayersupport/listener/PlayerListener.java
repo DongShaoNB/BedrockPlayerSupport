@@ -22,7 +22,7 @@ public class PlayerListener implements Listener {
         Config config = BedrockPlayerSupport.getMainConfigManager().getConfigData();
         if (BedrockPlayerSupport.getFloodgateApi().isFloodgatePlayer(uuid)) {
             if (config.enableBackForm()) {
-                BedrockPlayerSupport.getScheduler().runTaskAsynchronously(() -> MainForm.getInstance().openBedrockBackForm(player));
+                BedrockPlayerSupport.getScheduler().runTaskLaterAsynchronously(() -> MainForm.getInstance().openBedrockBackForm(player),20L);
             }
         }
     }
