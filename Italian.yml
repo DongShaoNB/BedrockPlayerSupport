@@ -1,0 +1,28 @@
+form:
+  teleport:
+    title: §6§l传送表单
+    choose_type: §a请选择传送类型
+    choose_player: §a请选择要传送的玩家
+  received_teleport:
+    accept: §a同意
+    deny: §c拒绝
+    tpa:
+      title: §6§l玩家请求传送到你的位置 §f(TPA)
+      text: 玩家 %requestorName% 请求传送到你的位置
+    tpahere:
+      title: §6§l玩家请求你传送到他的位置 §f(TPAHERE)
+      text: 玩家 %requestorName% 请求你传送到他的位置
+  home:
+    title: §6§l我的家
+  back:
+    title: §6§l返回死亡点表单
+    text: §p是否返回上个死亡点
+    yes: §a是
+    no: §c否
+  msg:
+    title: §6§l消息表单
+    choose_player: §a请选择接收消息的玩家
+    input_message: §a请填写要发送的消息
+message:
+  not_bedrock_player: §c你不是基岩版玩家!
+  no_other_online_player: §c当前没有其他玩家在线!
