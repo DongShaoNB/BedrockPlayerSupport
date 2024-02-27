@@ -1,0 +1,28 @@
+form:
+  teleport:
+    title: §6§lTeleport form
+    choose_type: §aPlease select a teleport type
+    choose_player: §aPlease select a player to teleport
+  received_teleport:
+    accept: §aAccept
+    deny: §cDeny
+    tpa:
+      title: §6§lPlayer request to teleport to your location §f(TPA)
+      text: 玩家 %requestorName% 请求传送到你的位置
+    tpahere:
+      title: §6§lPlayer request you to teleport to his location §f(TPAHERE)
+      text: 玩家 %requestorName% 请求你传送到他的位置
+  home:
+    title: §6§lMy home
+  back:
+    title: §6§l Return death location form
+    text: §pReturn to last death location
+    yes: §aYes
+    no: §cNo
+  msg:
+    title: §6§lMsg form
+    choose_player: §aPlease select a player to receive message
+    input_message: §aPlease fill in the message to send
+message:
+  not_bedrock_player: §cYou are not a bedrock player!
+  no_other_online_player: §cNo other players currently online!
