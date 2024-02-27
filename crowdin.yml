@@ -1,2 +1,10 @@
-bundles:
-  - 8
+"base_path": "/"
+"pull_request_reviewers": [                                   
+    "DongShaoNB"
+  ]
+"files": [
+  {
+    "source" : "/resources/lang/zh_CN.yml",
+    "translation" : "/resources/lang/%locale_with_underscore%"
+  }
+]
