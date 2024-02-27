@@ -1,3 +1,4 @@
+base_path: "/"
 files:
   - source: /src/main/resources/lang/zh_CN.yml
     translation: /src/main/resources/lang/%locale_with_underscore%.yml
