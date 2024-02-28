@@ -25,5 +25,6 @@ public class Update {
         } catch (IOException e) {
             BedrockPlayerSupport.getInstance().getLogger().info("Unable to check for updates: " + e.getMessage());
         }
-    }}
+    }
+}
 
