@@ -61,6 +61,14 @@
                   <shadedPattern>cn.dsnbo.bedrockplayersupport.lib.dazzleconf</shadedPattern>
                 </relocation>
               </relocations>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>org/yaml/snakeyaml/**</exclude>
+                  </excludes>
+                </filter>
+              </filters>
             </configuration>
           </execution>
         </executions>
