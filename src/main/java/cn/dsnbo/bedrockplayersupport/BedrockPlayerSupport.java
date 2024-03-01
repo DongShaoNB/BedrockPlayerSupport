@@ -63,13 +63,6 @@ public final class BedrockPlayerSupport extends JavaPlugin {
     registerAuthListener();
     loadMetrics();
     new MainForm();
-    if ("zh".equalsIgnoreCase(systemLanguage)) {
-      getLogger().info(
-          "感谢选择使用本插件, 交流QQ群: 159323818, Discord: https://discord.gg/xXE6axqF");
-    } else {
-      getLogger().info(
-          "Thank you for choosing to use this plugin, QQ Group: 159323818, Discord: https://discord.gg/xXE6axqF");
-    }
   }
 
   @Override
