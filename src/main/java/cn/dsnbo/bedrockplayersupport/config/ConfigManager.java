@@ -20,49 +20,52 @@ import java.nio.file.Path;
  */
 public final class ConfigManager<C> {
 
-	private final ConfigurationHelper<C> configHelper;
-	private volatile C configData;
+  private final ConfigurationHelper<C> configHelper;
+  private volatile C configData;
 
-	private ConfigManager(ConfigurationHelper<C> configHelper) {
-		this.configHelper = configHelper;
-	}
+  private ConfigManager(ConfigurationHelper<C> configHelper) {
+    this.configHelper = configHelper;
+  }
 
-	public static <C> ConfigManager<C> create(Path configFolder, String fileName, Class<C> configClass) {
-		// SnakeYaml example
-		SnakeYamlOptions yamlOptions = new SnakeYamlOptions.Builder()
-				.commentMode(CommentMode.alternativeWriter()) // Enables writing YAML comments
-				.build();
-		ConfigurationFactory<C> configFactory = SnakeYamlConfigurationFactory.create(
-				configClass,
-				new ConfigurationOptions.Builder().sorter(new AnnotationBasedSorter()).build(), // change this if desired
-				yamlOptions);
-		return new ConfigManager<>(new ConfigurationHelper<>(configFolder, fileName, configFactory));
-	}
+  public static <C> ConfigManager<C> create(Path configFolder, String fileName,
+      Class<C> configClass) {
+    // SnakeYaml example
+    SnakeYamlOptions yamlOptions = new SnakeYamlOptions.Builder()
+        .commentMode(CommentMode.alternativeWriter()) // Enables writing YAML comments
+        .build();
+    ConfigurationFactory<C> configFactory = SnakeYamlConfigurationFactory.create(
+        configClass,
+        new ConfigurationOptions.Builder().sorter(new AnnotationBasedSorter()).build(),
+        // change this if desired
+        yamlOptions);
+    return new ConfigManager<>(new ConfigurationHelper<>(configFolder, fileName, configFactory));
+  }
 
-	public void reloadConfig() {
-		try {
-			configData = configHelper.reloadConfigData();
-		} catch (IOException ex) {
-			throw new UncheckedIOException(ex);
+  public void reloadConfig() {
+    try {
+      configData = configHelper.reloadConfigData();
+    } catch (IOException ex) {
+      throw new UncheckedIOException(ex);
 
-		} catch (ConfigFormatSyntaxException ex) {
-			configData = configHelper.getFactory().loadDefaults();
-			BedrockPlayerSupport.getInstance().getLogger().severe("配置文件格式错误, 请检查你的配置文件");
-			ex.printStackTrace();
+    } catch (ConfigFormatSyntaxException ex) {
+      configData = configHelper.getFactory().loadDefaults();
+      BedrockPlayerSupport.getInstance().getLogger().severe("配置文件格式错误, 请检查你的配置文件 | The yaml syntax in your configuration is invalid");
+      ex.printStackTrace();
 
-		} catch (InvalidConfigException ex) {
-			configData = configHelper.getFactory().loadDefaults();
-			BedrockPlayerSupport.getInstance().getLogger().severe("配置文件某个键值无效, 请检查你的配置文件");
-			ex.printStackTrace();
-		}
-	}
+    } catch (InvalidConfigException ex) {
+      configData = configHelper.getFactory().loadDefaults();
+      BedrockPlayerSupport.getInstance().getLogger()
+          .severe("配置文件某个键值无效, 请检查你的配置文件 | One of the values in your configuration is not valid");
+      ex.printStackTrace();
+    }
+  }
 
-	public C getConfigData() {
-		C configData = this.configData;
-		if (configData == null) {
-			throw new IllegalStateException("配置文件还没有加载");
-		}
-		return configData;
-	}
+  public C getConfigData() {
+    C configData = this.configData;
+    if (configData == null) {
+      throw new IllegalStateException("配置文件还没有加载 | Configuration has not been loaded yet");
+    }
+    return configData;
+  }
 
 }

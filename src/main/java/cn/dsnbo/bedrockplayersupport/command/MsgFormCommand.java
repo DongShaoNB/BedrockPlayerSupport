@@ -1,5 +1,6 @@
 package cn.dsnbo.bedrockplayersupport.command;
 
+import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import cn.dsnbo.bedrockplayersupport.form.MainForm;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -20,10 +21,10 @@ public class MsgFormCommand implements CommandExecutor {
         if (Bukkit.getOnlinePlayers().size() > 1) {
           MainForm.getInstance().openBedrockMsgForm(player);
         } else {
-          player.sendMessage("§c当前没有其他玩家在线!");
+          player.sendMessage(BedrockPlayerSupport.getLanguageConfigManager().getConfigData().noOtherOnlinePlayer());
         }
       } else {
-        player.sendMessage("§c你不是基岩版玩家!");
+        player.sendMessage(BedrockPlayerSupport.getLanguageConfigManager().getConfigData().notBedrockPlayer());
       }
     }
     return false;

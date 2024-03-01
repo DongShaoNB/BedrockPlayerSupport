@@ -15,19 +15,19 @@ import org.geysermc.floodgate.api.FloodgateApi;
  */
 public class OtherAuthListener implements Listener {
 
-    @EventHandler
-    public void onPlayerJoinEvent(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        Config config = BedrockPlayerSupport.getMainConfigManager().getConfigData();
-        if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
-            if (config.enableLogin()) {
-                Bukkit.dispatchCommand(
-                        Bukkit.getServer().getConsoleSender(),
-                        config.forceLoginCommand()
-                                .replace("%player%", player.getName()));
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.loginMessage()));
-            }
-        }
+  @EventHandler
+  public void onPlayerJoinEvent(PlayerJoinEvent event) {
+    Player player = event.getPlayer();
+    Config config = BedrockPlayerSupport.getMainConfigManager().getConfigData();
+    if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
+      if (config.enableLogin()) {
+        Bukkit.dispatchCommand(
+            Bukkit.getServer().getConsoleSender(),
+            config.forceLoginCommand()
+                .replace("%player%", player.getName()));
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.loginMessage()));
+      }
     }
+  }
 
 }

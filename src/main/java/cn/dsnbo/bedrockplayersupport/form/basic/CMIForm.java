@@ -18,7 +18,7 @@ public class CMIForm {
         CMIUser cmiUser = CMI.getInstance().getPlayerManager().getUser(player);
         LinkedHashMap<String, CmiHome> playerHomesList = cmiUser.getHomes();
         SimpleForm.Builder form = SimpleForm.builder()
-                .title("§6§l我的家")
+                .title(BedrockPlayerSupport.getLanguageConfigManager().getConfigData().homeFormTitle())
                 .validResultHandler(simpleFormResponse -> {
                     player.chat("/home " + simpleFormResponse.clickedButton().text());
                 });
