@@ -13,12 +13,11 @@ import java.util.function.Consumer;
  */
 public class Update {
 
-    private static final int spigotResourceId = 1145141919; // Spigot resource id
+    private static final int SPIGOT_RESOURCE_ID = 1145141919;
 	
     public static void checkUpdate(Consumer<String> consumer) {
         BedrockPlayerSupport.getScheduler().runTaskAsynchronously(() -> getVersion(consumer));
     }
-  }
 
   public static void getVersion(final Consumer<String> consumer) {
     try (InputStream is = new URL(

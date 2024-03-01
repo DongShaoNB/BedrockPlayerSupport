@@ -44,6 +44,7 @@ public final class BedrockPlayerSupport extends JavaPlugin {
   private static String language;
   @Getter
   private static String systemLanguage;
+  @Getter
   private static TaskScheduler scheduler;
   private boolean isCmiEnabled;
   private boolean isEssxEnabled;
