@@ -155,6 +155,7 @@ public class Metrics {
     /**
      * The version of the Metrics class.
      */
+
     public static final String METRICS_VERSION = "3.0.0";
 
     private static final ScheduledExecutorService scheduler =
@@ -189,6 +190,56 @@ public class Metrics {
     private final Set<CustomChart> customCharts = new HashSet<>();
 
     private final boolean enabled;
+
+    public Metrics(JavaPlugin plugin, int serviceId) {
+        this.plugin = plugin;
+        // Get the config file
+        File bStatsFolder = new File(plugin.getDataFolder().getParentFile(), "bStats");
+        File configFile = new File(bStatsFolder, "config.yml");
+        YamlConfiguration config = YamlConfiguration.loadConfiguration(configFile);
+        if (!config.isSet("serverUuid")) {
+            config.addDefault("enabled", true);
+            config.addDefault("serverUuid", UUID.randomUUID().toString());
+            config.addDefault("logFailedRequests", false);
+            config.addDefault("logSentData", false);
+            config.addDefault("logResponseStatusText", false);
+            // Inform the server owners about bStats
+            config
+                    .options()
+                    .header(
+                            "bStats (https://bStats.org) collects some basic information for plugin authors, like how\n"
+                                    + "many people use their plugin and their total player count. It's recommended to keep bStats\n"
+                                    + "enabled, but if you're not comfortable with this, you can turn this setting off. There is no\n"
+                                    + "performance penalty associated with having metrics enabled, and data sent to bStats is fully\n"
+                                    + "anonymous.")
+                    .copyDefaults(true);
+            try {
+                config.save(configFile);
+            } catch (IOException ignored) {
+            }
+        }
+        // Load the data
+        boolean enabled = config.getBoolean("enabled", true);
+        String serverUUID = config.getString("serverUuid");
+        boolean logErrors = config.getBoolean("logFailedRequests", false);
+        boolean logSentData = config.getBoolean("logSentData", false);
+        boolean logResponseStatusText = config.getBoolean("logResponseStatusText", false);
+        metricsBase =
+                new MetricsBase(
+                        "bukkit",
+                        serverUUID,
+                        serviceId,
+                        enabled,
+                        this::appendPlatformData,
+                        this::appendServiceData,
+                        submitDataTask -> BedrockPlayerSupport.getScheduler().runTask(submitDataTask),
+                        plugin::isEnabled,
+                        (message, error) -> this.plugin.getLogger().log(Level.WARNING, message, error),
+                        (message) -> this.plugin.getLogger().log(Level.INFO, message),
+                        logErrors,
+                        logSentData,
+                        logResponseStatusText);
+    }
 
     /**
      * Creates a new MetricsBase class instance.

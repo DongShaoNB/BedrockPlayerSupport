@@ -1,8 +1,6 @@
 package cn.dsnbo.bedrockplayersupport.util;
 
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
-import com.tcoded.folialib.FoliaLib;
-import org.bukkit.Bukkit;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,16 +13,10 @@ import java.util.function.Consumer;
  */
 public class Update {
 
-  private static final int SPIGOT_RESOURCE_ID = 1145141919;
-
-  public static void checkUpdate(Consumer<String> consumer) {
-    try {
-      Class.forName("io.papermc.paper.threadedregions.RegionizedServer");
-      FoliaLib foliaLib = new FoliaLib(BedrockPlayerSupport.getInstance());
-      foliaLib.getImpl().runAsync((task) -> getVersion(consumer));
-    } catch (ClassNotFoundException e) {
-      Bukkit.getScheduler()
-          .runTaskAsynchronously(BedrockPlayerSupport.getInstance(), () -> getVersion(consumer));
+    private static final int spigotResourceId = 1145141919; // Spigot resource id
+	
+    public static void checkUpdate(Consumer<String> consumer) {
+        BedrockPlayerSupport.getScheduler().runTaskAsynchronously(() -> getVersion(consumer));
     }
   }
 
