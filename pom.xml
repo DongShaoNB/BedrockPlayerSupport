@@ -53,8 +53,8 @@
               <createDependencyReducedPom>false</createDependencyReducedPom>
               <relocations>
                 <relocation>
-                  <pattern>com.tcoded.folialib</pattern>
-                  <shadedPattern>cn.dsnbo.bedrockplayersupport.lib.folialib</shadedPattern>
+                  <pattern>com.github.Anon8281</pattern>
+                  <shadedPattern>cn.dsnbo.bedrockplayersupport.lib.universalScheduler</shadedPattern>
                 </relocation>
                 <relocation>
                   <pattern>space.arim.dazzleconf</pattern>
@@ -84,14 +84,17 @@
       <id>opencollab-snapshot</id>
       <url>https://repo.opencollab.dev/main/</url>
     </repository>
+    <!-- Maven Central -->
     <repository>
       <id>sonatype</id>
       <url>https://oss.sonatype.org/content/groups/public/</url>
     </repository>
+    <!-- EssentialsX -->
     <repository>
       <id>essentials-releases</id>
       <url>https://repo.essentialsx.net/releases/</url>
     </repository>
+    <!-- PaperMC -->
     <repository>
       <id>paper-repo</id>
       <url>https://papermc.io/repo/repository/maven-public/</url>
@@ -119,30 +122,23 @@
   </repositories>
 
   <dependencies>
+    <!-- Spigot API -->
     <dependency>
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot-api</artifactId>
       <version>1.13-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>dev.folia</groupId>
-      <artifactId>folia-api</artifactId>
-      <version>1.19.4-R0.1-SNAPSHOT</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.tcoded</groupId>
-      <artifactId>FoliaLib</artifactId>
-      <version>0.3.1</version>
-      <scope>compile</scope>
-    </dependency>
+
+    <!-- Floodgate API -->
     <dependency>
       <groupId>org.geysermc.floodgate</groupId>
       <artifactId>api</artifactId>
       <version>2.2.2-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
+
+    <!-- CMI API -->
     <dependency>
       <groupId>com.zrips</groupId>
       <artifactId>cmi-api</artifactId>
@@ -150,6 +146,8 @@
       <scope>system</scope>
       <systemPath>${basedir}/lib/CMI-API9.6.5.0.jar</systemPath>
     </dependency>
+
+    <!-- CMI Lib -->
     <dependency>
       <groupId>com.zrips</groupId>
       <artifactId>cmi-lib</artifactId>
@@ -157,36 +155,55 @@
       <scope>system</scope>
       <systemPath>${basedir}/lib/CMILib1.4.4.0.jar</systemPath>
     </dependency>
+
+    <!-- EssentialsX -->
     <dependency>
       <groupId>net.essentialsx</groupId>
       <artifactId>EssentialsX</artifactId>
       <version>2.20.1</version>
       <scope>provided</scope>
     </dependency>
+
+    <!-- HuskHomes -->
     <dependency>
       <groupId>net.william278</groupId>
       <artifactId>huskhomes</artifactId>
       <version>4.5.5</version>
       <scope>provided</scope>
     </dependency>
+
+    <!-- Lombok -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>1.18.30</version>
       <scope>provided</scope>
     </dependency>
+
+    <!-- AuthMe -->
     <dependency>
       <groupId>fr.xephi</groupId>
       <artifactId>authme</artifactId>
       <version>5.6.0-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
+
+    <!-- CatSeedLogin -->
     <dependency>
       <groupId>com.github.CatSeed</groupId>
       <artifactId>CatSeedLogin</artifactId>
       <version>1.4.1</version>
       <scope>provided</scope>
     </dependency>
+
+    <!-- Universal Scheduler -->
+    <dependency>
+      <groupId>com.github.Anon8281</groupId>
+      <artifactId>UniversalScheduler</artifactId>
+      <version>0.1.6</version>
+    </dependency>
+
+    <!-- NexAuth -->
     <dependency>
       <groupId>su.nexmedia.auth</groupId>
       <artifactId>NexAuth</artifactId>
@@ -194,6 +211,8 @@
       <scope>system</scope>
       <systemPath>${basedir}/lib/NexAuth-2.0.3.jar</systemPath>
     </dependency>
+
+    <!-- NexEngine -->
     <dependency>
       <groupId>su.nexmedia.engine</groupId>
       <artifactId>NexEngine</artifactId>
@@ -201,6 +220,8 @@
       <scope>system</scope>
       <systemPath>${basedir}/lib/NexEngine.jar</systemPath>
     </dependency>
+
+    <!-- Ext Snakeyaml -->
     <dependency>
       <groupId>space.arim.dazzleconf</groupId>
       <artifactId>dazzleconf-ext-snakeyaml</artifactId>

@@ -15,6 +15,8 @@ import cn.dsnbo.bedrockplayersupport.listener.login.AuthMeListener;
 import cn.dsnbo.bedrockplayersupport.listener.teleport.CMITeleportListener;
 import cn.dsnbo.bedrockplayersupport.listener.teleport.EssXTeleportListener;
 import cn.dsnbo.bedrockplayersupport.util.Update;
+import com.github.Anon8281.universalScheduler.UniversalScheduler;
+import com.github.Anon8281.universalScheduler.scheduling.schedulers.TaskScheduler;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -33,6 +35,8 @@ public final class BedrockPlayerSupport extends JavaPlugin {
   private static BasicPlugin basicPlugin;
   @Getter
   private static ConfigManager<Config> mainConfigManager;
+  @Getter
+  private static TaskScheduler scheduler;
   private boolean isCmiEnabled;
   private boolean isEssxEnabled;
   private boolean isHuskHomesEnabled;
@@ -42,9 +46,11 @@ public final class BedrockPlayerSupport extends JavaPlugin {
   private boolean isFloodgateEnabled;
 
 
+
   @Override
   public void onEnable() {
     instance = this;
+    scheduler = UniversalScheduler.getScheduler(this);
     floodgateApi = FloodgateApi.getInstance();
     new MainForm();
     loadConfig();
@@ -75,15 +81,16 @@ public final class BedrockPlayerSupport extends JavaPlugin {
     mainConfigManager = ConfigManager.create(getDataFolder().toPath(), "config.yml", Config.class);
     getMainConfigManager().reloadConfig();
     Config config = getMainConfigManager().getConfigData();
-    if (config.checkUpdate()) {
-      Update.checkUpdate(version -> {
-        if (getDescription().getVersion().equals(version)) {
-          getLogger().info("当前版本已经是最新");
-        } else {
-          getLogger().info("检测到新版本, 请更新插件");
-        }
-      });
-    }
+    // Temporary disable version checker to prepare for bug fix release
+//    if (config.checkUpdate()) {
+//      Update.checkUpdate(version -> {
+//        if (getDescription().getVersion().equals(version)) {
+//          getLogger().info("当前版本已经是最新");
+//        } else {
+//          getLogger().info("检测到新版本, 请更新插件");
+//        }
+//      });
+//    }
     if (config.enableTeleportForm()) {
       getCommand("tpgui").setExecutor(new TpFormCommand());
     }
@@ -156,6 +163,7 @@ public final class BedrockPlayerSupport extends JavaPlugin {
       }
     }
   }
+
 
   private void registerAuthListener() {
     if (getMainConfigManager().getConfigData().enableLogin()

@@ -17,12 +17,12 @@ public class HuskHomesTeleportListener implements Listener {
     @EventHandler
     public void onReceiveTeleportRequestEvent(ReceiveTeleportRequestEvent event) {
         TeleportRequest.Type requestType = event.getRequest().getType();
-        Player requestor = Bukkit.getPlayer(event.getRequest().getRequesterName());
+        Player requester = Bukkit.getPlayer(event.getRequest().getRequesterName());
         Player receiver = Bukkit.getPlayer(event.getRecipient().getUuid());
         if (requestType == TeleportRequest.Type.TPA) {
-            MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.Tpa, requestor, receiver);
+            MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.Tpa, requester, receiver);
         } else if (requestType == TeleportRequest.Type.TPA_HERE) {
-            MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.TpaHere, requestor, receiver);
+            MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.TpaHere, requester, receiver);
         }
     }
 
