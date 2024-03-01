@@ -14,7 +14,7 @@ softdepend:
   - NexAuth
 authors: [ DongShaoNB ]
 description: Make it easier for bedrock player to use plugins
-website: www.dsnbo.cn
+website: dsnbo.cc
 
 commands:
   tpgui:

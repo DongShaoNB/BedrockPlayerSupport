@@ -15,7 +15,7 @@ public class EssXForm {
     public static void sendHomeForm(Player player) {
         User user = new User(player, (Essentials) Bukkit.getPluginManager().getPlugin("Essentials"));
         SimpleForm.Builder form = SimpleForm.builder()
-                .title("§6§l我的家")
+                .title(BedrockPlayerSupport.getLanguageConfigManager().getConfigData().homeFormTitle())
                 .validResultHandler(simpleFormResponse -> {
                     player.chat("/home " + simpleFormResponse.clickedButton().text());
                 });

@@ -16,18 +16,18 @@ import java.util.UUID;
  */
 public class PlayerListener implements Listener {
 
-    @EventHandler
-    public void onPlayerRespawnEvent(PlayerRespawnEvent event) {
-        Player player = event.getPlayer();
-        UUID uuid = player.getUniqueId();
-        Config config = BedrockPlayerSupport.getMainConfigManager().getConfigData();
-        if (BedrockPlayerSupport.getFloodgateApi().isFloodgatePlayer(uuid)) {
-            if (config.enableBackForm()) {
-                Bukkit.getScheduler().runTaskLaterAsynchronously(BedrockPlayerSupport.getInstance(), () -> {
-                    MainForm.getInstance().openBedrockBackForm(player);
-                }, 20L);
-            }
-        }
+  @EventHandler
+  public void onPlayerRespawnEvent(PlayerRespawnEvent event) {
+    Player player = event.getPlayer();
+    UUID uuid = player.getUniqueId();
+    Config config = BedrockPlayerSupport.getMainConfigManager().getConfigData();
+    if (BedrockPlayerSupport.getFloodgateApi().isFloodgatePlayer(uuid)) {
+      if (config.enableBackForm()) {
+        Bukkit.getScheduler().runTaskLaterAsynchronously(BedrockPlayerSupport.getInstance(), () -> {
+          MainForm.getInstance().openBedrockBackForm(player);
+        }, 20L);
+      }
     }
+  }
 
 }

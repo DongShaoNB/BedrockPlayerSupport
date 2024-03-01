@@ -14,19 +14,21 @@ import java.util.UUID;
  * @author DongShaoNB
  */
 public class EssXTeleportListener implements Listener {
-    @EventHandler
-    public void onTeleportWarmupEvent(TPARequestEvent event){
-        boolean isTeleportHere = event.isTeleportHere();
-        Player requestor = event.getRequester().getPlayer();
-        Player receiver = event.getTarget().getBase();
-        UUID receiverUuid = receiver.getUniqueId();
-        if (FloodgateApi.getInstance().isFloodgatePlayer(receiverUuid)) {
-            if (!isTeleportHere) {
-                MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.Tpa, requestor, receiver);
-            } else {
-                MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.TpaHere, requestor, receiver);
-            }
-        }
 
+  @EventHandler
+  public void onTeleportWarmupEvent(TPARequestEvent event) {
+    boolean isTeleportHere = event.isTeleportHere();
+    Player requestor = event.getRequester().getPlayer();
+    Player receiver = event.getTarget().getBase();
+    UUID receiverUuid = receiver.getUniqueId();
+    if (FloodgateApi.getInstance().isFloodgatePlayer(receiverUuid)) {
+      if (!isTeleportHere) {
+        MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.Tpa, requestor, receiver);
+      } else {
+        MainForm.getInstance()
+            .openBedrockTeleportHereForm(TeleportType.TpaHere, requestor, receiver);
+      }
     }
+
+  }
 }

@@ -16,18 +16,20 @@ import java.util.UUID;
  * @author DongShaoNB
  */
 public class CMITeleportListener implements Listener {
-    @EventHandler
-    public void onCmiPlayerTeleportRequestEvent(CMIPlayerTeleportRequestEvent event) {
-        TpManager.TpAction tpAction = event.getAction();
-        Player requestor = event.getWhoOffers().getPlayer();
-        Player receiver = event.getWhoAccepts().getPlayer();
-        UUID teleportLocationPlayerUuid = receiver.getUniqueId();
-        if (FloodgateApi.getInstance().isFloodgatePlayer(teleportLocationPlayerUuid)) {
-            if (tpAction == TpManager.TpAction.tpa) {
-                MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.Tpa, requestor, receiver);
-            } else if (tpAction == TpManager.TpAction.tpahere) {
-                MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.TpaHere, requestor, receiver);
-            }
-        }
+
+  @EventHandler
+  public void onCmiPlayerTeleportRequestEvent(CMIPlayerTeleportRequestEvent event) {
+    TpManager.TpAction tpAction = event.getAction();
+    Player requestor = event.getWhoOffers().getPlayer();
+    Player receiver = event.getWhoAccepts().getPlayer();
+    UUID teleportLocationPlayerUuid = receiver.getUniqueId();
+    if (FloodgateApi.getInstance().isFloodgatePlayer(teleportLocationPlayerUuid)) {
+      if (tpAction == TpManager.TpAction.tpa) {
+        MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.Tpa, requestor, receiver);
+      } else if (tpAction == TpManager.TpAction.tpahere) {
+        MainForm.getInstance()
+            .openBedrockTeleportHereForm(TeleportType.TpaHere, requestor, receiver);
+      }
     }
+  }
 }

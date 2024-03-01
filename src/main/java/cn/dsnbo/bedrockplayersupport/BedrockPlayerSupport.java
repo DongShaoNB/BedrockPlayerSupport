@@ -5,6 +5,7 @@ import cn.dsnbo.bedrockplayersupport.command.MsgFormCommand;
 import cn.dsnbo.bedrockplayersupport.command.TpFormCommand;
 import cn.dsnbo.bedrockplayersupport.config.Config;
 import cn.dsnbo.bedrockplayersupport.config.ConfigManager;
+import cn.dsnbo.bedrockplayersupport.config.Language;
 import cn.dsnbo.bedrockplayersupport.form.MainForm;
 import cn.dsnbo.bedrockplayersupport.listener.PlayerListener;
 import cn.dsnbo.bedrockplayersupport.listener.login.CatSeedLoginListener;
@@ -15,6 +16,8 @@ import cn.dsnbo.bedrockplayersupport.listener.login.AuthMeListener;
 import cn.dsnbo.bedrockplayersupport.listener.teleport.CMITeleportListener;
 import cn.dsnbo.bedrockplayersupport.listener.teleport.EssXTeleportListener;
 import cn.dsnbo.bedrockplayersupport.util.Update;
+import java.io.File;
+import java.util.Locale;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -33,6 +36,12 @@ public final class BedrockPlayerSupport extends JavaPlugin {
   private static BasicPlugin basicPlugin;
   @Getter
   private static ConfigManager<Config> mainConfigManager;
+  @Getter
+  private static ConfigManager<Language> languageConfigManager;
+  @Getter
+  private static String language;
+  @Getter
+  private static String systemLanguage;
   private boolean isCmiEnabled;
   private boolean isEssxEnabled;
   private boolean isHuskHomesEnabled;
@@ -46,14 +55,21 @@ public final class BedrockPlayerSupport extends JavaPlugin {
   public void onEnable() {
     instance = this;
     floodgateApi = FloodgateApi.getInstance();
-    new MainForm();
+    systemLanguage = Locale.getDefault().getLanguage();
     loadConfig();
     loadDependLoadStatus();
     printSupportPluginLoadStatus();
     registerBasicListener();
     registerAuthListener();
     loadMetrics();
-    getLogger().info("感谢选择使用本插件, 交流QQ群: 159323818");
+    new MainForm();
+    if ("zh".equalsIgnoreCase(systemLanguage)) {
+      getLogger().info(
+          "感谢选择使用本插件, 交流QQ群: 159323818, Discord: https://discord.gg/xXE6axqF");
+    } else {
+      getLogger().info(
+          "Thank you for choosing to use this plugin, QQ Group: 159323818, Discord: https://discord.gg/xXE6axqF");
+    }
   }
 
   @Override
@@ -72,18 +88,18 @@ public final class BedrockPlayerSupport extends JavaPlugin {
   }
 
   public void loadConfig() {
-    mainConfigManager = ConfigManager.create(getDataFolder().toPath(), "config.yml", Config.class);
-    getMainConfigManager().reloadConfig();
-    Config config = getMainConfigManager().getConfigData();
-    if (config.checkUpdate()) {
-      Update.checkUpdate(version -> {
-        if (getDescription().getVersion().equals(version)) {
-          getLogger().info("当前版本已经是最新");
-        } else {
-          getLogger().info("检测到新版本, 请更新插件");
-        }
-      });
+    File langDirectory = new File(getDataFolder(), "/lang/");
+    if (!langDirectory.exists()) {
+      langDirectory.mkdir();
     }
+    mainConfigManager = ConfigManager.create(getDataFolder().toPath(), "config.yml", Config.class);
+    mainConfigManager.reloadConfig();
+    Config config = getMainConfigManager().getConfigData();
+    language = config.language();
+    saveResource("/lang/" + language + ".yml", false);
+    languageConfigManager = ConfigManager.create(langDirectory.toPath(), language + ".yml",
+        Language.class);
+    languageConfigManager.reloadConfig();
     if (config.enableTeleportForm()) {
       getCommand("tpgui").setExecutor(new TpFormCommand());
     }
@@ -96,6 +112,26 @@ public final class BedrockPlayerSupport extends JavaPlugin {
     if (config.enableBackForm()) {
       Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
     }
+    if (config.checkUpdate()) {
+      Update.checkUpdate(latestVersion -> {
+        String currentVersion = getDescription().getVersion();
+        if (currentVersion.equals(latestVersion)) {
+          if ("zh".equalsIgnoreCase(systemLanguage)) {
+            getLogger().info("插件是最新版本，继续保持~");
+          } else {
+            getLogger().info("The plugin is the latest version");
+          }
+        } else {
+          if ("zh".equalsIgnoreCase(systemLanguage)) {
+            getLogger().info("有新版本可以更新!");
+            getLogger().info("当前版本: " + currentVersion + " | 最新版本: " + latestVersion);
+          } else {
+            getLogger().info("There is a new version that can be updated!");
+          getLogger().info("Current version: " + currentVersion + " | Latest version: " + latestVersion);
+          }
+        }
+      });
+    }
   }
 
   private void registerBasicListener() {
@@ -104,54 +140,41 @@ public final class BedrockPlayerSupport extends JavaPlugin {
         if (isCmiEnabled) {
           basicPlugin = BasicPlugin.CMI;
           Bukkit.getPluginManager().registerEvents(new CMITeleportListener(), this);
-          getLogger().info("已注册基础插件监听器, 使用插件: CMI");
         } else {
           basicPlugin = BasicPlugin.NONE;
-          getLogger().warning("配置文件设置了CMI基础插件, 但没有检测到CMI, 已关闭相关功能");
         }
       }
       case "essentialsx" -> {
         if (isEssxEnabled) {
           basicPlugin = BasicPlugin.EssentialsX;
           Bukkit.getPluginManager().registerEvents(new EssXTeleportListener(), this);
-          getLogger().info("已注册基础插件监听器, 使用插件: EssentialsX");
         } else {
           basicPlugin = BasicPlugin.NONE;
-          getLogger().warning(
-              "配置文件设置了EssentialsX基础插件, 但没有检测到EssentialsX, 已关闭相关功能");
         }
       }
       case "huskhomes" -> {
         if (isHuskHomesEnabled) {
           basicPlugin = BasicPlugin.HuskHomes;
           Bukkit.getPluginManager().registerEvents(new HuskHomesTeleportListener(), this);
-          getLogger().info("已注册基础插件监听器, 使用插件: HuskHomes");
         } else {
           basicPlugin = BasicPlugin.NONE;
-          getLogger().warning(
-              "配置文件设置了HuskHomes基础插件, 但没有检测到HuskHomes, 已关闭相关功能");
         }
       }
       case "none" -> {
         basicPlugin = BasicPlugin.NONE;
-        getLogger().info("已关闭基础插件功能(配置文件设置)");
       }
       default -> {
         if (isCmiEnabled) {
           Bukkit.getPluginManager().registerEvents(new CMITeleportListener(), this);
-          getLogger().info("已注册基础插件监听器, 使用插件: CMI");
           basicPlugin = BasicPlugin.CMI;
         } else if (isEssxEnabled) {
           Bukkit.getPluginManager().registerEvents(new EssXTeleportListener(), this);
-          getLogger().info("已注册基础插件监听器, 使用插件: EssentialsX");
           basicPlugin = BasicPlugin.EssentialsX;
         } else if (isHuskHomesEnabled) {
           Bukkit.getPluginManager().registerEvents(new HuskHomesTeleportListener(), this);
-          getLogger().info("已注册基础插件监听器, 使用插件: HuskHomes");
           basicPlugin = BasicPlugin.HuskHomes;
         } else {
           basicPlugin = BasicPlugin.NONE;
-          getLogger().warning("检测不到支持的基础插件, 已关闭相关功能");
         }
       }
     }
@@ -164,45 +187,28 @@ public final class BedrockPlayerSupport extends JavaPlugin {
         case "authme" -> {
           if (isAuthMeEnabled) {
             Bukkit.getPluginManager().registerEvents(new AuthMeListener(), this);
-            getLogger().info("已开启基岩版玩家自动验证功能, 使用插件: AuthMe");
-          } else {
-            getLogger().warning("配置文件设置了AuthMe登录插件, 但没有检测到AuthMe, 已关闭相关功能");
           }
         }
         case "catseedlogin" -> {
           if (isCatSeedLoginEnabled) {
             Bukkit.getPluginManager().registerEvents(new CatSeedLoginListener(), this);
-            getLogger().info("已开启基岩版玩家自动验证功能, 使用插件: CatSeedLogin");
-          } else {
-            getLogger().warning(
-                "配置文件设置了CatSeedLogin登录插件, 但没有检测到CatSeedLogin, 已关闭相关功能");
           }
         }
         case "nexauth" -> {
           if (isNexAuthEnabled) {
             Bukkit.getPluginManager().registerEvents(new NexAuthListener(), this);
-            getLogger().info("已开启基岩版玩家自动验证功能, 使用插件: NexAuth");
-          } else {
-            getLogger().warning(
-                "配置文件设置了NexAuth登录插件, 但没有检测到NexAuth, 已关闭相关功能");
           }
         }
         case "other" -> {
           Bukkit.getPluginManager().registerEvents(new OtherAuthListener(), this);
-          getLogger().info("已开启基岩版玩家自动验证功能, 使用插件: Other");
         }
         default -> {
           if (isAuthMeEnabled) {
             Bukkit.getPluginManager().registerEvents(new AuthMeListener(), this);
-            getLogger().info("已开启基岩版玩家自动验证功能, 使用插件: AuthMe");
           } else if (isCatSeedLoginEnabled) {
             Bukkit.getPluginManager().registerEvents(new CatSeedLoginListener(), this);
-            getLogger().info("已开启基岩版玩家自动验证功能, 使用插件: CatSeedLogin");
           } else if (isNexAuthEnabled) {
             Bukkit.getPluginManager().registerEvents(new NexAuthListener(), this);
-            getLogger().info("已开启基岩版玩家自动验证功能, 使用插件: NexAuth");
-          } else {
-            getLogger().warning("检测不到支持的登录插件, 已关闭自动验证功能!");
           }
         }
       }
@@ -213,7 +219,11 @@ public final class BedrockPlayerSupport extends JavaPlugin {
   private void printSupportPluginLoadStatus() {
     if (getMainConfigManager().getConfigData().loggingSupportPluginStatus()) {
       getLogger().info("-----------------");
-      getLogger().info("检测支持插件是否启用: ");
+      if ("zh".equalsIgnoreCase(systemLanguage)) {
+        getLogger().info("检测支持插件是否启用: ");
+      } else {
+        getLogger().info("Check support plugin enable status: ");
+      }
       getLogger().info("floodgate: " + isFloodgateEnabled);
       getLogger().info("CMI: " + isCmiEnabled);
       getLogger().info("EssentialsX: " + isEssxEnabled);

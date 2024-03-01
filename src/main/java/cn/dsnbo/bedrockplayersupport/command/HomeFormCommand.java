@@ -15,19 +15,19 @@ import org.geysermc.floodgate.api.FloodgateApi;
  */
 public class HomeFormCommand implements CommandExecutor {
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player player) {
-            if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
-                switch (BedrockPlayerSupport.getBasicPlugin()) {
-                    case CMI -> CMIForm.sendHomeForm(player);
-                    case EssentialsX -> EssXForm.sendHomeForm(player);
-                    case HuskHomes -> HuskHomesForm.sendHomeForm(player);
-                }
-            } else {
-                player.sendMessage("§c你不是基岩版玩家!");
-            }
+  @Override
+  public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    if (sender instanceof Player player) {
+      if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
+        switch (BedrockPlayerSupport.getBasicPlugin()) {
+          case CMI -> CMIForm.sendHomeForm(player);
+          case EssentialsX -> EssXForm.sendHomeForm(player);
+          case HuskHomes -> HuskHomesForm.sendHomeForm(player);
         }
-        return false;
+      } else {
+        player.sendMessage(BedrockPlayerSupport.getLanguageConfigManager().getConfigData().notBedrockPlayer());
+      }
     }
+    return false;
+  }
 }

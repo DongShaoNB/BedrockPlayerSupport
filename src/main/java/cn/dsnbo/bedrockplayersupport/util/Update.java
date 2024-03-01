@@ -14,24 +14,31 @@ import java.util.function.Consumer;
  * @author DongShaoNB
  */
 public class Update {
-    private static final int spigotResourceId = 1145141919; // Spigot resource id
-    public static void checkUpdate(Consumer<String> consumer) {
-        try {
-            Class.forName("io.papermc.paper.threadedregions.RegionizedServer");
-            FoliaLib foliaLib = new FoliaLib(BedrockPlayerSupport.getInstance());
-            foliaLib.getImpl().runAsync((task) -> getVersion(consumer));
-        } catch (ClassNotFoundException e) {
-            Bukkit.getScheduler().runTaskAsynchronously(BedrockPlayerSupport.getInstance(), () -> getVersion(consumer));
-        }
-    }
 
-    public static void getVersion(final Consumer<String> consumer) {
-        try (InputStream is = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + spigotResourceId + "/~").openStream(); Scanner scann = new Scanner(is)) {
-            if (scann.hasNext()) {
-                consumer.accept(scann.next());
-            }
-        } catch (IOException e) {
-            BedrockPlayerSupport.getInstance().getLogger().info("Unable to check for updates: " + e.getMessage());
-        }
-    }}
+  private static final int SPIGOT_RESOURCE_ID = 1145141919;
+
+  public static void checkUpdate(Consumer<String> consumer) {
+    try {
+      Class.forName("io.papermc.paper.threadedregions.RegionizedServer");
+      FoliaLib foliaLib = new FoliaLib(BedrockPlayerSupport.getInstance());
+      foliaLib.getImpl().runAsync((task) -> getVersion(consumer));
+    } catch (ClassNotFoundException e) {
+      Bukkit.getScheduler()
+          .runTaskAsynchronously(BedrockPlayerSupport.getInstance(), () -> getVersion(consumer));
+    }
+  }
+
+  public static void getVersion(final Consumer<String> consumer) {
+    try (InputStream is = new URL(
+        "https://api.spigotmc.org/legacy/update.php?resource=" + SPIGOT_RESOURCE_ID
+            + "/~").openStream(); Scanner scann = new Scanner(is)) {
+      if (scann.hasNext()) {
+        consumer.accept(scann.next());
+      }
+    } catch (IOException e) {
+      BedrockPlayerSupport.getInstance().getLogger()
+          .info("Unable to check for updates: " + e.getMessage());
+    }
+  }
+}
 

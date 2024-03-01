@@ -19,7 +19,7 @@ public class HuskHomesForm {
         OnlineUser onlineUser = HuskHomesAPI.getInstance().adaptUser(player);
         CompletableFuture<List<Home>> huskHomes = HuskHomesAPI.getInstance().getUserHomes(onlineUser);
         SimpleForm.Builder form = SimpleForm.builder()
-                .title("§6§l我的家")
+                .title(BedrockPlayerSupport.getLanguageConfigManager().getConfigData().homeFormTitle())
                 .validResultHandler(simpleFormResponse -> {
                     player.chat("/home " + simpleFormResponse.clickedButton().text());
                 });

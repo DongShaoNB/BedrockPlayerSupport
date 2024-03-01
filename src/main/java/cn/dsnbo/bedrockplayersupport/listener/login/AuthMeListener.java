@@ -18,28 +18,28 @@ import java.util.UUID;
  */
 public class AuthMeListener implements Listener {
 
-    @EventHandler
-    public void onPlayerJoinEvent(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        UUID playerUuid = player.getUniqueId();
-        String playerName = player.getName();
-        Config config = BedrockPlayerSupport.getMainConfigManager().getConfigData();
-        if (FloodgateApi.getInstance().isFloodgatePlayer(playerUuid)) {
-            if (!AuthMeApi.getInstance().isAuthenticated(player)) {
-                if (AuthMeApi.getInstance().isRegistered(playerName)) {
-                    if (config.enableLogin()) {
-                        AuthMeApi.getInstance().forceLogin(player);
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.loginMessage()));
-                    }
-                } else {
-                    if (config.enableRegister()) {
-                        String password = StringUtil.randomString(config.passwordLength());
-                        AuthMeApi.getInstance().registerPlayer(playerName, password);
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.registerMessage()
-                                .replace("%password%", password)));
-                    }
-                }
-            }
+  @EventHandler
+  public void onPlayerJoinEvent(PlayerJoinEvent event) {
+    Player player = event.getPlayer();
+    UUID playerUuid = player.getUniqueId();
+    String playerName = player.getName();
+    Config config = BedrockPlayerSupport.getMainConfigManager().getConfigData();
+    if (FloodgateApi.getInstance().isFloodgatePlayer(playerUuid)) {
+      if (!AuthMeApi.getInstance().isAuthenticated(player)) {
+        if (AuthMeApi.getInstance().isRegistered(playerName)) {
+          if (config.enableLogin()) {
+            AuthMeApi.getInstance().forceLogin(player);
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.loginMessage()));
+          }
+        } else {
+          if (config.enableRegister()) {
+            String password = StringUtil.randomString(config.passwordLength());
+            AuthMeApi.getInstance().registerPlayer(playerName, password);
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.registerMessage()
+                .replace("%password%", password)));
+          }
         }
+      }
     }
+  }
 }
