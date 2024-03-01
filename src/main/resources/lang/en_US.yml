@@ -9,7 +9,7 @@ form:
   teleport:
     #传送表单的标题
     #Title of the teleport form
-    title: '§6§l传送表单'
+    title: '§6§lTeleport form'
     #传送表单的选择传送类型提示语
     #Text of choose teleport type in teleport form
     choose_type: '§a请选择传送类型'
