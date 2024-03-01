@@ -95,7 +95,7 @@ public final class BedrockPlayerSupport extends JavaPlugin {
     mainConfigManager.reloadConfig();
     Config config = getMainConfigManager().getConfigData();
     language = config.language();
-    saveResource("/lang/" + language + ".yml", false);
+    saveResource("lang/" + language + ".yml", false);
     languageConfigManager = ConfigManager.create(langDirectory.toPath(), language + ".yml",
         Language.class);
     languageConfigManager.reloadConfig();
