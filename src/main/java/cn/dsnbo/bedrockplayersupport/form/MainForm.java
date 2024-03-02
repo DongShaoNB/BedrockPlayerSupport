@@ -6,6 +6,7 @@ import cn.dsnbo.bedrockplayersupport.TeleportType;
 import cn.dsnbo.bedrockplayersupport.config.Language;
 import lombok.Getter;
 import net.william278.huskhomes.BukkitHuskHomes;
+import net.william278.huskhomes.api.HuskHomesAPI;
 import net.william278.huskhomes.user.OnlineUser;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -43,7 +44,9 @@ public class MainForm {
       BukkitHuskHomes bukkitHuskHomes = (BukkitHuskHomes) Bukkit.getPluginManager()
           .getPlugin("Huskhomes");
       for (OnlineUser onlineUser : bukkitHuskHomes.getOnlineUsers()) {
-        onlinePlayerNameList.add(onlineUser.getUsername());
+        if (onlineUser != HuskHomesAPI.getInstance().adaptUser(player)) {
+          onlinePlayerNameList.add(onlineUser.getUsername());
+        }
       }
     } else {
       for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
