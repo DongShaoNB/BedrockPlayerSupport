@@ -2,6 +2,7 @@ package cn.dsnbo.bedrockplayersupport.listener.login;
 
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import cn.dsnbo.bedrockplayersupport.config.Config;
+import cn.dsnbo.bedrockplayersupport.config.Language;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -19,13 +20,15 @@ public class OtherAuthListener implements Listener {
   public void onPlayerJoinEvent(PlayerJoinEvent event) {
     Player player = event.getPlayer();
     Config config = BedrockPlayerSupport.getMainConfigManager().getConfigData();
+    Language language = BedrockPlayerSupport.getLanguageConfigManager().getConfigData();
     if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
       if (config.enableLogin()) {
         Bukkit.dispatchCommand(
             Bukkit.getServer().getConsoleSender(),
             config.forceLoginCommand()
                 .replace("%player%", player.getName()));
-        player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.loginMessage()));
+        player.sendMessage(
+            ChatColor.translateAlternateColorCodes('&', language.loginSuccessfully()));
       }
     }
   }

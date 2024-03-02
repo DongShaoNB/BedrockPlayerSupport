@@ -196,4 +196,25 @@ public interface Language {
   @Order(101)
   String noOtherOnlinePlayer();
 
+  @ConfKey("message.register_successfully")
+  @ConfComments({
+      "自动注册成功后发送给玩家的消息",
+      "可用变量: %password% 密码",
+      "Text of successful automatic register after send to player",
+      "Available variable: %password% password"
+  })
+  @DefaultString("&a检测到你是基岩版玩家, 已自动注册! 密码为 %password%, 使用 /changepassword 命令修改密码")
+  @Order(102)
+  String registerSuccessfully();
+
+  @ConfKey("message.login_successfully")
+  @ConfComments({
+      "自动登录成功后发送给玩家的消息",
+      "Text of successful automatic login after send to player",
+  })
+  @DefaultString("&a检测到你是基岩版玩家, 已自动登录!")
+  @Order(103)
+  String loginSuccessfully();
+
+
 }

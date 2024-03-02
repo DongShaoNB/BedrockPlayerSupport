@@ -138,17 +138,6 @@ public interface Config {
   @AnnotationBasedSorter.Order(100)
   int passwordLength();
 
-  @ConfKey("auth.register.message")
-  @ConfComments({
-      "注册成功后发送给玩家的信息",
-      "可用变量: %password% 随机的密码",
-      "Text sent to players after successful registration",
-      "Available variable: %password% random password"
-  })
-  @ConfDefault.DefaultString("&a检测到你是基岩版玩家, 已自动注册! 密码为 %password%, 使用 /changepassword 命令修改密码")
-  @AnnotationBasedSorter.Order(110)
-  String registerMessage();
-
   @ConfKey("auth.login.enable")
   @ConfComments({
       "启用基岩版玩家登录功能",
@@ -172,14 +161,5 @@ public interface Config {
   @ConfDefault.DefaultString("forcelogin %playerName%")
   @AnnotationBasedSorter.Order(130)
   String forceLoginCommand();
-
-  @ConfKey("auth.login.message")
-  @ConfComments({
-      "登录成功后发送给玩家的信息",
-      "Text sent to player after successful login"
-  })
-  @ConfDefault.DefaultString("&a检测到你是基岩版玩家, 已自动登录!")
-  @AnnotationBasedSorter.Order(140)
-  String loginMessage();
 
 }

@@ -2,6 +2,7 @@ package cn.dsnbo.bedrockplayersupport.listener.login;
 
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import cn.dsnbo.bedrockplayersupport.config.Config;
+import cn.dsnbo.bedrockplayersupport.config.Language;
 import cn.dsnbo.bedrockplayersupport.util.StringUtil;
 import fr.xephi.authme.api.v3.AuthMeApi;
 import org.bukkit.ChatColor;
@@ -24,19 +25,22 @@ public class AuthMeListener implements Listener {
     UUID playerUuid = player.getUniqueId();
     String playerName = player.getName();
     Config config = BedrockPlayerSupport.getMainConfigManager().getConfigData();
+    Language language = BedrockPlayerSupport.getLanguageConfigManager().getConfigData();
     if (FloodgateApi.getInstance().isFloodgatePlayer(playerUuid)) {
       if (!AuthMeApi.getInstance().isAuthenticated(player)) {
         if (AuthMeApi.getInstance().isRegistered(playerName)) {
           if (config.enableLogin()) {
             AuthMeApi.getInstance().forceLogin(player);
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.loginMessage()));
+            player.sendMessage(
+                ChatColor.translateAlternateColorCodes('&', language.loginSuccessfully()));
           }
         } else {
           if (config.enableRegister()) {
             String password = StringUtil.randomString(config.passwordLength());
             AuthMeApi.getInstance().registerPlayer(playerName, password);
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.registerMessage()
-                .replace("%password%", password)));
+            player.sendMessage(
+                ChatColor.translateAlternateColorCodes('&', language.registerSuccessfully()
+                    .replace("%password%", password)));
           }
         }
       }

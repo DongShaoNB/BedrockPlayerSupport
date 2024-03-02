@@ -2,6 +2,7 @@ package cn.dsnbo.bedrockplayersupport.listener.login;
 
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import cn.dsnbo.bedrockplayersupport.config.Config;
+import cn.dsnbo.bedrockplayersupport.config.Language;
 import cn.dsnbo.bedrockplayersupport.util.StringUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -22,20 +23,23 @@ public class NexAuthListener implements Listener {
   public void onPlayerJoinEvent(PlayerJoinEvent event) {
     Player player = event.getPlayer();
     Config config = BedrockPlayerSupport.getMainConfigManager().getConfigData();
+    Language language = BedrockPlayerSupport.getLanguageConfigManager().getConfigData();
     if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
       if (AuthPlayer.getOrCreate(player).isRegistered()) {
         if (AuthPlayer.getOrCreate(player).getState() == PlayerState.IN_LOGIN) {
           if (config.enableLogin()) {
             NexAuthAPI.getAuthManager().login(player);
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.loginMessage()));
+            player.sendMessage(
+                ChatColor.translateAlternateColorCodes('&', language.loginSuccessfully()));
           }
         }
       } else {
         if (config.enableRegister()) {
           String password = StringUtil.randomString(config.passwordLength());
           NexAuthAPI.getAuthManager().register(player, password);
-          player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.registerMessage()
-              .replace("%password%", password)));
+          player.sendMessage(
+              ChatColor.translateAlternateColorCodes('&', language.registerSuccessfully()
+                  .replace("%password%", password)));
         }
       }
     }

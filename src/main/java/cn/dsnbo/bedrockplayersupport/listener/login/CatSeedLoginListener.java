@@ -8,6 +8,7 @@ import cc.baka9.catseedlogin.bukkit.object.LoginPlayer;
 import cc.baka9.catseedlogin.bukkit.object.LoginPlayerHelper;
 import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import cc.baka9.catseedlogin.bukkit.CatSeedLoginAPI;
+import cn.dsnbo.bedrockplayersupport.config.Language;
 import cn.dsnbo.bedrockplayersupport.util.StringUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -30,6 +31,7 @@ public class CatSeedLoginListener implements Listener {
     String playerName = player.getName();
     cn.dsnbo.bedrockplayersupport.config.Config config = BedrockPlayerSupport.getMainConfigManager()
         .getConfigData();
+    Language language = BedrockPlayerSupport.getLanguageConfigManager().getConfigData();
     if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
       if (CatSeedLoginAPI.isRegister(playerName)) {
         if (!CatSeedLoginAPI.isLogin(playerName)) {
@@ -39,7 +41,8 @@ public class CatSeedLoginListener implements Listener {
             if (Config.Settings.AfterLoginBack && Config.Settings.CanTpSpawnLocation) {
               Config.getOfflineLocation(player).ifPresent(player::teleport);
             }
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.loginMessage()));
+            player.sendMessage(
+                ChatColor.translateAlternateColorCodes('&', language.loginSuccessfully()));
           }
         }
       } else {
@@ -67,7 +70,7 @@ public class CatSeedLoginListener implements Listener {
               player.updateInventory();
               LoginPlayerHelper.recordCurrentIP(player, lp);
               player.sendMessage(
-                  ChatColor.translateAlternateColorCodes('&', config.registerMessage()
+                  ChatColor.translateAlternateColorCodes('&', language.registerSuccessfully()
                       .replace("%password%", password)));
             }
           } catch (Exception e) {
