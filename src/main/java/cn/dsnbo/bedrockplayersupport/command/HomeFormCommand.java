@@ -23,6 +23,7 @@ public class HomeFormCommand implements CommandExecutor {
           case CMI -> CMIForm.sendHomeForm(player);
           case EssentialsX -> EssXForm.sendHomeForm(player);
           case HuskHomes -> HuskHomesForm.sendHomeForm(player);
+          default -> {}
         }
       } else {
         player.sendMessage(BedrockPlayerSupport.getLanguageConfigManager().getConfigData().notBedrockPlayer());

@@ -12,17 +12,17 @@ import org.geysermc.cumulus.form.SimpleForm;
  */
 public class EssXForm {
 
-    public static void sendHomeForm(Player player) {
-        User user = new User(player, (Essentials) Bukkit.getPluginManager().getPlugin("Essentials"));
-        SimpleForm.Builder form = SimpleForm.builder()
-                .title(BedrockPlayerSupport.getLanguageConfigManager().getConfigData().homeFormTitle())
-                .validResultHandler(simpleFormResponse -> {
-                    player.chat("/home " + simpleFormResponse.clickedButton().text());
-                });
-        for (String homeName: user.getHomes()) {
-            form.button(homeName);
-        }
-        BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), form);
+  public static void sendHomeForm(Player player) {
+    User user = new User(player, (Essentials) Bukkit.getPluginManager().getPlugin("Essentials"));
+    SimpleForm.Builder form = SimpleForm.builder()
+        .title(BedrockPlayerSupport.getLanguageConfigManager().getConfigData().homeFormTitle())
+        .validResultHandler(simpleFormResponse -> {
+          player.chat("/home " + simpleFormResponse.clickedButton().text());
+        });
+    for (String homeName : user.getHomes()) {
+      form.button(homeName);
     }
+    BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), form);
+  }
 
 }

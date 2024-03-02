@@ -15,20 +15,20 @@ import java.util.concurrent.CompletableFuture;
  */
 public class HuskHomesForm {
 
-    public static void sendHomeForm(Player player) {
-        OnlineUser onlineUser = HuskHomesAPI.getInstance().adaptUser(player);
-        CompletableFuture<List<Home>> huskHomes = HuskHomesAPI.getInstance().getUserHomes(onlineUser);
-        SimpleForm.Builder form = SimpleForm.builder()
-                .title(BedrockPlayerSupport.getLanguageConfigManager().getConfigData().homeFormTitle())
-                .validResultHandler(simpleFormResponse -> {
-                    player.chat("/home " + simpleFormResponse.clickedButton().text());
-                });
-        huskHomes.thenAccept(homeList -> {
-            for (Home home: homeList) {
-                form.button(home.getName());
-            }
-            BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), form);
+  public static void sendHomeForm(Player player) {
+    OnlineUser onlineUser = HuskHomesAPI.getInstance().adaptUser(player);
+    CompletableFuture<List<Home>> huskHomes = HuskHomesAPI.getInstance().getUserHomes(onlineUser);
+    SimpleForm.Builder form = SimpleForm.builder()
+        .title(BedrockPlayerSupport.getLanguageConfigManager().getConfigData().homeFormTitle())
+        .validResultHandler(simpleFormResponse -> {
+          player.chat("/home " + simpleFormResponse.clickedButton().text());
         });
-    }
+    huskHomes.thenAccept(homeList -> {
+      for (Home home : homeList) {
+        form.button(home.getName());
+      }
+      BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), form);
+    });
+  }
 
 }
