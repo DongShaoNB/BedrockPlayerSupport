@@ -13,11 +13,12 @@ import java.util.function.Consumer;
  */
 public class Update {
 
-    private static final int SPIGOT_RESOURCE_ID = 1145141919;
-	
-    public static void checkUpdate(Consumer<String> consumer) {
-        BedrockPlayerSupport.getScheduler().runTaskAsynchronously(() -> getVersion(consumer));
-    }
+  private static final int SPIGOT_RESOURCE_ID = 1145141919;
+
+  public static void checkUpdate(Consumer<String> consumer) {
+    // Wait for update to SpigotMC
+    // BedrockPlayerSupport.getScheduler().runTaskAsynchronously(() -> getVersion(consumer));
+  }
 
   public static void getVersion(final Consumer<String> consumer) {
     try (InputStream is = new URL(
@@ -27,8 +28,13 @@ public class Update {
         consumer.accept(scann.next());
       }
     } catch (IOException e) {
-      BedrockPlayerSupport.getInstance().getLogger()
-          .info("Unable to check for updates: " + e.getMessage());
+      if (BedrockPlayerSupport.getSystemLanguage().equalsIgnoreCase("zh")) {
+        BedrockPlayerSupport.getInstance().getLogger()
+            .info("无法检查更新: " + e.getMessage());
+      } else {
+        BedrockPlayerSupport.getInstance().getLogger()
+            .info("Unable to check for updates: " + e.getMessage());
+      }
     }
   }
 }
