@@ -24,7 +24,7 @@ form:
       #玩家请求传送到你的表单的描述文本
       #可用变量: %requestorName% 请求者名字
       #Description text of the player requests to teleport to you form
-      #Available variable: %requestorName% requestor name
+      #Available variable: %requesterName% requestor name
       text: '玩家 %requestorName% 请求传送到你的位置'
     tpahere:
       #玩家请求你传送到他的表单的标题
@@ -33,7 +33,7 @@ form:
       #玩家请求你传送到他的表单的描述文本
       #可用变量: %requestorName% 请求者名字
       #Description text of the player requests you to teleport to him form
-      #Available variable: %requestorName% requestor name
+      #Available variable: %requesterName% requestor name
       text: '玩家 %requestorName% 请求你传送到他的位置'
     #传送表单的 '接受' 按钮文本
     #Text of the 'Accept' button in teleport form
@@ -75,4 +75,12 @@ message:
   #玩家使用表单命令但没有其他在线玩家的错误提示
   #Error of player use form command but no other online player
   no_other_online_player: '§c当前没有其他玩家在线!'
+  #自动注册成功后发送给玩家的消息
+  #可用变量: %password% 密码
+  #Text of successful automatic register after send to player
+  #Available variable: %password% password
+  register_successfully: '&a检测到你是基岩版玩家, 已自动注册! 密码为 %password%, 使用 /changepassword 命令修改密码'
+  #自动登录成功后发送给玩家的消息
+  #Text of successful automatic login after send to player
+  login_successfully: '&a检测到你是基岩版玩家, 已自动登录!'
 
