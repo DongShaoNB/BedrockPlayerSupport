@@ -56,7 +56,7 @@ public interface Language {
       "玩家请求传送到你的表单的标题",
       "Title of the player requests to teleport to you form"
   })
-  @DefaultString("&6&l玩家请求传送到你的位置 <white>(TPA)")
+  @DefaultString("&6&l玩家请求传送到你的位置 &f(TPA)")
   @Order(20)
   String receivedTpaFormTitle();
 
@@ -76,7 +76,7 @@ public interface Language {
       "玩家请求你传送到他的表单的标题",
       "Title of the player requests you to teleport to him form"
   })
-  @DefaultString("&6&l玩家请求你传送到他的位置 <white>(TPAHERE)")
+  @DefaultString("&6&l玩家请求你传送到他的位置 &f(TPAHERE)")
   @Order(22)
   String receivedTpaHereFormTitle();
 
@@ -96,7 +96,7 @@ public interface Language {
       "传送表单的 '接受' 按钮文本",
       "Text of the 'Accept' button in teleport form"
   })
-  @DefaultString("&a>同意")
+  @DefaultString("&a同意")
   @Order(24)
   String receivedTpFormAcceptButton();
 
