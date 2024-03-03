@@ -4,6 +4,7 @@ import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import net.william278.huskhomes.api.HuskHomesAPI;
 import net.william278.huskhomes.position.Home;
 import net.william278.huskhomes.user.OnlineUser;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.geysermc.cumulus.form.SimpleForm;
 
@@ -19,7 +20,8 @@ public class HuskHomesForm {
     OnlineUser onlineUser = HuskHomesAPI.getInstance().adaptUser(player);
     CompletableFuture<List<Home>> huskHomes = HuskHomesAPI.getInstance().getUserHomes(onlineUser);
     SimpleForm.Builder form = SimpleForm.builder()
-        .title(BedrockPlayerSupport.getLanguageConfigManager().getConfigData().homeFormTitle())
+        .title(ChatColor.translateAlternateColorCodes(
+            '&', BedrockPlayerSupport.getLanguageConfigManager().getConfigData().homeFormTitle()))
         .validResultHandler(simpleFormResponse -> {
           player.chat("/home " + simpleFormResponse.clickedButton().text());
         });

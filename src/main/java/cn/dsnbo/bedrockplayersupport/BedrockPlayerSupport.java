@@ -21,6 +21,7 @@ import java.util.Locale;
 import com.github.Anon8281.universalScheduler.UniversalScheduler;
 import com.github.Anon8281.universalScheduler.scheduling.schedulers.TaskScheduler;
 import lombok.Getter;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.geysermc.floodgate.api.FloodgateApi;
@@ -46,6 +47,8 @@ public final class BedrockPlayerSupport extends JavaPlugin {
   private static String systemLanguage;
   @Getter
   private static TaskScheduler scheduler;
+  @Getter
+  private static MiniMessage miniMessage;
   private boolean isCmiEnabled;
   private boolean isEssxEnabled;
   private boolean isHuskHomesEnabled;
@@ -55,13 +58,13 @@ public final class BedrockPlayerSupport extends JavaPlugin {
   private boolean isFloodgateEnabled;
 
 
-
   @Override
   public void onEnable() {
     instance = this;
     scheduler = UniversalScheduler.getScheduler(this);
     floodgateApi = FloodgateApi.getInstance();
     systemLanguage = Locale.getDefault().getLanguage();
+    miniMessage = MiniMessage.miniMessage();
     loadConfig();
     loadDependLoadStatus();
     printSupportPluginLoadStatus();
@@ -94,8 +97,11 @@ public final class BedrockPlayerSupport extends JavaPlugin {
     mainConfigManager = ConfigManager.create(getDataFolder().toPath(), "config.yml", Config.class);
     mainConfigManager.reloadConfig();
     Config config = getMainConfigManager().getConfigData();
-    language = config.language();
-    saveResource("lang/" + language + ".yml", false);
+    language = getMainConfigManager().getConfigData().language();
+    ConfigManager.create(langDirectory.toPath(), "default.yml", Language.class).reloadConfig();
+    if (!new File(langDirectory, langDirectory + ".yml").exists()) {
+      saveResource("lang/" + language + ".yml", false);
+    }
     languageConfigManager = ConfigManager.create(langDirectory.toPath(), language + ".yml",
         Language.class);
     languageConfigManager.reloadConfig();
@@ -126,7 +132,8 @@ public final class BedrockPlayerSupport extends JavaPlugin {
             getLogger().info("当前版本: " + currentVersion + " | 最新版本: " + latestVersion);
           } else {
             getLogger().info("There is a new version that can be updated!");
-          getLogger().info("Current version: " + currentVersion + " | Latest version: " + latestVersion);
+            getLogger().info(
+                "Current version: " + currentVersion + " | Latest version: " + latestVersion);
           }
         }
       });

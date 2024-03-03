@@ -32,15 +32,15 @@ public class AuthMeListener implements Listener {
           if (config.enableLogin()) {
             AuthMeApi.getInstance().forceLogin(player);
             player.sendMessage(
-                ChatColor.translateAlternateColorCodes('&', language.loginSuccessfully()));
+                BedrockPlayerSupport.getMiniMessage().deserialize(language.loginSuccessfully()));
           }
         } else {
           if (config.enableRegister()) {
             String password = StringUtil.randomString(config.passwordLength());
             AuthMeApi.getInstance().registerPlayer(playerName, password);
             player.sendMessage(
-                ChatColor.translateAlternateColorCodes('&', language.registerSuccessfully()
-                    .replace("%password%", password)));
+                BedrockPlayerSupport.getMiniMessage().deserialize(language.registerSuccessfully()
+                    .replaceAll("%password%", password)));
           }
         }
       }

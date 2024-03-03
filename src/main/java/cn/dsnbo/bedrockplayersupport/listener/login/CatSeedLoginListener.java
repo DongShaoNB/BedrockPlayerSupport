@@ -42,7 +42,7 @@ public class CatSeedLoginListener implements Listener {
               Config.getOfflineLocation(player).ifPresent(player::teleport);
             }
             player.sendMessage(
-                ChatColor.translateAlternateColorCodes('&', language.loginSuccessfully()));
+                BedrockPlayerSupport.getMiniMessage().deserialize(language.loginSuccessfully()));
           }
         }
       } else {
@@ -70,12 +70,11 @@ public class CatSeedLoginListener implements Listener {
               player.updateInventory();
               LoginPlayerHelper.recordCurrentIP(player, lp);
               player.sendMessage(
-                  ChatColor.translateAlternateColorCodes('&', language.registerSuccessfully()
-                      .replace("%password%", password)));
+                  BedrockPlayerSupport.getMiniMessage().deserialize(language.registerSuccessfully()
+                      .replaceAll("%password%", password)));
             }
           } catch (Exception e) {
             e.printStackTrace();
-            player.sendMessage("§c服务器内部错误!");
           }
         }
       }

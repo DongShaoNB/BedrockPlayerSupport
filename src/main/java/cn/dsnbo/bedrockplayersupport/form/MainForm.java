@@ -9,6 +9,7 @@ import net.william278.huskhomes.BukkitHuskHomes;
 import net.william278.huskhomes.api.HuskHomesAPI;
 import net.william278.huskhomes.user.OnlineUser;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.geysermc.cumulus.form.CustomForm;
 import org.geysermc.cumulus.form.ModalForm;
@@ -56,9 +57,12 @@ public class MainForm {
       }
     }
     CustomForm.Builder form = CustomForm.builder()
-        .title(language.teleportFormTitle())
-        .dropdown(language.teleportFormChooseTypeText(), List.of("TPA", "TPAHERE"))
-        .dropdown(language.teleportFormChoosePlayerText(), onlinePlayerNameList)
+        .title(ChatColor.translateAlternateColorCodes(
+            '&', language.teleportFormTitle()))
+        .dropdown(ChatColor.translateAlternateColorCodes(
+            '&', language.teleportFormChooseTypeText()), List.of("TPA", "TPAHERE"))
+        .dropdown(ChatColor.translateAlternateColorCodes(
+            '&', language.teleportFormChoosePlayerText()), onlinePlayerNameList)
         .validResultHandler((customForm, customFormResponse) -> {
           if (customFormResponse.asDropdown(0) == 0) {
             player.chat("/tpa " + onlinePlayerNameList.get(customFormResponse.asDropdown(1)));
@@ -75,13 +79,15 @@ public class MainForm {
     UUID receiverUuid = receiver.getUniqueId();
     if (tpType == TeleportType.Tpa) {
       form = ModalForm.builder()
-          .title(language.receivedTpaFormTitle())
+          .title(ChatColor.translateAlternateColorCodes('&', language.receivedTpaFormTitle()))
           .content(
-              language.receivedTpaFormText()
-                  .replace("%requesterName%", requestorName)
+              ChatColor.translateAlternateColorCodes('&', language.receivedTpaFormText()
+                  .replaceAll("%requesterName%", requestorName))
           )
-          .button1(language.receivedTpFormAcceptButton())
-          .button2(language.receivedTpFormDenyButton())
+          .button1(ChatColor.translateAlternateColorCodes(
+              '&', language.receivedTpFormAcceptButton()))
+          .button2(ChatColor.translateAlternateColorCodes(
+              '&', language.receivedTpFormDenyButton()))
           .validResultHandler((modalForm, modalFormResponse) -> {
             switch (modalFormResponse.clickedButtonId()) {
               case 0 -> receiver.chat("/tpaccept");
@@ -92,13 +98,15 @@ public class MainForm {
           });
     } else if (tpType == TeleportType.TpaHere) {
       form = ModalForm.builder()
-          .title(language.receivedTpaHereFormTitle())
+          .title(ChatColor.translateAlternateColorCodes('&', language.receivedTpaHereFormTitle()))
           .content(
-              language.receivedTpaHereFormText()
-                  .replace("%requesterName%", requestorName)
+              ChatColor.translateAlternateColorCodes('&', language.receivedTpaHereFormText()
+                  .replaceAll("%requesterName%", requestorName))
           )
-          .button1(language.receivedTpFormAcceptButton())
-          .button2(language.receivedTpFormDenyButton())
+          .button1(ChatColor.translateAlternateColorCodes(
+              '&', language.receivedTpFormAcceptButton()))
+          .button2(ChatColor.translateAlternateColorCodes(
+              '&', language.receivedTpFormDenyButton()))
           .validResultHandler((modalForm, modalFormResponse) -> {
             switch (modalFormResponse.clickedButtonId()) {
               case 0 -> receiver.chat("/tpaccept");
@@ -119,9 +127,11 @@ public class MainForm {
       }
     }
     CustomForm.Builder form = CustomForm.builder()
-        .title(language.msgFormTitle())
-        .dropdown(language.msgFormChoosePlayerText(), onlinePlayerName)
-        .input(language.msgFormInputMessageText())
+        .title(ChatColor.translateAlternateColorCodes('&', language.msgFormTitle()))
+        .dropdown(ChatColor.translateAlternateColorCodes('&', language.msgFormChoosePlayerText()),
+            onlinePlayerName)
+        .input(ChatColor.translateAlternateColorCodes(
+            '&', language.msgFormInputMessageText()))
         .validResultHandler(((response, customFormResponse) -> {
           player.chat("/msg " + onlinePlayerName.get(customFormResponse.asDropdown(0)) + " "
               + customFormResponse.asInput(1));
@@ -131,12 +141,10 @@ public class MainForm {
 
   public void openBedrockBackForm(Player player) {
     ModalForm.Builder form = ModalForm.builder()
-        .title(language.backFormTitle())
-        .content(language.backFormText())
-        .button1(
-            BedrockPlayerSupport.getLanguageConfigManager().getConfigData().formTrueButtonText())
-        .button2(
-            BedrockPlayerSupport.getLanguageConfigManager().getConfigData().formFalseButtonText())
+        .title(ChatColor.translateAlternateColorCodes('&', language.backFormTitle()))
+        .content(ChatColor.translateAlternateColorCodes('&', language.backFormText()))
+        .button1(ChatColor.translateAlternateColorCodes('&', language.backFormYesButton()))
+        .button2(ChatColor.translateAlternateColorCodes('&', language.backFormNoButton()))
         .validResultHandler(((modalForm, modalFormResponse) -> {
           if (modalFormResponse.clickedButtonId() == 0) {
             player.chat("/back");
