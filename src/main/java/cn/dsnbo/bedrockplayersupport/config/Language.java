@@ -206,7 +206,7 @@ public interface Language {
       "Text of successful automatic register after send to player",
       "Available variable: %password% password"
   })
-  @DefaultString("<green>检测到你是基岩版玩家, 已自动注册! 密码为 %password%, 使用 <click:suggest_command:/changepassword>/changepassword</click> 命令修改密码")
+  @DefaultString("<green>检测到你是基岩版玩家, 已自动注册! 密码为 %password%, 使用 /changepassword 命令修改密码")
   @Order(102)
   String registerSuccessfully();
 
