@@ -62,10 +62,8 @@ public class CatSeedLoginListener implements Listener {
               lp.crypt();
               CatSeedLogin.sql.add(lp);
               LoginPlayerHelper.add(lp);
-              Bukkit.getScheduler().runTask(CatSeedLogin.instance, () -> {
-                CatSeedPlayerRegisterEvent event1 = new CatSeedPlayerRegisterEvent(player);
-                Bukkit.getServer().getPluginManager().callEvent(event1);
-              });
+              CatSeedPlayerRegisterEvent event1 = new CatSeedPlayerRegisterEvent(player);
+              Bukkit.getServer().getPluginManager().callEvent(event1);
               player.sendMessage(Config.Language.REGISTER_SUCCESS);
               player.updateInventory();
               LoginPlayerHelper.recordCurrentIP(player, lp);
