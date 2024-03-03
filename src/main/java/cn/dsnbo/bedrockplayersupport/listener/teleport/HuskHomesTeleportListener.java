@@ -17,7 +17,7 @@ public class HuskHomesTeleportListener implements Listener {
   @EventHandler
   public void onReceiveTeleportRequestEvent(ReceiveTeleportRequestEvent event) {
     TeleportRequest.Type requestType = event.getRequest().getType();
-    Player requester = Bukkit.getPlayer(event.getRequest().getRequesterName());
+    Player requester = Bukkit.getPlayerExact(event.getRequest().getRequesterName());
     Player receiver = Bukkit.getPlayer(event.getRecipient().getUuid());
     if (requestType == TeleportRequest.Type.TPA) {
       MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.Tpa, requester, receiver);
