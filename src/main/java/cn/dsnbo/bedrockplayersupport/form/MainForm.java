@@ -138,10 +138,8 @@ public class MainForm {
         .button2(
             BedrockPlayerSupport.getLanguageConfigManager().getConfigData().formFalseButtonText())
         .validResultHandler(((modalForm, modalFormResponse) -> {
-          switch (modalFormResponse.clickedButtonId()) {
-            case 0 -> player.chat("/back");
-            default -> {
-            }
+          if (modalFormResponse.clickedButtonId() == 0) {
+            player.chat("/back");
           }
         }));
     BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), form);
