@@ -30,10 +30,10 @@ public class Update {
     } catch (IOException e) {
       if (BedrockPlayerSupport.getSystemLanguage().equalsIgnoreCase("zh")) {
         BedrockPlayerSupport.getInstance().getLogger()
-            .info("无法检查更新: " + e.getMessage());
+            .warning("无法检查更新: " + e.getMessage());
       } else {
         BedrockPlayerSupport.getInstance().getLogger()
-            .info("Unable to check for updates: " + e.getMessage());
+            .warning("Unable to check for updates: " + e.getMessage());
       }
     }
   }
