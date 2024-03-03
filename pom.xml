@@ -16,7 +16,7 @@
     <java.version>17</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  <url>www.dsnbo.cn</url>
+  <url>dsnbo.cc</url>
 
   <build>
     <plugins>
@@ -83,45 +83,48 @@
   </build>
 
   <repositories>
-    <repository>
-      <id>spigotmc-repo</id>
-      <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-    </repository>
-    <!-- floodgate -->
-    <repository>
-      <id>opencollab-snapshot</id>
-      <url>https://repo.opencollab.dev/main/</url>
-    </repository>
-    <!-- Maven Central -->
-    <repository>
-      <id>sonatype</id>
-      <url>https://oss.sonatype.org/content/groups/public/</url>
-    </repository>
-    <!-- EssentialsX -->
-    <repository>
-      <id>essentials-releases</id>
-      <url>https://repo.essentialsx.net/releases/</url>
-    </repository>
     <!-- PaperMC -->
     <repository>
       <id>paper-repo</id>
       <url>https://papermc.io/repo/repository/maven-public/</url>
     </repository>
+
+    <!-- floodgate -->
+    <repository>
+      <id>opencollab-snapshot</id>
+      <url>https://repo.opencollab.dev/main/</url>
+    </repository>
+
+    <!-- Maven Central -->
+    <repository>
+      <id>sonatype</id>
+      <url>https://oss.sonatype.org/content/groups/public/</url>
+    </repository>
+
+    <!-- EssentialsX -->
+    <repository>
+      <id>essentials-releases</id>
+      <url>https://repo.essentialsx.net/releases/</url>
+    </repository>
+
     <!-- AuthMe -->
     <repository>
       <id>codemc-repo</id>
       <url>https://repo.codemc.org/repository/maven-public/</url>
     </repository>
+
     <!-- HuskHomes -->
     <repository>
       <id>william278.net</id>
       <url>https://repo.william278.net/releases</url>
     </repository>
+
     <!-- CatSeedLogin -->
     <repository>
       <id>jitpack-repo</id>
       <url>https://www.jitpack.io/</url>
     </repository>
+
     <!-- FoliaLib -->
     <repository>
       <id>devmart-other</id>
@@ -130,11 +133,11 @@
   </repositories>
 
   <dependencies>
-    <!-- Spigot API -->
+    <!-- Paper API -->
     <dependency>
-      <groupId>org.spigotmc</groupId>
-      <artifactId>spigot-api</artifactId>
-      <version>1.13-R0.1-SNAPSHOT</version>
+      <groupId>io.papermc.paper</groupId>
+      <artifactId>paper-api</artifactId>
+      <version>1.18.2-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
 
