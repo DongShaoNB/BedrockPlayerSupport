@@ -5,6 +5,7 @@ import com.Zrips.CMI.CMI;
 import com.Zrips.CMI.Containers.CMIUser;
 import com.Zrips.CMI.Modules.Homes.CmiHome;
 import com.Zrips.CMI.Modules.tp.Teleportations.TeleportType;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.geysermc.cumulus.form.SimpleForm;
 
@@ -19,7 +20,8 @@ public class CMIForm {
     CMIUser cmiUser = CMI.getInstance().getPlayerManager().getUser(player);
     LinkedHashMap<String, CmiHome> playerHomesList = cmiUser.getHomes();
     SimpleForm.Builder form = SimpleForm.builder()
-        .title(BedrockPlayerSupport.getLanguageConfigManager().getConfigData().homeFormTitle())
+        .title(ChatColor.translateAlternateColorCodes(
+            '&', BedrockPlayerSupport.getLanguageConfigManager().getConfigData().homeFormTitle()))
         .validResultHandler(simpleFormResponse -> {
           player.chat("/home " + simpleFormResponse.clickedButton().text());
         });

@@ -30,7 +30,7 @@ public class NexAuthListener implements Listener {
           if (config.enableLogin()) {
             NexAuthAPI.getAuthManager().login(player);
             player.sendMessage(
-                ChatColor.translateAlternateColorCodes('&', language.loginSuccessfully()));
+                BedrockPlayerSupport.getMiniMessage().deserialize(language.loginSuccessfully()));
           }
         }
       } else {
@@ -38,8 +38,8 @@ public class NexAuthListener implements Listener {
           String password = StringUtil.randomString(config.passwordLength());
           NexAuthAPI.getAuthManager().register(player, password);
           player.sendMessage(
-              ChatColor.translateAlternateColorCodes('&', language.registerSuccessfully()
-                  .replace("%password%", password)));
+                BedrockPlayerSupport.getMiniMessage().deserialize(language.registerSuccessfully()
+                    .replaceAll("%password%", password)));
         }
       }
     }

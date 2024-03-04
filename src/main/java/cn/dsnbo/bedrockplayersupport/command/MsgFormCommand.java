@@ -21,12 +21,13 @@ public class MsgFormCommand implements CommandExecutor {
         if (Bukkit.getOnlinePlayers().size() > 1) {
           MainForm.getInstance().openBedrockMsgForm(player);
         } else {
-          player.sendMessage(BedrockPlayerSupport.getLanguageConfigManager().getConfigData()
-              .noOtherOnlinePlayer());
+          player.sendMessage(BedrockPlayerSupport.getMiniMessage()
+              .deserialize(BedrockPlayerSupport.getLanguageConfigManager().getConfigData()
+                  .noOtherOnlinePlayer()));
         }
       } else {
-        player.sendMessage(
-            BedrockPlayerSupport.getLanguageConfigManager().getConfigData().notBedrockPlayer());
+        player.sendMessage(BedrockPlayerSupport.getMiniMessage().deserialize(
+            BedrockPlayerSupport.getLanguageConfigManager().getConfigData().notBedrockPlayer()));
       }
     }
     return false;

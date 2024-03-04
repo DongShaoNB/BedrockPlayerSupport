@@ -23,12 +23,10 @@ public class OtherAuthListener implements Listener {
     Language language = BedrockPlayerSupport.getLanguageConfigManager().getConfigData();
     if (FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId())) {
       if (config.enableLogin()) {
-        Bukkit.dispatchCommand(
-            Bukkit.getServer().getConsoleSender(),
-            config.forceLoginCommand()
-                .replace("%player%", player.getName()));
+        Bukkit.dispatchCommand(Bukkit.getServer().getConsoleSender(),
+            config.forceLoginCommand().replaceAll("%player%", player.getName()));
         player.sendMessage(
-            ChatColor.translateAlternateColorCodes('&', language.loginSuccessfully()));
+            BedrockPlayerSupport.getMiniMessage().deserialize(language.loginSuccessfully()));
       }
     }
   }
