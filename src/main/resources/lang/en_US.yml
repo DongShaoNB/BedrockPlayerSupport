@@ -2,77 +2,88 @@
 #BedrockPlayerSupport Language File | Made by DongShaoNB
 #GitHub: https://github.com/DongShaoNB/BedrockPlayerSupport
 #Crowdin: https://crowdin.com/project/mcbps
+#MiniMessage: https://docs.advntr.dev/minimessage/format.html
 #-----------------------------------------------------------
 #语言文件默认简体中文。如果需要其他语言，请访问 Crowdin
+#message部分使用 MiniMessage 格式，请查看 MiniMessage 格式文档修改语言
 #The language file default to Chinese Simplified. If you need another language, please visit Crowdin
+#The message section use MiniMessage format. Please refer to the MiniMessage format document to modify the language
 form:
   teleport:
     #传送表单的标题
     #Title of the teleport form
-    title: '§6§lTeleport form'
+    title: '&6&lTeleport form'
     #传送表单的选择传送类型提示语
     #Text of choose teleport type in teleport form
-    choose_type: '§a请选择传送类型'
+    choose_type: '&aPlease select a teleport type'
     #传送表单的选择传送玩家提示语
     #Text of choose teleport player in teleport form
-    choose_player: '§a请选择要传送的玩家'
+    choose_player: '&aPlease select a player to teleport'
   received_teleport:
     tpa:
       #玩家请求传送到你的表单的标题
       #Title of the player requests to teleport to you form
-      title: '§6§l玩家请求传送到你的位置 §f(TPA)'
+      title: '&6&lPlayer request to teleport to your location &f(TPA)'
       #玩家请求传送到你的表单的描述文本
       #可用变量: %requestorName% 请求者名字
       #Description text of the player requests to teleport to you form
-      #Available variable: %requestorName% requestor name
-      text: '玩家 %requestorName% 请求传送到你的位置'
+      #Available variable: %requesterName% requestor name
+      text: 'Player %requesterName% request to teleport to your location'
     tpahere:
       #玩家请求你传送到他的表单的标题
       #Title of the player requests you to teleport to him form
-      title: '§6§l玩家请求你传送到他的位置 §f(TPAHERE)'
+      title: '&6&lPlayer request you to teleport to his location &f(TPAHERE)'
       #玩家请求你传送到他的表单的描述文本
       #可用变量: %requestorName% 请求者名字
       #Description text of the player requests you to teleport to him form
-      #Available variable: %requestorName% requestor name
-      text: '玩家 %requestorName% 请求你传送到他的位置'
+      #Available variable: %requesterName% requestor name
+      text: 'Player %requesterName% request you to teleport to his location'
     #传送表单的 '接受' 按钮文本
     #Text of the 'Accept' button in teleport form
-    accept: '§a同意'
+    accept: '&aAccept'
     #传送表单的 '拒绝' 按钮文本
     #Text of the 'Deny' button in teleport form
-    deny: '§c拒绝'
+    deny: '&cDeny'
   msg:
     #消息表单的标题
     #Title of the msg form
-    title: '§6§l消息表单'
+    title: '&6&lMsg form'
     #消息表单的选择接收消息玩家提示语
     #Text of choose receive message player in msg form
-    choose_player: '§a请选择接收消息的玩家'
+    choose_player: '&aPlease select a player to receive message'
     #消息表单的输入消息提示语
     #Text of input message in msg form
-    input_message: '§a请填写要发送的消息'
+    input_message: '&aPlease fill in the message to send'
   home:
     #家表单的标题
     #Title of the home form
-    title: '§6§l我的家'
+    title: '&6&lMy home'
   back:
     #返回死亡点表单的标题
     #Title of the back death location form
-    title: '§6§l返回死亡点表单'
+    title: '&6&lReturn death location form'
     #返回死亡点表单的描述文本
     #Description text of the back death location form
-    text: '§p是否返回上个死亡点'
+    text: '§pReturn to last death location'
     #返回死亡点表单的 '是' 按钮文本
     #Text of the 'Yes' button in back death location form
-    yes: '§a是'
+    yes: '&aYes'
     #返回死亡点表单的 '否' 按钮文本
     #Text of the 'No' button in back death location form
-    no: '§c否'
+    no: '&cNo'
 message:
   #不是基岩版的玩家使用表单命令的错误提示
   #Error of player use form command but is not bedrock player
-  not_bedrock_player: '§c你不是基岩版玩家!'
+  not_bedrock_player: '<red>You are not a bedrock player!'
   #玩家使用表单命令但没有其他在线玩家的错误提示
   #Error of player use form command but no other online player
-  no_other_online_player: '§c当前没有其他玩家在线!'
+  no_other_online_player: '<red>No other players currently online!'
+  #自动注册成功后发送给玩家的消息
+  #可用变量: %password% 密码
+  #Text of successful automatic register after send to player
+  #Available variable: %password% password
+  register_successfully: '<green>Detected you are a bedrock player, register automatically! Your password is %password%, use /changepassword command to change password'
+  #自动登录成功后发送给玩家的消息
+  #Text of successful automatic login after send to player
+  login_successfully: '<green>Detected you are a bedrock player, logged in automatically!'
 
