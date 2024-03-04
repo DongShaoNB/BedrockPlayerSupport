@@ -179,7 +179,7 @@
     <dependency>
       <groupId>net.william278</groupId>
       <artifactId>huskhomes</artifactId>
-      <version>4.5.5</version>
+      <version>4.6.1</version>
       <scope>provided</scope>
     </dependency>
 
