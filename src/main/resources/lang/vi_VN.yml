@@ -12,78 +12,78 @@ form:
   teleport:
     #传送表单的标题
     #Title of the teleport form
-    title: '&6&l传送表单'
+    title: '&6&lGửi lời mời dịch chuyển'
     #传送表单的选择传送类型提示语
     #Text of choose teleport type in teleport form
-    choose_type: '&a请选择传送类型'
+    choose_type: '&aChọn chế độ dịch chuyển'
     #传送表单的选择传送玩家提示语
     #Text of choose teleport player in teleport form
-    choose_player: '&a请选择要传送的玩家'
+    choose_player: '&aChọn người chơi để thực hiện dịch chuyển'
   received_teleport:
     tpa:
       #玩家请求传送到你的表单的标题
       #Title of the player requests to teleport to you form
-      title: '&6&l玩家请求传送到你的位置 &f(TPA)'
+      title: '&6&l &f(TPA)'
       #玩家请求传送到你的表单的描述文本
       #可用变量: %requestorName% 请求者名字
       #Description text of the player requests to teleport to you form
       #Available variable: %requesterName% requestor name
-      text: '玩家 %requesterName% 请求传送到你的位置'
+      text: '&6%requestorName%&r đã yêu cầu dịch chuyển đến chỗ bạn.'
     tpahere:
       #玩家请求你传送到他的表单的标题
       #Title of the player requests you to teleport to him form
-      title: '&6&l玩家请求你传送到他的位置 &f(TPAHERE)'
+      title: '&6&l &f(TPAHERE)'
       #玩家请求你传送到他的表单的描述文本
       #可用变量: %requestorName% 请求者名字
       #Description text of the player requests you to teleport to him form
       #Available variable: %requesterName% requestor name
-      text: '玩家 %requesterName% 请求你传送到他的位置'
+      text: '&6%requesterName%&r đã yêu cầu bạn dịch chuyển đến chỗ họ.'
     #传送表单的 '接受' 按钮文本
     #Text of the 'Accept' button in teleport form
-    accept: '&a同意'
+    accept: '&aĐồng ý'
     #传送表单的 '拒绝' 按钮文本
     #Text of the 'Deny' button in teleport form
-    deny: '&c拒绝'
+    deny: '&cTừ chối'
   msg:
     #消息表单的标题
     #Title of the msg form
-    title: '&6&l消息表单'
+    title: '&6&lGửi tin nhắn riêng'
     #消息表单的选择接收消息玩家提示语
     #Text of choose receive message player in msg form
-    choose_player: '&a请选择接收消息的玩家'
+    choose_player: '&aChọn người chơi để gửi tin nhắn riêng'
     #消息表单的输入消息提示语
     #Text of input message in msg form
-    input_message: '&a请填写要发送的消息'
+    input_message: '&aĐiền nội dung tin nhắn'
   home:
     #家表单的标题
     #Title of the home form
-    title: '&6&l我的家'
+    title: '&6&lHome'
   back:
     #返回死亡点表单的标题
     #Title of the back death location form
-    title: '&6&l返回死亡点表单'
+    title: '&6&lQuay lại điểm vừa chết'
     #返回死亡点表单的描述文本
     #Description text of the back death location form
-    text: '是否返回上个死亡点'
+    text: 'Bạn có muốn quay lại điểm vừa chết hay không?'
     #返回死亡点表单的 '是' 按钮文本
     #Text of the 'Yes' button in back death location form
-    yes: '&a是'
+    yes: '&aĐồng ý'
     #返回死亡点表单的 '否' 按钮文本
     #Text of the 'No' button in back death location form
-    no: '&c否'
+    no: '&cTừ chối'
 message:
   #不是基岩版的玩家使用表单命令的错误提示
   #Error of player use form command but is not bedrock player
-  not_bedrock_player: '<red>你不是基岩版玩家!'
+  not_bedrock_player: '<red>Bạn không phải là người chơi Bedrock Edition!'
   #玩家使用表单命令但没有其他在线玩家的错误提示
   #Error of player use form command but no other online player
-  no_other_online_player: '<red>当前没有其他玩家在线!'
+  no_other_online_player: '<red>Hiện tại không có người hoạt động!'
   #自动注册成功后发送给玩家的消息
   #可用变量: %password% 密码
   #Text of successful automatic register after send to player
   #Available variable: %password% password
-  register_successfully: '<green>检测到你是基岩版玩家, 已自动注册! 密码为 %password%, 使用 /changepassword 命令修改密码'
+  register_successfully: '<green>Phát hiện bạn là người chơi Bedrock Edition và đã được đăng ký tự động! Mật khẩu là %password%, sử dụng lệnh /changepassword để thay đổi mật khẩu'
   #自动登录成功后发送给玩家的消息
   #Text of successful automatic login after send to player
-  login_successfully: '<green>检测到你是基岩版玩家, 已自动登录!'
+  login_successfully: '<green>Phát hiện bạn là người chơi Bedrock Edition và bạn đã tự động đăng nhập.!'
 
