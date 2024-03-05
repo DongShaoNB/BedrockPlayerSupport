@@ -12,18 +12,18 @@ form:
   teleport:
     #传送表单的标题
     #Title of the teleport form
-    title: '&6&l传送表单'
+    title: '&6&lYêu cầu dịch chuyển'
     #传送表单的选择传送类型提示语
     #Text of choose teleport type in teleport form
-    choose_type: '&a请选择传送类型'
+    choose_type: '&aChọn chế độ dịch chuyển'
     #传送表单的选择传送玩家提示语
     #Text of choose teleport player in teleport form
-    choose_player: '&a请选择要传送的玩家'
+    choose_player: '&aChọn người chơi để thực hiện dịch chuyển'
   received_teleport:
     tpa:
       #玩家请求传送到你的表单的标题
       #Title of the player requests to teleport to you form
-      title: '&6&l玩家请求传送到你的位置 &f(TPA)'
+      title: '&6&lYêu cầu dịch chuyển đến bị trí của bạn &f(TPA)'
       #玩家请求传送到你的表单的描述文本
       #可用变量: %requestorName% 请求者名字
       #Description text of the player requests to teleport to you form
