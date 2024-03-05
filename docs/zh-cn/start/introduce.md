@@ -6,11 +6,11 @@
 
 !> 不要担心，基岩版自动注册/登录是安全的
 
-![HOMEFORM.png](https://img.fastmirror.net/s/2023/12/09/65747a6167d09.jpg)
-![TPAFORM.png](https://img.fastmirror.net/s/2023/12/09/65747a6272bd2.jpg)
-![TPAHEREFORM.png](https://img.fastmirror.net/s/2023/12/09/65747a664c387.jpg)
-![TPFORM.png](https://img.fastmirror.net/s/2023/12/09/65747a646f0ed.jpg)
-![MSGFORM.png](https://img.fastmirror.net/s/2023/12/09/65747a6836255.jpg)
-![BACKFORM.png](https://img.fastmirror.net/s/2024/01/16/65a57162570e8.png)
+![HOMEFORM.png](https://img.fastmirror.net/s/2023/12/09/65747a6167d09.jpg ':size=80%')
+![TPAFORM.png](https://img.fastmirror.net/s/2023/12/09/65747a6272bd2.jpg ':size=80%')
+![TPAHEREFORM.png](https://img.fastmirror.net/s/2023/12/09/65747a664c387.jpg ':size=80%')
+![TPFORM.png](https://img.fastmirror.net/s/2023/12/09/65747a646f0ed.jpg ':size=80%')
+![MSGFORM.png](https://img.fastmirror.net/s/2023/12/09/65747a6836255.jpg ':size=80%')
+![BACKFORM.png](https://img.fastmirror.net/s/2024/01/16/65a57162570e8.png ':size=80%')
 
 **最后编辑: {docsify-updated}**
