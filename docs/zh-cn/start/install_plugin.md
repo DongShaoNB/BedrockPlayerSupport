@@ -1,7 +1,7 @@
 # 安装插件
 ## 环境
-适用服务端: `Spigot及其分支` `Folia`  
-适用版本: `1.13+`
+适用服务端: `Paper及其分支` `Folia及其分支`  
+适用版本: `1.18+`
 ## 前置
 [floodgate](https://github.com/GeyserMC/Floodgate)
 ## 下载
@@ -11,7 +11,11 @@
 [GitHub Releases](https://github.com/DongShaoNB/BedrockPlayerSupport/releases)  
 
 ### 测试版
+!> 测试版可能出现问题，不推荐使用
+
 [GitHub Action](https://github.com/DongShaoNB/BedrockPlayerSupport/actions/workflows/maven.yml)
 
 ## 安装
 直接将插件放进 `plugins` 文件夹，修改配置文件即可
+
+**最后编辑: {docsify-updated}**

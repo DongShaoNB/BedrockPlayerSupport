@@ -19,18 +19,40 @@
       loadSidebar: true,
       loadNavbar: true,
       auto2top: true,
+      coverpage: true,
+      fallbackLanguages: ['zh-cn', 'en-us'],
+      formatUpdated: '{YYYY}/{MM}/{DD} {HH}:{mm}',
+      nameLink: {
+        '/': '/',
+        '/zh-cn/': '/zh-cn/',
+        '/en-us/': '/en-us/'
+      },
       search: {
-        maxAge: 86400000, // 过期时间，单位毫秒，默认一天
-        paths: "auto", // or 'auto'
-        placeholder: "搜索...",
-        noData: "没有结果!",
+        maxAge: 86400000,
+        paths: "auto",
+        placeholder: {
+          '/zh-cn/': '搜索',
+          '/en-us': "Type to search"
+        },
+        noData: {
+          '/zh-cn/': '找不到结果',
+          '/en-us/': 'No Results'
+        }
       },
-      count: {
-        countable: true,
-        fontsize: "0.9em",
-        color: "rgb(90,90,90)",
-        language: "chinese",
-      },
+      copyCode: {
+        buttonText: {
+          '/zh-cn/': '点击复制',
+          '/en-us/': 'Copy to clipboard',
+        },
+        errorText: {
+          '/zh-cn/': '错误',
+          '/en-us/': 'Error'
+        },
+        successText: {
+          '/zh-cn/': '复制',
+          '/en-us/': 'Copied'
+        }
+      }
     };
   </script>
   <!-- Docsify v4 -->
