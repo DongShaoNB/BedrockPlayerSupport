@@ -23,16 +23,16 @@ form:
     tpa:
       #玩家请求传送到你的表单的标题
       #Title of the player requests to teleport to you form
-      title: '&6&lYêu cầu dịch chuyển &f(TPA)'
+      title: '&6&lYêu cầu dịch chuyển đến vị trí của bạn &f(TPA)'
       #玩家请求传送到你的表单的描述文本
       #可用变量: %requestorName% 请求者名字
       #Description text of the player requests to teleport to you form
       #Available variable: %requesterName% requestor name
-      text: '&6%requestorName%&r đã yêu cầu dịch chuyển đến chỗ bạn.'
+      text: '&6%requesterName%&r đã yêu cầu dịch chuyển đến chỗ bạn.'
     tpahere:
       #玩家请求你传送到他的表单的标题
       #Title of the player requests you to teleport to him form
-      title: '&6&l &f(TPAHERE)'
+      title: '&6&lYêu cầu dịch chuyển bạn đến vị trí của họ &f(TPAHERE)'
       #玩家请求你传送到他的表单的描述文本
       #可用变量: %requestorName% 请求者名字
       #Description text of the player requests you to teleport to him form
@@ -57,7 +57,7 @@ form:
   home:
     #家表单的标题
     #Title of the home form
-    title: '&6&lHome'
+    title: '&6&lNhà của bạn'
   back:
     #返回死亡点表单的标题
     #Title of the back death location form
@@ -77,13 +77,13 @@ message:
   not_bedrock_player: '<red>Bạn không phải là người chơi Bedrock Edition!'
   #玩家使用表单命令但没有其他在线玩家的错误提示
   #Error of player use form command but no other online player
-  no_other_online_player: '<red>Hiện tại không có người hoạt động!'
+  no_other_online_player: '<red>Hiện tại không có người chơi hoạt động!'
   #自动注册成功后发送给玩家的消息
   #可用变量: %password% 密码
   #Text of successful automatic register after send to player
   #Available variable: %password% password
-  register_successfully: '<green>Phát hiện bạn là người chơi Bedrock Edition và đã được đăng ký tự động! Mật khẩu là %password%, sử dụng lệnh /changepassword để thay đổi mật khẩu'
+  register_successfully: '<green>Phát hiện bạn là người chơi Bedrock Edition và đã được đăng ký tự động! Mật khẩu là %password%, sử dụng lệnh /changepassword để thay đổi mật khẩu.'
   #自动登录成功后发送给玩家的消息
   #Text of successful automatic login after send to player
-  login_successfully: '<green>Phát hiện bạn là người chơi Bedrock Edition và bạn đã tự động đăng nhập.!'
+  login_successfully: '<green>Phát hiện bạn là người chơi Bedrock Edition và bạn đã tự động đăng nhập!'
 
