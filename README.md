@@ -36,22 +36,24 @@
 
 **Tip: 需要按照Geyser文档配置验证方式为floodgate，否则不生效**
 
-### 资料
+### 链接
 
 - [在线文档][2]
+- [Crowdin][3]
 
 ## 社区
 
 QQ群: `159323818`
 
-Discord: [j4XwCSVtcu][3]
+Discord: [j4XwCSVtcu][4]
 
 ## 感谢
-感谢 [JetBrains][4] 对本项目的支持！  
+感谢 [JetBrains][5] 对本项目的支持！  
 ![JetBrains Logo (Main) logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)
 
 
-[1]: https://github.com/GeyserMC/Floodgate
+[1]: https://geysermc.org/download#floodgate
 [2]: https://dongshaonb.github.io/BedrockPlayerSupport/#/
-[3]: https://discord.gg/j4XwCSVtcu
-[4]: https://jb.gg/OpenSourceSupport
+[3]: https://zh.crowdin.com/project/mcbps
+[4]: https://discord.gg/j4XwCSVtcu
+[5]: https://jb.gg/OpenSourceSupport

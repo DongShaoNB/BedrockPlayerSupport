@@ -37,22 +37,24 @@ Simply put the plugin into the `plugins` folder and modify the configuration fil
 
 **Tip: auth-type in geyser config need to be configured as floodgate according to Geyser documentation, otherwise it will invalid**
 
-### Data
+### Link
 
 - [Docs][2]
+- [Crowdin][3]
 
 ## Community
 
 QQ Group: `159323818`
 
-Discord: [j4XwCSVtcu][3]
+Discord: [j4XwCSVtcu][4]
 
 ## Thanks
-Thank for [JetBrains][4] support for this project！  
+Thank for [JetBrains][5] support for this project！  
 ![JetBrains Logo (Main) logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)
 
 
-[1]: https://github.com/GeyserMC/Floodgate
+[1]: https://geysermc.org/download#floodgate
 [2]: https://dongshaonb.github.io/BedrockPlayerSupport/#/
-[3]: https://discord.gg/j4XwCSVtcu
-[4]: https://jb.gg/OpenSourceSupport
+[3]: https://crowdin.com/project/mcbps
+[4]: https://discord.gg/j4XwCSVtcu
+[5]: https://jb.gg/OpenSourceSupport
