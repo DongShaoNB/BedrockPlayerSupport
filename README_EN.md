@@ -1,5 +1,5 @@
 <p align="center" style="font-size:38px">BedrockPlayerSupport</p>
-<p align="center"><b>让其他插件对基岩版玩家更加友好</b></p>
+<p align="center"><b>Make it easier for bedrock player to use other plugins</b></p>
 <p align="center">
     <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/DongShaoNB/BedrockPlayerSupport">
     <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/DongShaoNB/BedrockPlayerSupport/total">
@@ -14,40 +14,41 @@
      | 
     <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README_EN.md ">English</a></p>
 
+
 ------------------------------
 
-## 功能
+## Function
 
- 1. 基岩版玩家收到 `tpa/tpahere` 申请时弹出表单选择同意/拒绝/忽略
- 2. 基岩版玩家使用指令 `/tpgui` 弹出表单选择要 tpa (tpahere) 的玩家 
- 3. 基岩版玩家进服注册时自动使用随机密码注册
- 4. 基岩版玩家进服登录时直接跳过玩家登录
- 5. 基岩版玩家使用指令 `/msggui` 弹出表单发送信息
- 6. 基岩版玩家使用指令 `/homegui` 弹出表单传送回家
- 7. 基岩版玩家重生后弹出返回死亡点表单
+ 1. When bedrock player receive a request for `tpa/tpahere`, open a form to select agree/reject/ignore
+ 2. Bedrock player use the command `/tpgui` to open a form and select the player who wants tpa (tpahere)
+ 3. Bedrock player will automatically use a random password to register when entering the server
+ 4. When bedrock player log in to the server, they can skip login directly
+ 5. Bedrock player use the command `/msggui` to open a form and send message
+ 6. Bedrock player use the command `/homegui` to open a form and get home
+ 7. After bedrock player respawn, a form open to return to the last death location
 
-## 前置
+## Depend
 
 [floodgate][1]
 
-## 安装
+## Install
 
-直接将插件放进 `plugins` 文件夹，修改配置文件即可  
+Simply put the plugin into the `plugins` folder and modify the configuration file    
 
-**Tip: 需要按照Geyser文档配置验证方式为floodgate，否则不生效**
+**Tip: auth-type in geyser config need to be configured as floodgate according to Geyser documentation, otherwise it will invalid**
 
-### 资料
+### Data
 
-- [在线文档][2]
+- [Docs][2]
 
-## 社区
+## Community
 
-QQ群: `159323818`
+QQ Group: `159323818`
 
 Discord: [j4XwCSVtcu][3]
 
-## 感谢
-感谢 [JetBrains][4] 对本项目的支持！  
+## Thanks
+Thank for [JetBrains][4] support for this project！  
 ![JetBrains Logo (Main) logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)
 
 
