@@ -12,7 +12,7 @@
 	<br>
     <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README.md">简体中文</a>
      | 
-    <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README_EN.md ">English</a></p>
+    <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README_EN.md">English</a></p>
 
 
 ------------------------------
