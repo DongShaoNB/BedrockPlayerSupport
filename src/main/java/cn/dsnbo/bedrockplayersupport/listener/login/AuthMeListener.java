@@ -37,7 +37,7 @@ public class AuthMeListener implements Listener {
         } else {
           if (config.enableRegister()) {
             String password = StringUtil.randomString(config.passwordLength());
-            AuthMeApi.getInstance().registerPlayer(playerName, password);
+            AuthMeApi.getInstance().forceRegister(player, password);
             player.sendMessage(
                 BedrockPlayerSupport.getMiniMessage().deserialize(language.registerSuccessfully()
                     .replaceAll("%password%", password)));
