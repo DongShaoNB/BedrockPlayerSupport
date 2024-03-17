@@ -163,7 +163,7 @@ public interface Language {
   @Order(51)
   String backFormText();
 
-  @ConfKey("form.back.yes")
+  @ConfKey("form.back.button-yes")
   @ConfComments({
       "返回死亡点表单的 '是' 按钮文本",
       "Text of the 'Yes' button in back death location form"
@@ -172,7 +172,7 @@ public interface Language {
   @Order(52)
   String backFormYesButton();
 
-  @ConfKey("form.back.no")
+  @ConfKey("form.back.button-no")
   @ConfComments({
       "返回死亡点表单的 '否' 按钮文本",
       "Text of the 'No' button in back death location form"
