@@ -13,11 +13,10 @@ import java.util.function.Consumer;
  */
 public class Update {
 
-  private static final int SPIGOT_RESOURCE_ID = 1145141919;
+  private static final int SPIGOT_RESOURCE_ID = 115450;
 
   public static void checkUpdate(Consumer<String> consumer) {
-    // Wait for update to SpigotMC
-    // BedrockPlayerSupport.getScheduler().runTaskAsynchronously(() -> getVersion(consumer));
+     BedrockPlayerSupport.getScheduler().runTaskAsynchronously(() -> getVersion(consumer));
   }
 
   public static void getVersion(final Consumer<String> consumer) {
