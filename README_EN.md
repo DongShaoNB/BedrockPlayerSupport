@@ -17,7 +17,7 @@
 
 ------------------------------
 
-## Function
+## Feature
 
  1. When bedrock player receive a request for `tpa/tpahere`, open a form to select agree/reject/ignore
  2. Bedrock player use the command `/tpgui` to open a form and select the player who wants tpa (tpahere)
