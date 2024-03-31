@@ -153,9 +153,9 @@
     <dependency>
       <groupId>com.zrips</groupId>
       <artifactId>cmi-api</artifactId>
-      <version>9.6.5.0</version>
+      <version>9.7.0.1</version>
       <scope>system</scope>
-      <systemPath>${basedir}/lib/CMI-API9.6.5.0.jar</systemPath>
+      <systemPath>${basedir}/lib/CMI-API9.7.0.1.jar</systemPath>
     </dependency>
 
     <!-- CMI Lib -->

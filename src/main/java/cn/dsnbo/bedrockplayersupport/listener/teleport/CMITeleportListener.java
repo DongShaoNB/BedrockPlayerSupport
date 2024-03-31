@@ -1,9 +1,8 @@
 package cn.dsnbo.bedrockplayersupport.listener.teleport;
 
-import cn.dsnbo.bedrockplayersupport.BedrockPlayerSupport;
 import cn.dsnbo.bedrockplayersupport.TeleportType;
 import cn.dsnbo.bedrockplayersupport.form.MainForm;
-import com.Zrips.CMI.Modules.tp.TpManager;
+import com.Zrips.CMI.Modules.Teleportations.TeleportManager.TpAction;
 import com.Zrips.CMI.events.CMIPlayerTeleportRequestEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,14 +18,14 @@ public class CMITeleportListener implements Listener {
 
   @EventHandler
   public void onCmiPlayerTeleportRequestEvent(CMIPlayerTeleportRequestEvent event) {
-    TpManager.TpAction tpAction = event.getAction();
+    TpAction tpAction = event.getAction();
     Player requestor = event.getWhoOffers().getPlayer();
     Player receiver = event.getWhoAccepts().getPlayer();
     UUID teleportLocationPlayerUuid = receiver.getUniqueId();
     if (FloodgateApi.getInstance().isFloodgatePlayer(teleportLocationPlayerUuid)) {
-      if (tpAction == TpManager.TpAction.tpa) {
+      if (tpAction == TpAction.tpa) {
         MainForm.getInstance().openBedrockTeleportHereForm(TeleportType.Tpa, requestor, receiver);
-      } else if (tpAction == TpManager.TpAction.tpahere) {
+      } else if (tpAction == TpAction.tpahere) {
         MainForm.getInstance()
             .openBedrockTeleportHereForm(TeleportType.TpaHere, requestor, receiver);
       }
