@@ -147,7 +147,7 @@ public class MainForm {
         .button2(ChatColor.translateAlternateColorCodes('&', language.backFormNoButton()))
         .validResultHandler(((modalForm, modalFormResponse) -> {
           if (modalFormResponse.clickedButtonId() == 0) {
-            player.chat("/back");
+            player.chat(BedrockPlayerSupport.getMainConfigManager().getConfigData().backDeathLocCommand());
           }
         }));
     BedrockPlayerSupport.getFloodgateApi().sendForm(player.getUniqueId(), form);

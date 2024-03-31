@@ -120,6 +120,15 @@ public interface Config {
   @AnnotationBasedSorter.Order(80)
   boolean enableBackForm();
 
+  @ConfKey("form.back.command")
+  @ConfComments({
+      "返回死亡点命令",
+      "The command of back death location"
+  })
+  @ConfDefault.DefaultString("/back")
+  @AnnotationBasedSorter.Order(81)
+  String backDeathLocCommand();
+
   @ConfKey("auth.register.enable")
   @ConfComments({
       "启用基岩版玩家注册功能",
