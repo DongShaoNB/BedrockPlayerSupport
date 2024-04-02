@@ -26,24 +26,26 @@ public class AuthMeListener implements Listener {
     String playerName = player.getName();
     Config config = BedrockPlayerSupport.getMainConfigManager().getConfigData();
     Language language = BedrockPlayerSupport.getLanguageConfigManager().getConfigData();
-    if (FloodgateApi.getInstance().isFloodgatePlayer(playerUuid)) {
-      if (!AuthMeApi.getInstance().isAuthenticated(player)) {
-        if (AuthMeApi.getInstance().isRegistered(playerName)) {
-          if (config.enableLogin()) {
-            AuthMeApi.getInstance().forceLogin(player);
-            player.sendMessage(
-                BedrockPlayerSupport.getMiniMessage().deserialize(language.loginSuccessfully()));
-          }
-        } else {
-          if (config.enableRegister()) {
-            String password = StringUtil.randomString(config.passwordLength());
-            AuthMeApi.getInstance().forceRegister(player, password);
-            player.sendMessage(
+    BedrockPlayerSupport.getScheduler().runTaskLater(player, () -> {
+      if (FloodgateApi.getInstance().isFloodgatePlayer(playerUuid)) {
+        if (!AuthMeApi.getInstance().isAuthenticated(player)) {
+          if (AuthMeApi.getInstance().isRegistered(playerName)) {
+            if (config.enableLogin()) {
+              AuthMeApi.getInstance().forceLogin(player);
+              player.sendMessage(
+                  BedrockPlayerSupport.getMiniMessage().deserialize(language.loginSuccessfully()));
+            }
+          } else {
+            if (config.enableRegister()) {
+              String password = StringUtil.randomString(config.passwordLength());
+              AuthMeApi.getInstance().forceRegister(player, password);
+              player.sendMessage(
                 BedrockPlayerSupport.getMiniMessage().deserialize(language.registerSuccessfully()
                     .replaceAll("%password%", password)));
+            }
           }
         }
       }
-    }
-  }
+    }, 20L);
+  }                                            
 }
