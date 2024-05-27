@@ -1,0 +1,39 @@
+name: BedrockPlayerSupport
+version: ${pluginVersion}
+main: cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
+api-version: 1.18
+folia-supported: true
+depend:
+  - floodgate
+softdepend:
+  - CMI
+  - Essentials
+  - HuskHomes
+  - AuthMe
+  - CatSeedLogin
+  - NexAuth
+authors: [ DongShaoNB ]
+description: Make it easier for bedrock player to use other plugins
+website: dsnb.cc
+
+commands:
+  tpgui:
+    description: "Bedrock player teleport form"
+    permission: bedrockplayersupport.command.tpgui
+  msggui:
+    description: "Bedrock player msg form"
+    permission: bedrockplayersupport.command.msggui
+  homegui:
+    description: "Bedrock player home form"
+    permission: bedrockplayersupport.command.homegui
+
+permissions:
+  bedrockplayersupport.command.tpgui:
+    description: "Bedrock player teleport form permission"
+    default: true
+  bedrockplayersupport.command.msggui:
+    description: "Bedrock player msg form permission"
+    default: true
+  bedrockplayersupport.command.homegui:
+    description: "Bedrock player home form permission"
+    default: true
