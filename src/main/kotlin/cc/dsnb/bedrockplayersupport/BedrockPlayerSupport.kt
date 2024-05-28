@@ -210,21 +210,23 @@ class BedrockPlayerSupport : JavaPlugin() {
 
     private fun checkUpdate() {
         if (mainConfigManager.getConfigData().enableCheckUpdate()) {
-            val currentVersion = description.version
-            UpdateUtil.getLatestVersion { latestVersion ->
-                if (currentVersion == latestVersion) {
-                    if ("zh".equals(systemLanguage, ignoreCase = true)) {
-                        logger.info("插件是最新版本, 继续保持 ~")
+            scheduler.runTaskAsynchronously {
+                val currentVersion = description.version
+                UpdateUtil.getLatestVersion { latestVersion ->
+                    if (currentVersion == latestVersion) {
+                        if ("zh".equals(systemLanguage, ignoreCase = true)) {
+                            logger.info("插件是最新版本, 继续保持 ~")
+                        } else {
+                            logger.info("The plugin is the latest version, keep up ~")
+                        }
                     } else {
-                        logger.info("The plugin is the latest version, keep up ~")
-                    }
-                } else {
-                    if ("zh".equals(systemLanguage, ignoreCase = true)) {
-                        logger.info("有新版本可以更新!")
-                        logger.info("当前版本: $currentVersion | 最新版本: $latestVersion")
-                    } else {
-                        logger.info("There is a new version that can be updated!")
-                        logger.info("Current version: $currentVersion | Latest version: $latestVersion")
+                        if ("zh".equals(systemLanguage, ignoreCase = true)) {
+                            logger.info("有新版本可以更新!")
+                            logger.info("当前版本: $currentVersion | 最新版本: $latestVersion")
+                        } else {
+                            logger.info("There is a new version that can be updated!")
+                            logger.info("Current version: $currentVersion | Latest version: $latestVersion")
+                        }
                     }
                 }
             }
