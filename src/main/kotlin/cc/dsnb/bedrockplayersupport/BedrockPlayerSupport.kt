@@ -48,7 +48,7 @@ class BedrockPlayerSupport : JavaPlugin() {
         lateinit var cmiForm: CMIForm
         lateinit var essxForm: EssXForm
         lateinit var huskhomesForm: HuskHomesForm
-        val floodgateApi: FloodgateApi = FloodgateApi.getInstance()
+        lateinit var floodgateApi: FloodgateApi
         val miniMessage: MiniMessage = MiniMessage.miniMessage()
         var systemLanguage: String = Locale.getDefault().language
     }
@@ -56,6 +56,7 @@ class BedrockPlayerSupport : JavaPlugin() {
     override fun onEnable() {
         instance = this
         scheduler = UniversalScheduler.getScheduler(this)
+        floodgateApi = FloodgateApi.getInstance()
         loadConfig()
         setPluginRunningStatus()
         loadFunction()
@@ -69,10 +70,11 @@ class BedrockPlayerSupport : JavaPlugin() {
     }
 
     private fun loadConfig() {
-        mainConfigManager = ConfigManager.create(dataFolder.toPath(), "config.yml", MainConfig::class.java).apply {
-            reloadConfig()
-            languageInUse = getConfigData().language()
-        }
+        mainConfigManager =
+            ConfigManager.create(dataFolder.toPath(), "config.yml", MainConfig::class.java).apply {
+                reloadConfig()
+                languageInUse = getConfigData().language()
+            }
         val langDirectory = File(dataFolder, "/lang/")
         if (langDirectory.exists().not()) {
             langDirectory.mkdir()
@@ -82,7 +84,11 @@ class BedrockPlayerSupport : JavaPlugin() {
             saveResource("lang/${languageInUse}.yml", false)
         }
         langConfigManager =
-            ConfigManager.create(langDirectory.toPath(), "${languageInUse}.yml", LangConfig::class.java).apply {
+            ConfigManager.create(
+                langDirectory.toPath(),
+                "${languageInUse}.yml",
+                LangConfig::class.java
+            ).apply {
                 reloadConfig()
             }
     }
@@ -123,7 +129,11 @@ class BedrockPlayerSupport : JavaPlugin() {
             )
         ) {
             NexAuth
-        } else if ("other".equals(mainConfigManager.getConfigData().authPlugin(), ignoreCase = true)) {
+        } else if ("other".equals(
+                mainConfigManager.getConfigData().authPlugin(),
+                ignoreCase = true
+            )
+        ) {
             Other
         } else {
             None
