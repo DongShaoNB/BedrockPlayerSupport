@@ -233,13 +233,13 @@ class BedrockPlayerSupport : JavaPlugin() {
                 val currentVersion = description.version
                 UpdateUtil.getLatestVersion { latestVersion ->
                     if (currentVersion == latestVersion) {
-                        if ("zh".equals(systemLanguage, ignoreCase = true)) {
+                        if ("zh_cn".equals(languageInUse, ignoreCase = true)) {
                             logger.info("插件是最新版本, 继续保持 ~")
                         } else {
                             logger.info("The plugin is the latest version, keep up ~")
                         }
                     } else {
-                        if ("zh".equals(systemLanguage, ignoreCase = true)) {
+                        if ("zh_cn".equals(languageInUse, ignoreCase = true)) {
                             logger.info("有新版本可以更新!")
                             logger.info("当前版本: $currentVersion | 最新版本: $latestVersion")
                         } else {

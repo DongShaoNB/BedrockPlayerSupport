@@ -24,7 +24,7 @@ object UpdateUtil {
                     }
                 }
         } catch (e: IOException) {
-            if ("zh".equals(BedrockPlayerSupport.systemLanguage, ignoreCase = true)) {
+            if ("zh_cn".equals(BedrockPlayerSupport.languageInUse, ignoreCase = true)) {
                 BedrockPlayerSupport.instance.logger
                     .warning("无法检查更新: " + e.message)
             } else {
