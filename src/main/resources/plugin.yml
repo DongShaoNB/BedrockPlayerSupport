@@ -17,6 +17,11 @@ description: Make it easier for bedrock player to use other plugins
 website: dsnb.cc
 
 commands:
+  bedrockplayersupport:
+    description: "BedrockPlayerSupport main command"
+    aliases:
+      - bps
+    permission: bedrockplayersupport.admin
   tpgui:
     description: "Bedrock player teleport form"
     permission: bedrockplayersupport.command.tpgui
@@ -28,6 +33,9 @@ commands:
     permission: bedrockplayersupport.command.homegui
 
 permissions:
+  bedrockplayersupport.admin:
+    description: "BedrockPlayerSupport admin permission"
+    default: op
   bedrockplayersupport.command.tpgui:
     description: "Bedrock player teleport form permission"
     default: true

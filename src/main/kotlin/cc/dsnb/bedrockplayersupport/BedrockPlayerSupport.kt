@@ -2,6 +2,7 @@ package cc.dsnb.bedrockplayersupport
 
 import cc.dsnb.bedrockplayersupport.AuthPlugin.*
 import cc.dsnb.bedrockplayersupport.command.HomeFormCommand
+import cc.dsnb.bedrockplayersupport.command.MainCommand
 import cc.dsnb.bedrockplayersupport.command.MsgFormCommand
 import cc.dsnb.bedrockplayersupport.command.TpFormCommand
 import cc.dsnb.bedrockplayersupport.config.LangConfig
@@ -29,7 +30,6 @@ import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import org.geysermc.floodgate.api.FloodgateApi
 import java.io.File
-import java.util.*
 
 /**
  * @author DongShaoNB
@@ -49,8 +49,8 @@ class BedrockPlayerSupport : JavaPlugin() {
         lateinit var essxForm: EssXForm
         lateinit var huskhomesForm: HuskHomesForm
         lateinit var floodgateApi: FloodgateApi
-        val miniMessage: MiniMessage = MiniMessage.miniMessage()
-        var systemLanguage: String = Locale.getDefault().language
+        val miniMessage = MiniMessage.miniMessage()
+        val prefix = "[BedrockPlayerSupport] "
     }
 
     override fun onEnable() {
@@ -193,6 +193,7 @@ class BedrockPlayerSupport : JavaPlugin() {
 
     private fun loadCommand() {
         val config = mainConfigManager.getConfigData()
+        getCommand("bedrockplayersupport")?.setExecutor(MainCommand())
         if (config.enableTeleportForm()) {
             getCommand("tpgui")?.setExecutor(TpFormCommand())
         }

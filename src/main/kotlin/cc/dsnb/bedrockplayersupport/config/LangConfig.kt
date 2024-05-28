@@ -31,7 +31,7 @@ interface LangConfig {
     @Order(10)
     fun teleportFormTitle(): String
 
-    @ConfKey("form.teleport.choose_type")
+    @ConfKey("form.teleport.choose-type")
     @ConfComments(
         "传送表单的选择传送类型提示语", "Text of choose teleport type in teleport form"
     )
@@ -39,7 +39,7 @@ interface LangConfig {
     @Order(11)
     fun teleportFormChooseTypeText(): String
 
-    @ConfKey("form.teleport.choose_player")
+    @ConfKey("form.teleport.choose-player")
     @ConfComments(
         "传送表单的选择传送玩家提示语", "Text of choose teleport player in teleport form"
     )
@@ -47,7 +47,7 @@ interface LangConfig {
     @Order(12)
     fun teleportFormChoosePlayerText(): String
 
-    @ConfKey("form.received_teleport.tpa.title")
+    @ConfKey("form.received-teleport.tpa.title")
     @ConfComments(
         "玩家请求传送到你的表单的标题", "Title of the player requests to teleport to you form"
     )
@@ -55,7 +55,7 @@ interface LangConfig {
     @Order(20)
     fun receivedTpaFormTitle(): String
 
-    @ConfKey("form.received_teleport.tpa.text")
+    @ConfKey("form.received-teleport.tpa.text")
     @ConfComments(
         "玩家请求传送到你的表单的描述文本",
         "可用变量: %requesterName% 请求者名字",
@@ -66,7 +66,7 @@ interface LangConfig {
     @Order(21)
     fun receivedTpaFormText(): String
 
-    @ConfKey("form.received_teleport.tpahere.title")
+    @ConfKey("form.received-teleport.tpahere.title")
     @ConfComments(
         "玩家请求你传送到他的表单的标题", "Title of the player requests you to teleport to him form"
     )
@@ -74,7 +74,7 @@ interface LangConfig {
     @Order(22)
     fun receivedTpaHereFormTitle(): String
 
-    @ConfKey("form.received_teleport.tpahere.text")
+    @ConfKey("form.received-teleport.tpahere.text")
     @ConfComments(
         "玩家请求你传送到他的表单的描述文本",
         "可用变量: %requesterName% 请求者名字",
@@ -85,7 +85,7 @@ interface LangConfig {
     @Order(23)
     fun receivedTpaHereFormText(): String
 
-    @ConfKey("form.received_teleport.accept")
+    @ConfKey("form.received-teleport.accept")
     @ConfComments(
         "传送表单的 '接受' 按钮文本", "Text of the 'Accept' button in teleport form"
     )
@@ -93,7 +93,7 @@ interface LangConfig {
     @Order(24)
     fun receivedTpFormAcceptButton(): String
 
-    @ConfKey("form.received_teleport.deny")
+    @ConfKey("form.received-teleport.deny")
     @ConfComments(
         "传送表单的 '拒绝' 按钮文本", "Text of the 'Deny' button in teleport form"
     )
@@ -109,7 +109,7 @@ interface LangConfig {
     @Order(30)
     fun msgFormTitle(): String
 
-    @ConfKey("form.msg.choose_player")
+    @ConfKey("form.msg.choose-player")
     @ConfComments(
         "消息表单的选择接收消息玩家提示语", "Text of choose receive message player in msg form"
     )
@@ -117,7 +117,7 @@ interface LangConfig {
     @Order(31)
     fun msgFormChoosePlayerText(): String
 
-    @ConfKey("form.msg.input_message")
+    @ConfKey("form.msg.input-message")
     @ConfComments(
         "消息表单的输入消息提示语", "Text of input message in msg form"
     )
@@ -165,7 +165,7 @@ interface LangConfig {
     @Order(53)
     fun backFormNoButton(): String
 
-    @ConfKey("message.not_bedrock_player")
+    @ConfKey("message.not-bedrock-player")
     @ConfComments(
         "不是基岩版的玩家使用表单命令的错误提示", "Error of player use form command but is not bedrock player"
     )
@@ -173,7 +173,7 @@ interface LangConfig {
     @Order(100)
     fun notBedrockPlayer(): String
 
-    @ConfKey("message.no_other_online_player")
+    @ConfKey("message.no-other-online-player")
     @ConfComments(
         "玩家使用表单命令但没有其他在线玩家的错误提示", "Error of player use form command but no other online player"
     )
@@ -181,7 +181,7 @@ interface LangConfig {
     @Order(101)
     fun noOtherOnlinePlayer(): String
 
-    @ConfKey("message.register_successfully")
+    @ConfKey("message.register-successfully")
     @ConfComments(
         "自动注册成功后发送给玩家的消息",
         "可用变量: %password% 密码",
@@ -192,11 +192,22 @@ interface LangConfig {
     @Order(102)
     fun registerSuccessfully(): String
 
-    @ConfKey("message.login_successfully")
+    @ConfKey("message.login-successfully")
     @ConfComments(
         "自动登录成功后发送给玩家的消息", "Text of successful automatic login after send to player"
     )
     @DefaultString("<green>检测到你是基岩版玩家, 已自动登录!")
     @Order(103)
     fun loginSuccessfully(): String
+
+    @ConfKey("plugin.reload-successfully")
+    @ConfComments(
+        "插件重载成功后发送给命令发送者的消息",
+        "可用变量: %time% 重载耗时(毫秒)",
+        "Text of successful reload plugin after send to command sender",
+        "Available variable: %time% reload time(millisecond)"
+    )
+    @DefaultString("<green>插件重载成功, 耗时: %time% 毫秒")
+    fun reloadSuccessfully(): String
+
 }
