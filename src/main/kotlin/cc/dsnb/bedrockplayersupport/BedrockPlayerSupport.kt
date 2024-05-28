@@ -205,19 +205,19 @@ class BedrockPlayerSupport : JavaPlugin() {
         if (mainConfigManager.getConfigData().enableCheckUpdate()) {
             val currentVersion = description.version
             UpdateUtil.getLatestVersion { latestVersion ->
-                if (currentVersion.equals(latestVersion)) {
+                if (currentVersion == latestVersion) {
                     if ("zh".equals(systemLanguage, ignoreCase = true)) {
-                        logger.info("插件是最新版本, 继续保持 ~");
+                        logger.info("插件是最新版本, 继续保持 ~")
                     } else {
-                        logger.info("The plugin is the latest version, keep up ~");
+                        logger.info("The plugin is the latest version, keep up ~")
                     }
                 } else {
                     if ("zh".equals(systemLanguage, ignoreCase = true)) {
-                        logger.info("有新版本可以更新!");
-                        logger.info("当前版本: $currentVersion | 最新版本: $latestVersion");
+                        logger.info("有新版本可以更新!")
+                        logger.info("当前版本: $currentVersion | 最新版本: $latestVersion")
                     } else {
-                        logger.info("There is a new version that can be updated!");
-                        logger.info("Current version: $currentVersion | Latest version: $latestVersion");
+                        logger.info("There is a new version that can be updated!")
+                        logger.info("Current version: $currentVersion | Latest version: $latestVersion")
                     }
                 }
             }
