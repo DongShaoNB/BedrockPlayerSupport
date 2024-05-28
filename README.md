@@ -47,8 +47,8 @@ QQ群: `159323818`
 
 Discord: [j4XwCSVtcu][4]
 
-## 感谢
-感谢 [JetBrains][5] 对本项目的支持！  
+## 鸣谢
+鸣谢 [JetBrains 开源许可][5]  
 ![JetBrains Logo (Main) logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)
 
 

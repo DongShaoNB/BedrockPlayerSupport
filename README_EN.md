@@ -14,7 +14,6 @@
      | 
     <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README_EN.md">English</a></p>
 
-
 ------------------------------
 
 ## Feature
@@ -49,7 +48,7 @@ QQ Group: `159323818`
 Discord: [j4XwCSVtcu][4]
 
 ## Thanks
-Thank for [JetBrains][5] support for this project！  
+Thanks for [JetBrains: Support for Open-Source Projects][5]   
 ![JetBrains Logo (Main) logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)
 
 
