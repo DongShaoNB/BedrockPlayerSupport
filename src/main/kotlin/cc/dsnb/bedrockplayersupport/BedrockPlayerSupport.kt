@@ -174,9 +174,16 @@ class BedrockPlayerSupport : JavaPlugin() {
     }
 
     private fun loadCommand() {
-        getCommand("tpgui")?.setExecutor(TpFormCommand())
-        getCommand("msggui")?.setExecutor(MsgFormCommand())
-        getCommand("homegui")?.setExecutor(HomeFormCommand())
+        val config = mainConfigManager.getConfigData()
+        if (config.enableTeleportForm()) {
+            getCommand("tpgui")?.setExecutor(TpFormCommand())
+        }
+        if (config.enableMsgForm()) {
+            getCommand("msggui")?.setExecutor(MsgFormCommand())
+        }
+        if (config.enableHomeForm()) {
+            getCommand("homegui")?.setExecutor(HomeFormCommand())
+        }
     }
 
     private fun loadMetrics() {
