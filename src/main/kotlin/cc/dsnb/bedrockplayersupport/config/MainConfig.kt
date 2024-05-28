@@ -26,7 +26,7 @@ interface MainConfig {
     @Order(0)
     fun language(): String
 
-    @ConfKey("plugin.check-update.enable")
+    @ConfKey("plugin.check-update")
     @ConfComments(
         "启动服务器时检测更新", "Check update when starting the server"
     )
