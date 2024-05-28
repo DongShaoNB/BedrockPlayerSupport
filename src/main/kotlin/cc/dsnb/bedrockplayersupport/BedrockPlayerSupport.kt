@@ -95,38 +95,56 @@ class BedrockPlayerSupport : JavaPlugin() {
 
     private fun setPluginRunningStatus() {
         val pluginManager = Bukkit.getPluginManager()
-        basicPlugin = if (pluginManager.getPlugin("CMI") != null && "cmi".equals(
+        basicPlugin = if (pluginManager.getPlugin("CMI") != null && ("cmi".equals(
                 mainConfigManager.getConfigData().basicPlugin(),
                 ignoreCase = true
-            )
+            ) || "auto".equals(
+                mainConfigManager.getConfigData().basicPlugin(),
+                ignoreCase = true
+            ))
         ) {
             BasicPlugin.CMI
-        } else if (pluginManager.getPlugin("Essentials") != null && "essentialsx".equals(
+        } else if (pluginManager.getPlugin("Essentials") != null && ("essentialsx".equals(
                 mainConfigManager.getConfigData().basicPlugin(), ignoreCase = true
-            )
+            ) || "auto".equals(
+                mainConfigManager.getConfigData().basicPlugin(),
+                ignoreCase = true
+            ))
         ) {
             BasicPlugin.EssentialsX
-        } else if (pluginManager.getPlugin("HuskHomes") != null && "huskhomes".equals(
+        } else if (pluginManager.getPlugin("HuskHomes") != null && ("huskhomes".equals(
                 mainConfigManager.getConfigData().basicPlugin(), ignoreCase = true
-            )
+            ) || "auto".equals(
+                mainConfigManager.getConfigData().basicPlugin(),
+                ignoreCase = true
+            ))
         ) {
             BasicPlugin.HuskHomes
         } else {
             BasicPlugin.None
         }
-        authPlugin = if (pluginManager.getPlugin("AuthMe") != null && "authme".equals(
+        authPlugin = if (pluginManager.getPlugin("AuthMe") != null && ("authme".equals(
                 mainConfigManager.getConfigData().authPlugin(), ignoreCase = true
-            )
+            ) || "auto".equals(
+                mainConfigManager.getConfigData().basicPlugin(),
+                ignoreCase = true
+            ))
         ) {
             AuthMe
-        } else if (pluginManager.getPlugin("CatSeedLogin") != null && "catseedlogin".equals(
+        } else if (pluginManager.getPlugin("CatSeedLogin") != null && ("catseedlogin".equals(
                 mainConfigManager.getConfigData().authPlugin(), ignoreCase = true
-            )
+            ) || "auto".equals(
+                mainConfigManager.getConfigData().basicPlugin(),
+                ignoreCase = true
+            ))
         ) {
             CatSeedLogin
-        } else if (pluginManager.getPlugin("NexAuth") != null && "nexauth".equals(
+        } else if (pluginManager.getPlugin("NexAuth") != null && ("nexauth".equals(
                 mainConfigManager.getConfigData().authPlugin(), ignoreCase = true
-            )
+            ) || "auto".equals(
+                mainConfigManager.getConfigData().basicPlugin(),
+                ignoreCase = true
+            ))
         ) {
             NexAuth
         } else if ("other".equals(
