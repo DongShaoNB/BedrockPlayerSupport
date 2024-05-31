@@ -5,9 +5,9 @@
 #MiniMessage: https://docs.advntr.dev/minimessage/format.html
 #-----------------------------------------------------------
 #语言文件默认简体中文。如果需要其他语言，请访问 Crowdin
-#message 部分使用 MiniMessage 格式，请查看 MiniMessage 格式文档修改语言
+#我们使用 MiniMessage 格式，请查看 MiniMessage 格式文档修改语言
 #The language file default to Chinese Simplified. If you need another language, please visit Crowdin
-#The message section use MiniMessage format. Please refer to the MiniMessage format document to modify the language
+#We use MiniMessage format, Please refer to the MiniMessage format document to modify the language
 form:
   teleport:
     #传送表单的标题
@@ -15,15 +15,15 @@ form:
     title: '&6&lYêu cầu dịch chuyển'
     #传送表单的选择传送类型提示语
     #Text of choose teleport type in teleport form
-    choose-type: '&a请选择传送类型'
+    choose-type: '<green>请选择传送类型'
     #传送表单的选择传送玩家提示语
     #Text of choose teleport player in teleport form
-    choose-player: '&a请选择要传送的玩家'
+    choose-player: '<green>请选择要传送的玩家'
   received-teleport:
     tpa:
       #玩家请求传送到你的表单的标题
       #Title of the player requests to teleport to you form
-      title: '&6&l玩家请求传送到你的位置 &f(TPA)'
+      title: '<green>玩家请求传送到你的位置 <white>(TPA)'
       #玩家请求传送到你的表单的描述文本
       #可用变量: %requesterName% 请求者名字
       #Description text of the player requests to teleport to you form
@@ -32,7 +32,7 @@ form:
     tpahere:
       #玩家请求你传送到他的表单的标题
       #Title of the player requests you to teleport to him form
-      title: '&6&l玩家请求你传送到他的位置 &f(TPAHERE)'
+      title: '<green>玩家请求你传送到他的位置 <white>(TPAHERE)'
       #玩家请求你传送到他的表单的描述文本
       #可用变量: %requesterName% 请求者名字
       #Description text of the player requests you to teleport to him form
@@ -40,20 +40,20 @@ form:
       text: '玩家 %requesterName% 请求你传送到他的位置'
     #传送表单的 '接受' 按钮文本
     #Text of the 'Accept' button in teleport form
-    accept: '&a同意'
+    accept: '<green>同意'
     #传送表单的 '拒绝' 按钮文本
     #Text of the 'Deny' button in teleport form
-    deny: '&c拒绝'
+    deny: '<red>拒绝'
   msg:
     #消息表单的标题
     #Title of the msg form
     title: '&6&lGửi tin nhắn riêng'
     #消息表单的选择接收消息玩家提示语
     #Text of choose receive message player in msg form
-    choose-player: '&a请选择接收消息的玩家'
+    choose-player: '<green>请选择接收消息的玩家'
     #消息表单的输入消息提示语
     #Text of input message in msg form
-    input-message: '&a请填写要发送的消息'
+    input-message: '<green>请填写要发送的消息'
   home:
     #家表单的标题
     #Title of the home form
@@ -67,10 +67,10 @@ form:
     text: 'Bạn có muốn quay lại điểm vừa chết hay không?'
     #返回死亡点表单的 '是' 按钮文本
     #Text of the 'YES' button in back death location form
-    button-yes: '&a是'
+    button-yes: '<green>是'
     #返回死亡点表单的 '否' 按钮文本
     #Text of the 'NO' button in back death location form
-    button-no: '&c否'
+    button-no: '<red>否'
 message:
   #不是基岩版的玩家使用表单命令的错误提示
   #Error of player use form command but is not bedrock player
