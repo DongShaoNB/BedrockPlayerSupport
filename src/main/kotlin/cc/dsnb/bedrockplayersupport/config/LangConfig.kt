@@ -17,9 +17,9 @@ import space.arim.dazzleconf.sorter.AnnotationBasedSorter.Order
     " MiniMessage: https://docs.advntr.dev/minimessage/format.html",
     " -----------------------------------------------------------",
     " 语言文件默认简体中文。如果需要其他语言，请访问 Crowdin",
-    " message 部分使用 MiniMessage 格式，请查看 MiniMessage 格式文档修改语言",
+    " 我们使用 MiniMessage 格式，请查看 MiniMessage 格式文档修改语言",
     " The language file default to Chinese Simplified. If you need another language, please visit Crowdin",
-    " The message section use MiniMessage format. Please refer to the MiniMessage format document to modify the language"
+    " We use MiniMessage format, Please refer to the MiniMessage format document to modify the language"
 )
 interface LangConfig {
 
@@ -27,7 +27,7 @@ interface LangConfig {
     @ConfComments(
         "传送表单的标题", "Title of the teleport form"
     )
-    @DefaultString("&6&l传送表单")
+    @DefaultString("<gold>传送表单")
     @Order(10)
     fun teleportFormTitle(): String
 
@@ -35,7 +35,7 @@ interface LangConfig {
     @ConfComments(
         "传送表单的选择传送类型提示语", "Text of choose teleport type in teleport form"
     )
-    @DefaultString("&a请选择传送类型")
+    @DefaultString("<green>请选择传送类型")
     @Order(11)
     fun teleportFormChooseTypeText(): String
 
@@ -43,7 +43,7 @@ interface LangConfig {
     @ConfComments(
         "传送表单的选择传送玩家提示语", "Text of choose teleport player in teleport form"
     )
-    @DefaultString("&a请选择要传送的玩家")
+    @DefaultString("<green>请选择要传送的玩家")
     @Order(12)
     fun teleportFormChoosePlayerText(): String
 
@@ -51,7 +51,7 @@ interface LangConfig {
     @ConfComments(
         "玩家请求传送到你的表单的标题", "Title of the player requests to teleport to you form"
     )
-    @DefaultString("&6&l玩家请求传送到你的位置 &f(TPA)")
+    @DefaultString("<green>玩家请求传送到你的位置 <white>(TPA)")
     @Order(20)
     fun receivedTpaFormTitle(): String
 
@@ -70,7 +70,7 @@ interface LangConfig {
     @ConfComments(
         "玩家请求你传送到他的表单的标题", "Title of the player requests you to teleport to him form"
     )
-    @DefaultString("&6&l玩家请求你传送到他的位置 &f(TPAHERE)")
+    @DefaultString("<green>玩家请求你传送到他的位置 <white>(TPAHERE)")
     @Order(22)
     fun receivedTpaHereFormTitle(): String
 
@@ -89,7 +89,7 @@ interface LangConfig {
     @ConfComments(
         "传送表单的 '接受' 按钮文本", "Text of the 'Accept' button in teleport form"
     )
-    @DefaultString("&a同意")
+    @DefaultString("<green>同意")
     @Order(24)
     fun receivedTpFormAcceptButton(): String
 
@@ -97,7 +97,7 @@ interface LangConfig {
     @ConfComments(
         "传送表单的 '拒绝' 按钮文本", "Text of the 'Deny' button in teleport form"
     )
-    @DefaultString("&c拒绝")
+    @DefaultString("<red>拒绝")
     @Order(25)
     fun receivedTpFormDenyButton(): String
 
@@ -105,7 +105,7 @@ interface LangConfig {
     @ConfComments(
         "消息表单的标题", "Title of the msg form"
     )
-    @DefaultString("&6&l消息表单")
+    @DefaultString("<gold>消息表单")
     @Order(30)
     fun msgFormTitle(): String
 
@@ -113,7 +113,7 @@ interface LangConfig {
     @ConfComments(
         "消息表单的选择接收消息玩家提示语", "Text of choose receive message player in msg form"
     )
-    @DefaultString("&a请选择接收消息的玩家")
+    @DefaultString("<green>请选择接收消息的玩家")
     @Order(31)
     fun msgFormChoosePlayerText(): String
 
@@ -121,7 +121,7 @@ interface LangConfig {
     @ConfComments(
         "消息表单的输入消息提示语", "Text of input message in msg form"
     )
-    @DefaultString("&a请填写要发送的消息")
+    @DefaultString("<green>请填写要发送的消息")
     @Order(32)
     fun msgFormInputMessageText(): String
 
@@ -129,7 +129,7 @@ interface LangConfig {
     @ConfComments(
         "家表单的标题", "Title of the home form"
     )
-    @DefaultString("&6&l我的家")
+    @DefaultString("<gold>我的家")
     @Order(40)
     fun homeFormTitle(): String
 
@@ -137,7 +137,7 @@ interface LangConfig {
     @ConfComments(
         "返回死亡点表单的标题", "Title of the back death location form"
     )
-    @DefaultString("&6&l返回死亡点表单")
+    @DefaultString("<gold>返回死亡点表单")
     @Order(50)
     fun backFormTitle(): String
 
@@ -153,7 +153,7 @@ interface LangConfig {
     @ConfComments(
         "返回死亡点表单的 '是' 按钮文本", "Text of the 'YES' button in back death location form"
     )
-    @DefaultString("&a是")
+    @DefaultString("<green>是")
     @Order(52)
     fun backFormYesButton(): String
 
@@ -161,7 +161,7 @@ interface LangConfig {
     @ConfComments(
         "返回死亡点表单的 '否' 按钮文本", "Text of the 'NO' button in back death location form"
     )
-    @DefaultString("&c否")
+    @DefaultString("<red>否")
     @Order(53)
     fun backFormNoButton(): String
 
