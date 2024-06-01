@@ -47,13 +47,13 @@ dependencies {
     // Floodgate
     compileOnly("org.geysermc.floodgate:api:2.2.2-SNAPSHOT")
     // CMILib
-    compileOnly(files("lib/CMILib1.4.7.14.jar"))
+    compileOnly(files("lib/CMILib1.4.7.15.jar"))
     // CMI-API
     compileOnly(files("lib/CMI-API9.7.0.1.jar"))
     // EssentialsX
     compileOnly("net.essentialsx:EssentialsX:2.20.1")
     // HuskHomes
-    compileOnly("net.william278.huskhomes:huskhomes-bukkit:4.6.2")
+    compileOnly("net.william278.huskhomes:huskhomes-bukkit:4.6.3")
     // AuthMe
     compileOnly("fr.xephi:authme:5.6.0-SNAPSHOT")
     // CatSeedLogin
