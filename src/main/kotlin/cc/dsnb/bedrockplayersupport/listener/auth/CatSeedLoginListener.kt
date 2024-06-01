@@ -23,12 +23,12 @@ class CatSeedLoginListener : Listener {
     fun onPlayerJoin(event: PlayerJoinEvent) {
         val player = event.player
         val playerName = player.name
-        val config = BedrockPlayerSupport.mainConfigManager.getConfigData()
+        val mainConfig = BedrockPlayerSupport.mainConfigManager.getConfigData()
         val langConfig = BedrockPlayerSupport.langConfigManager.getConfigData()
         if (BedrockPlayerSupport.floodgateApi.isFloodgatePlayer(player.uniqueId)) {
             if (CatSeedLoginAPI.isRegister(playerName)) {
-                if (!CatSeedLoginAPI.isLogin(playerName)) {
-                    if (config.enableLogin()) {
+                if (CatSeedLoginAPI.isLogin(playerName).not()) {
+                    if (mainConfig.enableLogin()) {
                         LoginPlayerHelper.add(LoginPlayer(player.name, ""))
                         Cache.refresh(player.name)
                         if (Config.Settings.AfterLoginBack && Config.Settings.CanTpSpawnLocation) {
@@ -40,9 +40,9 @@ class CatSeedLoginListener : Listener {
                     }
                 }
             } else {
-                if (config.enableRegister()) {
+                if (mainConfig.enableRegister()) {
                     try {
-                        val password = StringUtil.randomString(config.passwordLength())
+                        val password = StringUtil.randomString(mainConfig.passwordLength())
                         val currentIp = player.address.address.hostAddress
                         val loginPlayerListLikeByIp = CatSeedLogin.sql.getLikeByIp(currentIp)
                         if (loginPlayerListLikeByIp.size >= Config.Settings.IpRegisterCountLimit) {

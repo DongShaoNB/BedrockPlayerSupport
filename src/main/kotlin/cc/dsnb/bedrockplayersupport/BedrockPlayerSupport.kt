@@ -51,7 +51,7 @@ class BedrockPlayerSupport : JavaPlugin() {
         lateinit var huskhomesForm: HuskHomesForm
         lateinit var floodgateApi: FloodgateApi
         val miniMessage = MiniMessage.miniMessage()
-        val prefix = "[BedrockPlayerSupport] "
+        const val PREFIX = "[BedrockPlayerSupport] "
     }
 
     override fun onEnable() {

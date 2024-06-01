@@ -17,21 +17,21 @@ class AuthMeListener : Listener {
         val player = event.player
         val playerUuid = player.uniqueId
         val playerName = player.name
-        val config = BedrockPlayerSupport.mainConfigManager.getConfigData()
+        val mainConfig = BedrockPlayerSupport.mainConfigManager.getConfigData()
         val langConfig = BedrockPlayerSupport.langConfigManager.getConfigData()
         BedrockPlayerSupport.scheduler.runTaskLater(player, {
             if (BedrockPlayerSupport.floodgateApi.isFloodgatePlayer(playerUuid)) {
-                if (!AuthMeApi.getInstance().isAuthenticated(player)) {
+                if (AuthMeApi.getInstance().isAuthenticated(player).not()) {
                     if (AuthMeApi.getInstance().isRegistered(playerName)) {
-                        if (config.enableLogin()) {
+                        if (mainConfig.enableLogin()) {
                             AuthMeApi.getInstance().forceLogin(player)
                             player.sendMessage(
                                 BedrockPlayerSupport.miniMessage.deserialize(langConfig.loginSuccessfully())
                             )
                         }
                     } else {
-                        if (config.enableRegister()) {
-                            val password = StringUtil.randomString(config.passwordLength())
+                        if (mainConfig.enableRegister()) {
+                            val password = StringUtil.randomString(mainConfig.passwordLength())
                             AuthMeApi.getInstance().forceRegister(player, password)
                             player.sendMessage(
                                 BedrockPlayerSupport.miniMessage.deserialize(

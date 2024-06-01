@@ -14,13 +14,13 @@ class OtherAuthListener : Listener {
     @EventHandler
     fun onPlayerJoin(event: PlayerJoinEvent) {
         val player = event.player
-        val config = BedrockPlayerSupport.mainConfigManager.getConfigData()
+        val mainConfig = BedrockPlayerSupport.mainConfigManager.getConfigData()
         val langConfig = BedrockPlayerSupport.langConfigManager.getConfigData()
         if (BedrockPlayerSupport.floodgateApi.isFloodgatePlayer(player.uniqueId)) {
-            if (config.enableLogin()) {
+            if (mainConfig.enableLogin()) {
                 Bukkit.dispatchCommand(
                     Bukkit.getServer().consoleSender,
-                    config.forceLoginCommand().replace("%playerName%", player.name)
+                    mainConfig.forceLoginCommand().replace("%playerName%", player.name)
                 )
                 player.sendMessage(
                     BedrockPlayerSupport.miniMessage.deserialize(langConfig.loginSuccessfully())

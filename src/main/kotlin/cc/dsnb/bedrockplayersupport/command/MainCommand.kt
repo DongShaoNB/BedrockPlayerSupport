@@ -9,12 +9,7 @@ import org.bukkit.entity.Player
 
 class MainCommand : CommandExecutor {
 
-    override fun onCommand(
-        sender: CommandSender,
-        command: Command,
-        label: String,
-        args: Array<String>,
-    ): Boolean {
+    override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         if (args.isNotEmpty()) {
             when (args[0]) {
                 "status" -> {
@@ -28,11 +23,11 @@ class MainCommand : CommandExecutor {
                         }
                     } else {
                         if ("zh_cn".equals(BedrockPlayerSupport.languageInUse, ignoreCase = true)) {
-                            sender.sendMessage(BedrockPlayerSupport.prefix + "基础插件: " + BedrockPlayerSupport.basicPlugin.name)
-                            sender.sendMessage(BedrockPlayerSupport.prefix + "验证插件: " + BedrockPlayerSupport.authPlugin.name)
+                            sender.sendMessage(BedrockPlayerSupport.PREFIX + "基础插件: " + BedrockPlayerSupport.basicPlugin.name)
+                            sender.sendMessage(BedrockPlayerSupport.PREFIX + "验证插件: " + BedrockPlayerSupport.authPlugin.name)
                         } else {
-                            sender.sendMessage(BedrockPlayerSupport.prefix + "Basic plugin: " + BedrockPlayerSupport.basicPlugin.name)
-                            sender.sendMessage(BedrockPlayerSupport.prefix + "Auth plugin: " + BedrockPlayerSupport.authPlugin.name)
+                            sender.sendMessage(BedrockPlayerSupport.PREFIX + "Basic plugin: " + BedrockPlayerSupport.basicPlugin.name)
+                            sender.sendMessage(BedrockPlayerSupport.PREFIX + "Auth plugin: " + BedrockPlayerSupport.authPlugin.name)
                         }
                     }
                     return true
@@ -54,7 +49,7 @@ class MainCommand : CommandExecutor {
                     } else {
                         sender.sendMessage(
                             BedrockPlayerSupport.miniMessage.deserialize(
-                                BedrockPlayerSupport.prefix +
+                                BedrockPlayerSupport.PREFIX +
                                         langConfig.reloadSuccessfully()
                                             .replace("%time%", time.toString())
                             )

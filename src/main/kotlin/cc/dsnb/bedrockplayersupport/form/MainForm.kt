@@ -4,6 +4,7 @@ import cc.dsnb.bedrockplayersupport.BasicPlugin
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
 import cc.dsnb.bedrockplayersupport.TeleportType
 import cc.dsnb.bedrockplayersupport.config.LangConfig
+import cc.dsnb.bedrockplayersupport.config.MainConfig
 import net.kyori.adventure.text.minimessage.MiniMessage
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import net.william278.huskhomes.BukkitHuskHomes
@@ -20,10 +21,12 @@ import java.util.*
  */
 class MainForm {
 
+    private lateinit var mainConfig: MainConfig
     private lateinit var langConfig: LangConfig
     private lateinit var miniMessage: MiniMessage
 
     fun load() {
+        mainConfig = BedrockPlayerSupport.mainConfigManager.getConfigData()
         langConfig = BedrockPlayerSupport.langConfigManager.getConfigData()
         miniMessage = BedrockPlayerSupport.miniMessage
     }
@@ -31,11 +34,8 @@ class MainForm {
     fun openBedrockTeleportForm(player: Player) {
         val uuid = player.uniqueId
         val onlinePlayerNameList = ArrayList<String>()
-        if (BedrockPlayerSupport.basicPlugin === BasicPlugin.HuskHomes &&
-            BedrockPlayerSupport.mainConfigManager.getConfigData().enableCrossServer()
-        ) {
-            val bukkitHuskHomes =
-                Bukkit.getPluginManager().getPlugin("HuskHomes") as BukkitHuskHomes
+        if (BedrockPlayerSupport.basicPlugin === BasicPlugin.HuskHomes && mainConfig.enableCrossServer()) {
+            val bukkitHuskHomes = Bukkit.getPluginManager().getPlugin("HuskHomes") as BukkitHuskHomes
             for (onlineUser in bukkitHuskHomes.onlineUsers) {
                 if (onlineUser !== HuskHomesAPI.getInstance().adaptUser(player)) {
                     onlinePlayerNameList.add(onlineUser.username)
@@ -233,9 +233,7 @@ class MainForm {
             )
             .validResultHandler { _, modalFormResponse ->
                 if (modalFormResponse.clickedButtonId() == 0) {
-                    player.chat(
-                        BedrockPlayerSupport.mainConfigManager.getConfigData().backDeathLocCommand()
-                    )
+                    player.chat(mainConfig.backDeathLocCommand())
                 }
             }
         BedrockPlayerSupport.floodgateApi.sendForm(uuid, form)

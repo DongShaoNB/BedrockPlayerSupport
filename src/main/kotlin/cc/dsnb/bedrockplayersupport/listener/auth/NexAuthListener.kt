@@ -17,25 +17,25 @@ class NexAuthListener : Listener {
     @EventHandler
     fun onPlayerJoin(event: PlayerJoinEvent) {
         val player = event.player
-        val config = BedrockPlayerSupport.mainConfigManager.getConfigData()
-        val language = BedrockPlayerSupport.langConfigManager.getConfigData()
+        val mainConfig = BedrockPlayerSupport.mainConfigManager.getConfigData()
+        val langConfig = BedrockPlayerSupport.langConfigManager.getConfigData()
         if (BedrockPlayerSupport.floodgateApi.isFloodgatePlayer(player.uniqueId)) {
             if (AuthPlayer.getOrCreate(player).isRegistered) {
                 if (AuthPlayer.getOrCreate(player).state == PlayerState.IN_LOGIN) {
-                    if (config.enableLogin()) {
+                    if (mainConfig.enableLogin()) {
                         NexAuthAPI.getAuthManager().login(player)
                         player.sendMessage(
-                            BedrockPlayerSupport.miniMessage.deserialize(language.loginSuccessfully())
+                            BedrockPlayerSupport.miniMessage.deserialize(langConfig.loginSuccessfully())
                         )
                     }
                 }
             } else {
-                if (config.enableRegister()) {
-                    val password = StringUtil.randomString(config.passwordLength())
+                if (mainConfig.enableRegister()) {
+                    val password = StringUtil.randomString(mainConfig.passwordLength())
                     NexAuthAPI.getAuthManager().register(player, password)
                     player.sendMessage(
                         BedrockPlayerSupport.miniMessage.deserialize(
-                            language.registerSuccessfully()
+                            langConfig.registerSuccessfully()
                                 .replace("%password%", password)
                         )
                     )

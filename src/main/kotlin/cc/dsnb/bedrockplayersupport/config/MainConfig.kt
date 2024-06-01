@@ -10,11 +10,11 @@ import space.arim.dazzleconf.sorter.AnnotationBasedSorter.Order
  * @author DongShaoNB
  */
 @ConfHeader(
-    " -----------------------------------------------------------",
+    " -------------------------------------------------------------",
     " BedrockPlayerSupport Config File | Made by DongShaoNB",
+    " Docs: https://docs.bps.dsnb.cc",
     " GitHub: https://github.com/DongShaoNB/BedrockPlayerSupport",
-    " Docs: https://dongshaonb.github.io/BedrockPlayerSupport/",
-    " -----------------------------------------------------------"
+    " -------------------------------------------------------------"
 )
 interface MainConfig {
 

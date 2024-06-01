@@ -15,12 +15,12 @@ class PlayerRespawnListener : Listener {
         val player = event.player
         val uuid = player.uniqueId
         if (BedrockPlayerSupport.floodgateApi.isFloodgatePlayer(uuid)) {
-            val config = BedrockPlayerSupport.mainConfigManager.getConfigData()
-            if (config.enableBackDeathLocForm()) {
+            val mainConfig = BedrockPlayerSupport.mainConfigManager.getConfigData()
+            if (mainConfig.enableBackDeathLocForm()) {
                 BedrockPlayerSupport.scheduler
                     .runTaskLaterAsynchronously(
                         { BedrockPlayerSupport.mainForm.openBedrockBackDeathLocForm(player) },
-                        config.backDeathLocFormOpenDelayTick()
+                        mainConfig.backDeathLocFormOpenDelayTick()
                     )
             }
         }
