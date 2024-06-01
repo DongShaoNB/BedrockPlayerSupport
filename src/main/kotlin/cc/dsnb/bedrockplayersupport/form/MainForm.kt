@@ -4,6 +4,8 @@ import cc.dsnb.bedrockplayersupport.BasicPlugin
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
 import cc.dsnb.bedrockplayersupport.TeleportType
 import cc.dsnb.bedrockplayersupport.config.LangConfig
+import net.kyori.adventure.text.minimessage.MiniMessage
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import net.william278.huskhomes.BukkitHuskHomes
 import net.william278.huskhomes.api.HuskHomesAPI
 import org.bukkit.Bukkit
@@ -19,9 +21,11 @@ import java.util.*
 class MainForm {
 
     private lateinit var langConfig: LangConfig
+    private lateinit var miniMessage: MiniMessage
 
     fun load() {
         langConfig = BedrockPlayerSupport.langConfigManager.getConfigData()
+        miniMessage = BedrockPlayerSupport.miniMessage
     }
 
     fun openBedrockTeleportForm(player: Player) {
@@ -30,7 +34,8 @@ class MainForm {
         if (BedrockPlayerSupport.basicPlugin === BasicPlugin.HuskHomes &&
             BedrockPlayerSupport.mainConfigManager.getConfigData().enableCrossServer()
         ) {
-            val bukkitHuskHomes = Bukkit.getPluginManager().getPlugin("HuskHomes") as BukkitHuskHomes
+            val bukkitHuskHomes =
+                Bukkit.getPluginManager().getPlugin("HuskHomes") as BukkitHuskHomes
             for (onlineUser in bukkitHuskHomes.onlineUsers) {
                 if (onlineUser !== HuskHomesAPI.getInstance().adaptUser(player)) {
                     onlinePlayerNameList.add(onlineUser.username)
@@ -44,16 +49,22 @@ class MainForm {
             }
         }
         val form = CustomForm.builder().title(
-            ChatColor.translateAlternateColorCodes(
-                '&', langConfig.teleportFormTitle()
+            LegacyComponentSerializer.legacySection().serialize(
+                miniMessage.deserialize(
+                    langConfig.teleportFormTitle()
+                )
             )
         ).dropdown(
-            ChatColor.translateAlternateColorCodes(
-                '&', langConfig.teleportFormChooseTypeText()
+            LegacyComponentSerializer.legacySection().serialize(
+                miniMessage.deserialize(
+                    langConfig.teleportFormChooseTypeText()
+                )
             ), listOf("Tpa", "TpaHere")
         ).dropdown(
-            ChatColor.translateAlternateColorCodes(
-                '&', langConfig.teleportFormChoosePlayerText()
+            LegacyComponentSerializer.legacySection().serialize(
+                miniMessage.deserialize(
+                    langConfig.teleportFormChoosePlayerText()
+                )
             ), onlinePlayerNameList
         ).validResultHandler { _, customFormResponse ->
             when (customFormResponse.asDropdown(0)) {
@@ -71,21 +82,33 @@ class MainForm {
         val receiverUuid = receiver.uniqueId
         if (tpType === TeleportType.Tpa) {
             form = ModalForm.builder()
-                .title(ChatColor.translateAlternateColorCodes('&', langConfig.receivedTpaFormTitle()))
+                .title(
+                    LegacyComponentSerializer.legacySection().serialize(
+                        miniMessage.deserialize(
+                            langConfig.receivedTpaFormTitle()
+                        )
+                    )
+                )
                 .content(
-                    ChatColor.translateAlternateColorCodes(
-                        '&', langConfig.receivedTpaFormText()
-                            .replace("%requesterName%", requesterName)
+                    LegacyComponentSerializer.legacySection().serialize(
+                        miniMessage.deserialize(
+                            langConfig.receivedTpaFormText()
+                                .replace("%requesterName%", requesterName)
+                        )
                     )
                 )
                 .button1(
-                    ChatColor.translateAlternateColorCodes(
-                        '&', langConfig.receivedTpFormAcceptButton()
+                    LegacyComponentSerializer.legacySection().serialize(
+                        miniMessage.deserialize(
+                            langConfig.receivedTpFormAcceptButton()
+                        )
                     )
                 )
                 .button2(
-                    ChatColor.translateAlternateColorCodes(
-                        '&', langConfig.receivedTpFormDenyButton()
+                    LegacyComponentSerializer.legacySection().serialize(
+                        miniMessage.deserialize(
+                            langConfig.receivedTpFormDenyButton()
+                        )
                     )
                 )
                 .validResultHandler { _, modalFormResponse ->
@@ -97,21 +120,33 @@ class MainForm {
                 }
         } else if (tpType === TeleportType.TpaHere) {
             form = ModalForm.builder()
-                .title(ChatColor.translateAlternateColorCodes('&', langConfig.receivedTpaHereFormTitle()))
+                .title(
+                    LegacyComponentSerializer.legacySection().serialize(
+                        miniMessage.deserialize(
+                            langConfig.receivedTpaHereFormTitle()
+                        )
+                    )
+                )
                 .content(
-                    ChatColor.translateAlternateColorCodes(
-                        '&', langConfig.receivedTpaHereFormText()
-                            .replace("%requesterName%", requesterName)
+                    LegacyComponentSerializer.legacySection().serialize(
+                        miniMessage.deserialize(
+                            langConfig.receivedTpaHereFormText()
+                                .replace("%requesterName%", requesterName)
+                        )
                     )
                 )
                 .button1(
-                    ChatColor.translateAlternateColorCodes(
-                        '&', langConfig.receivedTpFormAcceptButton()
+                    LegacyComponentSerializer.legacySection().serialize(
+                        miniMessage.deserialize(
+                            langConfig.receivedTpFormAcceptButton()
+                        )
                     )
                 )
                 .button2(
-                    ChatColor.translateAlternateColorCodes(
-                        '&', langConfig.receivedTpFormDenyButton()
+                    LegacyComponentSerializer.legacySection().serialize(
+                        miniMessage.deserialize(
+                            langConfig.receivedTpFormDenyButton()
+                        )
                     )
                 )
                 .validResultHandler { _, modalFormResponse ->
@@ -134,14 +169,26 @@ class MainForm {
             }
         }
         val form = CustomForm.builder()
-            .title(ChatColor.translateAlternateColorCodes('&', langConfig.msgFormTitle()))
+            .title(
+                LegacyComponentSerializer.legacySection().serialize(
+                    miniMessage.deserialize(
+                        langConfig.msgFormTitle()
+                    )
+                )
+            )
             .dropdown(
-                ChatColor.translateAlternateColorCodes('&', langConfig.msgFormChoosePlayerText()),
+                LegacyComponentSerializer.legacySection().serialize(
+                    miniMessage.deserialize(
+                        langConfig.msgFormChoosePlayerText()
+                    )
+                ),
                 onlinePlayerName
             )
             .input(
-                ChatColor.translateAlternateColorCodes(
-                    '&', langConfig.msgFormInputMessageText()
+                LegacyComponentSerializer.legacySection().serialize(
+                    miniMessage.deserialize(
+                        langConfig.msgFormInputMessageText()
+                    )
                 )
             )
             .validResultHandler { _, customFormResponse ->
@@ -156,13 +203,39 @@ class MainForm {
     fun openBedrockBackDeathLocForm(player: Player) {
         val uuid = player.uniqueId
         val form = ModalForm.builder()
-            .title(ChatColor.translateAlternateColorCodes('&', langConfig.backFormTitle()))
-            .content(ChatColor.translateAlternateColorCodes('&', langConfig.backFormText()))
-            .button1(ChatColor.translateAlternateColorCodes('&', langConfig.backFormYesButton()))
-            .button2(ChatColor.translateAlternateColorCodes('&', langConfig.backFormNoButton()))
+            .title(
+                LegacyComponentSerializer.legacySection().serialize(
+                    miniMessage.deserialize(
+                        langConfig.backFormTitle()
+                    )
+                )
+            )
+            .content(
+                LegacyComponentSerializer.legacySection().serialize(
+                    miniMessage.deserialize(
+                        langConfig.backFormText()
+                    )
+                )
+            )
+            .button1(
+                LegacyComponentSerializer.legacySection().serialize(
+                    miniMessage.deserialize(
+                        langConfig.backFormYesButton()
+                    )
+                )
+            )
+            .button2(
+                LegacyComponentSerializer.legacySection().serialize(
+                    miniMessage.deserialize(
+                        langConfig.backFormNoButton()
+                    )
+                )
+            )
             .validResultHandler { _, modalFormResponse ->
                 if (modalFormResponse.clickedButtonId() == 0) {
-                    player.chat(BedrockPlayerSupport.mainConfigManager.getConfigData().backDeathLocCommand())
+                    player.chat(
+                        BedrockPlayerSupport.mainConfigManager.getConfigData().backDeathLocCommand()
+                    )
                 }
             }
         BedrockPlayerSupport.floodgateApi.sendForm(uuid, form)

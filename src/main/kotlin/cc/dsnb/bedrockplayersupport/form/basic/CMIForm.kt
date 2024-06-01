@@ -2,7 +2,7 @@ package cc.dsnb.bedrockplayersupport.form.basic
 
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
 import com.Zrips.CMI.CMI
-import org.bukkit.ChatColor
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.bukkit.entity.Player
 import org.geysermc.cumulus.form.SimpleForm
 
@@ -16,8 +16,10 @@ class CMIForm {
         val playerHomesList = cmiUser.homes
         val form = SimpleForm.builder()
             .title(
-                ChatColor.translateAlternateColorCodes(
-                    '&', BedrockPlayerSupport.langConfigManager.getConfigData().homeFormTitle()
+                LegacyComponentSerializer.legacySection().serialize(
+                    BedrockPlayerSupport.miniMessage.deserialize(
+                        BedrockPlayerSupport.langConfigManager.getConfigData().homeFormTitle()
+                    )
                 )
             )
             .validResultHandler { simpleFormResponse ->
