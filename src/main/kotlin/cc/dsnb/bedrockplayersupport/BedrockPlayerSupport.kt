@@ -11,6 +11,7 @@ import cc.dsnb.bedrockplayersupport.form.MainForm
 import cc.dsnb.bedrockplayersupport.form.basic.CMIForm
 import cc.dsnb.bedrockplayersupport.form.basic.EssXForm
 import cc.dsnb.bedrockplayersupport.form.basic.HuskHomesForm
+import cc.dsnb.bedrockplayersupport.listener.MainTabCompleteListener
 import cc.dsnb.bedrockplayersupport.listener.PlayerRespawnListener
 import cc.dsnb.bedrockplayersupport.listener.auth.AuthMeListener
 import cc.dsnb.bedrockplayersupport.listener.auth.CatSeedLoginListener
@@ -71,15 +72,15 @@ class BedrockPlayerSupport : JavaPlugin() {
 
     private fun loadConfig() {
         mainConfigManager =
-            ConfigManager.create(dataFolder.toPath(), "config.yml", MainConfig::class.java).apply {
-                reloadConfig()
-                languageInUse = getConfigData().language()
+            ConfigManager.create(dataFolder.toPath(), "config.yml", MainConfig::class.java).also {
+                it.reloadConfig()
+                languageInUse = it.getConfigData().language()
             }
         val langDirectory = File(dataFolder, "/lang/")
         if (langDirectory.exists().not()) {
             langDirectory.mkdir()
         }
-        ConfigManager.create(langDirectory.toPath(), "default.yml", LangConfig::class.java)
+        ConfigManager.create(langDirectory.toPath(), "default.yml", LangConfig::class.java).reloadConfig()
         if (File(langDirectory, "${languageInUse}.yml").exists().not()) {
             saveResource("lang/${languageInUse}.yml", false)
         }
@@ -88,8 +89,8 @@ class BedrockPlayerSupport : JavaPlugin() {
                 langDirectory.toPath(),
                 "${languageInUse}.yml",
                 LangConfig::class.java
-            ).apply {
-                reloadConfig()
+            ).also {
+                it.reloadConfig()
             }
     }
 
@@ -159,7 +160,7 @@ class BedrockPlayerSupport : JavaPlugin() {
     }
 
     private fun loadFunction() {
-        mainForm = MainForm().apply { load() }
+        mainForm = MainForm().also { it.load() }
         val pluginManager = Bukkit.getPluginManager()
         when (basicPlugin) {
             BasicPlugin.CMI -> {
@@ -193,7 +194,10 @@ class BedrockPlayerSupport : JavaPlugin() {
 
     private fun loadCommand() {
         val config = mainConfigManager.getConfigData()
-        getCommand("bedrockplayersupport")?.setExecutor(MainCommand())
+        getCommand("bedrockplayersupport")?.also {
+            it.setExecutor(MainCommand())
+            it.tabCompleter = MainTabCompleteListener()
+        }
         if (config.enableTeleportForm()) {
             getCommand("tpgui")?.setExecutor(TpFormCommand())
         }
@@ -206,8 +210,8 @@ class BedrockPlayerSupport : JavaPlugin() {
     }
 
     private fun loadMetrics() {
-        Metrics(this, 17107).apply {
-            this.addCustomChart(SimplePie("basic_plugin") {
+        Metrics(this, 17107).also {
+            it.addCustomChart(SimplePie("basic_plugin") {
                 when (basicPlugin) {
                     BasicPlugin.CMI -> "CMI"
                     BasicPlugin.EssentialsX -> "EssentialsX"
@@ -215,7 +219,7 @@ class BedrockPlayerSupport : JavaPlugin() {
                     BasicPlugin.None -> "None"
                 }
             })
-            this.addCustomChart(SimplePie("auth_plugin") {
+            it.addCustomChart(SimplePie("auth_plugin") {
                 when (authPlugin) {
                     AuthMe -> "AuthMe"
                     CatSeedLogin -> "CatSeedLogin"
