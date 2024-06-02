@@ -43,7 +43,7 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     // PaperAPI
-    compileOnly("io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.20.6-R0.1-SNAPSHOT")
     // Floodgate
     compileOnly("org.geysermc.floodgate:api:2.2.2-SNAPSHOT")
     // CMILib
