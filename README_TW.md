@@ -1,5 +1,5 @@
 <p align="center" style="font-size:38px">BedrockPlayerSupport</p>
-<p align="center"><b>Make it easier for bedrock player to use other plugins</b></p>
+<p align="center"><b>讓其他插件對基岩版玩家更加友善</b></p>
 <p align="center">
     <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/DongShaoNB/BedrockPlayerSupport">
     <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/DongShaoNB/BedrockPlayerSupport/total">
@@ -18,44 +18,44 @@
 
 ------------------------------
 
-## Feature
+## 功能
 
- 1. When bedrock player receive a request for `tpa/tpahere`, open a form to select agree/reject/ignore
- 2. Bedrock player use the command `/tpgui` to open a form and select the player who wants tpa (tpahere)
- 3. Bedrock player will automatically use a random password to register when entering the server
- 4. When bedrock player log in to the server, they can skip login directly
- 5. Bedrock player use the command `/msggui` to open a form and send message
- 6. Bedrock player use the command `/homegui` to open a form and get home
- 7. After bedrock player respawn, a form open to return to the last death location
+ 1. 基岩版玩家收到 `tpa/tpahere` 申請時顯示選擇同意/拒絕/忽略
+ 2. 基岩版玩家使用指令 `/tpgui` 顯示選擇要 tpa (tpahere) 的玩家 
+ 3. 基岩版玩家進服註冊時自動使用隨機密碼註冊
+ 4. 基岩版玩家進服登入時直接跳過玩家登入
+ 5. 基岩版玩家使用指令 `/msggui` 顯示畫面發送訊息
+ 6. 基岩版玩家使用指令 `/homegui` 顯示畫面傳送回家
+ 7. 基岩版玩家重生後顯示傳回死亡點畫面
 
-## Depend
+## 前置
 
 [floodgate][1]
 
-## Install
+## 安裝
 
-Simply put the plugin into the `plugins` folder and modify the configuration file    
+直接將插件放進 `plugins` 資料夾，修改設定檔即可  
 
-**Tip: auth-type in geyser config need to be configured as floodgate according to Geyser documentation, otherwise it will invalid**
+**Tip: 必須按照Geyser說明設定驗證方式為floodgate**
 
-### Link
+### 連結
 
-- [Docs][2]
+- [線上說明][2]
 - [Crowdin][3]
 
-## Community
+## 社群
 
-QQ Group: `159323818`
+QQ群: `159323818`
 
 Discord: [j4XwCSVtcu][4]
 
-## Thanks
-Thanks for [JetBrains: Support for Open-Source Projects][5]   
+## 感謝
+感謝 [JetBrains 開源許可][5]  
 ![JetBrains Logo (Main) logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)
 
 
 [1]: https://geysermc.org/download#floodgate
 [2]: https://dongshaonb.github.io/BedrockPlayerSupport/#/
-[3]: https://crowdin.com/project/mcbps
+[3]: https://zh.crowdin.com/project/mcbps
 [4]: https://discord.gg/j4XwCSVtcu
 [5]: https://jb.gg/OpenSourceSupport
