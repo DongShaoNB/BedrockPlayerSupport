@@ -10,7 +10,6 @@ import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import net.william278.huskhomes.BukkitHuskHomes
 import net.william278.huskhomes.api.HuskHomesAPI
 import org.bukkit.Bukkit
-import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.geysermc.cumulus.form.CustomForm
 import org.geysermc.cumulus.form.ModalForm
@@ -24,11 +23,13 @@ class MainForm {
     private lateinit var mainConfig: MainConfig
     private lateinit var langConfig: LangConfig
     private lateinit var miniMessage: MiniMessage
+    private lateinit var legacySection: LegacyComponentSerializer
 
     fun load() {
         mainConfig = BedrockPlayerSupport.mainConfigManager.getConfigData()
         langConfig = BedrockPlayerSupport.langConfigManager.getConfigData()
         miniMessage = BedrockPlayerSupport.miniMessage
+        legacySection = LegacyComponentSerializer.legacySection()
     }
 
     fun openBedrockTeleportForm(player: Player) {
@@ -49,23 +50,13 @@ class MainForm {
             }
         }
         val form = CustomForm.builder().title(
-            LegacyComponentSerializer.legacySection().serialize(
-                miniMessage.deserialize(
-                    langConfig.teleportFormTitle()
-                )
-            )
+            legacySection.serialize(miniMessage.deserialize(langConfig.teleportFormTitle()))
         ).dropdown(
-            LegacyComponentSerializer.legacySection().serialize(
-                miniMessage.deserialize(
-                    langConfig.teleportFormChooseTypeText()
-                )
-            ), listOf("Tpa", "TpaHere")
+            legacySection.serialize(miniMessage.deserialize(langConfig.teleportFormChooseTypeText())),
+            listOf("Tpa", "TpaHere")
         ).dropdown(
-            LegacyComponentSerializer.legacySection().serialize(
-                miniMessage.deserialize(
-                    langConfig.teleportFormChoosePlayerText()
-                )
-            ), onlinePlayerNameList
+            legacySection.serialize(miniMessage.deserialize(langConfig.teleportFormChoosePlayerText())),
+            onlinePlayerNameList
         ).validResultHandler { _, customFormResponse ->
             when (customFormResponse.asDropdown(0)) {
                 0 -> player.chat("/tpa " + onlinePlayerNameList[customFormResponse.asDropdown(1)])
@@ -82,35 +73,17 @@ class MainForm {
         val receiverUuid = receiver.uniqueId
         if (tpType === TeleportType.Tpa) {
             form = ModalForm.builder()
-                .title(
-                    LegacyComponentSerializer.legacySection().serialize(
-                        miniMessage.deserialize(
-                            langConfig.receivedTpaFormTitle()
-                        )
-                    )
-                )
+                .title(legacySection.serialize(miniMessage.deserialize(langConfig.receivedTpaFormTitle())))
                 .content(
-                    LegacyComponentSerializer.legacySection().serialize(
+                    legacySection.serialize(
                         miniMessage.deserialize(
                             langConfig.receivedTpaFormText()
                                 .replace("%requesterName%", requesterName)
                         )
                     )
                 )
-                .button1(
-                    LegacyComponentSerializer.legacySection().serialize(
-                        miniMessage.deserialize(
-                            langConfig.receivedTpFormAcceptButton()
-                        )
-                    )
-                )
-                .button2(
-                    LegacyComponentSerializer.legacySection().serialize(
-                        miniMessage.deserialize(
-                            langConfig.receivedTpFormDenyButton()
-                        )
-                    )
-                )
+                .button1(legacySection.serialize(miniMessage.deserialize(langConfig.receivedTpFormAcceptButton())))
+                .button2(legacySection.serialize(miniMessage.deserialize(langConfig.receivedTpFormDenyButton())))
                 .validResultHandler { _, modalFormResponse ->
                     when (modalFormResponse.clickedButtonId()) {
                         0 -> receiver.chat("/tpaccept")
@@ -120,35 +93,17 @@ class MainForm {
                 }
         } else if (tpType === TeleportType.TpaHere) {
             form = ModalForm.builder()
-                .title(
-                    LegacyComponentSerializer.legacySection().serialize(
-                        miniMessage.deserialize(
-                            langConfig.receivedTpaHereFormTitle()
-                        )
-                    )
-                )
+                .title(legacySection.serialize(miniMessage.deserialize(langConfig.receivedTpaHereFormTitle())))
                 .content(
-                    LegacyComponentSerializer.legacySection().serialize(
+                    legacySection.serialize(
                         miniMessage.deserialize(
                             langConfig.receivedTpaHereFormText()
                                 .replace("%requesterName%", requesterName)
                         )
                     )
                 )
-                .button1(
-                    LegacyComponentSerializer.legacySection().serialize(
-                        miniMessage.deserialize(
-                            langConfig.receivedTpFormAcceptButton()
-                        )
-                    )
-                )
-                .button2(
-                    LegacyComponentSerializer.legacySection().serialize(
-                        miniMessage.deserialize(
-                            langConfig.receivedTpFormDenyButton()
-                        )
-                    )
-                )
+                .button1(legacySection.serialize(miniMessage.deserialize(langConfig.receivedTpFormAcceptButton())))
+                .button2(legacySection.serialize(miniMessage.deserialize(langConfig.receivedTpFormDenyButton())))
                 .validResultHandler { _, modalFormResponse ->
                     when (modalFormResponse.clickedButtonId()) {
                         0 -> receiver.chat("/tpaccept")
@@ -169,28 +124,12 @@ class MainForm {
             }
         }
         val form = CustomForm.builder()
-            .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    miniMessage.deserialize(
-                        langConfig.msgFormTitle()
-                    )
-                )
-            )
+            .title(legacySection.serialize(miniMessage.deserialize(langConfig.msgFormTitle())))
             .dropdown(
-                LegacyComponentSerializer.legacySection().serialize(
-                    miniMessage.deserialize(
-                        langConfig.msgFormChoosePlayerText()
-                    )
-                ),
+                legacySection.serialize(miniMessage.deserialize(langConfig.msgFormChoosePlayerText())),
                 onlinePlayerName
             )
-            .input(
-                LegacyComponentSerializer.legacySection().serialize(
-                    miniMessage.deserialize(
-                        langConfig.msgFormInputMessageText()
-                    )
-                )
-            )
+            .input(legacySection.serialize(miniMessage.deserialize(langConfig.msgFormInputMessageText())))
             .validResultHandler { _, customFormResponse ->
                 player.chat(
                     "/msg " + onlinePlayerName[customFormResponse.asDropdown(0)] + " "
@@ -203,34 +142,10 @@ class MainForm {
     fun openBedrockBackDeathLocForm(player: Player) {
         val uuid = player.uniqueId
         val form = ModalForm.builder()
-            .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    miniMessage.deserialize(
-                        langConfig.backFormTitle()
-                    )
-                )
-            )
-            .content(
-                LegacyComponentSerializer.legacySection().serialize(
-                    miniMessage.deserialize(
-                        langConfig.backFormText()
-                    )
-                )
-            )
-            .button1(
-                LegacyComponentSerializer.legacySection().serialize(
-                    miniMessage.deserialize(
-                        langConfig.backFormYesButton()
-                    )
-                )
-            )
-            .button2(
-                LegacyComponentSerializer.legacySection().serialize(
-                    miniMessage.deserialize(
-                        langConfig.backFormNoButton()
-                    )
-                )
-            )
+            .title(legacySection.serialize(miniMessage.deserialize(langConfig.backFormTitle())))
+            .content(legacySection.serialize(miniMessage.deserialize(langConfig.backFormText())))
+            .button1(legacySection.serialize(miniMessage.deserialize(langConfig.backFormYesButton())))
+            .button2(legacySection.serialize(miniMessage.deserialize(langConfig.backFormNoButton())))
             .validResultHandler { _, modalFormResponse ->
                 if (modalFormResponse.clickedButtonId() == 0) {
                     player.chat(mainConfig.backDeathLocCommand())
