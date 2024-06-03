@@ -1,0 +1,95 @@
+#-----------------------------------------------------------
+#BedrockPlayerSupport Language File | Made by DongShaoNB
+#GitHub: https://github.com/DongShaoNB/BedrockPlayerSupport
+#Crowdin: https://crowdin.com/project/mcbps
+#MiniMessage: https://docs.advntr.dev/minimessage/format.html
+#-----------------------------------------------------------
+#语言文件默认简体中文。如果需要其他语言，请访问 Crowdin
+#我们使用 MiniMessage 格式，请查看 MiniMessage 格式文档修改语言
+#The language file default to Chinese Simplified. If you need another language, please visit Crowdin
+#We use MiniMessage format, Please refer to the MiniMessage format document to modify the language
+form:
+  teleport:
+    #传送表单的标题
+    #Title of the teleport form
+    title: '&6&lYêu cầu dịch chuyển'
+    #传送表单的选择传送类型提示语
+    #Text of choose teleport type in teleport form
+    choose-type: '<green>请选择传送类型'
+    #传送表单的选择传送玩家提示语
+    #Text of choose teleport player in teleport form
+    choose-player: '<green>请选择要传送的玩家'
+  received-teleport:
+    tpa:
+      #玩家请求传送到你的表单的标题
+      #Title of the player requests to teleport to you form
+      title: '<green>玩家请求传送到你的位置 <white>(TPA)'
+      #玩家请求传送到你的表单的描述文本
+      #可用变量: %requesterName% 请求者名字
+      #Description text of the player requests to teleport to you form
+      #Available variable: %requesterName% requester name
+      text: '玩家 %requesterName% 请求传送到你的位置'
+    tpahere:
+      #玩家请求你传送到他的表单的标题
+      #Title of the player requests you to teleport to him form
+      title: '<green>玩家请求你传送到他的位置 <white>(TPAHERE)'
+      #玩家请求你传送到他的表单的描述文本
+      #可用变量: %requesterName% 请求者名字
+      #Description text of the player requests you to teleport to him form
+      #Available variable: %requesterName% requester name
+      text: '玩家 %requesterName% 请求你传送到他的位置'
+    #传送表单的 '接受' 按钮文本
+    #Text of the 'Accept' button in teleport form
+    accept: '<green>同意'
+    #传送表单的 '拒绝' 按钮文本
+    #Text of the 'Deny' button in teleport form
+    deny: '<red>拒绝'
+  msg:
+    #消息表单的标题
+    #Title of the msg form
+    title: '&6&lGửi tin nhắn riêng'
+    #消息表单的选择接收消息玩家提示语
+    #Text of choose receive message player in msg form
+    choose-player: '<green>请选择接收消息的玩家'
+    #消息表单的输入消息提示语
+    #Text of input message in msg form
+    input-message: '<green>请填写要发送的消息'
+  home:
+    #家表单的标题
+    #Title of the home form
+    title: '&6&lNhà của bạn'
+  back:
+    #返回死亡点表单的标题
+    #Title of the back death location form
+    title: '&6&lQuay lại điểm vừa chết'
+    #返回死亡点表单的描述文本
+    #Text of the back death location form
+    text: 'Bạn có muốn quay lại điểm vừa chết hay không?'
+    #返回死亡点表单的 '是' 按钮文本
+    #Text of the 'YES' button in back death location form
+    button-yes: '<green>是'
+    #返回死亡点表单的 '否' 按钮文本
+    #Text of the 'NO' button in back death location form
+    button-no: '<red>否'
+message:
+  #不是基岩版的玩家使用表单命令的错误提示
+  #Error of player use form command but is not bedrock player
+  not-bedrock-player: '<red>你不是基岩版玩家!'
+  #玩家使用表单命令但没有其他在线玩家的错误提示
+  #Error of player use form command but no other online player
+  no-other-online-player: '<red>当前没有其他玩家在线!'
+  #自动注册成功后发送给玩家的消息
+  #可用变量: %password% 密码
+  #Text of successful automatic register after send to player
+  #Available variable: %password% password
+  register-successfully: '<green>检测到你是基岩版玩家, 已自动注册! 密码为 %password%, 使用 /changepassword 命令修改密码'
+  #自动登录成功后发送给玩家的消息
+  #Text of successful automatic login after send to player
+  login-successfully: '<green>检测到你是基岩版玩家, 已自动登录!'
+plugin:
+  #插件重载成功后发送给命令发送者的消息
+  #可用变量: %time% 重载耗时(毫秒)
+  #Text of successful reload plugin after send to command sender
+  #Available variable: %time% reload time(millisecond)
+  reload-successfully: '<green>插件重载成功, 耗时: %time% 毫秒'
+
