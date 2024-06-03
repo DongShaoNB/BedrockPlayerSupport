@@ -12,7 +12,7 @@ form:
   teleport:
     #传送表单的标题
     #Title of the teleport form
-    title: '&6&l传送表单'
+    title: '<gold>传送表单'
     #传送表单的选择传送类型提示语
     #Text of choose teleport type in teleport form
     choose-type: '<green>请选择传送类型'
@@ -47,7 +47,7 @@ form:
   msg:
     #消息表单的标题
     #Title of the msg form
-    title: '&6&l消息表单'
+    title: '<gold>消息表单'
     #消息表单的选择接收消息玩家提示语
     #Text of choose receive message player in msg form
     choose-player: '<green>请选择接收消息的玩家'
@@ -57,11 +57,11 @@ form:
   home:
     #家表单的标题
     #Title of the home form
-    title: '&6&l我的家'
+    title: '<gold>我的家'
   back:
     #返回死亡点表单的标题
     #Title of the back death location form
-    title: '&6&l返回死亡点表单'
+    title: '<gold>返回死亡点表单'
     #返回死亡点表单的描述文本
     #Text of the back death location form
     text: '是否返回上个死亡点'
