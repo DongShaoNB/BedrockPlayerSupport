@@ -45,7 +45,7 @@ dependencies {
     // PaperAPI
     compileOnly("io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT")
     // Floodgate
-    compileOnly("org.geysermc.floodgate:api:2.2.2-SNAPSHOT")
+    compileOnly("org.geysermc.floodgate:api:2.2.3-SNAPSHOT")
     // CMILib
     compileOnly(files("lib/CMILib1.4.7.15.jar"))
     // CMI-API
