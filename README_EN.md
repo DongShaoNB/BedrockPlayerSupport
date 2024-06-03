@@ -55,7 +55,7 @@ Thanks for [JetBrains: Support for Open-Source Projects][5]
 
 
 [1]: https://geysermc.org/download#floodgate
-[2]: https://dongshaonb.github.io/BedrockPlayerSupport/#/
+[2]: https://docs.bps.dsnb.cc
 [3]: https://crowdin.com/project/mcbps
 [4]: https://discord.gg/j4XwCSVtcu
 [5]: https://jb.gg/OpenSourceSupport
