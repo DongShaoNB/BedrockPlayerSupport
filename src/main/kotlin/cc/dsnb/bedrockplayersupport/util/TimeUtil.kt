@@ -1,5 +1,8 @@
 package cc.dsnb.bedrockplayersupport.util
 
+/**
+ * @author DongShaoNB
+ */
 object TimeUtil {
 
     fun measureTimeMillis(code: () -> Unit): Long {
