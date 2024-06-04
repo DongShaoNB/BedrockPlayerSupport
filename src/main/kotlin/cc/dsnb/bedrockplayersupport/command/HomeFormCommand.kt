@@ -15,12 +15,7 @@ class HomeFormCommand : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         if (sender is Player) {
             if (BedrockPlayerSupport.floodgateApi.isFloodgatePlayer(sender.uniqueId)) {
-                when (BedrockPlayerSupport.basicPlugin) {
-                    BasicPlugin.CMI -> BedrockPlayerSupport.cmiForm.sendHomeForm(sender)
-                    BasicPlugin.EssentialsX -> BedrockPlayerSupport.essxForm.sendHomeForm(sender)
-                    BasicPlugin.HuskHomes -> BedrockPlayerSupport.huskhomesForm.sendHomeForm(sender)
-                    else -> {}
-                }
+                BedrockPlayerSupport.mainForm.openBedrockHomeForm(sender)
             } else {
                 sender.sendMessage(
                     BedrockPlayerSupport.miniMessage.deserialize(

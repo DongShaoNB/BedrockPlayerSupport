@@ -1,6 +1,7 @@
 package cc.dsnb.bedrockplayersupport.form
 
 import cc.dsnb.bedrockplayersupport.BasicPlugin
+import cc.dsnb.bedrockplayersupport.BasicPlugin.*
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
 import cc.dsnb.bedrockplayersupport.TeleportType
 import cc.dsnb.bedrockplayersupport.config.LangConfig
@@ -13,6 +14,7 @@ import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.geysermc.cumulus.form.CustomForm
 import org.geysermc.cumulus.form.ModalForm
+import org.geysermc.cumulus.form.SimpleForm
 import java.util.*
 
 /**
@@ -35,7 +37,7 @@ class MainForm {
     fun openBedrockTeleportForm(player: Player) {
         val uuid = player.uniqueId
         val onlinePlayerNameList = ArrayList<String>()
-        if (BedrockPlayerSupport.basicPlugin === BasicPlugin.HuskHomes && mainConfig.enableCrossServer()) {
+        if (BedrockPlayerSupport.basicPlugin === HuskHomes && mainConfig.enableCrossServer()) {
             val bukkitHuskHomes = Bukkit.getPluginManager().getPlugin("HuskHomes") as BukkitHuskHomes
             for (onlineUser in bukkitHuskHomes.onlineUsers) {
                 if (onlineUser !== HuskHomesAPI.getInstance().adaptUser(player)) {
@@ -137,6 +139,50 @@ class MainForm {
                 )
             }
         BedrockPlayerSupport.floodgateApi.sendForm(uuid, form)
+    }
+
+    fun openBedrockHomeForm(player: Player) {
+        val uuid = player.uniqueId
+        val form = SimpleForm.builder()
+            .title(legacySection.serialize(miniMessage.deserialize(langConfig.homeFormTitle())))
+            .button(legacySection.serialize(miniMessage.deserialize(langConfig.homeFormSetHomeButton())))
+            .button(legacySection.serialize(miniMessage.deserialize(langConfig.homeFormDelHomeButton())))
+            .button(legacySection.serialize(miniMessage.deserialize(langConfig.homeFormGoHomeButton())))
+            .validResultHandler { simpleFormResponse ->
+                when (simpleFormResponse.clickedButtonId()) {
+                    0 -> openBedrockPlayerSetHomeForm(player)
+                    1 -> {
+                        when (BedrockPlayerSupport.basicPlugin) {
+                            CMI -> BedrockPlayerSupport.cmiForm.sendDelHomeForm(player)
+                            EssentialsX -> BedrockPlayerSupport.essxForm.sendDelHomeForm(player)
+                            HuskHomes -> BedrockPlayerSupport.huskhomesForm.sendDelHomeForm(player)
+                            else -> {}
+                        }
+                    }
+
+                    2 -> {
+                        when (BedrockPlayerSupport.basicPlugin) {
+                            CMI -> BedrockPlayerSupport.cmiForm.sendGoHomeForm(player)
+                            EssentialsX -> BedrockPlayerSupport.essxForm.sendGoHomeForm(player)
+                            HuskHomes -> BedrockPlayerSupport.huskhomesForm.sendGoHomeForm(player)
+                            else -> {}
+                        }
+                    }
+
+                    else -> {}
+                }
+            }
+        BedrockPlayerSupport.floodgateApi.sendForm(uuid, form)
+    }
+
+    fun openBedrockPlayerSetHomeForm(player: Player) {
+        val form = CustomForm.builder()
+            .title(legacySection.serialize(miniMessage.deserialize(langConfig.setHomeFormTitle())))
+            .input(langConfig.setHomeFormText())
+            .validResultHandler { simpleFormResponse ->
+                player.chat("/sethome ${simpleFormResponse.asInput(0)}")
+            }
+        BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
     fun openBedrockBackDeathLocForm(player: Player) {

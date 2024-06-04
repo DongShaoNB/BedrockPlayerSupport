@@ -129,9 +129,65 @@ interface LangConfig {
     @ConfComments(
         "家表单的标题", "Title of the home form"
     )
-    @DefaultString("<gold>我的家")
+    @DefaultString("<gold>家")
     @Order(40)
     fun homeFormTitle(): String
+
+    @ConfKey("form.home.sethome-button")
+    @ConfComments(
+        "家表单的 '设置家' 按钮文本", "Text of the 'SetHome' button in home form"
+    )
+    @DefaultString("<green>设置家")
+    @Order(41)
+    fun homeFormSetHomeButton(): String
+
+    @ConfKey("form.home.delhome-button")
+    @ConfComments(
+        "家表单的 '删除家' 按钮文本", "Text of the 'DelHome' button in home form"
+    )
+    @DefaultString("<red>删除家")
+    @Order(42)
+    fun homeFormDelHomeButton(): String
+
+    @ConfKey("form.home.gohome-button")
+    @ConfComments(
+        "家表单的 '回家' 按钮文本", "Text of the 'GoHome' button in home form"
+    )
+    @DefaultString("<gold>回家")
+    @Order(43)
+    fun homeFormGoHomeButton(): String
+
+    @ConfKey("form.sethome.title")
+    @ConfComments(
+        "设置家表单的标题", "Title of the set home form"
+    )
+    @DefaultString("<gold>设置家表单")
+    @Order(44)
+    fun setHomeFormTitle(): String
+
+    @ConfKey("form.sethome.text")
+    @ConfComments(
+        "设置家表单的描述文本", "Text of the set home form"
+    )
+    @DefaultString("<gold>家的名称")
+    @Order(45)
+    fun setHomeFormText(): String
+
+    @ConfKey("form.delhome.title")
+    @ConfComments(
+        "删除家表单的标题", "Title of the delete home form"
+    )
+    @DefaultString("<gold>删除家表单")
+    @Order(46)
+    fun delHomeFormTitle(): String
+
+    @ConfKey("form.gohome.title")
+    @ConfComments(
+        "回家表单的标题", "Title of the go home form"
+    )
+    @DefaultString("<gold>回家表单")
+    @Order(47)
+    fun goHomeFormTitle(): String
 
     @ConfKey("form.back.title")
     @ConfComments(

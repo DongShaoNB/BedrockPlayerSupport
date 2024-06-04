@@ -13,13 +13,32 @@ import org.geysermc.cumulus.form.SimpleForm
  */
 class EssXForm {
 
-    fun sendHomeForm(player: Player) {
+    fun sendDelHomeForm(player: Player) {
         val user = User(player, Bukkit.getPluginManager().getPlugin("Essentials") as Essentials)
         val form = SimpleForm.builder()
             .title(
                 LegacyComponentSerializer.legacySection().serialize(
                     BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().homeFormTitle()
+                        BedrockPlayerSupport.langConfigManager.getConfigData().delHomeFormTitle()
+                    )
+                )
+            )
+            .validResultHandler { simpleFormResponse ->
+                player.chat("/delhome " + simpleFormResponse.clickedButton().text())
+            }
+        for (homeName in user.homes) {
+            form.button(homeName)
+        }
+        BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
+    }
+
+    fun sendGoHomeForm(player: Player) {
+        val user = User(player, Bukkit.getPluginManager().getPlugin("Essentials") as Essentials)
+        val form = SimpleForm.builder()
+            .title(
+                LegacyComponentSerializer.legacySection().serialize(
+                    BedrockPlayerSupport.miniMessage.deserialize(
+                        BedrockPlayerSupport.langConfigManager.getConfigData().goHomeFormTitle()
                     )
                 )
             )
