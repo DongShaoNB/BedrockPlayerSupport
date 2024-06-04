@@ -30,32 +30,33 @@
 
 ## Depend
 
-[floodgate][1]
+[floodgate][floodgate-download]
 
 ## Install
 
 Simply put the plugin into the `plugins` folder and modify the configuration file    
 
-**Tip: auth-type in geyser config need to be configured as floodgate according to Geyser documentation, otherwise it will invalid**
+**Tip: `auth-type` in geyser config need to set to `floodgate` according to [floodgate documentation][floodgate-setup]**  
+**If you use proxy server(BungeeCord/Velocity), you need to set `send-floodgate-data` to `true` in proxy server floodgate config**
 
 ### Link
 
-- [Docs][2]
-- [Crowdin][3]
+- [Docs][docs]
+- [Crowdin][crowdin]
 
 ## Community
 
 QQ Group: `159323818`
 
-Discord: [j4XwCSVtcu][4]
+Discord: [j4XwCSVtcu][discord]
 
 ## Thanks
-Thanks for [JetBrains: Support for Open-Source Projects][5]   
+Thanks for [JetBrains: Support for Open-Source Projects][jetbrains-oss]   
 ![JetBrains Logo (Main) logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)
 
-
-[1]: https://geysermc.org/download#floodgate
-[2]: https://docs.bps.dsnb.cc
-[3]: https://crowdin.com/project/mcbps
-[4]: https://discord.gg/j4XwCSVtcu
-[5]: https://jb.gg/OpenSourceSupport
+[floodgate-setup]: https://wiki.geysermc.org/floodgate/setup/
+[floodgate-download]: https://geysermc.org/download#floodgate
+[docs]: https://docs.bps.dsnb.cc
+[crowdin]: https://zh.crowdin.com/project/mcbps
+[discord]: https://discord.gg/j4XwCSVtcu
+[jetbrains-oss]: https://jb.gg/OpenSourceSupport

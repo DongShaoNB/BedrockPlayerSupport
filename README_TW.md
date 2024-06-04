@@ -30,32 +30,34 @@
 
 ## 前置
 
-[floodgate][1]
+[floodgate][floodgate-download]
 
 ## 安裝
 
 直接將插件放進 `plugins` 資料夾，修改設定檔即可  
 
-**Tip: 必須按照Geyser說明設定驗證方式為floodgate**
+**Tip: Geyser 必須按照 [floodgate說明][floodgate-setup] 設定 `auth-type` 為 `floodgate`**  
+**如果你使用了代理伺服器(BungeeCord/Velocity)，你還需要將代理伺服器的 floodgate 設定檔中的`send-floodgate-data`設定為`true`**
 
 ### 連結
 
-- [線上說明][2]
-- [Crowdin][3]
+- [線上說明][docs]
+- [Crowdin][crowdin]
 
 ## 社群
 
 QQ群: `159323818`
 
-Discord: [j4XwCSVtcu][4]
+Discord: [j4XwCSVtcu][discord]
 
 ## 感謝
-感謝 [JetBrains 開源許可][5]  
+感謝 [JetBrains 開源許可][jetbrains-oss]  
 ![JetBrains Logo (Main) logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)
 
 
-[1]: https://geysermc.org/download#floodgate
-[2]: https://docs.bps.dsnb.cc
-[3]: https://zh.crowdin.com/project/mcbps
-[4]: https://discord.gg/j4XwCSVtcu
-[5]: https://jb.gg/OpenSourceSupport
+[floodgate-setup]: https://wiki.geysermc.org/floodgate/setup/
+[floodgate-download]: https://geysermc.org/download#floodgate
+[docs]: https://docs.bps.dsnb.cc
+[crowdin]: https://zh.crowdin.com/project/mcbps
+[discord]: https://discord.gg/j4XwCSVtcu
+[jetbrains-oss]: https://jb.gg/OpenSourceSupport
