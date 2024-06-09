@@ -4,7 +4,6 @@ import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
 import com.Zrips.CMI.CMI
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.bukkit.entity.Player
-import org.geysermc.cumulus.form.CustomForm
 import org.geysermc.cumulus.form.SimpleForm
 
 /**

@@ -1,6 +1,5 @@
 package cc.dsnb.bedrockplayersupport.command
 
-import cc.dsnb.bedrockplayersupport.BasicPlugin
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor

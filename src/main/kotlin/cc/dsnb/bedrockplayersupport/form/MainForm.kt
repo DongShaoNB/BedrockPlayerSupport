@@ -1,6 +1,5 @@
 package cc.dsnb.bedrockplayersupport.form
 
-import cc.dsnb.bedrockplayersupport.BasicPlugin
 import cc.dsnb.bedrockplayersupport.BasicPlugin.*
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
 import cc.dsnb.bedrockplayersupport.TeleportType
