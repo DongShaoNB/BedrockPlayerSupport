@@ -177,7 +177,7 @@ class MainForm {
     fun openBedrockPlayerSetHomeForm(player: Player) {
         val form = CustomForm.builder()
             .title(legacySection.serialize(miniMessage.deserialize(langConfig.setHomeFormTitle())))
-            .input(langConfig.setHomeFormText())
+            .input(legacySection.serialize(miniMessage.deserialize(langConfig.setHomeFormText())))
             .validResultHandler { simpleFormResponse ->
                 player.chat("/sethome ${simpleFormResponse.asInput(0)}")
             }
