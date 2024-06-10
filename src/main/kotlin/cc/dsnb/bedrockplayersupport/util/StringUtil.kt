@@ -1,7 +1,6 @@
 package cc.dsnb.bedrockplayersupport.util
 
 import java.security.SecureRandom
-import java.util.Random
 
 /**
  * @author DongShaoNB
