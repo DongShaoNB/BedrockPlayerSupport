@@ -67,7 +67,7 @@ class BedrockPlayerSupport : JavaPlugin() {
     }
 
     override fun onDisable() {
-
+        // Don't need to do anything
     }
 
     private fun loadConfig() {
@@ -80,7 +80,8 @@ class BedrockPlayerSupport : JavaPlugin() {
         if (langDirectory.exists().not()) {
             langDirectory.mkdir()
         }
-        ConfigManager.create(langDirectory.toPath(), "default.yml", LangConfig::class.java).reloadConfig()
+        ConfigManager.create(langDirectory.toPath(), "default.yml", LangConfig::class.java)
+            .reloadConfig()
         if (File(langDirectory, "${languageInUse}.yml").exists().not()) {
             saveResource("lang/${languageInUse}.yml", false)
         }
@@ -178,14 +179,18 @@ class BedrockPlayerSupport : JavaPlugin() {
                 pluginManager.registerEvents(HuskHomesListener(), this)
             }
 
-            else -> {}
+            BasicPlugin.None -> {
+                // Don't need to do anything
+            }
         }
         when (authPlugin) {
             AuthMe -> pluginManager.registerEvents(AuthMeListener(), this)
             CatSeedLogin -> pluginManager.registerEvents(CatSeedLoginListener(), this)
             NexAuth -> pluginManager.registerEvents(NexAuthListener(), this)
             Other -> pluginManager.registerEvents(OtherAuthListener(), this)
-            else -> {}
+            None -> {
+                // Don't need to do anything
+            }
         }
         if (mainConfigManager.getConfigData().enableBackDeathLocForm()) {
             pluginManager.registerEvents(PlayerRespawnListener(), this)

@@ -63,7 +63,6 @@ class MainForm {
             when (customFormResponse.asDropdown(0)) {
                 0 -> player.chat("/tpa " + onlinePlayerNameList[customFormResponse.asDropdown(1)])
                 1 -> player.chat("/tpahere " + onlinePlayerNameList[customFormResponse.asDropdown(1)])
-                else -> {}
             }
         }
         BedrockPlayerSupport.floodgateApi.sendForm(uuid, form)
@@ -90,7 +89,6 @@ class MainForm {
                     when (modalFormResponse.clickedButtonId()) {
                         0 -> receiver.chat("/tpaccept")
                         1 -> receiver.chat("/tpdeny")
-                        else -> {}
                     }
                 }
         } else if (tpType === TeleportType.TpaHere) {
@@ -110,7 +108,6 @@ class MainForm {
                     when (modalFormResponse.clickedButtonId()) {
                         0 -> receiver.chat("/tpaccept")
                         1 -> receiver.chat("/tpdeny")
-                        else -> {}
                     }
                 }
         }
