@@ -1,5 +1,6 @@
 package cc.dsnb.bedrockplayersupport.util
 
+import java.security.SecureRandom
 import java.util.Random
 
 /**
@@ -9,7 +10,7 @@ object StringUtil {
 
     fun randomString(length: Int): String {
         val str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        val random = Random()
+        val random = SecureRandom()
         val stringBuilder = StringBuilder()
         for (i in 0 until length) {
             val number = random.nextInt(62)
