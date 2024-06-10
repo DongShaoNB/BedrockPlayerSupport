@@ -11,19 +11,39 @@ import org.geysermc.cumulus.form.SimpleForm
  */
 class CMIForm {
 
-    fun sendHomeForm(player: Player) {
+    fun sendDelHomeForm(player: Player) {
         val cmiUser = CMI.getInstance().playerManager.getUser(player)
         val playerHomesList = cmiUser.homes
         val form = SimpleForm.builder()
             .title(
                 LegacyComponentSerializer.legacySection().serialize(
                     BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().homeFormTitle()
+                        BedrockPlayerSupport.langConfigManager.getConfigData().delHomeFormTitle()
                     )
                 )
             )
             .validResultHandler { simpleFormResponse ->
-                player.chat("/home " + simpleFormResponse.clickedButton().text())
+                player.chat("/delhome ${simpleFormResponse.clickedButton().text()}")
+            }
+        for (homeName in playerHomesList.keys) {
+            form.button(homeName)
+        }
+        BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
+    }
+
+    fun sendGoHomeForm(player: Player) {
+        val cmiUser = CMI.getInstance().playerManager.getUser(player)
+        val playerHomesList = cmiUser.homes
+        val form = SimpleForm.builder()
+            .title(
+                LegacyComponentSerializer.legacySection().serialize(
+                    BedrockPlayerSupport.miniMessage.deserialize(
+                        BedrockPlayerSupport.langConfigManager.getConfigData().goHomeFormTitle()
+                    )
+                )
+            )
+            .validResultHandler { simpleFormResponse ->
+                player.chat("/home ${simpleFormResponse.clickedButton().text()}")
             }
         for (homeName in playerHomesList.keys) {
             form.button(homeName)

@@ -11,14 +11,36 @@ import org.geysermc.cumulus.form.SimpleForm
  */
 class HuskHomesForm {
 
-    fun sendHomeForm(player: Player) {
+    fun sendDelHomeForm(player: Player) {
         val onlineUser = HuskHomesAPI.getInstance().adaptUser(player)
         val huskHomes = HuskHomesAPI.getInstance().getUserHomes(onlineUser)
         val form = SimpleForm.builder()
             .title(
                 LegacyComponentSerializer.legacySection().serialize(
                     BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().homeFormTitle()
+                        BedrockPlayerSupport.langConfigManager.getConfigData().delHomeFormTitle()
+                    )
+                )
+            )
+            .validResultHandler { simpleFormResponse ->
+                player.chat("/delhome " + simpleFormResponse.clickedButton().text())
+            }
+        huskHomes.thenAccept { homeList ->
+            for (home in homeList) {
+                form.button(home.name)
+            }
+            BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
+        }
+    }
+
+    fun sendGoHomeForm(player: Player) {
+        val onlineUser = HuskHomesAPI.getInstance().adaptUser(player)
+        val huskHomes = HuskHomesAPI.getInstance().getUserHomes(onlineUser)
+        val form = SimpleForm.builder()
+            .title(
+                LegacyComponentSerializer.legacySection().serialize(
+                    BedrockPlayerSupport.miniMessage.deserialize(
+                        BedrockPlayerSupport.langConfigManager.getConfigData().goHomeFormTitle()
                     )
                 )
             )
