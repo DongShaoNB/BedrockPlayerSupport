@@ -156,7 +156,9 @@ class MainForm {
                             CMI -> BedrockPlayerSupport.cmiForm.sendDelHomeForm(player)
                             EssentialsX -> BedrockPlayerSupport.essxForm.sendDelHomeForm(player)
                             HuskHomes -> BedrockPlayerSupport.huskhomesForm.sendDelHomeForm(player)
-                            None -> {}
+                            None -> {
+                                // Don't need to do anything
+                            }
                         }
                     }
 
@@ -165,7 +167,9 @@ class MainForm {
                             CMI -> BedrockPlayerSupport.cmiForm.sendGoHomeForm(player)
                             EssentialsX -> BedrockPlayerSupport.essxForm.sendGoHomeForm(player)
                             HuskHomes -> BedrockPlayerSupport.huskhomesForm.sendGoHomeForm(player)
-                            None -> {}
+                            None -> {
+                                // Don't need to do anything
+                            }
                         }
                     }
                 }
