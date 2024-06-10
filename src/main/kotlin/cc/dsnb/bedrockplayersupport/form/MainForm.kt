@@ -37,7 +37,8 @@ class MainForm {
         val uuid = player.uniqueId
         val onlinePlayerNameList = ArrayList<String>()
         if (BedrockPlayerSupport.basicPlugin === HuskHomes && mainConfig.enableCrossServer()) {
-            val bukkitHuskHomes = Bukkit.getPluginManager().getPlugin("HuskHomes") as BukkitHuskHomes
+            val bukkitHuskHomes =
+                Bukkit.getPluginManager().getPlugin("HuskHomes") as BukkitHuskHomes
             for (onlineUser in bukkitHuskHomes.onlineUsers) {
                 if (onlineUser !== HuskHomesAPI.getInstance().adaptUser(player)) {
                     onlinePlayerNameList.add(onlineUser.username)
@@ -155,7 +156,7 @@ class MainForm {
                             CMI -> BedrockPlayerSupport.cmiForm.sendDelHomeForm(player)
                             EssentialsX -> BedrockPlayerSupport.essxForm.sendDelHomeForm(player)
                             HuskHomes -> BedrockPlayerSupport.huskhomesForm.sendDelHomeForm(player)
-                            else -> {}
+                            None -> {}
                         }
                     }
 
@@ -164,11 +165,9 @@ class MainForm {
                             CMI -> BedrockPlayerSupport.cmiForm.sendGoHomeForm(player)
                             EssentialsX -> BedrockPlayerSupport.essxForm.sendGoHomeForm(player)
                             HuskHomes -> BedrockPlayerSupport.huskhomesForm.sendGoHomeForm(player)
-                            else -> {}
+                            None -> {}
                         }
                     }
-
-                    else -> {}
                 }
             }
         BedrockPlayerSupport.floodgateApi.sendForm(uuid, form)
