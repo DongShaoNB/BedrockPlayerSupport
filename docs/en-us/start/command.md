@@ -4,8 +4,8 @@
 
 Introduce | Command | Permission                                 | Picture
 ----- | ----- |------------------------------------| ---
-Teleport Form | /tpgui | bedrockplayersupport.command.tpgui | https://img.fastmirror.net/s/2023/12/09/65747a646f0ed.jpg
-Home Form | /homegui | bedrockplayersupport.command.msggui | https://img.fastmirror.net/s/2023/12/09/65747a6167d09.jpg
-Msg Form | /msggui | bedrockplayersupport.command.homegui | https://img.fastmirror.net/s/2023/12/09/65747a6836255.jpg
+Teleport Form | /tpgui | bedrockplayersupport.command.tpgui | https://img.fastmirror.net/s/2024/06/11/6668173a6185b.png
+Home Form | /homegui | bedrockplayersupport.command.msggui | https://img.fastmirror.net/s/2024/06/11/6668011935ed8.png
+Msg Form | /msggui | bedrockplayersupport.command.homegui | https://img.fastmirror.net/s/2024/06/11/6668173b46e99.png
 
 **Last edit: {docsify-updated}**
