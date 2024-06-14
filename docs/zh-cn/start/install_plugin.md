@@ -9,7 +9,8 @@
 ### 正式版
 [GitHub Releases](https://github.com/DongShaoNB/BedrockPlayerSupport/releases)  
 ### 测试版
-!> 测试版可能出现问题，不推荐在正式环境使用  
+!> 测试版可能出现问题，不推荐在正式环境使用
+
 [GitHub Action](https://github.com/DongShaoNB/BedrockPlayerSupport/actions/workflows/gradle.yml)
 ## 安装
 直接将插件放进 `plugins` 文件夹，修改配置文件即可
