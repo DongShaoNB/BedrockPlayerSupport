@@ -1,13 +1,13 @@
-#-----------------------------------------------------------
+#-------------------------------------------------------------
 #BedrockPlayerSupport Language File | Made by DongShaoNB
-#GitHub: https://github.com/DongShaoNB/BedrockPlayerSupport
 #Crowdin: https://crowdin.com/project/mcbps
 #MiniMessage: https://docs.advntr.dev/minimessage/format.html
-#-----------------------------------------------------------
+#GitHub: https://github.com/DongShaoNB/BedrockPlayerSupport
+#-------------------------------------------------------------
 #语言文件默认简体中文。如果需要其他语言，请访问 Crowdin
 #我们使用 MiniMessage 格式，请查看 MiniMessage 格式文档修改语言
 #The language file default to Chinese Simplified. If you need another language, please visit Crowdin
-#We use MiniMessage format, Please refer to the MiniMessage format document to modify the language
+#We use MiniMessage format, Please refer to the MiniMessage format document to modify the language file
 form:
   teleport:
     #传送表单的标题
@@ -58,6 +58,30 @@ form:
     #家表单的标题
     #Title of the home form
     title: '&6&lNhà của bạn'
+    #家表单的 '设置家' 按钮文本
+    #Text of the 'SetHome' button in home form
+    sethome-button: '<green>设置家'
+    #家表单的 '删除家' 按钮文本
+    #Text of the 'DelHome' button in home form
+    delhome-button: '<red>删除家'
+    #家表单的 '回家' 按钮文本
+    #Text of the 'GoHome' button in home form
+    gohome-button: '<gold>回家'
+  sethome:
+    #设置家表单的标题
+    #Title of the set home form
+    title: '<gold>设置家表单'
+    #设置家表单的描述文本
+    #Text of the set home form
+    text: '<gold>家的名称'
+  delhome:
+    #删除家表单的标题
+    #Title of the delete home form
+    title: '<gold>删除家表单'
+  gohome:
+    #回家表单的标题
+    #Title of the go home form
+    title: '<gold>回家表单'
   back:
     #返回死亡点表单的标题
     #Title of the back death location form
