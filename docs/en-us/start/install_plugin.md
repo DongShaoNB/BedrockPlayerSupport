@@ -9,7 +9,7 @@ Apply Version: `1.18+`
 ### Release
 [GitHub Releases](https://github.com/DongShaoNB/BedrockPlayerSupport/releases)  
 ### Beta
-!> Beta version may have issues and is not recommended for use in formal environments  
+!> Beta version may have issues and is not recommended for use in formal environments   
 [GitHub Action](https://github.com/DongShaoNB/BedrockPlayerSupport/actions/workflows/gradle.yml)
 ## Install
 Simply put the plugin into the `plugins` folder and modify the configuration file
