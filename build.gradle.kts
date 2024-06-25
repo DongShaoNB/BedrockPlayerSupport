@@ -53,7 +53,7 @@ dependencies {
     // EssentialsX
     compileOnly("net.essentialsx:EssentialsX:2.20.1")
     // HuskHomes
-    compileOnly("net.william278.huskhomes:huskhomes-bukkit:4.6.3")
+    compileOnly("net.william278.huskhomes:huskhomes-bukkit:4.7")
     // AuthMe
     compileOnly("fr.xephi:authme:5.6.0-SNAPSHOT")
     // CatSeedLogin
