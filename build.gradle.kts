@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "cc.dsnb"
-version = "2.0.0"
+version = "2.0.1"
 
 repositories {
     mavenCentral()
@@ -54,6 +54,8 @@ dependencies {
     compileOnly("net.essentialsx:EssentialsX:2.20.1")
     // HuskHomes
     compileOnly("net.william278.huskhomes:huskhomes-bukkit:4.7")
+    // AdvancedTeleport
+    compileOnly(files("lib/AdvancedTeleport-Bukkit-6.1.1-all.jar"))
     // AuthMe
     compileOnly("fr.xephi:authme:5.6.1-SNAPSHOT")
     // CatSeedLogin
