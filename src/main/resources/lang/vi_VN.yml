@@ -15,65 +15,65 @@ form:
     title: '&6&lYêu cầu dịch chuyển'
     #传送表单的选择传送类型提示语
     #Text of choose teleport type in teleport form
-    choose-type: '<green>请选择传送类型'
+    choose-type: '<green>Chọn chế độ dịch chuyển'
     #传送表单的选择传送玩家提示语
     #Text of choose teleport player in teleport form
-    choose-player: '<green>请选择要传送的玩家'
+    choose-player: '<green>Chọn người chơi để thực hiện dịch chuyển'
   received-teleport:
     tpa:
       #玩家请求传送到你的表单的标题
       #Title of the player requests to teleport to you form
-      title: '<green>玩家请求传送到你的位置 <white>(TPA)'
+      title: '<green>Yêu cầu dịch chuyển đến bị trí của bạn <white>(TPA)'
       #玩家请求传送到你的表单的描述文本
       #可用变量: %requesterName% 请求者名字
       #Description text of the player requests to teleport to you form
       #Available variable: %requesterName% requester name
-      text: '玩家 %requesterName% 请求传送到你的位置'
+      text: '%requesterName% đã yêu cầu bạn dịch chuyển đến chỗ họ.'
     tpahere:
       #玩家请求你传送到他的表单的标题
       #Title of the player requests you to teleport to him form
-      title: '<green>玩家请求你传送到他的位置 <white>(TPAHERE)'
+      title: '<green>Yêu cầu dịch chuyển bạn đến vị trí của họ <white>(TPAHERE)'
       #玩家请求你传送到他的表单的描述文本
       #可用变量: %requesterName% 请求者名字
       #Description text of the player requests you to teleport to him form
       #Available variable: %requesterName% requester name
-      text: '玩家 %requesterName% 请求你传送到他的位置'
+      text: '%requesterName% đã yêu cầu dịch chuyển đến chỗ bạn.'
     #传送表单的 '接受' 按钮文本
     #Text of the 'Accept' button in teleport form
-    accept: '<green>同意'
+    accept: '<green>Chấp nhận'
     #传送表单的 '拒绝' 按钮文本
     #Text of the 'Deny' button in teleport form
-    deny: '<red>拒绝'
+    deny: '<red>Từ chối'
   msg:
     #消息表单的标题
     #Title of the msg form
     title: '&6&lGửi tin nhắn riêng'
     #消息表单的选择接收消息玩家提示语
     #Text of choose receive message player in msg form
-    choose-player: '<green>请选择接收消息的玩家'
+    choose-player: '<green>Chọn người chơi để gửi tin nhắn riêng'
     #消息表单的输入消息提示语
     #Text of input message in msg form
-    input-message: '<green>请填写要发送的消息'
+    input-message: '<green>Điền nội dung tin nhắn'
   home:
     #家表单的标题
     #Title of the home form
     title: '&6&lNhà của bạn'
     #家表单的 '设置家' 按钮文本
     #Text of the 'SetHome' button in home form
-    sethome-button: '<green>设置家'
+    sethome-button: '<green>Tuỳ chọn đặt nhà'
     #家表单的 '删除家' 按钮文本
     #Text of the 'DelHome' button in home form
-    delhome-button: '<red>删除家'
+    delhome-button: '<red>Xoá nhà'
     #家表单的 '回家' 按钮文本
     #Text of the 'GoHome' button in home form
-    gohome-button: '<gold>回家'
+    gohome-button: '<gold>Dịch chuyển tới nhà'
   sethome:
     #设置家表单的标题
     #Title of the set home form
-    title: '<gold>设置家表单'
+    title: '<gold>Thiết lập nhà'
     #设置家表单的描述文本
     #Text of the set home form
-    text: '<gold>家的名称'
+    text: '<gold>Điền tên nhà'
   delhome:
     #删除家表单的标题
     #Title of the delete home form
