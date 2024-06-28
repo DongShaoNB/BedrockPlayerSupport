@@ -9,6 +9,7 @@ softdepend:
   - CMI
   - Essentials
   - HuskHomes
+  - AdvancedTeleport
   - AuthMe
   - CatSeedLogin
   - NexAuth

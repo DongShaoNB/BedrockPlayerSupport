@@ -18,8 +18,8 @@ class CMIListener : Listener {
         val requester = event.whoOffers.player
         val receiver = event.whoAccepts.player
         if (requester != null && receiver != null) {
-            val receiverUuid = receiver.uniqueId
-            if (BedrockPlayerSupport.floodgateApi.isFloodgatePlayer(receiverUuid)) {
+            val receiverUUID = receiver.uniqueId
+            if (BedrockPlayerSupport.floodgateApi.isFloodgatePlayer(receiverUUID)) {
                 if (tpAction == TpAction.tpa) {
                     BedrockPlayerSupport.mainForm.openBedrockReceiveTeleportForm(TeleportType.Tpa, requester, receiver)
                 } else if (tpAction == TpAction.tpahere) {

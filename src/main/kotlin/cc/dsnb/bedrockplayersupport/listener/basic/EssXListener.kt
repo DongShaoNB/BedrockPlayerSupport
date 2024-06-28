@@ -16,8 +16,8 @@ class EssXListener : Listener {
         val isTeleportHere = event.isTeleportHere
         val requester = event.requester.player
         val receiver = event.target.base
-        val receiverUuid = receiver.uniqueId
-        if (BedrockPlayerSupport.floodgateApi.isFloodgatePlayer(receiverUuid)) {
+        val receiverUUID = receiver.uniqueId
+        if (BedrockPlayerSupport.floodgateApi.isFloodgatePlayer(receiverUUID)) {
             if (isTeleportHere) {
                 BedrockPlayerSupport.mainForm.openBedrockReceiveTeleportForm(TeleportType.TpaHere, requester, receiver)
             } else {

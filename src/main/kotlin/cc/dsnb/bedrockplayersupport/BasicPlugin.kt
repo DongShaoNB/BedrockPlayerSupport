@@ -8,6 +8,7 @@ enum class BasicPlugin {
     CMI,
     EssentialsX,
     HuskHomes,
+    AdvancedTeleport,
     None
 
 }

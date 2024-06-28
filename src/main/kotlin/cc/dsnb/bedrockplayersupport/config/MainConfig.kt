@@ -37,10 +37,10 @@ interface MainConfig {
     @ConfKey("plugin.basic")
     @ConfComments(
         "填写正在使用的基础插件",
-        "可选值: auto/cmi/essentialsx/huskhomes/none",
+        "可选值: auto/cmi/essentialsx/huskhomes/advancedteleport/none",
         "auto为自动检测 none为没有基础插件(即关闭功能)",
         "Fill in the basic plugins currently in use",
-        "Optional value: auto/cmi/essentialsx/huskhomes/none",
+        "Optional value: auto/cmi/essentialsx/huskhomes/advancedteleport/none",
         "auto is for automatic detection, none for no basic plugin (i.e. disable function)"
     )
     @DefaultString("auto")

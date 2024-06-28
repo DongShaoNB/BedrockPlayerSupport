@@ -3,7 +3,7 @@ package cc.dsnb.bedrockplayersupport.util
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
 import org.bukkit.util.Consumer
 import java.io.IOException
-import java.net.URL
+import java.net.URI
 import java.util.*
 
 /**
@@ -15,7 +15,7 @@ object UpdateUtil {
 
     fun getLatestVersion(consumer: Consumer<String>) {
         try {
-            URL("https://api.spigotmc.org/legacy/update.php?resource=$SPIGOT_RESOURCE_ID/~")
+            URI("https://api.spigotmc.org/legacy/update.php?resource=$SPIGOT_RESOURCE_ID/~").toURL()
                 .openStream().use { `is` ->
                     Scanner(`is`).use { scanner ->
                         if (scanner.hasNext()) {

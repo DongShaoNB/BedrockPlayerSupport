@@ -8,6 +8,7 @@ import cc.dsnb.bedrockplayersupport.command.TpFormCommand
 import cc.dsnb.bedrockplayersupport.config.LangConfig
 import cc.dsnb.bedrockplayersupport.config.MainConfig
 import cc.dsnb.bedrockplayersupport.form.MainForm
+import cc.dsnb.bedrockplayersupport.form.basic.ATForm
 import cc.dsnb.bedrockplayersupport.form.basic.CMIForm
 import cc.dsnb.bedrockplayersupport.form.basic.EssXForm
 import cc.dsnb.bedrockplayersupport.form.basic.HuskHomesForm
@@ -17,6 +18,7 @@ import cc.dsnb.bedrockplayersupport.listener.auth.AuthMeListener
 import cc.dsnb.bedrockplayersupport.listener.auth.CatSeedLoginListener
 import cc.dsnb.bedrockplayersupport.listener.auth.NexAuthListener
 import cc.dsnb.bedrockplayersupport.listener.auth.OtherAuthListener
+import cc.dsnb.bedrockplayersupport.listener.basic.ATListener
 import cc.dsnb.bedrockplayersupport.listener.basic.CMIListener
 import cc.dsnb.bedrockplayersupport.listener.basic.EssXListener
 import cc.dsnb.bedrockplayersupport.listener.basic.HuskHomesListener
@@ -49,6 +51,7 @@ class BedrockPlayerSupport : JavaPlugin() {
         lateinit var cmiForm: CMIForm
         lateinit var essxForm: EssXForm
         lateinit var huskhomesForm: HuskHomesForm
+        lateinit var atForm: ATForm
         lateinit var floodgateApi: FloodgateApi
         val miniMessage = MiniMessage.miniMessage()
         const val PREFIX = "[BedrockPlayerSupport] "
@@ -122,6 +125,14 @@ class BedrockPlayerSupport : JavaPlugin() {
             ))
         ) {
             BasicPlugin.HuskHomes
+        } else if (pluginManager.getPlugin("AdvancedTeleport") != null && ("advancedteleport".equals(
+                mainConfigManager.getConfigData().basicPlugin(), ignoreCase = true
+            ) || "auto".equals(
+                mainConfigManager.getConfigData().basicPlugin(),
+                ignoreCase = true
+            ))
+        ) {
+            BasicPlugin.AdvancedTeleport
         } else {
             BasicPlugin.None
         }
@@ -179,6 +190,11 @@ class BedrockPlayerSupport : JavaPlugin() {
                 pluginManager.registerEvents(HuskHomesListener(), this)
             }
 
+            BasicPlugin.AdvancedTeleport -> {
+                atForm = ATForm()
+                pluginManager.registerEvents(ATListener(), this)
+            }
+
             BasicPlugin.None -> {
                 // Don't need to do anything
             }
@@ -221,6 +237,7 @@ class BedrockPlayerSupport : JavaPlugin() {
                     BasicPlugin.CMI -> "CMI"
                     BasicPlugin.EssentialsX -> "EssentialsX"
                     BasicPlugin.HuskHomes -> "HuskHomes"
+                    BasicPlugin.AdvancedTeleport -> "AdvancedTeleport"
                     BasicPlugin.None -> "None"
                 }
             })

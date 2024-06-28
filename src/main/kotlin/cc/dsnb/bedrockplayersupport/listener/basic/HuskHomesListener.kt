@@ -19,8 +19,8 @@ class HuskHomesListener : Listener {
         val requester = Bukkit.getPlayer(event.request.requesterName)
         val receiver = Bukkit.getPlayer(event.recipient.uuid)
         if (requester != null && receiver != null) {
-            val receiverUuid = receiver.uniqueId
-            if (BedrockPlayerSupport.floodgateApi.isFloodgatePlayer(receiverUuid)) {
+            val receiverUUID = receiver.uniqueId
+            if (BedrockPlayerSupport.floodgateApi.isFloodgatePlayer(receiverUUID)) {
                 if (requestType == TeleportRequest.Type.TPA) {
                     BedrockPlayerSupport.mainForm.openBedrockReceiveTeleportForm(TeleportType.Tpa, requester, receiver)
                 } else if (requestType == TeleportRequest.Type.TPA_HERE) {
