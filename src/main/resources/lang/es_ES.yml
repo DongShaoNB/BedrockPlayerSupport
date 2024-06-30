@@ -12,48 +12,48 @@ form:
   teleport:
     #传送表单的标题
     #Title of the teleport form
-    title: '<gold>传送表单'
+    title: "form:\n teleport:\n title: 'Título del formulario de teletransporte'"
     #传送表单的选择传送类型提示语
     #Text of choose teleport type in teleport form
-    choose-type: '<green>请选择传送类型'
+    choose-type: "form:\n teleport:\n choose-type: 'Texto de selección de tipo de teletransporte en el formulario de teletransporte'"
     #传送表单的选择传送玩家提示语
     #Text of choose teleport player in teleport form
-    choose-player: '<green>请选择要传送的玩家'
+    choose-player: "form:\n teleport:\n choose-player: 'Texto para elegir al jugador a teletransportar en el formulario de teletransporte'"
   received-teleport:
     tpa:
       #玩家请求传送到你的表单的标题
       #Title of the player requests to teleport to you form
-      title: '<green>玩家请求传送到你的位置 <white>(TPA)'
+      title: "form:\n received-teleport:\n tpa:\n title: 'Título del formulario de solicitud de teletransporte hacia ti'"
       #玩家请求传送到你的表单的描述文本
       #可用变量: %requesterName% 请求者名字
       #Description text of the player requests to teleport to you form
       #Available variable: %requesterName% requester name
-      text: '玩家 %requesterName% 请求传送到你的位置'
+      text: "form:\n received-teleport:\n tpa:\n text: 'El jugador %requesterName% ha solicitado teletransportarse hacia tu ubicación'"
     tpahere:
       #玩家请求你传送到他的表单的标题
       #Title of the player requests you to teleport to him form
-      title: '<green>玩家请求你传送到他的位置 <white>(TPAHERE)'
+      title: "form:\n received-teleport:\n tpahere:\n title: 'Título del formulario de solicitud para que te teletransportes hacia él'"
       #玩家请求你传送到他的表单的描述文本
       #可用变量: %requesterName% 请求者名字
       #Description text of the player requests you to teleport to him form
       #Available variable: %requesterName% requester name
-      text: '玩家 %requesterName% 请求你传送到他的位置'
+      text: "form:\n received-teleport:\n tpahere:\n text: 'El jugador %requesterName% ha solicitado que te teletransportes hacia su ubicación'"
     #传送表单的 '接受' 按钮文本
     #Text of the 'Accept' button in teleport form
-    accept: '<green>同意'
+    accept: "form:\n received-teleport:\n accept: 'Aceptar'"
     #传送表单的 '拒绝' 按钮文本
     #Text of the 'Deny' button in teleport form
-    deny: '<red>拒绝'
+    deny: "form:\n received-teleport:\n deny: 'Rechazar'"
   msg:
     #消息表单的标题
     #Title of the msg form
-    title: '<gold>消息表单'
+    title: "form:\n msg:\n title: 'Título del formulario de mensajes'"
     #消息表单的选择接收消息玩家提示语
     #Text of choose receive message player in msg form
-    choose-player: '<green>请选择接收消息的玩家'
+    choose-player: "form:\n msg:\n choose-player: 'Texto para elegir al jugador receptor del mensaje en el formulario de mensajes'"
     #消息表单的输入消息提示语
     #Text of input message in msg form
-    input-message: '<green>请填写要发送的消息'
+    input-message: "form:\n msg:\n input-message: 'Texto para ingresar el mensaje en el formulario de mensajes'"
   home:
     #家表单的标题
     #Title of the home form
