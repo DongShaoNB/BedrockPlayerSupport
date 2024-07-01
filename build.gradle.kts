@@ -57,7 +57,7 @@ dependencies {
     // AdvancedTeleport
     compileOnly(files("lib/AdvancedTeleport-Bukkit-6.1.1-all.jar"))
     // AuthMe
-    compileOnly("fr.xephi:authme:5.6.1-SNAPSHOT")
+    compileOnly("fr.xephi:authme:5.7.0-SNAPSHOT")
     // CatSeedLogin
     compileOnly(files("lib/CatSeedLogin-1.4.1-SNAPSHOT.jar"))
     // NexEngine (use NexAuth API to login or register player depend on NexEngine)
