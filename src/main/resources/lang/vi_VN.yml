@@ -12,7 +12,7 @@ form:
   teleport:
     #传送表单的标题
     #Title of the teleport form
-    title: '&6&lYêu cầu dịch chuyển'
+    title: '<gold>Tuỳ chọn dịch chuyển'
     #传送表单的选择传送类型提示语
     #Text of choose teleport type in teleport form
     choose-type: '<green>Chọn chế độ dịch chuyển'
@@ -47,7 +47,7 @@ form:
   msg:
     #消息表单的标题
     #Title of the msg form
-    title: '&6&lGửi tin nhắn riêng'
+    title: '<gold>Gửi tin nhắn riêng'
     #消息表单的选择接收消息玩家提示语
     #Text of choose receive message player in msg form
     choose-player: '<green>Chọn người chơi để gửi tin nhắn riêng'
@@ -57,7 +57,7 @@ form:
   home:
     #家表单的标题
     #Title of the home form
-    title: '&6&lNhà của bạn'
+    title: '<gold>Nhà của bạn'
     #家表单的 '设置家' 按钮文本
     #Text of the 'SetHome' button in home form
     sethome-button: '<green>Tuỳ chọn đặt nhà'
@@ -85,7 +85,7 @@ form:
   back:
     #返回死亡点表单的标题
     #Title of the back death location form
-    title: '&6&lQuay lại điểm vừa chết'
+    title: '<gold>Quay lại điểm vừa chết'
     #返回死亡点表单的描述文本
     #Text of the back death location form
     text: 'Bạn có muốn quay lại điểm vừa chết hay không?'
