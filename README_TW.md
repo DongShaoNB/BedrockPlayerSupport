@@ -59,5 +59,5 @@ Discord: [j4XwCSVtcu][discord]
 [floodgate-download]: https://geysermc.org/download#floodgate
 [docs]: https://docs.bps.dsnb.cc
 [crowdin]: https://zh.crowdin.com/project/mcbps
-[discord]: https://discord.gg/j4XwCSVtcu
+[discord]: https://discord.gg/bnpzsmPz26
 [jetbrains-oss]: https://jb.gg/OpenSourceSupport

@@ -9,6 +9,6 @@
 [Crowdin](https://crowdin.com/project/mcbps)
 ## Community
 QQ Group: `159323818`  
-Discord: `https://discord.gg/qAxzUAnukU`
+Discord: https://discord.gg/bnpzsmPz26
 
 **Last edit: {docsify-updated}**
