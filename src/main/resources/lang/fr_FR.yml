@@ -115,5 +115,5 @@ plugin:
   #可用变量: %time% 重载耗时(毫秒)
   #Text of successful reload plugin after send to command sender
   #Available variable: %time% reload time(millisecond)
-  reload-successfully: '<green>Rechargement du plugin réussi, temps écoulé : %time% millisecondes'
+  reload-successfully: '<green>Rechargement du plugin réussi, temps écoulé : %time% ms'
 
