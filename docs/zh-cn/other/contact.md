@@ -9,6 +9,6 @@
 [Crowdin](https://zh.crowdin.com/project/mcbps)
 ## 社区
 QQ群: `159323818`  
-Discord: `https://discord.gg/qAxzUAnukU`
+Discord: https://discord.gg/bnpzsmPz26
 
 **最后编辑: {docsify-updated}**

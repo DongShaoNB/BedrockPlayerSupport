@@ -48,7 +48,7 @@ Simply put the plugin into the `plugins` folder and modify the configuration fil
 
 QQ Group: `159323818`
 
-Discord: [j4XwCSVtcu][discord]
+Discord: [https://discord.gg/bnpzsmPz26][discord]
 
 ## Thanks
 Thanks for [JetBrains: Support for Open-Source Projects][jetbrains-oss]   
@@ -58,5 +58,5 @@ Thanks for [JetBrains: Support for Open-Source Projects][jetbrains-oss]
 [floodgate-download]: https://geysermc.org/download#floodgate
 [docs]: https://docs.bps.dsnb.cc
 [crowdin]: https://zh.crowdin.com/project/mcbps
-[discord]: https://discord.gg/j4XwCSVtcu
+[discord]: https://discord.gg/bnpzsmPz26
 [jetbrains-oss]: https://jb.gg/OpenSourceSupport
