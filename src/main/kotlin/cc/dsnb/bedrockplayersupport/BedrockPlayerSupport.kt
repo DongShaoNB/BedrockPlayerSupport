@@ -100,7 +100,7 @@ class BedrockPlayerSupport : JavaPlugin() {
 
     private fun setPluginRunningStatus() {
         val pluginManager = Bukkit.getPluginManager()
-        basicPlugin = if (pluginManager.getPlugin("CMI") != null && ("cmi".equals(
+        basicPlugin = if (pluginManager.isPluginEnabled("CMI") && ("cmi".equals(
                 mainConfigManager.getConfigData().basicPlugin(),
                 ignoreCase = true
             ) || "auto".equals(
@@ -109,7 +109,7 @@ class BedrockPlayerSupport : JavaPlugin() {
             ))
         ) {
             BasicPlugin.CMI
-        } else if (pluginManager.getPlugin("Essentials") != null && ("essentialsx".equals(
+        } else if (pluginManager.isPluginEnabled("Essentials") && ("essentialsx".equals(
                 mainConfigManager.getConfigData().basicPlugin(), ignoreCase = true
             ) || "auto".equals(
                 mainConfigManager.getConfigData().basicPlugin(),
@@ -117,7 +117,7 @@ class BedrockPlayerSupport : JavaPlugin() {
             ))
         ) {
             BasicPlugin.EssentialsX
-        } else if (pluginManager.getPlugin("HuskHomes") != null && ("huskhomes".equals(
+        } else if (pluginManager.isPluginEnabled("HuskHomes") && ("huskhomes".equals(
                 mainConfigManager.getConfigData().basicPlugin(), ignoreCase = true
             ) || "auto".equals(
                 mainConfigManager.getConfigData().basicPlugin(),
@@ -125,7 +125,7 @@ class BedrockPlayerSupport : JavaPlugin() {
             ))
         ) {
             BasicPlugin.HuskHomes
-        } else if (pluginManager.getPlugin("AdvancedTeleport") != null && ("advancedteleport".equals(
+        } else if (pluginManager.isPluginEnabled("AdvancedTeleport") && ("advancedteleport".equals(
                 mainConfigManager.getConfigData().basicPlugin(), ignoreCase = true
             ) || "auto".equals(
                 mainConfigManager.getConfigData().basicPlugin(),
@@ -136,7 +136,7 @@ class BedrockPlayerSupport : JavaPlugin() {
         } else {
             BasicPlugin.None
         }
-        authPlugin = if (pluginManager.getPlugin("AuthMe") != null && ("authme".equals(
+        authPlugin = if (pluginManager.isPluginEnabled("AuthMe") && ("authme".equals(
                 mainConfigManager.getConfigData().authPlugin(), ignoreCase = true
             ) || "auto".equals(
                 mainConfigManager.getConfigData().basicPlugin(),
@@ -144,7 +144,7 @@ class BedrockPlayerSupport : JavaPlugin() {
             ))
         ) {
             AuthMe
-        } else if (pluginManager.getPlugin("CatSeedLogin") != null && ("catseedlogin".equals(
+        } else if (pluginManager.isPluginEnabled("CatSeedLogin") && ("catseedlogin".equals(
                 mainConfigManager.getConfigData().authPlugin(), ignoreCase = true
             ) || "auto".equals(
                 mainConfigManager.getConfigData().basicPlugin(),
@@ -152,7 +152,7 @@ class BedrockPlayerSupport : JavaPlugin() {
             ))
         ) {
             CatSeedLogin
-        } else if (pluginManager.getPlugin("NexAuth") != null && ("nexauth".equals(
+        } else if (pluginManager.isPluginEnabled("NexAuth") && ("nexauth".equals(
                 mainConfigManager.getConfigData().authPlugin(), ignoreCase = true
             ) || "auto".equals(
                 mainConfigManager.getConfigData().basicPlugin(),
