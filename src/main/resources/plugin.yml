@@ -1,5 +1,5 @@
 name: BedrockPlayerSupport
-version: ${pluginVersion}
+version: ${version}
 main: cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
 api-version: 1.18
 folia-supported: true

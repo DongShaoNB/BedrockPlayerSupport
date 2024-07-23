@@ -72,24 +72,23 @@ dependencies {
     implementation("com.github.Anon8281:UniversalScheduler:0.1.6")
 }
 
-tasks.test {
-    useJUnitPlatform()
-}
-tasks.processResources {
-    doLast {
-        val pluginFile = project.projectDir.resolve("build/resources/main/plugin.yml")
-        val pluginContent = pluginFile.readText()
-        val outputContent = pluginContent.replace("\${pluginVersion}", version.toString())
-        pluginFile.writeText(outputContent)
+tasks {
+    shadowJar {
+        // bStats
+        relocate("org.bstats", "cc.dsnb.bedrockplayersupport.bstats")
+        // DazzleConf
+        relocate("space.arim.dazzleconf", "cc.dsnb.bedrockplayersupport.dazzleconf")
+        // UniversalScheduler
+        relocate(
+            "com.github.Anon8281.universalScheduler",
+            "cc.dsnb.bedrockplayersupport.universalScheduler"
+        )
     }
-}
-tasks.shadowJar {
-    // bStats
-    relocate("org.bstats", "cc.dsnb.bedrockplayersupport.bstats")
-    // DazzleConf
-    relocate("space.arim.dazzleconf", "cc.dsnb.bedrockplayersupport.dazzleconf")
-    // UniversalScheduler
-    relocate("com.github.Anon8281.universalScheduler", "cc.dsnb.bedrockplayersupport.universalScheduler")
+    processResources {
+        filesMatching("plugin.yml") {
+            expand("version" to rootProject.version)
+        }
+    }
 }
 kotlin {
     jvmToolchain(17)
