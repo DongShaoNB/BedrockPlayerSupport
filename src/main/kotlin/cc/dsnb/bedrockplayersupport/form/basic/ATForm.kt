@@ -1,7 +1,6 @@
 package cc.dsnb.bedrockplayersupport.form.basic
 
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
-import io.github.niestrat99.advancedteleport.api.ATFloodgatePlayer
 import io.github.niestrat99.advancedteleport.api.ATPlayer
 import io.github.niestrat99.advancedteleport.api.AdvancedTeleportAPI
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
