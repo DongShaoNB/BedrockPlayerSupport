@@ -127,12 +127,20 @@ interface MainConfig {
     @Order(72)
     fun backDeathLocFormOpenDelayTick(): Long
 
+    @ConfKey("form.warp.enable")
+    @ConfComments(
+        "启用基岩版传送点表单(/warpgui)", "Enable bedrock warp form (/warpgui)"
+    )
+    @DefaultBoolean(true)
+    @Order(80)
+    fun enableWarpForm(): Boolean
+
     @ConfKey("auth.register.enable")
     @ConfComments(
         "启用基岩版玩家自动注册功能", "Enable bedrock player automatic register function"
     )
     @DefaultBoolean(false)
-    @Order(80)
+    @Order(100)
     fun enableRegister(): Boolean
 
     @ConfKey("auth.register.password-length")
@@ -140,7 +148,7 @@ interface MainConfig {
         "随机的密码的长度", "The length of random password"
     )
     @DefaultInteger(16)
-    @Order(81)
+    @Order(101)
     fun passwordLength(): Int
 
     @ConfKey("auth.login.enable")
@@ -148,7 +156,7 @@ interface MainConfig {
         "启用基岩版玩家自动登录功能", "Enable bedrock player automatic login function"
     )
     @DefaultBoolean(false)
-    @Order(90)
+    @Order(110)
     fun enableLogin(): Boolean
 
     @ConfKey("auth.login.command")
@@ -163,7 +171,7 @@ interface MainConfig {
         "Available variable: %playerName% player name"
     )
     @DefaultString("forcelogin %playerName%")
-    @Order(91)
+    @Order(111)
     fun forceLoginCommand(): String
 
 }

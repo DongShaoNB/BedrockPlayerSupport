@@ -51,4 +51,21 @@ class EssXForm {
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
+    fun sendWarpForm(player: Player) {
+        val warps = (Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).warps.list
+        val form = SimpleForm.builder()
+            .title(
+                LegacyComponentSerializer.legacySection().serialize(
+                    BedrockPlayerSupport.miniMessage.deserialize(
+                        BedrockPlayerSupport.langConfigManager.getConfigData().warpFormTitle()
+                    )
+                )
+            )
+            .validResultHandler { simpleFormResponse ->
+                player.chat("/warp " + simpleFormResponse.clickedButton().text())
+            }
+        warps.forEach { form.button(it) }
+        BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
+    }
+
 }

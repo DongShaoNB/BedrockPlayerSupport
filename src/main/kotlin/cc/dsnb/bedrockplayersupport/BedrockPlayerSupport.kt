@@ -1,10 +1,7 @@
 package cc.dsnb.bedrockplayersupport
 
 import cc.dsnb.bedrockplayersupport.AuthPlugin.*
-import cc.dsnb.bedrockplayersupport.command.HomeFormCommand
-import cc.dsnb.bedrockplayersupport.command.MainCommand
-import cc.dsnb.bedrockplayersupport.command.MsgFormCommand
-import cc.dsnb.bedrockplayersupport.command.TpFormCommand
+import cc.dsnb.bedrockplayersupport.command.*
 import cc.dsnb.bedrockplayersupport.config.LangConfig
 import cc.dsnb.bedrockplayersupport.config.MainConfig
 import cc.dsnb.bedrockplayersupport.form.MainForm
@@ -227,6 +224,9 @@ class BedrockPlayerSupport : JavaPlugin() {
         }
         if (config.enableHomeForm()) {
             getCommand("homegui")?.setExecutor(HomeFormCommand())
+        }
+        if (config.enableWarpForm()) {
+            getCommand("warpgui")?.setExecutor(WarpFormCommand())
         }
     }
 

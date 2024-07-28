@@ -221,6 +221,14 @@ interface LangConfig {
     @Order(53)
     fun backFormNoButton(): String
 
+    @ConfKey("form.warp.title")
+    @ConfComments(
+        "传送点表单的标题", "Title of the warp form"
+    )
+    @DefaultString("<gold>传送点表单")
+    @Order(60)
+    fun warpFormTitle(): String
+
     @ConfKey("message.not-bedrock-player")
     @ConfComments(
         "不是基岩版的玩家使用表单命令的错误提示", "Error of player use form command but is not bedrock player"
