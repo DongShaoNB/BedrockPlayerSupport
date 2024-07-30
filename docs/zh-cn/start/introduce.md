@@ -1,6 +1,6 @@
 # 介绍
  
-**BedrockPlayerSupport** 是一个优化基岩版玩家体验的插件，给部分命令添加了更适合基岩版玩家的表单，例如基础插件(**CMI/EssentialsX/HuskHomes/AdvancedTeleport**)的 **/tpa /tpahere /home** 命令，原版 **/msg** 命令
+**BedrockPlayerSupport** 是一个优化基岩版玩家体验的插件，给部分命令添加了更适合基岩版玩家的表单，例如基础插件(**CMI/EssentialsX/HuskHomes/AdvancedTeleport**)的 **/tpa /tpahere /home /warp** 命令，原版 **/msg** 命令
   
 给**部分主流登录插件**添加了基岩版玩家自动注册、登录功能，其他登录插件也可以在配置文件中设置强制登录命令实现自动登录
 

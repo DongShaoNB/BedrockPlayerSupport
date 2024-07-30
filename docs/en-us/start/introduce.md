@@ -1,6 +1,6 @@
 # Introduce
  
-**BedrockPlayerSupport** is a plugin that optimizes the player experience of the bedrock version, adding forms that are more suitable for bedrock players to some commands, such as the basic plugin(**CMI/EssentialsX/HuskHomes/AdvancedTeleport**) of **/tpa /tpahere /home** command，original **/msg** command
+**BedrockPlayerSupport** is a plugin that optimizes the player experience of the bedrock version, adding forms that are more suitable for bedrock players to some commands, such as the basic plugin(**CMI/EssentialsX/HuskHomes/AdvancedTeleport**) of **/tpa /tpahere /home /warp** command，original **/msg** command
 
 Added automatic registration and login functions for players in the bedrock version to **some mainstream login plugins**. Other login plugins can also set mandatory login commands in the configuration file to achieve automatic login
 
