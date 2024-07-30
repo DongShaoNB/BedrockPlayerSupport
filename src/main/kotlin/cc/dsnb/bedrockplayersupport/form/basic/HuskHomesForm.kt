@@ -69,9 +69,11 @@ class HuskHomesForm {
                 player.chat("/warp " + simpleFormResponse.clickedButton().text())
             }
         warps.thenAccept { warpList ->
-            warpList.forEach { form.button(it.name) }
+            for (warp in warpList) {
+                form.button(warp.identifier)
+            }
+            BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
         }
-        BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
 }
