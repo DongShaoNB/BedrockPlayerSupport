@@ -105,6 +105,11 @@ form:
      # Text of the 'NO' button in back death location form
     button-no: '<red>否'
 
+  warp:
+     # 传送点表单的标题
+     # Title of the warp form
+    title: '<gold>传送点表单'
+
 
 message:
    # 不是基岩版的玩家使用表单命令的错误提示
