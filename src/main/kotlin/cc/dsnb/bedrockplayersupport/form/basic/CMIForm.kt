@@ -25,9 +25,7 @@ class CMIForm {
             .validResultHandler { simpleFormResponse ->
                 player.chat("/delhome ${simpleFormResponse.clickedButton().text()}")
             }
-        for (homeName in playerHomesList.keys) {
-            form.button(homeName)
-        }
+        playerHomesList.forEach { form.button(it.key) }
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
@@ -45,14 +43,12 @@ class CMIForm {
             .validResultHandler { simpleFormResponse ->
                 player.chat("/home ${simpleFormResponse.clickedButton().text()}")
             }
-        for (homeName in playerHomesList.keys) {
-            form.button(homeName)
-        }
+        playerHomesList.forEach { form.button(it.key) }
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
     fun sendWarpForm(player: Player) {
-        val warps = CMI.getInstance().warpManager.warps.keys
+        val warps = CMI.getInstance().warpManager.warps
         val form = SimpleForm.builder()
             .title(
                 LegacyComponentSerializer.legacySection().serialize(
@@ -64,7 +60,7 @@ class CMIForm {
             .validResultHandler { simpleFormResponse ->
                 player.chat("/warp ${simpleFormResponse.clickedButton().text()}")
             }
-        warps.forEach { form.button(it) }
+        warps.forEach { form.button(it.key) }
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 

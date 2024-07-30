@@ -23,9 +23,7 @@ class ATForm {
             .validResultHandler { simpleFormResponse ->
                 player.chat("/delhome ${simpleFormResponse.clickedButton().text()}")
             }
-        for (homeName in playerHomesList.keys) {
-            form.button(homeName)
-        }
+        playerHomesList.forEach { form.button(it.key) }
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
@@ -43,14 +41,12 @@ class ATForm {
             .validResultHandler { simpleFormResponse ->
                 player.chat("/home ${simpleFormResponse.clickedButton().text()}")
             }
-        for (homeName in playerHomesList.keys) {
-            form.button(homeName)
-        }
+        playerHomesList.forEach { form.button(it.key) }
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
     fun sendWarpForm(player: Player) {
-        val warps = AdvancedTeleportAPI.getWarps().keys
+        val warps = AdvancedTeleportAPI.getWarps()
         val form = SimpleForm.builder()
             .title(
                 LegacyComponentSerializer.legacySection().serialize(
@@ -62,7 +58,7 @@ class ATForm {
             .validResultHandler { simpleFormResponse ->
                 player.chat("/warp ${simpleFormResponse.clickedButton().text()}")
             }
-        warps.forEach { form.button(it) }
+        warps.forEach { form.button(it.key) }
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 

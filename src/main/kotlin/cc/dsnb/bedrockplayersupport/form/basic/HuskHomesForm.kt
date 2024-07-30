@@ -13,7 +13,7 @@ class HuskHomesForm {
 
     fun sendDelHomeForm(player: Player) {
         val onlineUser = HuskHomesAPI.getInstance().adaptUser(player)
-        val huskHomes = HuskHomesAPI.getInstance().getUserHomes(onlineUser)
+        val userHomes = HuskHomesAPI.getInstance().getUserHomes(onlineUser)
         val form = SimpleForm.builder()
             .title(
                 LegacyComponentSerializer.legacySection().serialize(
@@ -25,17 +25,15 @@ class HuskHomesForm {
             .validResultHandler { simpleFormResponse ->
                 player.chat("/delhome " + simpleFormResponse.clickedButton().text())
             }
-        huskHomes.thenAccept { homeList ->
-            for (home in homeList) {
-                form.button(home.name)
-            }
+        userHomes.thenAccept { homeList ->
+            homeList.forEach { form.button(it.identifier) }
             BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
         }
     }
 
     fun sendGoHomeForm(player: Player) {
         val onlineUser = HuskHomesAPI.getInstance().adaptUser(player)
-        val huskHomes = HuskHomesAPI.getInstance().getUserHomes(onlineUser)
+        val userHomes = HuskHomesAPI.getInstance().getUserHomes(onlineUser)
         val form = SimpleForm.builder()
             .title(
                 LegacyComponentSerializer.legacySection().serialize(
@@ -47,10 +45,8 @@ class HuskHomesForm {
             .validResultHandler { simpleFormResponse ->
                 player.chat("/home " + simpleFormResponse.clickedButton().text())
             }
-        huskHomes.thenAccept { homeList ->
-            for (home in homeList) {
-                form.button(home.name)
-            }
+        userHomes.thenAccept { homeList ->
+            homeList.forEach { form.button(it.identifier) }
             BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
         }
     }
@@ -69,9 +65,7 @@ class HuskHomesForm {
                 player.chat("/warp " + simpleFormResponse.clickedButton().text())
             }
         warps.thenAccept { warpList ->
-            for (warp in warpList) {
-                form.button(warp.identifier)
-            }
+            warpList.forEach { form.button(it.identifier) }
             BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
         }
     }

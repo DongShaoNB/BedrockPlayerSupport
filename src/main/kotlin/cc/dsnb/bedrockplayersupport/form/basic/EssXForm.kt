@@ -14,7 +14,7 @@ import org.geysermc.cumulus.form.SimpleForm
 class EssXForm {
 
     fun sendDelHomeForm(player: Player) {
-        val user = User(player, Bukkit.getPluginManager().getPlugin("Essentials") as Essentials)
+        val userHomes = User(player, Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).homes
         val form = SimpleForm.builder()
             .title(
                 LegacyComponentSerializer.legacySection().serialize(
@@ -26,14 +26,12 @@ class EssXForm {
             .validResultHandler { simpleFormResponse ->
                 player.chat("/delhome " + simpleFormResponse.clickedButton().text())
             }
-        for (homeName in user.homes) {
-            form.button(homeName)
-        }
+        userHomes.forEach { form.button(it) }
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
     fun sendGoHomeForm(player: Player) {
-        val user = User(player, Bukkit.getPluginManager().getPlugin("Essentials") as Essentials)
+        val userHomes = User(player, Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).homes
         val form = SimpleForm.builder()
             .title(
                 LegacyComponentSerializer.legacySection().serialize(
@@ -45,14 +43,12 @@ class EssXForm {
             .validResultHandler { simpleFormResponse ->
                 player.chat("/home " + simpleFormResponse.clickedButton().text())
             }
-        for (homeName in user.homes) {
-            form.button(homeName)
-        }
+        userHomes.forEach { form.button(it) }
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
     fun sendWarpForm(player: Player) {
-        val warps = (Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).warps.list
+        val userWarps = (Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).warps.list
         val form = SimpleForm.builder()
             .title(
                 LegacyComponentSerializer.legacySection().serialize(
@@ -64,7 +60,7 @@ class EssXForm {
             .validResultHandler { simpleFormResponse ->
                 player.chat("/warp " + simpleFormResponse.clickedButton().text())
             }
-        warps.forEach { form.button(it) }
+        userWarps.forEach { form.button(it) }
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
