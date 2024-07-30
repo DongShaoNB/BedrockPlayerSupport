@@ -2,6 +2,7 @@ package cc.dsnb.bedrockplayersupport.form.basic
 
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
 import io.github.niestrat99.advancedteleport.api.ATPlayer
+import io.github.niestrat99.advancedteleport.api.AdvancedTeleportAPI
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.bukkit.entity.Player
 import org.geysermc.cumulus.form.SimpleForm
@@ -45,6 +46,23 @@ class ATForm {
         for (homeName in playerHomesList.keys) {
             form.button(homeName)
         }
+        BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
+    }
+
+    fun sendWarpForm(player: Player) {
+        val warps = AdvancedTeleportAPI.getWarps().keys
+        val form = SimpleForm.builder()
+            .title(
+                LegacyComponentSerializer.legacySection().serialize(
+                    BedrockPlayerSupport.miniMessage.deserialize(
+                        BedrockPlayerSupport.langConfigManager.getConfigData().warpFormTitle()
+                    )
+                )
+            )
+            .validResultHandler { simpleFormResponse ->
+                player.chat("/warp ${simpleFormResponse.clickedButton().text()}")
+            }
+        warps.forEach { form.button(it) }
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 

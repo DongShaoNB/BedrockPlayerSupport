@@ -55,4 +55,25 @@ class HuskHomesForm {
         }
     }
 
+    fun sendWarpForm(player: Player) {
+        val warps = HuskHomesAPI.getInstance().warps
+        val form = SimpleForm.builder()
+            .title(
+                LegacyComponentSerializer.legacySection().serialize(
+                    BedrockPlayerSupport.miniMessage.deserialize(
+                        BedrockPlayerSupport.langConfigManager.getConfigData().warpFormTitle()
+                    )
+                )
+            )
+            .validResultHandler { simpleFormResponse ->
+                player.chat("/warp " + simpleFormResponse.clickedButton().text())
+            }
+        warps.thenAccept { warpList ->
+            for (warp in warpList) {
+                form.button(warp.identifier)
+            }
+            BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
+        }
+    }
+
 }

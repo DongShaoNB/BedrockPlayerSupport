@@ -51,4 +51,21 @@ class CMIForm {
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
+    fun sendWarpForm(player: Player) {
+        val warps = CMI.getInstance().warpManager.warps.keys
+        val form = SimpleForm.builder()
+            .title(
+                LegacyComponentSerializer.legacySection().serialize(
+                    BedrockPlayerSupport.miniMessage.deserialize(
+                        BedrockPlayerSupport.langConfigManager.getConfigData().warpFormTitle()
+                    )
+                )
+            )
+            .validResultHandler { simpleFormResponse ->
+                player.chat("/warp ${simpleFormResponse.clickedButton().text()}")
+            }
+        warps.forEach { form.button(it) }
+        BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
+    }
+
 }
