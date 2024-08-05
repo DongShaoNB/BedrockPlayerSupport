@@ -27,6 +27,7 @@
  5. Bedrock player use the command `/msggui` to open a form and send message
  6. Bedrock player use the command `/homegui` to open a form and get home
  7. After bedrock player respawn, a form open to return to the last death location
+ 8. Bedrock player use the command `/warpgui` to open a form and teleport to a warp
 
 ## Depend
 
