@@ -13,7 +13,5 @@ updates:
       - "dependencies"
     assignees:
       - "DongShaoNB"
-    reviewers:
-      - "DongShaoNB"
     commit-message:
-      prefix: "build"
+      prefix: "chore"
