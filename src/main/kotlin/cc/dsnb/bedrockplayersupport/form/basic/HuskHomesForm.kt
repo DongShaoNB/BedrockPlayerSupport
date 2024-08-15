@@ -26,7 +26,7 @@ class HuskHomesForm {
                 player.chat("/delhome " + simpleFormResponse.clickedButton().text())
             }
         userHomes.thenAccept { homeList ->
-            homeList.forEach { form.button(it.identifier) }
+            homeList.forEach { form.button(it.name) }
             BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
         }
     }
@@ -46,7 +46,7 @@ class HuskHomesForm {
                 player.chat("/home " + simpleFormResponse.clickedButton().text())
             }
         userHomes.thenAccept { homeList ->
-            homeList.forEach { form.button(it.identifier) }
+            homeList.forEach { form.button(it.name) }
             BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
         }
     }
@@ -65,7 +65,7 @@ class HuskHomesForm {
                 player.chat("/warp " + simpleFormResponse.clickedButton().text())
             }
         warps.thenAccept { warpList ->
-            warpList.forEach { form.button(it.identifier) }
+            warpList.forEach { form.button(it.name) }
             BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
         }
     }
