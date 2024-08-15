@@ -9,6 +9,7 @@ enum class BasicPlugin {
     EssentialsX,
     HuskHomes,
     AdvancedTeleport,
+    SunLight,
     None
 
 }

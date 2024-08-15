@@ -18,7 +18,7 @@ class MainTabCompleteListener : TabCompleter {
         if (sender.hasPermission("bedrockplayersupport.admin")) {
             return when (strings.size) {
                 1 -> listOf("status", "reload")
-                else -> return null
+                else -> null
             }
         }
         return null

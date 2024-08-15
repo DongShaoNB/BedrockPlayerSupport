@@ -62,7 +62,11 @@ class MainForm {
         ).validResultHandler { _, customFormResponse ->
             when (customFormResponse.asDropdown(0)) {
                 0 -> player.chat("/tpa " + onlinePlayerNameList[customFormResponse.asDropdown(1)])
-                1 -> player.chat("/tpahere " + onlinePlayerNameList[customFormResponse.asDropdown(1)])
+                1 -> if (BedrockPlayerSupport.basicPlugin == SunLight) {
+                    player.chat("/tphere " + onlinePlayerNameList[customFormResponse.asDropdown(1)])
+                } else {
+                    player.chat("/tpahere " + onlinePlayerNameList[customFormResponse.asDropdown(1)])
+                }
             }
         }
         BedrockPlayerSupport.floodgateApi.sendForm(uuid, form)
@@ -87,8 +91,17 @@ class MainForm {
                 .button2(legacySection.serialize(miniMessage.deserialize(langConfig.receivedTpFormDenyButton())))
                 .validResultHandler { _, modalFormResponse ->
                     when (modalFormResponse.clickedButtonId()) {
-                        0 -> receiver.chat("/tpaccept")
-                        1 -> receiver.chat("/tpdeny")
+                        0 -> if (BedrockPlayerSupport.basicPlugin == SunLight) {
+                            receiver.chat("/tpyes")
+                        } else {
+                            receiver.chat("/tpaccept")
+                        }
+
+                        1 -> if (BedrockPlayerSupport.basicPlugin == SunLight) {
+                            receiver.chat("/tpno")
+                        } else {
+                            receiver.chat("/tpdeny")
+                        }
                     }
                 }
         } else if (tpType === TeleportType.TpaHere) {
@@ -106,8 +119,17 @@ class MainForm {
                 .button2(legacySection.serialize(miniMessage.deserialize(langConfig.receivedTpFormDenyButton())))
                 .validResultHandler { _, modalFormResponse ->
                     when (modalFormResponse.clickedButtonId()) {
-                        0 -> receiver.chat("/tpaccept")
-                        1 -> receiver.chat("/tpdeny")
+                        0 -> if (BedrockPlayerSupport.basicPlugin == SunLight) {
+                            receiver.chat("/tpyes")
+                        } else {
+                            receiver.chat("/tpaccept")
+                        }
+
+                        1 -> if (BedrockPlayerSupport.basicPlugin == SunLight) {
+                            receiver.chat("/tpno")
+                        } else {
+                            receiver.chat("/tpdeny")
+                        }
                     }
                 }
         }
@@ -154,6 +176,7 @@ class MainForm {
                             EssentialsX -> BedrockPlayerSupport.essxForm.sendDelHomeForm(player)
                             HuskHomes -> BedrockPlayerSupport.huskhomesForm.sendDelHomeForm(player)
                             AdvancedTeleport -> BedrockPlayerSupport.atForm.sendDelHomeForm(player)
+                            SunLight -> BedrockPlayerSupport.sunlightForm.sendDelHomeForm(player)
                             None -> {
                                 // Don't need to do anything
                             }
@@ -166,6 +189,7 @@ class MainForm {
                             EssentialsX -> BedrockPlayerSupport.essxForm.sendGoHomeForm(player)
                             HuskHomes -> BedrockPlayerSupport.huskhomesForm.sendGoHomeForm(player)
                             AdvancedTeleport -> BedrockPlayerSupport.atForm.sendGoHomeForm(player)
+                            SunLight -> BedrockPlayerSupport.sunlightForm.sendGoHomeForm(player)
                             None -> {
                                 // Don't need to do anything
                             }
@@ -199,6 +223,19 @@ class MainForm {
                 }
             }
         BedrockPlayerSupport.floodgateApi.sendForm(uuid, form)
+    }
+
+    fun openBedrockWarpForm(player: Player) {
+        when (BedrockPlayerSupport.basicPlugin) {
+            CMI -> BedrockPlayerSupport.cmiForm.sendWarpForm(player)
+            EssentialsX -> BedrockPlayerSupport.essxForm.sendWarpForm(player)
+            HuskHomes -> BedrockPlayerSupport.huskhomesForm.sendWarpForm(player)
+            AdvancedTeleport -> BedrockPlayerSupport.atForm.sendWarpForm(player)
+            SunLight -> BedrockPlayerSupport.sunlightForm.sendWarpForm(player)
+            None -> {
+                // Don't need to do anything
+            }
+        }
     }
 
 }

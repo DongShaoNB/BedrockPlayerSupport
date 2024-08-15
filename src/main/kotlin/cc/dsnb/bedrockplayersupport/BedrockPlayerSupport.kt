@@ -5,20 +5,14 @@ import cc.dsnb.bedrockplayersupport.command.*
 import cc.dsnb.bedrockplayersupport.config.LangConfig
 import cc.dsnb.bedrockplayersupport.config.MainConfig
 import cc.dsnb.bedrockplayersupport.form.MainForm
-import cc.dsnb.bedrockplayersupport.form.basic.ATForm
-import cc.dsnb.bedrockplayersupport.form.basic.CMIForm
-import cc.dsnb.bedrockplayersupport.form.basic.EssXForm
-import cc.dsnb.bedrockplayersupport.form.basic.HuskHomesForm
+import cc.dsnb.bedrockplayersupport.form.basic.*
 import cc.dsnb.bedrockplayersupport.listener.MainTabCompleteListener
 import cc.dsnb.bedrockplayersupport.listener.PlayerRespawnListener
 import cc.dsnb.bedrockplayersupport.listener.auth.AuthMeListener
 import cc.dsnb.bedrockplayersupport.listener.auth.CatSeedLoginListener
 import cc.dsnb.bedrockplayersupport.listener.auth.NexAuthListener
 import cc.dsnb.bedrockplayersupport.listener.auth.OtherAuthListener
-import cc.dsnb.bedrockplayersupport.listener.basic.ATListener
-import cc.dsnb.bedrockplayersupport.listener.basic.CMIListener
-import cc.dsnb.bedrockplayersupport.listener.basic.EssXListener
-import cc.dsnb.bedrockplayersupport.listener.basic.HuskHomesListener
+import cc.dsnb.bedrockplayersupport.listener.basic.*
 import cc.dsnb.bedrockplayersupport.manager.ConfigManager
 import cc.dsnb.bedrockplayersupport.util.UpdateUtil
 import com.github.Anon8281.universalScheduler.UniversalScheduler
@@ -49,6 +43,7 @@ class BedrockPlayerSupport : JavaPlugin() {
         lateinit var essxForm: EssXForm
         lateinit var huskhomesForm: HuskHomesForm
         lateinit var atForm: ATForm
+        lateinit var sunlightForm: SunLightForm
         lateinit var floodgateApi: FloodgateApi
         val miniMessage = MiniMessage.miniMessage()
         const val PREFIX = "[BedrockPlayerSupport] "
@@ -130,6 +125,14 @@ class BedrockPlayerSupport : JavaPlugin() {
             ))
         ) {
             BasicPlugin.AdvancedTeleport
+        } else if (pluginManager.isPluginEnabled("SunLight") && ("sunlight".equals(
+                mainConfigManager.getConfigData().basicPlugin(), ignoreCase = true
+            ) || "auto".equals(
+                mainConfigManager.getConfigData().basicPlugin(),
+                ignoreCase = true
+            ))
+        ) {
+            BasicPlugin.SunLight
         } else {
             BasicPlugin.None
         }
@@ -192,6 +195,11 @@ class BedrockPlayerSupport : JavaPlugin() {
                 pluginManager.registerEvents(ATListener(), this)
             }
 
+            BasicPlugin.SunLight -> {
+                sunlightForm = SunLightForm()
+                pluginManager.registerEvents(SunLightListener(), this)
+            }
+
             BasicPlugin.None -> {
                 // Don't need to do anything
             }
@@ -238,6 +246,7 @@ class BedrockPlayerSupport : JavaPlugin() {
                     BasicPlugin.EssentialsX -> "EssentialsX"
                     BasicPlugin.HuskHomes -> "HuskHomes"
                     BasicPlugin.AdvancedTeleport -> "AdvancedTeleport"
+                    BasicPlugin.SunLight -> "SunLight"
                     BasicPlugin.None -> "None"
                 }
             })

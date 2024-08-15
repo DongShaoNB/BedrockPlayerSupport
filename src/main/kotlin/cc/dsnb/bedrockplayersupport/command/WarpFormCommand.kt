@@ -15,15 +15,7 @@ class WarpFormCommand : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         if (sender is Player) {
             if (BedrockPlayerSupport.floodgateApi.isFloodgatePlayer(sender.uniqueId)) {
-                when (BedrockPlayerSupport.basicPlugin) {
-                            CMI -> BedrockPlayerSupport.cmiForm.sendWarpForm(sender)
-                            EssentialsX -> BedrockPlayerSupport.essxForm.sendWarpForm(sender)
-                            HuskHomes -> BedrockPlayerSupport.huskhomesForm.sendWarpForm(sender)
-                            AdvancedTeleport -> BedrockPlayerSupport.atForm.sendWarpForm(sender)
-                            None -> {
-                                // Don't need to do anything
-                            }
-                        }
+                BedrockPlayerSupport.mainForm.openBedrockWarpForm(sender)
             } else {
                 sender.sendMessage(
                     BedrockPlayerSupport.miniMessage.deserialize(

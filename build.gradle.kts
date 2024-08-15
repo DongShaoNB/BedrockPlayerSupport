@@ -56,6 +56,10 @@ dependencies {
     compileOnly("net.william278.huskhomes:huskhomes-bukkit:4.7")
     // AdvancedTeleport
     compileOnly(files("lib/AdvancedTeleport-Bukkit-6.1.1-all.jar"))
+    // nightcore
+    compileOnly(files("lib/nightcore-2.6.3.jar"))
+    // SunLight
+    compileOnly(files("lib/SunLight-3.12.1.jar"))
     // AuthMe
     compileOnly("fr.xephi:authme:5.7.0-SNAPSHOT")
     // CatSeedLogin
