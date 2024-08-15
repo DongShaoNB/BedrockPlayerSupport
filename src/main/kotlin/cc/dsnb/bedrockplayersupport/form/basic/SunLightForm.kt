@@ -49,7 +49,7 @@ class SunLightForm {
     fun sendWarpForm(player: Player) {
         val warps = SunLightAPI.PLUGIN.moduleManager.getModule(WarpsModule::class.java).let {
             if (it.isPresent) {
-                SunLightAPI.PLUGIN.moduleManager.getModule(WarpsModule::class.java).get().warps
+                it.get().warps
             } else {
                 if ("zh_cn".equals(BedrockPlayerSupport.languageInUse, ignoreCase = true)) {
                     throw NullPointerException("在加载传送点模块时遇到错误, 请联系 BedrockPlayerSupport 插件作者")
