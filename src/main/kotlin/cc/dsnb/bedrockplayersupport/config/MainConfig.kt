@@ -37,10 +37,10 @@ interface MainConfig {
     @ConfKey("plugin.basic")
     @ConfComments(
         "填写正在使用的基础插件",
-        "可选值: auto/cmi/essentialsx/huskhomes/advancedteleport/none",
+        "可选值: auto/cmi/essentialsx/huskhomes/advancedteleport/sunlight/none",
         "auto为自动检测 none为没有基础插件(即关闭功能)",
         "Fill in the basic plugins currently in use",
-        "Optional value: auto/cmi/essentialsx/huskhomes/advancedteleport/none",
+        "Optional value: auto/cmi/essentialsx/huskhomes/advancedteleport/sunlight/none",
         "auto is for automatic detection, none for no basic plugin (i.e. disable function)"
     )
     @DefaultString("auto")
@@ -108,7 +108,10 @@ interface MainConfig {
 
     @ConfKey("form.back.command")
     @ConfComments(
-        "返回死亡点命令", "The command of back death location"
+        "返回死亡点命令",
+        "部分插件会用 /dback 或 其他命令, 请在此处替换",
+        "The command of back death location",
+        "If the command of back death location is /dback or other command, please replace it here",
     )
     @DefaultString("/back")
     @Order(71)
