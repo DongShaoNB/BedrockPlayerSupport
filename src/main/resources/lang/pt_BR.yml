@@ -12,7 +12,7 @@ form:
   teleport:
     #传送表单的标题
     #Title of the teleport form
-    title: ''
+    title: '<gold>传送表单'
     #传送表单的选择传送类型提示语
     #Text of choose teleport type in teleport form
     choose-type: '<green>请选择传送类型'
