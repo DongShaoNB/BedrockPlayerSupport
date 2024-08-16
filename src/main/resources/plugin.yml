@@ -10,6 +10,7 @@ softdepend:
   - Essentials
   - HuskHomes
   - AdvancedTeleport
+  - SunLight
   - AuthMe
   - CatSeedLogin
   - NexAuth
