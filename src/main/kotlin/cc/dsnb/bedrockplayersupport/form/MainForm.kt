@@ -238,4 +238,14 @@ class MainForm {
         }
     }
 
+    fun openBedrockKitForm(player: Player) {
+        when (BedrockPlayerSupport.basicPlugin) {
+            CMI -> BedrockPlayerSupport.cmiForm.sendKitForm(player)
+            EssentialsX -> BedrockPlayerSupport.essxForm.sendKitForm(player)
+            SunLight -> BedrockPlayerSupport.sunlightForm.sendKitForm(player)
+            else -> {
+                // Don't need to do anything
+            }
+        }
+    }
 }

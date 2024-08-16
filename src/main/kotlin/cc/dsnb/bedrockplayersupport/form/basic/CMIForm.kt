@@ -64,4 +64,21 @@ class CMIForm {
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
+    fun sendKitForm(player: Player) {
+        val kits = CMI.getInstance().kitsManager.kitMap
+        val form = SimpleForm.builder()
+            .title(
+                LegacyComponentSerializer.legacySection().serialize(
+                    BedrockPlayerSupport.miniMessage.deserialize(
+                        BedrockPlayerSupport.langConfigManager.getConfigData().kitFormTitle()
+                    )
+                )
+            )
+            .validResultHandler { simpleFormResponse ->
+                player.chat("/kit ${simpleFormResponse.clickedButton().text()}")
+            }
+        kits.forEach { form.button(it.key)}
+        BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
+    }
+
 }

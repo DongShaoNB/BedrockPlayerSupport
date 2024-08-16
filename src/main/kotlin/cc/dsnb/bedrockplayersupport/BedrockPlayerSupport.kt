@@ -236,6 +236,9 @@ class BedrockPlayerSupport : JavaPlugin() {
         if (config.enableWarpForm()) {
             getCommand("warpgui")?.setExecutor(WarpFormCommand())
         }
+        if (config.enableKitForm()) {
+            getCommand("kitgui")?.setExecutor(KitFormCommand())
+        }
     }
 
     private fun loadMetrics() {
