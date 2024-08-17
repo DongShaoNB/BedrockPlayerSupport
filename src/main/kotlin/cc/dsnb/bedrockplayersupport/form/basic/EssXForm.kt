@@ -80,6 +80,7 @@ class EssXForm {
                 player.chat("/kit " + simpleFormResponse.clickedButton().text())
             }
         kits.forEach { form.button(it) }
+        BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
 }
