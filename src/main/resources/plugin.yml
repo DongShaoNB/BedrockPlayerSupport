@@ -10,6 +10,7 @@ softdepend:
   - Essentials
   - HuskHomes
   - AdvancedTeleport
+  - SunLight
   - AuthMe
   - CatSeedLogin
   - NexAuth
@@ -35,6 +36,9 @@ commands:
   warpgui:
     description: "Bedrock player warp form"
     permission: bedrockplayersupport.command.warpgui
+  kitgui:
+    description: "Bedrock player kit form"
+    permission: bedrockplayersupport.command.kitgui
 
 permissions:
   bedrockplayersupport.admin:
@@ -51,4 +55,7 @@ permissions:
     default: true
   bedrockplayersupport.command.warpgui:
     description: "Bedrock player warp form permission"
+    default: true
+  bedrockplayersupport.command.kitgui:
+    description: "Bedrock player kit form permission"
     default: true

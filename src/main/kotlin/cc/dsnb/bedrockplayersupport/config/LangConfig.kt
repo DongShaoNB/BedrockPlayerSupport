@@ -229,6 +229,14 @@ interface LangConfig {
     @Order(60)
     fun warpFormTitle(): String
 
+    @ConfKey("form.kit.title")
+    @ConfComments(
+        "礼包表单的标题", "Title of the kit form"
+    )
+    @DefaultString("<gold>礼包表单")
+    @Order(70)
+    fun kitFormTitle(): String
+
     @ConfKey("message.not-bedrock-player")
     @ConfComments(
         "不是基岩版的玩家使用表单命令的错误提示", "Error of player use form command but is not bedrock player"

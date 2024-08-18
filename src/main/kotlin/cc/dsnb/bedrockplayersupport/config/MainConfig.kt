@@ -138,6 +138,17 @@ interface MainConfig {
     @Order(80)
     fun enableWarpForm(): Boolean
 
+    @ConfKey("form.kit.enable")
+    @ConfComments(
+        "启用基岩版礼包表单(/kitgui)",
+        "只有 CMI / EssentialsX / SunLight 可用",
+        "Enable bedrock kit form (/kitgui)",
+        "Only CMI / EssentialsX / SunLight is available",
+    )
+    @DefaultBoolean(true)
+    @Order(90)
+    fun enableKitForm(): Boolean
+
     @ConfKey("auth.register.enable")
     @ConfComments(
         "启用基岩版玩家自动注册功能", "Enable bedrock player automatic register function"

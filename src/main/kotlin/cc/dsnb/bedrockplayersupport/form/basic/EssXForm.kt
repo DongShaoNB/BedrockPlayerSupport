@@ -14,7 +14,8 @@ import org.geysermc.cumulus.form.SimpleForm
 class EssXForm {
 
     fun sendDelHomeForm(player: Player) {
-        val userHomes = User(player, Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).homes
+        val userHomes =
+            User(player, Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).homes
         val form = SimpleForm.builder()
             .title(
                 LegacyComponentSerializer.legacySection().serialize(
@@ -31,7 +32,8 @@ class EssXForm {
     }
 
     fun sendGoHomeForm(player: Player) {
-        val userHomes = User(player, Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).homes
+        val userHomes =
+            User(player, Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).homes
         val form = SimpleForm.builder()
             .title(
                 LegacyComponentSerializer.legacySection().serialize(
@@ -61,6 +63,23 @@ class EssXForm {
                 player.chat("/warp " + simpleFormResponse.clickedButton().text())
             }
         userWarps.forEach { form.button(it) }
+        BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
+    }
+
+    fun sendKitForm(player: Player) {
+        val kits = (Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).kits.kitKeys
+        val form = SimpleForm.builder()
+            .title(
+                LegacyComponentSerializer.legacySection().serialize(
+                    BedrockPlayerSupport.miniMessage.deserialize(
+                        BedrockPlayerSupport.langConfigManager.getConfigData().kitFormTitle()
+                    )
+                )
+            )
+            .validResultHandler { simpleFormResponse ->
+                player.chat("/kit " + simpleFormResponse.clickedButton().text())
+            }
+        kits.forEach { form.button(it) }
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
