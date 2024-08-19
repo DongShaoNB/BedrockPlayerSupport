@@ -69,7 +69,7 @@ dependencies {
     // NexAuth
     compileOnly(files("lib/NexAuth-2.0.5.jar"))
     // bStats
-    implementation("org.bstats:bstats-bukkit:3.0.2")
+    implementation("org.bstats:bstats-bukkit:3.0.3")
     // DazzleConf
     implementation("space.arim.dazzleconf:dazzleconf-ext-snakeyaml:1.3.0-M2")
     // UniversalScheduler
