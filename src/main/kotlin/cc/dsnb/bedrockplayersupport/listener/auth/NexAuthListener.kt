@@ -24,9 +24,7 @@ class NexAuthListener : Listener {
                 if (AuthPlayer.getOrCreate(player).state == PlayerState.IN_LOGIN) {
                     if (mainConfig.enableLogin()) {
                         NexAuthAPI.getAuthManager().login(player)
-                        player.sendMessage(
-                            BedrockPlayerSupport.miniMessage.deserialize(langConfig.loginSuccessfully())
-                        )
+                        player.sendMessage(StringUtil.formatTextToComponent(player, langConfig.loginSuccessfully()))
                     }
                 }
             } else {
@@ -34,9 +32,9 @@ class NexAuthListener : Listener {
                     val password = StringUtil.randomString(mainConfig.passwordLength())
                     NexAuthAPI.getAuthManager().register(player, password)
                     player.sendMessage(
-                        BedrockPlayerSupport.miniMessage.deserialize(
-                            langConfig.registerSuccessfully()
-                                .replace("%password%", password)
+                        StringUtil.formatTextToComponent(
+                            player,
+                            langConfig.registerSuccessfully().replace("%password%", password)
                         )
                     )
                 }

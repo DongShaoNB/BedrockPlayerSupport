@@ -34,9 +34,7 @@ class CatSeedLoginListener : Listener {
                         if (Config.Settings.AfterLoginBack && Config.Settings.CanTpSpawnLocation) {
                             Config.getOfflineLocation(player).ifPresent(player::teleport)
                         }
-                        player.sendMessage(
-                            BedrockPlayerSupport.miniMessage.deserialize(langConfig.loginSuccessfully())
-                        )
+                        player.sendMessage(StringUtil.formatTextToComponent(player, langConfig.loginSuccessfully()))
                     }
                 }
             } else {
@@ -64,9 +62,9 @@ class CatSeedLoginListener : Listener {
                             player.updateInventory()
                             LoginPlayerHelper.recordCurrentIP(player, lp)
                             player.sendMessage(
-                                BedrockPlayerSupport.miniMessage.deserialize(
-                                    langConfig.registerSuccessfully()
-                                        .replace("%password%", password)
+                                StringUtil.formatTextToComponent(
+                                    player,
+                                    langConfig.registerSuccessfully().replace("%password%", password)
                                 )
                             )
                         }

@@ -25,18 +25,16 @@ class AuthMeListener : Listener {
                     if (AuthMeApi.getInstance().isRegistered(playerName)) {
                         if (mainConfig.enableLogin()) {
                             AuthMeApi.getInstance().forceLogin(player)
-                            player.sendMessage(
-                                BedrockPlayerSupport.miniMessage.deserialize(langConfig.loginSuccessfully())
-                            )
+                            player.sendMessage(StringUtil.formatTextToComponent(player, langConfig.loginSuccessfully()))
                         }
                     } else {
                         if (mainConfig.enableRegister()) {
                             val password = StringUtil.randomString(mainConfig.passwordLength())
                             AuthMeApi.getInstance().forceRegister(player, password)
                             player.sendMessage(
-                                BedrockPlayerSupport.miniMessage.deserialize(
-                                    langConfig.registerSuccessfully()
-                                        .replace("%password%", password)
+                                StringUtil.formatTextToComponent(
+                                    player,
+                                    langConfig.registerSuccessfully().replace("%password%", password)
                                 )
                             )
                         }

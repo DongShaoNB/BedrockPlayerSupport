@@ -1,7 +1,7 @@
 package cc.dsnb.bedrockplayersupport.command
 
-import cc.dsnb.bedrockplayersupport.BasicPlugin.*
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
+import cc.dsnb.bedrockplayersupport.util.StringUtil
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -18,7 +18,8 @@ class WarpFormCommand : CommandExecutor {
                 BedrockPlayerSupport.mainForm.openBedrockWarpForm(sender)
             } else {
                 sender.sendMessage(
-                    BedrockPlayerSupport.miniMessage.deserialize(
+                    StringUtil.formatTextToComponent(
+                        sender,
                         BedrockPlayerSupport.langConfigManager.getConfigData().notBedrockPlayer()
                     )
                 )

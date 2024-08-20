@@ -1,5 +1,9 @@
 package cc.dsnb.bedrockplayersupport.util
 
+import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
+import me.clip.placeholderapi.PlaceholderAPI
+import net.kyori.adventure.text.Component
+import org.bukkit.entity.Player
 import java.security.SecureRandom
 
 /**
@@ -16,6 +20,24 @@ object StringUtil {
             stringBuilder.append(str[number])
         }
         return stringBuilder.toString()
+    }
+
+    fun formatTextToString(player: Player?, originalText: String): String {
+        return BedrockPlayerSupport.legacySection.serialize(
+            BedrockPlayerSupport.miniMessage.deserialize(
+                if (BedrockPlayerSupport.mainConfigManager.getConfigData().enableSupportPAPI()) {
+                    PlaceholderAPI.setPlaceholders(player, originalText)
+                } else {
+                    originalText
+                }
+            )
+        )
+    }
+
+    fun formatTextToComponent(player: Player?, originalText: String): Component {
+        return BedrockPlayerSupport.miniMessage.deserialize(
+            formatTextToString(player, originalText)
+        )
     }
 
 }

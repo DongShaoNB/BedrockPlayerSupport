@@ -1,9 +1,9 @@
 package cc.dsnb.bedrockplayersupport.form.basic
 
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
+import cc.dsnb.bedrockplayersupport.util.StringUtil
 import io.github.niestrat99.advancedteleport.api.ATPlayer
 import io.github.niestrat99.advancedteleport.api.AdvancedTeleportAPI
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.bukkit.entity.Player
 import org.geysermc.cumulus.form.SimpleForm
 
@@ -14,10 +14,9 @@ class ATForm {
         val playerHomesList = atPlayer.homes
         val form = SimpleForm.builder()
             .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().delHomeFormTitle()
-                    )
+                StringUtil.formatTextToString(
+                    player,
+                    BedrockPlayerSupport.langConfigManager.getConfigData().delHomeFormTitle()
                 )
             )
             .validResultHandler { simpleFormResponse ->
@@ -32,10 +31,9 @@ class ATForm {
         val playerHomesList = atPlayer.homes
         val form = SimpleForm.builder()
             .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().goHomeFormTitle()
-                    )
+                StringUtil.formatTextToString(
+                    player,
+                    BedrockPlayerSupport.langConfigManager.getConfigData().goHomeFormTitle()
                 )
             )
             .validResultHandler { simpleFormResponse ->
@@ -49,10 +47,9 @@ class ATForm {
         val warps = AdvancedTeleportAPI.getWarps()
         val form = SimpleForm.builder()
             .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().warpFormTitle()
-                    )
+                StringUtil.formatTextToString(
+                    player,
+                    BedrockPlayerSupport.langConfigManager.getConfigData().warpFormTitle()
                 )
             )
             .validResultHandler { simpleFormResponse ->

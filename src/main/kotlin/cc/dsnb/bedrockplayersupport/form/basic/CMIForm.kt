@@ -1,8 +1,8 @@
 package cc.dsnb.bedrockplayersupport.form.basic
 
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
+import cc.dsnb.bedrockplayersupport.util.StringUtil
 import com.Zrips.CMI.CMI
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.bukkit.entity.Player
 import org.geysermc.cumulus.form.SimpleForm
 
@@ -16,10 +16,9 @@ class CMIForm {
         val playerHomesList = cmiUser.homes
         val form = SimpleForm.builder()
             .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().delHomeFormTitle()
-                    )
+                StringUtil.formatTextToString(
+                    player,
+                    BedrockPlayerSupport.langConfigManager.getConfigData().delHomeFormTitle()
                 )
             )
             .validResultHandler { simpleFormResponse ->
@@ -34,10 +33,9 @@ class CMIForm {
         val playerHomesList = cmiUser.homes
         val form = SimpleForm.builder()
             .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().goHomeFormTitle()
-                    )
+                StringUtil.formatTextToString(
+                    player,
+                    BedrockPlayerSupport.langConfigManager.getConfigData().goHomeFormTitle()
                 )
             )
             .validResultHandler { simpleFormResponse ->
@@ -51,10 +49,9 @@ class CMIForm {
         val warps = CMI.getInstance().warpManager.warps
         val form = SimpleForm.builder()
             .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().warpFormTitle()
-                    )
+                StringUtil.formatTextToString(
+                    player,
+                    BedrockPlayerSupport.langConfigManager.getConfigData().warpFormTitle()
                 )
             )
             .validResultHandler { simpleFormResponse ->
@@ -68,16 +65,15 @@ class CMIForm {
         val kits = CMI.getInstance().kitsManager.kitMap
         val form = SimpleForm.builder()
             .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().kitFormTitle()
-                    )
+                StringUtil.formatTextToString(
+                    player,
+                    BedrockPlayerSupport.langConfigManager.getConfigData().kitFormTitle()
                 )
             )
             .validResultHandler { simpleFormResponse ->
                 player.chat("/kit ${simpleFormResponse.clickedButton().text()}")
             }
-        kits.forEach { form.button(it.key)}
+        kits.forEach { form.button(it.key) }
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 

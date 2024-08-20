@@ -1,9 +1,9 @@
 package cc.dsnb.bedrockplayersupport.form.basic
 
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
+import cc.dsnb.bedrockplayersupport.util.StringUtil
 import com.earth2me.essentials.Essentials
 import com.earth2me.essentials.User
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.geysermc.cumulus.form.SimpleForm
@@ -18,10 +18,9 @@ class EssXForm {
             User(player, Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).homes
         val form = SimpleForm.builder()
             .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().delHomeFormTitle()
-                    )
+                StringUtil.formatTextToString(
+                    player,
+                    BedrockPlayerSupport.langConfigManager.getConfigData().delHomeFormTitle()
                 )
             )
             .validResultHandler { simpleFormResponse ->
@@ -36,10 +35,9 @@ class EssXForm {
             User(player, Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).homes
         val form = SimpleForm.builder()
             .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().goHomeFormTitle()
-                    )
+                StringUtil.formatTextToString(
+                    player,
+                    BedrockPlayerSupport.langConfigManager.getConfigData().goHomeFormTitle()
                 )
             )
             .validResultHandler { simpleFormResponse ->
@@ -53,10 +51,9 @@ class EssXForm {
         val userWarps = (Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).warps.list
         val form = SimpleForm.builder()
             .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().warpFormTitle()
-                    )
+                StringUtil.formatTextToString(
+                    player,
+                    BedrockPlayerSupport.langConfigManager.getConfigData().warpFormTitle()
                 )
             )
             .validResultHandler { simpleFormResponse ->
@@ -70,10 +67,9 @@ class EssXForm {
         val kits = (Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).kits.kitKeys
         val form = SimpleForm.builder()
             .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().kitFormTitle()
-                    )
+                StringUtil.formatTextToString(
+                    player,
+                    BedrockPlayerSupport.langConfigManager.getConfigData().kitFormTitle()
                 )
             )
             .validResultHandler { simpleFormResponse ->

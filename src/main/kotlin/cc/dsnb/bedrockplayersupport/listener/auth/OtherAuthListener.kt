@@ -1,6 +1,7 @@
 package cc.dsnb.bedrockplayersupport.listener.auth
 
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
+import cc.dsnb.bedrockplayersupport.util.StringUtil
 import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -22,9 +23,7 @@ class OtherAuthListener : Listener {
                     Bukkit.getServer().consoleSender,
                     mainConfig.forceLoginCommand().replace("%playerName%", player.name)
                 )
-                player.sendMessage(
-                    BedrockPlayerSupport.miniMessage.deserialize(langConfig.loginSuccessfully())
-                )
+                player.sendMessage(StringUtil.formatTextToComponent(player, langConfig.loginSuccessfully()))
             }
         }
     }
