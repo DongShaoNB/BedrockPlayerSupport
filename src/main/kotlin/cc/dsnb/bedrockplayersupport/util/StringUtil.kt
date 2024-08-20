@@ -36,7 +36,11 @@ object StringUtil {
 
     fun formatTextToComponent(player: Player?, originalText: String): Component {
         return BedrockPlayerSupport.miniMessage.deserialize(
-            formatTextToString(player, originalText)
+            if (BedrockPlayerSupport.mainConfigManager.getConfigData().enableSupportPAPI()) {
+                PlaceholderAPI.setPlaceholders(player, originalText)
+            } else {
+                originalText
+            }
         )
     }
 
