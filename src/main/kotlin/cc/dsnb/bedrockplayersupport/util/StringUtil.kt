@@ -22,18 +22,6 @@ object StringUtil {
         return stringBuilder.toString()
     }
 
-    fun formatTextToString(player: Player?, originalText: String): String {
-        return BedrockPlayerSupport.legacySection.serialize(
-            BedrockPlayerSupport.miniMessage.deserialize(
-                if (BedrockPlayerSupport.mainConfigManager.getConfigData().enableSupportPAPI()) {
-                    PlaceholderAPI.setPlaceholders(player, originalText)
-                } else {
-                    originalText
-                }
-            )
-        )
-    }
-
     fun formatTextToComponent(player: Player?, originalText: String): Component {
         return BedrockPlayerSupport.miniMessage.deserialize(
             if (BedrockPlayerSupport.mainConfigManager.getConfigData().enableSupportPAPI()) {
@@ -41,6 +29,12 @@ object StringUtil {
             } else {
                 originalText
             }
+        )
+    }
+
+    fun formatTextToString(player: Player?, originalText: String): String {
+        return BedrockPlayerSupport.legacySection.serialize(
+            formatTextToComponent(player, originalText)
         )
     }
 
