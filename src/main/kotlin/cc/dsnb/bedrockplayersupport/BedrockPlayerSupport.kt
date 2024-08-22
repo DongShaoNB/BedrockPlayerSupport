@@ -18,6 +18,7 @@ import cc.dsnb.bedrockplayersupport.util.UpdateUtil
 import com.github.Anon8281.universalScheduler.UniversalScheduler
 import com.github.Anon8281.universalScheduler.scheduling.schedulers.TaskScheduler
 import net.kyori.adventure.text.minimessage.MiniMessage
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.bstats.bukkit.Metrics
 import org.bstats.charts.SimplePie
 import org.bukkit.Bukkit
@@ -46,6 +47,7 @@ class BedrockPlayerSupport : JavaPlugin() {
         lateinit var sunlightForm: SunLightForm
         lateinit var floodgateApi: FloodgateApi
         val miniMessage = MiniMessage.miniMessage()
+        val legacySection = LegacyComponentSerializer.legacySection()
         const val PREFIX = "[BedrockPlayerSupport] "
     }
 

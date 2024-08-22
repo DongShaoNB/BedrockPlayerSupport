@@ -14,6 +14,7 @@ softdepend:
   - AuthMe
   - CatSeedLogin
   - NexAuth
+  - PlaceholderAPI
 authors: [ DongShaoNB ]
 description: Make it easier for bedrock player to use other plugins
 website: dsnb.cc

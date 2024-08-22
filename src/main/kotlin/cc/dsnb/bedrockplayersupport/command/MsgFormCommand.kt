@@ -1,6 +1,7 @@
 package cc.dsnb.bedrockplayersupport.command
 
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
+import cc.dsnb.bedrockplayersupport.util.StringUtil
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -20,16 +21,16 @@ class MsgFormCommand : CommandExecutor {
                     return true
                 } else {
                     sender.sendMessage(
-                        BedrockPlayerSupport.miniMessage
-                            .deserialize(
-                                BedrockPlayerSupport.langConfigManager.getConfigData()
-                                    .noOtherOnlinePlayer()
-                            )
+                        StringUtil.formatTextToComponent(
+                            sender, BedrockPlayerSupport.langConfigManager.getConfigData()
+                                .noOtherOnlinePlayer()
+                        )
                     )
                 }
             } else {
                 sender.sendMessage(
-                    BedrockPlayerSupport.miniMessage.deserialize(
+                    StringUtil.formatTextToComponent(
+                        sender,
                         BedrockPlayerSupport.langConfigManager.getConfigData().notBedrockPlayer()
                     )
                 )

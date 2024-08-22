@@ -34,6 +34,11 @@ repositories {
         url = uri("https://repo.codemc.org/repository/maven-public/")
     }
     maven {
+        // PlaceholderAPI
+        name = "placeholderapi"
+        url = uri("https://repo.extendedclip.com/content/repositories/placeholderapi/")
+    }
+    maven {
         // UniversalScheduler
         name = "jitpack"
         url = uri("https://jitpack.io")
@@ -68,6 +73,8 @@ dependencies {
     compileOnly(files("lib/NexEngine.jar"))
     // NexAuth
     compileOnly(files("lib/NexAuth-2.0.5.jar"))
+    // PlaceholderAPI
+    compileOnly("me.clip:placeholderapi:2.11.6")
     // bStats
     implementation("org.bstats:bstats-bukkit:3.0.3")
     // DazzleConf

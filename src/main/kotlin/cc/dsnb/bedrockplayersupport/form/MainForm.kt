@@ -5,8 +5,7 @@ import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
 import cc.dsnb.bedrockplayersupport.TeleportType
 import cc.dsnb.bedrockplayersupport.config.LangConfig
 import cc.dsnb.bedrockplayersupport.config.MainConfig
-import net.kyori.adventure.text.minimessage.MiniMessage
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
+import cc.dsnb.bedrockplayersupport.util.StringUtil
 import net.william278.huskhomes.BukkitHuskHomes
 import net.william278.huskhomes.api.HuskHomesAPI
 import org.bukkit.Bukkit
@@ -23,14 +22,10 @@ class MainForm {
 
     private lateinit var mainConfig: MainConfig
     private lateinit var langConfig: LangConfig
-    private lateinit var miniMessage: MiniMessage
-    private lateinit var legacySection: LegacyComponentSerializer
 
     fun load() {
         mainConfig = BedrockPlayerSupport.mainConfigManager.getConfigData()
         langConfig = BedrockPlayerSupport.langConfigManager.getConfigData()
-        miniMessage = BedrockPlayerSupport.miniMessage
-        legacySection = LegacyComponentSerializer.legacySection()
     }
 
     fun openBedrockTeleportForm(player: Player) {
@@ -51,24 +46,23 @@ class MainForm {
                 }
             }
         }
-        val form = CustomForm.builder().title(
-            legacySection.serialize(miniMessage.deserialize(langConfig.teleportFormTitle()))
-        ).dropdown(
-            legacySection.serialize(miniMessage.deserialize(langConfig.teleportFormChooseTypeText())),
-            listOf("Tpa", "TpaHere")
-        ).dropdown(
-            legacySection.serialize(miniMessage.deserialize(langConfig.teleportFormChoosePlayerText())),
-            onlinePlayerNameList
-        ).validResultHandler { _, customFormResponse ->
-            when (customFormResponse.asDropdown(0)) {
-                0 -> player.chat("/tpa " + onlinePlayerNameList[customFormResponse.asDropdown(1)])
-                1 -> if (BedrockPlayerSupport.basicPlugin == SunLight) {
-                    player.chat("/tphere " + onlinePlayerNameList[customFormResponse.asDropdown(1)])
-                } else {
-                    player.chat("/tpahere " + onlinePlayerNameList[customFormResponse.asDropdown(1)])
+        val form =
+            CustomForm.builder().title(StringUtil.formatTextToString(player, langConfig.teleportFormTitle())).dropdown(
+                StringUtil.formatTextToString(player, langConfig.teleportFormChooseTypeText()),
+                listOf("Tpa", "TpaHere")
+            ).dropdown(
+                StringUtil.formatTextToString(player, langConfig.teleportFormChoosePlayerText()),
+                onlinePlayerNameList
+            ).validResultHandler { _, customFormResponse ->
+                when (customFormResponse.asDropdown(0)) {
+                    0 -> player.chat("/tpa " + onlinePlayerNameList[customFormResponse.asDropdown(1)])
+                    1 -> if (BedrockPlayerSupport.basicPlugin == SunLight) {
+                        player.chat("/tphere " + onlinePlayerNameList[customFormResponse.asDropdown(1)])
+                    } else {
+                        player.chat("/tpahere " + onlinePlayerNameList[customFormResponse.asDropdown(1)])
+                    }
                 }
             }
-        }
         BedrockPlayerSupport.floodgateApi.sendForm(uuid, form)
     }
 
@@ -78,17 +72,15 @@ class MainForm {
         val receiverUuid = receiver.uniqueId
         if (tpType === TeleportType.Tpa) {
             form = ModalForm.builder()
-                .title(legacySection.serialize(miniMessage.deserialize(langConfig.receivedTpaFormTitle())))
+                .title(StringUtil.formatTextToString(receiver, langConfig.receivedTpaFormTitle()))
                 .content(
-                    legacySection.serialize(
-                        miniMessage.deserialize(
-                            langConfig.receivedTpaFormText()
-                                .replace("%requesterName%", requesterName)
-                        )
+                    StringUtil.formatTextToString(
+                        receiver,
+                        langConfig.receivedTpaFormText().replace("%requesterName%", requesterName)
                     )
                 )
-                .button1(legacySection.serialize(miniMessage.deserialize(langConfig.receivedTpFormAcceptButton())))
-                .button2(legacySection.serialize(miniMessage.deserialize(langConfig.receivedTpFormDenyButton())))
+                .button1(StringUtil.formatTextToString(receiver, langConfig.receivedTpFormAcceptButton()))
+                .button2(StringUtil.formatTextToString(receiver, langConfig.receivedTpFormDenyButton()))
                 .validResultHandler { _, modalFormResponse ->
                     when (modalFormResponse.clickedButtonId()) {
                         0 -> if (BedrockPlayerSupport.basicPlugin == SunLight) {
@@ -106,17 +98,15 @@ class MainForm {
                 }
         } else if (tpType === TeleportType.TpaHere) {
             form = ModalForm.builder()
-                .title(legacySection.serialize(miniMessage.deserialize(langConfig.receivedTpaHereFormTitle())))
+                .title(StringUtil.formatTextToString(receiver, langConfig.receivedTpaHereFormTitle()))
                 .content(
-                    legacySection.serialize(
-                        miniMessage.deserialize(
-                            langConfig.receivedTpaHereFormText()
-                                .replace("%requesterName%", requesterName)
-                        )
+                    StringUtil.formatTextToString(
+                        receiver,
+                        langConfig.receivedTpaHereFormText().replace("%requesterName%", requesterName)
                     )
                 )
-                .button1(legacySection.serialize(miniMessage.deserialize(langConfig.receivedTpFormAcceptButton())))
-                .button2(legacySection.serialize(miniMessage.deserialize(langConfig.receivedTpFormDenyButton())))
+                .button1(StringUtil.formatTextToString(receiver, langConfig.receivedTpFormAcceptButton()))
+                .button2(StringUtil.formatTextToString(receiver, langConfig.receivedTpFormDenyButton()))
                 .validResultHandler { _, modalFormResponse ->
                     when (modalFormResponse.clickedButtonId()) {
                         0 -> if (BedrockPlayerSupport.basicPlugin == SunLight) {
@@ -145,12 +135,9 @@ class MainForm {
             }
         }
         val form = CustomForm.builder()
-            .title(legacySection.serialize(miniMessage.deserialize(langConfig.msgFormTitle())))
-            .dropdown(
-                legacySection.serialize(miniMessage.deserialize(langConfig.msgFormChoosePlayerText())),
-                onlinePlayerName
-            )
-            .input(legacySection.serialize(miniMessage.deserialize(langConfig.msgFormInputMessageText())))
+            .title(StringUtil.formatTextToString(player, langConfig.msgFormTitle()))
+            .dropdown(StringUtil.formatTextToString(player, langConfig.msgFormChoosePlayerText()), onlinePlayerName)
+            .input(StringUtil.formatTextToString(player, langConfig.msgFormInputMessageText()))
             .validResultHandler { _, customFormResponse ->
                 player.chat(
                     "/msg " + onlinePlayerName[customFormResponse.asDropdown(0)] + " "
@@ -163,10 +150,10 @@ class MainForm {
     fun openBedrockHomeForm(player: Player) {
         val uuid = player.uniqueId
         val form = SimpleForm.builder()
-            .title(legacySection.serialize(miniMessage.deserialize(langConfig.homeFormTitle())))
-            .button(legacySection.serialize(miniMessage.deserialize(langConfig.homeFormSetHomeButton())))
-            .button(legacySection.serialize(miniMessage.deserialize(langConfig.homeFormDelHomeButton())))
-            .button(legacySection.serialize(miniMessage.deserialize(langConfig.homeFormGoHomeButton())))
+            .title(StringUtil.formatTextToString(player, langConfig.homeFormTitle()))
+            .button(StringUtil.formatTextToString(player, langConfig.homeFormSetHomeButton()))
+            .button(StringUtil.formatTextToString(player, langConfig.homeFormDelHomeButton()))
+            .button(StringUtil.formatTextToString(player, langConfig.homeFormGoHomeButton()))
             .validResultHandler { simpleFormResponse ->
                 when (simpleFormResponse.clickedButtonId()) {
                     0 -> openBedrockPlayerSetHomeForm(player)
@@ -202,8 +189,8 @@ class MainForm {
 
     fun openBedrockPlayerSetHomeForm(player: Player) {
         val form = CustomForm.builder()
-            .title(legacySection.serialize(miniMessage.deserialize(langConfig.setHomeFormTitle())))
-            .input(legacySection.serialize(miniMessage.deserialize(langConfig.setHomeFormText())))
+            .title(StringUtil.formatTextToString(player, langConfig.setHomeFormTitle()))
+            .input(StringUtil.formatTextToString(player, langConfig.setHomeFormText()))
             .validResultHandler { simpleFormResponse ->
                 player.chat("/sethome ${simpleFormResponse.asInput(0)}")
             }
@@ -213,10 +200,10 @@ class MainForm {
     fun openBedrockBackDeathLocForm(player: Player) {
         val uuid = player.uniqueId
         val form = ModalForm.builder()
-            .title(legacySection.serialize(miniMessage.deserialize(langConfig.backFormTitle())))
-            .content(legacySection.serialize(miniMessage.deserialize(langConfig.backFormText())))
-            .button1(legacySection.serialize(miniMessage.deserialize(langConfig.backFormYesButton())))
-            .button2(legacySection.serialize(miniMessage.deserialize(langConfig.backFormNoButton())))
+            .title(StringUtil.formatTextToString(player, langConfig.backFormTitle()))
+            .content(StringUtil.formatTextToString(player, langConfig.backFormText()))
+            .button1(StringUtil.formatTextToString(player, langConfig.backFormYesButton()))
+            .button2(StringUtil.formatTextToString(player, langConfig.backFormNoButton()))
             .validResultHandler { _, modalFormResponse ->
                 if (modalFormResponse.clickedButtonId() == 0) {
                     player.chat(mainConfig.backDeathLocCommand())

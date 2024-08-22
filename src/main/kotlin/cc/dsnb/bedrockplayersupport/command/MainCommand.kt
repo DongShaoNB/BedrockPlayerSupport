@@ -1,6 +1,7 @@
 package cc.dsnb.bedrockplayersupport.command
 
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
+import cc.dsnb.bedrockplayersupport.util.StringUtil
 import cc.dsnb.bedrockplayersupport.util.TimeUtil
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -44,15 +45,15 @@ class MainCommand : CommandExecutor {
                     }
                     if (sender is Player) {
                         sender.sendMessage(
-                            BedrockPlayerSupport.miniMessage.deserialize(
-                                langConfig.reloadSuccessfully()
+                            StringUtil.formatTextToComponent(
+                                sender, langConfig.reloadSuccessfully()
                                     .replace("%time%", time.toString())
                             )
                         )
                     } else {
                         sender.sendMessage(
-                            BedrockPlayerSupport.miniMessage.deserialize(
-                                BedrockPlayerSupport.PREFIX +
+                            StringUtil.formatTextToComponent(
+                                null, BedrockPlayerSupport.PREFIX +
                                         langConfig.reloadSuccessfully()
                                             .replace("%time%", time.toString())
                             )

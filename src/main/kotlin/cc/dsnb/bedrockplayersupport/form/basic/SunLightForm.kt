@@ -1,7 +1,7 @@
 package cc.dsnb.bedrockplayersupport.form.basic
 
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
+import cc.dsnb.bedrockplayersupport.util.StringUtil
 import org.bukkit.entity.Player
 import org.geysermc.cumulus.form.SimpleForm
 import su.nightexpress.sunlight.SunLightAPI
@@ -16,10 +16,9 @@ class SunLightForm {
         val playerHomesList = SunLightAPI.PLUGIN.data.getHomes(slUser.id)
         val form = SimpleForm.builder()
             .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().delHomeFormTitle()
-                    )
+                StringUtil.formatTextToString(
+                    player,
+                    BedrockPlayerSupport.langConfigManager.getConfigData().delHomeFormTitle()
                 )
             )
             .validResultHandler { simpleFormResponse ->
@@ -34,10 +33,9 @@ class SunLightForm {
         val playerHomesList = SunLightAPI.PLUGIN.data.getHomes(slUser.id)
         val form = SimpleForm.builder()
             .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().goHomeFormTitle()
-                    )
+                StringUtil.formatTextToString(
+                    player,
+                    BedrockPlayerSupport.langConfigManager.getConfigData().goHomeFormTitle()
                 )
             )
             .validResultHandler { simpleFormResponse ->
@@ -61,10 +59,9 @@ class SunLightForm {
         }
         val form = SimpleForm.builder()
             .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().warpFormTitle()
-                    )
+                StringUtil.formatTextToString(
+                    player,
+                    BedrockPlayerSupport.langConfigManager.getConfigData().warpFormTitle()
                 )
             )
             .validResultHandler { simpleFormResponse ->
@@ -88,10 +85,9 @@ class SunLightForm {
         }
         val form = SimpleForm.builder()
             .title(
-                LegacyComponentSerializer.legacySection().serialize(
-                    BedrockPlayerSupport.miniMessage.deserialize(
-                        BedrockPlayerSupport.langConfigManager.getConfigData().kitFormTitle()
-                    )
+                StringUtil.formatTextToString(
+                    player,
+                    BedrockPlayerSupport.langConfigManager.getConfigData().kitFormTitle()
                 )
             )
             .validResultHandler { simpleFormResponse ->
