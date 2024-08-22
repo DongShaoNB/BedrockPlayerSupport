@@ -22,7 +22,7 @@ class CMIForm {
                 )
             )
             .validResultHandler { simpleFormResponse ->
-                player.chat("/delhome ${simpleFormResponse.clickedButton().text()}")
+                player.chat("/removehome ${simpleFormResponse.clickedButton().text()}")
             }
         playerHomesList.forEach { form.button(it.key) }
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
