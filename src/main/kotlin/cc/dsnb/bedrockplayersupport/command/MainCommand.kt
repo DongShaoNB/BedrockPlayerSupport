@@ -19,19 +19,19 @@ class MainCommand : CommandExecutor {
                 "status" -> {
                     if (sender is Player) {
                         if ("zh_cn".equals(BedrockPlayerSupport.languageInUse, ignoreCase = true)) {
-                            sender.sendMessage("基础插件: " + BedrockPlayerSupport.basicPlugin.name)
-                            sender.sendMessage("验证插件: " + BedrockPlayerSupport.authPlugin.name)
+                            sender.sendMessage("基础插件: " + BedrockPlayerSupport.basicPlugin.realName)
+                            sender.sendMessage("验证插件: " + BedrockPlayerSupport.authPlugin.realName)
                         } else {
-                            sender.sendMessage("Basic plugin: " + BedrockPlayerSupport.basicPlugin.name)
-                            sender.sendMessage("Auth plugin: " + BedrockPlayerSupport.authPlugin.name)
+                            sender.sendMessage("Basic plugin: " + BedrockPlayerSupport.basicPlugin.realName)
+                            sender.sendMessage("Auth plugin: " + BedrockPlayerSupport.authPlugin.realName)
                         }
                     } else {
                         if ("zh_cn".equals(BedrockPlayerSupport.languageInUse, ignoreCase = true)) {
-                            sender.sendMessage(BedrockPlayerSupport.PREFIX + "基础插件: " + BedrockPlayerSupport.basicPlugin.name)
-                            sender.sendMessage(BedrockPlayerSupport.PREFIX + "验证插件: " + BedrockPlayerSupport.authPlugin.name)
+                            sender.sendMessage(BedrockPlayerSupport.PREFIX + "基础插件: " + BedrockPlayerSupport.basicPlugin.realName)
+                            sender.sendMessage(BedrockPlayerSupport.PREFIX + "验证插件: " + BedrockPlayerSupport.authPlugin.realName)
                         } else {
-                            sender.sendMessage(BedrockPlayerSupport.PREFIX + "Basic plugin: " + BedrockPlayerSupport.basicPlugin.name)
-                            sender.sendMessage(BedrockPlayerSupport.PREFIX + "Auth plugin: " + BedrockPlayerSupport.authPlugin.name)
+                            sender.sendMessage(BedrockPlayerSupport.PREFIX + "Basic plugin: " + BedrockPlayerSupport.basicPlugin.realName)
+                            sender.sendMessage(BedrockPlayerSupport.PREFIX + "Auth plugin: " + BedrockPlayerSupport.authPlugin.realName)
                         }
                     }
                     return true

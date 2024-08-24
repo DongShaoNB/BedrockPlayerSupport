@@ -3,12 +3,12 @@ package cc.dsnb.bedrockplayersupport
 /**
  * @author DongShaoNB
  */
-enum class AuthPlugin {
+enum class AuthPlugin(val realName: String) {
 
-    AuthMe,
-    CatSeedLogin,
-    NexAuth,
-    Other,
-    None
+    AUTHME("AuthMe"),
+    CATSEEDLOGIN("CatSeedLogin"),
+    NEXAUTH("NexAuth"),
+    OTHER("Other"),
+    NONE("None");
 
 }

@@ -1,6 +1,5 @@
 package cc.dsnb.bedrockplayersupport
 
-import cc.dsnb.bedrockplayersupport.AuthPlugin.*
 import cc.dsnb.bedrockplayersupport.command.*
 import cc.dsnb.bedrockplayersupport.config.LangConfig
 import cc.dsnb.bedrockplayersupport.config.MainConfig
@@ -94,87 +93,48 @@ class BedrockPlayerSupport : JavaPlugin() {
 
     private fun setPluginRunningStatus() {
         val pluginManager = Bukkit.getPluginManager()
-        basicPlugin = if (pluginManager.isPluginEnabled("CMI") && ("cmi".equals(
-                mainConfigManager.getConfigData().basicPlugin(),
-                ignoreCase = true
-            ) || "auto".equals(
-                mainConfigManager.getConfigData().basicPlugin(),
-                ignoreCase = true
-            ))
-        ) {
-            BasicPlugin.CMI
-        } else if (pluginManager.isPluginEnabled("Essentials") && ("essentialsx".equals(
-                mainConfigManager.getConfigData().basicPlugin(), ignoreCase = true
-            ) || "auto".equals(
-                mainConfigManager.getConfigData().basicPlugin(),
-                ignoreCase = true
-            ))
-        ) {
-            BasicPlugin.EssentialsX
-        } else if (pluginManager.isPluginEnabled("HuskHomes") && ("huskhomes".equals(
-                mainConfigManager.getConfigData().basicPlugin(), ignoreCase = true
-            ) || "auto".equals(
-                mainConfigManager.getConfigData().basicPlugin(),
-                ignoreCase = true
-            ))
-        ) {
-            BasicPlugin.HuskHomes
-        } else if (pluginManager.isPluginEnabled("AdvancedTeleport") && ("advancedteleport".equals(
-                mainConfigManager.getConfigData().basicPlugin(), ignoreCase = true
-            ) || "auto".equals(
-                mainConfigManager.getConfigData().basicPlugin(),
-                ignoreCase = true
-            ))
-        ) {
-            BasicPlugin.AdvancedTeleport
-        } else if (pluginManager.isPluginEnabled("SunLight") && ("sunlight".equals(
-                mainConfigManager.getConfigData().basicPlugin(), ignoreCase = true
-            ) || "auto".equals(
-                mainConfigManager.getConfigData().basicPlugin(),
-                ignoreCase = true
-            ))
-        ) {
-            BasicPlugin.SunLight
+
+        val basicPluginNameToEnum = mapOf(
+            "cmi" to BasicPlugin.CMI,
+            "essentialsx" to BasicPlugin.ESSENTIALS,
+            "huskhomes" to BasicPlugin.HUSKHOMES,
+            "advancedteleport" to BasicPlugin.ADVANCEDTELEPORT,
+            "sunlight" to BasicPlugin.SUNLIGHT
+        )
+        val configBasicPlugin = mainConfigManager.getConfigData().basicPlugin().lowercase()
+        val selectedPlugin = basicPluginNameToEnum[configBasicPlugin]
+        basicPlugin = if ("auto" == configBasicPlugin) {
+            listOf("CMI", "Essentials", "HuskHomes", "AdvancedTeleport", "SunLight").firstOrNull { plugin ->
+                pluginManager.isPluginEnabled(plugin)
+            }?.let {
+                BasicPlugin.valueOf(it.uppercase())
+            } ?: BasicPlugin.NONE
         } else {
-            BasicPlugin.None
+            selectedPlugin ?: BasicPlugin.NONE
         }
-        authPlugin = if (pluginManager.isPluginEnabled("AuthMe") && ("authme".equals(
-                mainConfigManager.getConfigData().authPlugin(), ignoreCase = true
-            ) || "auto".equals(
-                mainConfigManager.getConfigData().basicPlugin(),
-                ignoreCase = true
-            ))
-        ) {
-            AuthMe
-        } else if (pluginManager.isPluginEnabled("CatSeedLogin") && ("catseedlogin".equals(
-                mainConfigManager.getConfigData().authPlugin(), ignoreCase = true
-            ) || "auto".equals(
-                mainConfigManager.getConfigData().basicPlugin(),
-                ignoreCase = true
-            ))
-        ) {
-            CatSeedLogin
-        } else if (pluginManager.isPluginEnabled("NexAuth") && ("nexauth".equals(
-                mainConfigManager.getConfigData().authPlugin(), ignoreCase = true
-            ) || "auto".equals(
-                mainConfigManager.getConfigData().basicPlugin(),
-                ignoreCase = true
-            ))
-        ) {
-            NexAuth
-        } else if ("other".equals(
-                mainConfigManager.getConfigData().authPlugin(),
-                ignoreCase = true
-            )
-        ) {
-            Other
+
+        val authPluginNameToEnum = mapOf(
+            "authme" to AuthPlugin.AUTHME,
+            "catseedlogin" to AuthPlugin.CATSEEDLOGIN,
+            "nexauth" to AuthPlugin.NEXAUTH,
+            "other" to AuthPlugin.OTHER,
+            "none" to AuthPlugin.NONE
+        )
+        val configAuthPlugin = mainConfigManager.getConfigData().authPlugin().lowercase()
+        val selectedAuthPlugin = authPluginNameToEnum[configAuthPlugin]
+        authPlugin = if ("auto" == configAuthPlugin) {
+            listOf("AuthMe", "CatSeedLogin", "NexAuth").firstOrNull { plugin ->
+                pluginManager.isPluginEnabled(plugin)
+            }?.let {
+                AuthPlugin.valueOf(it.uppercase())
+            } ?: AuthPlugin.OTHER
         } else {
-            None
+            selectedAuthPlugin ?: AuthPlugin.NONE
         }
     }
 
     private fun loadFunction() {
-        mainForm = MainForm().also { it.load() }
+        mainForm = MainForm()
         val pluginManager = Bukkit.getPluginManager()
         when (basicPlugin) {
             BasicPlugin.CMI -> {
@@ -182,36 +142,36 @@ class BedrockPlayerSupport : JavaPlugin() {
                 pluginManager.registerEvents(CMIListener(), this)
             }
 
-            BasicPlugin.EssentialsX -> {
+            BasicPlugin.ESSENTIALS -> {
                 essxForm = EssXForm()
                 pluginManager.registerEvents(EssXListener(), this)
             }
 
-            BasicPlugin.HuskHomes -> {
+            BasicPlugin.HUSKHOMES -> {
                 huskhomesForm = HuskHomesForm()
                 pluginManager.registerEvents(HuskHomesListener(), this)
             }
 
-            BasicPlugin.AdvancedTeleport -> {
+            BasicPlugin.ADVANCEDTELEPORT -> {
                 atForm = ATForm()
                 pluginManager.registerEvents(ATListener(), this)
             }
 
-            BasicPlugin.SunLight -> {
+            BasicPlugin.SUNLIGHT -> {
                 sunlightForm = SunLightForm()
                 pluginManager.registerEvents(SunLightListener(), this)
             }
 
-            BasicPlugin.None -> {
+            BasicPlugin.NONE -> {
                 // Don't need to do anything
             }
         }
         when (authPlugin) {
-            AuthMe -> pluginManager.registerEvents(AuthMeListener(), this)
-            CatSeedLogin -> pluginManager.registerEvents(CatSeedLoginListener(), this)
-            NexAuth -> pluginManager.registerEvents(NexAuthListener(), this)
-            Other -> pluginManager.registerEvents(OtherAuthListener(), this)
-            None -> {
+            AuthPlugin.AUTHME -> pluginManager.registerEvents(AuthMeListener(), this)
+            AuthPlugin.CATSEEDLOGIN -> pluginManager.registerEvents(CatSeedLoginListener(), this)
+            AuthPlugin.NEXAUTH -> pluginManager.registerEvents(NexAuthListener(), this)
+            AuthPlugin.OTHER -> pluginManager.registerEvents(OtherAuthListener(), this)
+            AuthPlugin.NONE -> {
                 // Don't need to do anything
             }
         }
@@ -246,23 +206,10 @@ class BedrockPlayerSupport : JavaPlugin() {
     private fun loadMetrics() {
         Metrics(this, 17107).also {
             it.addCustomChart(SimplePie("basic_plugin") {
-                when (basicPlugin) {
-                    BasicPlugin.CMI -> "CMI"
-                    BasicPlugin.EssentialsX -> "EssentialsX"
-                    BasicPlugin.HuskHomes -> "HuskHomes"
-                    BasicPlugin.AdvancedTeleport -> "AdvancedTeleport"
-                    BasicPlugin.SunLight -> "SunLight"
-                    BasicPlugin.None -> "None"
-                }
+                basicPlugin.realName
             })
             it.addCustomChart(SimplePie("auth_plugin") {
-                when (authPlugin) {
-                    AuthMe -> "AuthMe"
-                    CatSeedLogin -> "CatSeedLogin"
-                    NexAuth -> "NexAuth"
-                    Other -> "Other"
-                    None -> "None"
-                }
+                authPlugin.realName
             })
         }
     }

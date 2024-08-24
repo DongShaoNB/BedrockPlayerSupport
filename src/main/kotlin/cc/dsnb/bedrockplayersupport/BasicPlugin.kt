@@ -3,13 +3,13 @@ package cc.dsnb.bedrockplayersupport
 /**
  * @author DongShaoNB
  */
-enum class BasicPlugin {
+enum class BasicPlugin(val realName: String) {
 
-    CMI,
-    EssentialsX,
-    HuskHomes,
-    AdvancedTeleport,
-    SunLight,
-    None
+    CMI("CMI"),
+    ESSENTIALS("EssentialsX"),
+    HUSKHOMES("HuskHomes"),
+    ADVANCEDTELEPORT("AdvancedTeleport"),
+    SUNLIGHT("SunLight"),
+    NONE("None");
 
 }
