@@ -29,33 +29,26 @@ class MainForm {
         if (BedrockPlayerSupport.basicPlugin === HUSKHOMES && mainConfig.enableCrossServer()) {
             val bukkitHuskHomes =
                 Bukkit.getPluginManager().getPlugin("HuskHomes") as BukkitHuskHomes
-            for (onlineUser in bukkitHuskHomes.onlineUsers) {
-                if (onlineUser !== HuskHomesAPI.getInstance().adaptUser(player)) {
-                    onlinePlayerNameList.add(onlineUser.username)
-                }
-            }
+            onlinePlayerNameList.addAll(bukkitHuskHomes.onlineUsers.filter {
+                it != HuskHomesAPI.getInstance().adaptUser(player)
+            }.map { it.username })
         } else {
-            for (onlinePlayer in Bukkit.getOnlinePlayers()) {
-                if (onlinePlayer !== player) {
-                    onlinePlayerNameList.add(onlinePlayer.name)
-                }
-            }
+            onlinePlayerNameList.addAll(Bukkit.getOnlinePlayers().filter { it != player }.map { it.name })
         }
         val form =
-            CustomForm.builder().title(StringUtil.formatTextToString(player, langConfig.teleportFormTitle())).dropdown(
+            CustomForm.builder().title(
+                StringUtil.formatTextToString(player, langConfig.teleportFormTitle())
+            ).dropdown(
                 StringUtil.formatTextToString(player, langConfig.teleportFormChooseTypeText()),
                 listOf("Tpa", "TpaHere")
             ).dropdown(
                 StringUtil.formatTextToString(player, langConfig.teleportFormChoosePlayerText()),
                 onlinePlayerNameList
-            ).validResultHandler { _, customFormResponse ->
+            ).validResultHandler { customFormResponse ->
+                val playerName = onlinePlayerNameList[customFormResponse.asDropdown(1)]
                 when (customFormResponse.asDropdown(0)) {
-                    0 -> player.chat("/tpa " + onlinePlayerNameList[customFormResponse.asDropdown(1)])
-                    1 -> if (BedrockPlayerSupport.basicPlugin == SUNLIGHT) {
-                        player.chat("/tphere " + onlinePlayerNameList[customFormResponse.asDropdown(1)])
-                    } else {
-                        player.chat("/tpahere " + onlinePlayerNameList[customFormResponse.asDropdown(1)])
-                    }
+                    0 -> player.chat("${BedrockPlayerSupport.basicPlugin.tpaCommand} $playerName")
+                    1 -> player.chat("${BedrockPlayerSupport.basicPlugin.tpaHereCommand} $playerName")
                 }
             }
         BedrockPlayerSupport.floodgateApi.sendForm(uuid, form)
@@ -76,19 +69,10 @@ class MainForm {
                 )
                 .button1(StringUtil.formatTextToString(receiver, langConfig.receivedTpFormAcceptButton()))
                 .button2(StringUtil.formatTextToString(receiver, langConfig.receivedTpFormDenyButton()))
-                .validResultHandler { _, modalFormResponse ->
+                .validResultHandler { modalFormResponse ->
                     when (modalFormResponse.clickedButtonId()) {
-                        0 -> if (BedrockPlayerSupport.basicPlugin == SUNLIGHT) {
-                            receiver.chat("/tpyes")
-                        } else {
-                            receiver.chat("/tpaccept")
-                        }
-
-                        1 -> if (BedrockPlayerSupport.basicPlugin == SUNLIGHT) {
-                            receiver.chat("/tpno")
-                        } else {
-                            receiver.chat("/tpdeny")
-                        }
+                        0 -> receiver.chat(BedrockPlayerSupport.basicPlugin.tpaAcceptCommand)
+                        1 -> receiver.chat(BedrockPlayerSupport.basicPlugin.tpaRejectCommand)
                     }
                 }
         } else if (tpType === TeleportType.TpaHere) {
@@ -102,19 +86,10 @@ class MainForm {
                 )
                 .button1(StringUtil.formatTextToString(receiver, langConfig.receivedTpFormAcceptButton()))
                 .button2(StringUtil.formatTextToString(receiver, langConfig.receivedTpFormDenyButton()))
-                .validResultHandler { _, modalFormResponse ->
+                .validResultHandler { modalFormResponse ->
                     when (modalFormResponse.clickedButtonId()) {
-                        0 -> if (BedrockPlayerSupport.basicPlugin == SUNLIGHT) {
-                            receiver.chat("/tpyes")
-                        } else {
-                            receiver.chat("/tpaccept")
-                        }
-
-                        1 -> if (BedrockPlayerSupport.basicPlugin == SUNLIGHT) {
-                            receiver.chat("/tpno")
-                        } else {
-                            receiver.chat("/tpdeny")
-                        }
+                        0 -> receiver.chat(BedrockPlayerSupport.basicPlugin.tpaAcceptCommand)
+                        1 -> receiver.chat(BedrockPlayerSupport.basicPlugin.tpaRejectCommand)
                     }
                 }
         }
@@ -133,7 +108,7 @@ class MainForm {
             .title(StringUtil.formatTextToString(player, langConfig.msgFormTitle()))
             .dropdown(StringUtil.formatTextToString(player, langConfig.msgFormChoosePlayerText()), onlinePlayerName)
             .input(StringUtil.formatTextToString(player, langConfig.msgFormInputMessageText()))
-            .validResultHandler { _, customFormResponse ->
+            .validResultHandler { customFormResponse ->
                 player.chat(
                     "/msg " + onlinePlayerName[customFormResponse.asDropdown(0)] + " "
                             + customFormResponse.asInput(1)
@@ -199,7 +174,7 @@ class MainForm {
             .content(StringUtil.formatTextToString(player, langConfig.backFormText()))
             .button1(StringUtil.formatTextToString(player, langConfig.backFormYesButton()))
             .button2(StringUtil.formatTextToString(player, langConfig.backFormNoButton()))
-            .validResultHandler { _, modalFormResponse ->
+            .validResultHandler { modalFormResponse ->
                 if (modalFormResponse.clickedButtonId() == 0) {
                     player.chat(mainConfig.backDeathLocCommand())
                 }

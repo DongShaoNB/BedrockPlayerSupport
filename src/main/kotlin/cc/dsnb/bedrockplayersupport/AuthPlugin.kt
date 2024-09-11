@@ -3,7 +3,7 @@ package cc.dsnb.bedrockplayersupport
 /**
  * @author DongShaoNB
  */
-enum class AuthPlugin(val realName: String) {
+enum class AuthPlugin(val pluginName: String) {
 
     AUTHME("AuthMe"),
     CATSEEDLOGIN("CatSeedLogin"),

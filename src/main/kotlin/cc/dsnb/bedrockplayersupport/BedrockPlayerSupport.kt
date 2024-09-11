@@ -206,10 +206,10 @@ class BedrockPlayerSupport : JavaPlugin() {
     private fun loadMetrics() {
         Metrics(this, 17107).also {
             it.addCustomChart(SimplePie("basic_plugin") {
-                basicPlugin.realName
+                basicPlugin.pluginName
             })
             it.addCustomChart(SimplePie("auth_plugin") {
-                authPlugin.realName
+                authPlugin.pluginName
             })
         }
     }
