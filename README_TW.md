@@ -14,7 +14,8 @@
      | 
     <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README_TW.md">正體中文</a>
      | 
-    <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README_EN.md">English</a></p>
+    <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README_EN.md">English</a>
+        <img src="https://bstats.org/signatures/bukkit/BedrockPlayerSupport.svg"></p>
 
 ------------------------------
 
