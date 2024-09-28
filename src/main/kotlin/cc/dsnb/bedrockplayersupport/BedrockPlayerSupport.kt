@@ -47,6 +47,7 @@ class BedrockPlayerSupport : JavaPlugin() {
         lateinit var floodgateApi: FloodgateApi
         val miniMessage = MiniMessage.miniMessage()
         val legacySection = LegacyComponentSerializer.legacySection()
+        var isPapiEnabled = false
         const val PREFIX = "[BedrockPlayerSupport] "
     }
 
@@ -131,6 +132,8 @@ class BedrockPlayerSupport : JavaPlugin() {
         } else {
             selectedAuthPlugin ?: AuthPlugin.NONE
         }
+
+        isPapiEnabled = pluginManager.isPluginEnabled("PlaceholderAPI")
     }
 
     private fun loadFunction() {

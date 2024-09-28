@@ -24,7 +24,9 @@ object StringUtil {
 
     fun formatTextToComponent(player: Player?, originalText: String): Component {
         return BedrockPlayerSupport.miniMessage.deserialize(
-            if (BedrockPlayerSupport.mainConfigManager.getConfigData().enableSupportPAPI()) {
+            if (BedrockPlayerSupport.mainConfigManager.getConfigData()
+                    .enableSupportPAPI() && BedrockPlayerSupport.isPapiEnabled
+            ) {
                 PlaceholderAPI.setPlaceholders(player, originalText)
             } else {
                 originalText
