@@ -60,3 +60,6 @@ permissions:
   bedrockplayersupport.command.kitgui:
     description: "Bedrock player kit form permission"
     default: true
+  bedrockplayersupport.form.backdeath:
+    description: "Bedrock player back death location form permission"
+    default: true
