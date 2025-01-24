@@ -8,6 +8,7 @@ import cc.dsnb.bedrockplayersupport.config.MainConfig
 import cc.dsnb.bedrockplayersupport.util.StringUtil
 import net.william278.huskhomes.BukkitHuskHomes
 import net.william278.huskhomes.api.HuskHomesAPI
+import net.william278.huskhomes.user.OnlineUser
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.geysermc.cumulus.form.CustomForm
@@ -29,9 +30,9 @@ class MainForm {
         if (BedrockPlayerSupport.basicPlugin === HUSKHOMES && mainConfig.enableCrossServer()) {
             val bukkitHuskHomes =
                 Bukkit.getPluginManager().getPlugin("HuskHomes") as BukkitHuskHomes
-            onlinePlayerNameList.addAll(bukkitHuskHomes.onlineUsers.filter {
+            onlinePlayerNameList.addAll((bukkitHuskHomes.onlineUsers as Collection<OnlineUser>).filter {
                 it != HuskHomesAPI.getInstance().adaptUser(player)
-            }.map { it.username })
+            }.map { it.name })
         } else {
             onlinePlayerNameList.addAll(Bukkit.getOnlinePlayers().filter { it != player }.map { it.name })
         }
