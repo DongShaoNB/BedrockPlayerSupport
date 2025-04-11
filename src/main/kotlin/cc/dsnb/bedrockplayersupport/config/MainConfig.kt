@@ -92,6 +92,15 @@ interface MainConfig {
     @Order(101)
     fun enableCrossServer(): Boolean
 
+    @ConfKey("form.teleport.receive.enable")
+    @ConfComments(
+        "启用基岩版接收传送表单(玩家收到传送请求时)",
+        "Enable bedrock receive teleport form (Player receives teleport request)"
+    )
+    @DefaultBoolean(true)
+    @Order(102)
+    fun enableReceiveTeleportForm(): Boolean
+
     @ConfKey("form.msg.enable")
     @ConfComments(
         "启用基岩版消息表单(/msggui)", "Enable bedrock msg form (/msggui)"

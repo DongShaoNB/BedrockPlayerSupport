@@ -139,30 +139,31 @@ class BedrockPlayerSupport : JavaPlugin() {
     private fun loadFunction() {
         mainForm = MainForm()
         val pluginManager = Bukkit.getPluginManager()
+        val enableRTF = mainConfigManager.getConfigData().enableReceiveTeleportForm()
         when (basicPlugin) {
             BasicPlugin.CMI -> {
                 cmiForm = CMIForm()
-                pluginManager.registerEvents(CMIListener(), this)
+                if (enableRTF) pluginManager.registerEvents(CMIListener(), this)
             }
 
             BasicPlugin.ESSENTIALS -> {
                 essxForm = EssXForm()
-                pluginManager.registerEvents(EssXListener(), this)
+                if (enableRTF) pluginManager.registerEvents(EssXListener(), this)
             }
 
             BasicPlugin.HUSKHOMES -> {
                 huskhomesForm = HuskHomesForm()
-                pluginManager.registerEvents(HuskHomesListener(), this)
+                if (enableRTF) pluginManager.registerEvents(HuskHomesListener(), this)
             }
 
             BasicPlugin.ADVANCEDTELEPORT -> {
                 atForm = ATForm()
-                pluginManager.registerEvents(ATListener(), this)
+                if (enableRTF) pluginManager.registerEvents(ATListener(), this)
             }
 
             BasicPlugin.SUNLIGHT -> {
                 sunlightForm = SunLightForm()
-                pluginManager.registerEvents(SunLightListener(), this)
+                if (enableRTF) pluginManager.registerEvents(SunLightListener(), this)
             }
 
             BasicPlugin.NONE -> {
