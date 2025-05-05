@@ -1,6 +1,6 @@
 # 介绍
  
-BedrockPlayerSupport 支持的插件功能如下表所示
+BedrockPlayerSupport 支持的插件的功能如下表所示
 
 |      功能      |  CMI  | EssentialsX | HuskHomes | AdvancedTeleport | SunLight |
 | :------------: | :---: | :---------: | :-------: | :--------------: | :------: |
