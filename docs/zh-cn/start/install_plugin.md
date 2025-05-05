@@ -1,7 +1,7 @@
 # 安装插件
 ## 环境
 适用服务端: `Paper及其分支` `Folia及其分支`  
-适用版本: `1.18+`
+适用版本: `1.19+`
 ## 前置
 [floodgate](https://github.com/GeyserMC/Floodgate)
 ## 下载

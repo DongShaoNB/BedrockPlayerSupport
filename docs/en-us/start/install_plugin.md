@@ -1,7 +1,7 @@
 # Install Plugin
 ## Environment
 Apply Server: `Paper and fork` `Folia and fork`  
-Apply Version: `1.18+`
+Apply Version: `1.19+`
 ## Depend
 [floodgate](https://github.com/GeyserMC/Floodgate)
 ## Download
