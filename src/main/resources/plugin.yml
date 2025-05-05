@@ -1,7 +1,7 @@
 name: BedrockPlayerSupport
 version: ${version}
 main: cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
-api-version: 1.18
+api-version: 1.19
 folia-supported: true
 depend:
   - floodgate

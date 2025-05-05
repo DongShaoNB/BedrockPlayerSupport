@@ -48,7 +48,7 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     // PaperAPI
-    compileOnly("io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
     // Floodgate
     compileOnly("org.geysermc.floodgate:api:2.2.4-SNAPSHOT")
     // CMILib
@@ -56,7 +56,7 @@ dependencies {
     // CMI-API
     compileOnly(files("lib/CMI-API9.7.0.1.jar"))
     // EssentialsX
-    compileOnly("net.essentialsx:EssentialsX:2.20.1")
+    compileOnly("net.essentialsx:EssentialsX:2.21.0")
     // HuskHomes
     compileOnly("net.william278.huskhomes:huskhomes-bukkit:4.9.6")
     // AdvancedTeleport
