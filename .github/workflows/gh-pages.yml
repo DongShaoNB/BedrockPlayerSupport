@@ -2,12 +2,18 @@ name: Deploy Docsify
 
 on:
   push:
+    branches: ["master"]
+    paths:
+      - 'docs/**'
+  pull_request:
+    branches: ["master"]
     paths:
       - 'docs/**'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -15,6 +21,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
           publish_dir: ./docs
           cname: docs.bps.dsnb.cc
-          enable_jekyll: true
