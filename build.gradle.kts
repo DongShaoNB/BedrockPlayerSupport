@@ -56,7 +56,7 @@ dependencies {
     // CMI-API
     compileOnly(files("lib/CMI-API9.7.0.1.jar"))
     // EssentialsX
-    compileOnly("net.essentialsx:EssentialsX:2.21.0")
+    compileOnly("net.essentialsx:EssentialsX:2.21.1")
     // HuskHomes
     compileOnly("net.william278.huskhomes:huskhomes-bukkit:4.9.6")
     // AdvancedTeleport
