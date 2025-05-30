@@ -24,7 +24,7 @@ class HuskHomesForm {
                 player.chat("/phome " + simpleFormResponse.clickedButton().text())
             }
         publicHomes.thenAccept { homeList ->
-            homeList.forEach { form.button("${it.owner.name}.${it.name}") }
+            homeList.forEach { form.button(it.name) }
             BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
         }
     }
