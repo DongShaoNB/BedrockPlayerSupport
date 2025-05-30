@@ -4,7 +4,6 @@ import space.arim.dazzleconf.annote.ConfComments
 import space.arim.dazzleconf.annote.ConfDefault.*
 import space.arim.dazzleconf.annote.ConfHeader
 import space.arim.dazzleconf.annote.ConfKey
-import space.arim.dazzleconf.sorter.AnnotationBasedSorter.Order
 
 /**
  * @author DongShaoNB
@@ -23,7 +22,6 @@ interface MainConfig {
         "语言", "Language"
     )
     @DefaultString("zh_CN")
-    @Order(0)
     fun language(): String
 
     @ConfKey("plugin.check-update")
@@ -31,7 +29,6 @@ interface MainConfig {
         "启动服务器时检测更新", "Check update when starting the server"
     )
     @DefaultBoolean(true)
-    @Order(10)
     fun enableCheckUpdate(): Boolean
 
     @ConfKey("plugin.basic")
@@ -44,7 +41,6 @@ interface MainConfig {
         "auto is for automatic detection, none for no basic plugin (i.e. disable function)"
     )
     @DefaultString("auto")
-    @Order(20)
     fun basicPlugin(): String
 
     @ConfKey("plugin.auth")
@@ -59,7 +55,6 @@ interface MainConfig {
         "When using other login plugins, the automatic registration function cannot be used, and only the automatic login function can be used"
     )
     @DefaultString("auto")
-    @Order(30)
     fun authPlugin(): String
 
     @ConfKey("plugin.support-papi")
@@ -70,7 +65,6 @@ interface MainConfig {
         "Enable to use PlaceholderAPI within form"
     )
     @DefaultBoolean(true)
-    @Order(40)
     fun enableSupportPAPI(): Boolean
 
     @ConfKey("form.teleport.enable")
@@ -78,7 +72,6 @@ interface MainConfig {
         "启用基岩版TP表单(/tpgui)", "Enable bedrock TP form (/tpgui)"
     )
     @DefaultBoolean(true)
-    @Order(100)
     fun enableTeleportForm(): Boolean
 
     @ConfKey("form.teleport.cross-server")
@@ -89,7 +82,6 @@ interface MainConfig {
         "Enable support cross server teleport of form"
     )
     @DefaultBoolean(false)
-    @Order(101)
     fun enableCrossServer(): Boolean
 
     @ConfKey("form.teleport.receive.enable")
@@ -98,7 +90,6 @@ interface MainConfig {
         "Enable bedrock receive teleport form (Player receives teleport request)"
     )
     @DefaultBoolean(true)
-    @Order(102)
     fun enableReceiveTeleportForm(): Boolean
 
     @ConfKey("form.msg.enable")
@@ -106,7 +97,6 @@ interface MainConfig {
         "启用基岩版消息表单(/msggui)", "Enable bedrock msg form (/msggui)"
     )
     @DefaultBoolean(true)
-    @Order(110)
     fun enableMsgForm(): Boolean
 
     @ConfKey("form.home.enable")
@@ -114,8 +104,17 @@ interface MainConfig {
         "启用基岩版家表单(/homegui)", "Enable bedrock home form (/homegui)"
     )
     @DefaultBoolean(true)
-    @Order(120)
     fun enableHomeForm(): Boolean
+
+    @ConfKey("form.phome.enable")
+    @ConfComments(
+        "启用基岩版公共家表单(/phomegui)",
+        "仅基础插件为 HuskHomes 时可用",
+        "Enable bedrock public home form (/phomegui)",
+        "Only available when the basic plugin is HuskHomes"
+    )
+    @DefaultBoolean(true)
+    fun enablePublicHomeForm(): Boolean
 
     @ConfKey("form.back.enable")
     @ConfComments(
@@ -123,7 +122,6 @@ interface MainConfig {
         "Enable bedrock back death location form (Automatically open form after player's death and respawn)"
     )
     @DefaultBoolean(true)
-    @Order(130)
     fun enableBackDeathLocForm(): Boolean
 
     @ConfKey("form.back.command")
@@ -134,7 +132,6 @@ interface MainConfig {
         "If the command of back death location is /dback or other command, please replace it here",
     )
     @DefaultString("/back")
-    @Order(131)
     fun backDeathLocCommand(): String
 
     @ConfKey("form.back.open-delay-time")
@@ -147,7 +144,6 @@ interface MainConfig {
         "If the form does not open after player respawn, please try increasing this value"
     )
     @DefaultLong(20)
-    @Order(132)
     fun backDeathLocFormOpenDelayTick(): Long
 
     @ConfKey("form.warp.enable")
@@ -155,7 +151,6 @@ interface MainConfig {
         "启用基岩版传送点表单(/warpgui)", "Enable bedrock warp form (/warpgui)"
     )
     @DefaultBoolean(true)
-    @Order(140)
     fun enableWarpForm(): Boolean
 
     @ConfKey("form.kit.enable")
@@ -166,7 +161,6 @@ interface MainConfig {
         "Only CMI / EssentialsX / SunLight is available",
     )
     @DefaultBoolean(true)
-    @Order(150)
     fun enableKitForm(): Boolean
 
     @ConfKey("auth.register.enable")
@@ -174,7 +168,6 @@ interface MainConfig {
         "启用基岩版玩家自动注册功能", "Enable bedrock player automatic register function"
     )
     @DefaultBoolean(false)
-    @Order(200)
     fun enableRegister(): Boolean
 
     @ConfKey("auth.register.password-length")
@@ -182,7 +175,6 @@ interface MainConfig {
         "随机的密码的长度", "The length of random password"
     )
     @DefaultInteger(16)
-    @Order(201)
     fun passwordLength(): Int
 
     @ConfKey("auth.login.enable")
@@ -190,7 +182,6 @@ interface MainConfig {
         "启用基岩版玩家自动登录功能", "Enable bedrock player automatic login function"
     )
     @DefaultBoolean(false)
-    @Order(210)
     fun enableLogin(): Boolean
 
     @ConfKey("auth.login.command")
@@ -205,7 +196,6 @@ interface MainConfig {
         "Available variable: %playerName% player name"
     )
     @DefaultString("forcelogin %playerName%")
-    @Order(211)
     fun forceLoginCommand(): String
 
 }

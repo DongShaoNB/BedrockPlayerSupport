@@ -199,6 +199,11 @@ class BedrockPlayerSupport : JavaPlugin() {
         if (config.enableHomeForm()) {
             getCommand("homegui")?.setExecutor(HomeFormCommand())
         }
+        if (config.enablePublicHomeForm()) {
+            if (basicPlugin == BasicPlugin.HUSKHOMES) {
+                getCommand("phomegui")?.setExecutor(PublicHomeFormCommand())
+            }
+        }
         if (config.enableWarpForm()) {
             getCommand("warpgui")?.setExecutor(WarpFormCommand())
         }

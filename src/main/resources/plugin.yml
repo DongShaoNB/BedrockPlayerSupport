@@ -34,6 +34,9 @@ commands:
   homegui:
     description: "Bedrock player home form"
     permission: bedrockplayersupport.command.homegui
+  phomegui:
+    description: "Bedrock player public home form"
+    permission: bedrockplayersupport.command.phomegui
   warpgui:
     description: "Bedrock player warp form"
     permission: bedrockplayersupport.command.warpgui
