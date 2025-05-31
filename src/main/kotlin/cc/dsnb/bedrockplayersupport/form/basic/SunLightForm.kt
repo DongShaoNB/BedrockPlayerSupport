@@ -8,11 +8,10 @@ import su.nightexpress.sunlight.SunLightAPI
 import su.nightexpress.sunlight.module.kits.KitsModule
 import su.nightexpress.sunlight.module.warps.WarpsModule
 
-class SunLightForm {
+class SunLightForm : BasicForm {
 
-    fun sendDelHomeForm(player: Player) {
+    override fun sendDelHomeForm(player: Player) {
         val slUser = SunLightAPI.PLUGIN.userManager.getUserData(player)
-        player.sendMessage(slUser.id)
         val playerHomesList = SunLightAPI.PLUGIN.data.getHomes(slUser.id)
         val form = SimpleForm.builder()
             .title(
@@ -28,7 +27,7 @@ class SunLightForm {
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
-    fun sendGoHomeForm(player: Player) {
+    override fun sendGoHomeForm(player: Player) {
         val slUser = SunLightAPI.PLUGIN.userManager.getUserData(player)
         val playerHomesList = SunLightAPI.PLUGIN.data.getHomes(slUser.id)
         val form = SimpleForm.builder()
@@ -45,7 +44,7 @@ class SunLightForm {
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
-    fun sendWarpForm(player: Player) {
+    override fun sendWarpForm(player: Player) {
         val warps = SunLightAPI.PLUGIN.moduleManager.getModule(WarpsModule::class.java).let {
             if (it.isPresent) {
                 it.get().warps

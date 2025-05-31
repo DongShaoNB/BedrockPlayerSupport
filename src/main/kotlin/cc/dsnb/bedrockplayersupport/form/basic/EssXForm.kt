@@ -11,9 +11,9 @@ import org.geysermc.cumulus.form.SimpleForm
 /**
  * @author DongShaoNB
  */
-class EssXForm {
+class EssXForm : BasicForm {
 
-    fun sendDelHomeForm(player: Player) {
+    override fun sendDelHomeForm(player: Player) {
         val userHomes =
             User(player, Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).homes
         val form = SimpleForm.builder()
@@ -30,7 +30,7 @@ class EssXForm {
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
-    fun sendGoHomeForm(player: Player) {
+    override fun sendGoHomeForm(player: Player) {
         val userHomes =
             User(player, Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).homes
         val form = SimpleForm.builder()
@@ -47,7 +47,7 @@ class EssXForm {
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
-    fun sendWarpForm(player: Player) {
+    override fun sendWarpForm(player: Player) {
         val userWarps = (Bukkit.getPluginManager().getPlugin("Essentials") as Essentials).warps.list
         val form = SimpleForm.builder()
             .title(

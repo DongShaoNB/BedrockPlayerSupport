@@ -1,6 +1,7 @@
 package cc.dsnb.bedrockplayersupport.command
 
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
+import cc.dsnb.bedrockplayersupport.form.basic.HuskHomesForm
 import cc.dsnb.bedrockplayersupport.util.StringUtil
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -17,7 +18,10 @@ class PublicHomeFormCommand : CommandExecutor {
     ): Boolean {
         if (sender is Player) {
             if (BedrockPlayerSupport.floodgateApi.isFloodgatePlayer(sender.uniqueId)) {
-                BedrockPlayerSupport.huskhomesForm.sendPublicHomeForm(sender)
+                val basicForm = BedrockPlayerSupport.basicForm
+                if (basicForm is HuskHomesForm) {
+                    basicForm.sendPublicHomeForm(sender)
+                }
             } else {
                 sender.sendMessage(
                     StringUtil.formatTextToComponent(
