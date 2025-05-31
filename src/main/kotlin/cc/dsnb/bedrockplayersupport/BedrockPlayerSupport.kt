@@ -6,6 +6,7 @@ import cc.dsnb.bedrockplayersupport.config.MainConfig
 import cc.dsnb.bedrockplayersupport.form.MainForm
 import cc.dsnb.bedrockplayersupport.form.basic.*
 import cc.dsnb.bedrockplayersupport.listener.MainTabCompleteListener
+import cc.dsnb.bedrockplayersupport.listener.PlayerJoinListener
 import cc.dsnb.bedrockplayersupport.listener.PlayerRespawnListener
 import cc.dsnb.bedrockplayersupport.listener.auth.AuthMeListener
 import cc.dsnb.bedrockplayersupport.listener.auth.CatSeedLoginListener
@@ -177,6 +178,9 @@ class BedrockPlayerSupport : JavaPlugin() {
         }
         if (mainConfigManager.getConfigData().enableBackDeathLocForm()) {
             pluginManager.registerEvents(PlayerRespawnListener(), this)
+        }
+        if (mainConfigManager.getConfigData().enableOnJoinCommands()) {
+            pluginManager.registerEvents(PlayerJoinListener(), this)
         }
     }
 

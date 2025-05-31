@@ -67,6 +67,35 @@ interface MainConfig {
     @DefaultBoolean(true)
     fun enableSupportPAPI(): Boolean
 
+    @ConfKey("general.join-commands.enable")
+    @ConfComments(
+        "启用基岩版进入服务器时执行命令",
+        "可用变量: %playerName% 玩家名",
+        "Enable bedrock player join commands",
+        "Available variables: %playerName% player name"
+    )
+    @DefaultBoolean(false)
+    fun enableOnJoinCommands(): Boolean
+
+    @ConfKey("general.join-commands.commands")
+    @ConfComments(
+        "基岩版进入服务器时执行的命令",
+        "可用变量: %playerName% 玩家名",
+        "格式: [执行方] 命令",
+        "控制台执行: [CONSOLE] say 欢迎基岩版玩家 %playerName%",
+        "玩家执行: [PLAYER] me 我是基岩版玩家 %playerName%",
+        "The command executed when the bedrock player joins the server",
+        "Available variables: %playerName% player name",
+        "Format: [Executor] command",
+        "Console execution: [CONSOLE] say Welcome Bedrock Player %playerName%",
+        "Player execution: [PLAYER] me I'm a Bedrock Player %playerName%"
+    )
+    @DefaultStrings(
+        "[CONSOLE] say Welcome Bedrock Player %playerName%",
+        "[PLAYER] me I'm a Bedrock Player %playerName%"
+    )
+    fun onJoinCommands(): List<String>
+
     @ConfKey("form.teleport.enable")
     @ConfComments(
         "启用基岩版TP表单(/tpgui)", "Enable bedrock TP form (/tpgui)"

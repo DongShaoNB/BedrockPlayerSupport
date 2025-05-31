@@ -8,7 +8,6 @@ import space.arim.dazzleconf.ext.snakeyaml.CommentMode
 import space.arim.dazzleconf.ext.snakeyaml.SnakeYamlConfigurationFactory
 import space.arim.dazzleconf.ext.snakeyaml.SnakeYamlOptions
 import space.arim.dazzleconf.helper.ConfigurationHelper
-import space.arim.dazzleconf.sorter.AnnotationBasedSorter
 import java.io.IOException
 import java.io.UncheckedIOException
 import java.nio.file.Path
@@ -56,7 +55,7 @@ class ConfigManager<C> private constructor(private val configHelper: Configurati
                 .build()
             val configFactory = SnakeYamlConfigurationFactory.create(
                 configClass,
-                ConfigurationOptions.Builder().sorter(AnnotationBasedSorter()).build(),  // change this if desired
+                ConfigurationOptions.defaults(), // change this if desired
                 yamlOptions
             )
             return ConfigManager(ConfigurationHelper(configFolder, fileName, configFactory))
