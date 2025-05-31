@@ -96,6 +96,35 @@ interface MainConfig {
     )
     fun onJoinCommands(): List<String>
 
+    @ConfKey("general.quit-commands.enable")
+    @ConfComments(
+        "启用基岩版退出服务器时执行命令",
+        "可用变量: %playerName% 玩家名",
+        "Enable bedrock player quit commands",
+        "Available variables: %playerName% player name"
+    )
+    @DefaultBoolean(false)
+    fun enableOnQuitCommands(): Boolean
+
+    @ConfKey("general.quit-commands.commands")
+    @ConfComments(
+        "基岩版退出服务器时执行的命令",
+        "可用变量: %playerName% 玩家名",
+        "格式: [执行方] 命令",
+        "控制台执行: [CONSOLE] say 基岩版玩家 %playerName% 退出了服务器",
+        "玩家执行: [PLAYER] me 我是基岩版玩家 %playerName%",
+        "The command executed when the bedrock player quit the server",
+        "Available variables: %playerName% player name",
+        "Format: [Executor] command",
+        "Console execution: [CONSOLE] say Bedrock Player %playerName% quit the server",
+        "Player execution: [PLAYER] me I'm a Bedrock Player %playerName%"
+    )
+    @DefaultStrings(
+        "[CONSOLE] say Bedrock Player %playerName% quit the server",
+        "[PLAYER] me I'm a Bedrock Player %playerName%"
+    )
+    fun onQuitCommands(): List<String>
+
     @ConfKey("form.teleport.enable")
     @ConfComments(
         "启用基岩版TP表单(/tpgui)", "Enable bedrock TP form (/tpgui)"
