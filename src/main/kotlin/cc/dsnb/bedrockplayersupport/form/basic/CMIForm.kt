@@ -9,9 +9,9 @@ import org.geysermc.cumulus.form.SimpleForm
 /**
  * @author DongShaoNB
  */
-class CMIForm {
+class CMIForm : BasicForm {
 
-    fun sendDelHomeForm(player: Player) {
+    override fun sendDelHomeForm(player: Player) {
         val cmiUser = CMI.getInstance().playerManager.getUser(player)
         val playerHomesList = cmiUser.homes
         val form = SimpleForm.builder()
@@ -28,7 +28,7 @@ class CMIForm {
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
-    fun sendGoHomeForm(player: Player) {
+    override fun sendGoHomeForm(player: Player) {
         val cmiUser = CMI.getInstance().playerManager.getUser(player)
         val playerHomesList = cmiUser.homes
         val form = SimpleForm.builder()
@@ -45,7 +45,7 @@ class CMIForm {
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
-    fun sendWarpForm(player: Player) {
+    override fun sendWarpForm(player: Player) {
         val warps = CMI.getInstance().warpManager.warps
         val form = SimpleForm.builder()
             .title(

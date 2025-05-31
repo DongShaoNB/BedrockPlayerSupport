@@ -39,11 +39,7 @@ class BedrockPlayerSupport : JavaPlugin() {
         lateinit var scheduler: TaskScheduler
         lateinit var languageInUse: String
         lateinit var mainForm: MainForm
-        lateinit var cmiForm: CMIForm
-        lateinit var essxForm: EssXForm
-        lateinit var huskhomesForm: HuskHomesForm
-        lateinit var atForm: ATForm
-        lateinit var sunlightForm: SunLightForm
+        lateinit var basicForm: BasicForm
         lateinit var floodgateApi: FloodgateApi
         val miniMessage = MiniMessage.miniMessage()
         val legacySection = LegacyComponentSerializer.legacySection()
@@ -142,27 +138,27 @@ class BedrockPlayerSupport : JavaPlugin() {
         val enableRTF = mainConfigManager.getConfigData().enableReceiveTeleportForm()
         when (basicPlugin) {
             BasicPlugin.CMI -> {
-                cmiForm = CMIForm()
+                basicForm = CMIForm()
                 if (enableRTF) pluginManager.registerEvents(CMIListener(), this)
             }
 
             BasicPlugin.ESSENTIALS -> {
-                essxForm = EssXForm()
+                basicForm = EssXForm()
                 if (enableRTF) pluginManager.registerEvents(EssXListener(), this)
             }
 
             BasicPlugin.HUSKHOMES -> {
-                huskhomesForm = HuskHomesForm()
+                basicForm = HuskHomesForm()
                 if (enableRTF) pluginManager.registerEvents(HuskHomesListener(), this)
             }
 
             BasicPlugin.ADVANCEDTELEPORT -> {
-                atForm = ATForm()
+                basicForm = ATForm()
                 if (enableRTF) pluginManager.registerEvents(ATListener(), this)
             }
 
             BasicPlugin.SUNLIGHT -> {
-                sunlightForm = SunLightForm()
+                basicForm = SunLightForm()
                 if (enableRTF) pluginManager.registerEvents(SunLightListener(), this)
             }
 
@@ -200,9 +196,7 @@ class BedrockPlayerSupport : JavaPlugin() {
             getCommand("homegui")?.setExecutor(HomeFormCommand())
         }
         if (config.enablePublicHomeForm()) {
-            if (basicPlugin == BasicPlugin.HUSKHOMES) {
-                getCommand("phomegui")?.setExecutor(PublicHomeFormCommand())
-            }
+            getCommand("phomegui")?.setExecutor(PublicHomeFormCommand())
         }
         if (config.enableWarpForm()) {
             getCommand("warpgui")?.setExecutor(WarpFormCommand())

@@ -9,27 +9,9 @@ import org.geysermc.cumulus.form.SimpleForm
 /**
  * @author DongShaoNB
  */
-class HuskHomesForm {
+class HuskHomesForm : BasicForm {
 
-    fun sendPublicHomeForm(player: Player) {
-        val publicHomes = HuskHomesAPI.getInstance().publicHomes
-        val form = SimpleForm.builder()
-            .title(
-                StringUtil.formatTextToString(
-                    player,
-                    BedrockPlayerSupport.langConfigManager.getConfigData().publicHomeFormTitle()
-                )
-            )
-            .validResultHandler { simpleFormResponse ->
-                player.chat("/phome " + simpleFormResponse.clickedButton().text())
-            }
-        publicHomes.thenAccept { homeList ->
-            homeList.forEach { form.button(it.name) }
-            BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
-        }
-    }
-
-    fun sendDelHomeForm(player: Player) {
+    override fun sendDelHomeForm(player: Player) {
         val onlineUser = HuskHomesAPI.getInstance().adaptUser(player)
         val userHomes = HuskHomesAPI.getInstance().getUserHomes(onlineUser)
         val form = SimpleForm.builder()
@@ -48,7 +30,7 @@ class HuskHomesForm {
         }
     }
 
-    fun sendGoHomeForm(player: Player) {
+    override fun sendGoHomeForm(player: Player) {
         val onlineUser = HuskHomesAPI.getInstance().adaptUser(player)
         val userHomes = HuskHomesAPI.getInstance().getUserHomes(onlineUser)
         val form = SimpleForm.builder()
@@ -67,7 +49,7 @@ class HuskHomesForm {
         }
     }
 
-    fun sendWarpForm(player: Player) {
+    override fun sendWarpForm(player: Player) {
         val warps = HuskHomesAPI.getInstance().warps
         val form = SimpleForm.builder()
             .title(
@@ -81,6 +63,24 @@ class HuskHomesForm {
             }
         warps.thenAccept { warpList ->
             warpList.forEach { form.button(it.name) }
+            BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
+        }
+    }
+
+    fun sendPublicHomeForm(player: Player) {
+        val publicHomes = HuskHomesAPI.getInstance().publicHomes
+        val form = SimpleForm.builder()
+            .title(
+                StringUtil.formatTextToString(
+                    player,
+                    BedrockPlayerSupport.langConfigManager.getConfigData().publicHomeFormTitle()
+                )
+            )
+            .validResultHandler { simpleFormResponse ->
+                player.chat("/phome " + simpleFormResponse.clickedButton().text())
+            }
+        publicHomes.thenAccept { homeList ->
+            homeList.forEach { form.button(it.name) }
             BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
         }
     }

@@ -7,9 +7,9 @@ import io.github.niestrat99.advancedteleport.api.AdvancedTeleportAPI
 import org.bukkit.entity.Player
 import org.geysermc.cumulus.form.SimpleForm
 
-class ATForm {
+class ATForm : BasicForm {
 
-    fun sendDelHomeForm(player: Player) {
+    override fun sendDelHomeForm(player: Player) {
         val atPlayer = ATPlayer.getPlayer(player)
         val playerHomesList = atPlayer.homes
         val form = SimpleForm.builder()
@@ -26,7 +26,7 @@ class ATForm {
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
-    fun sendGoHomeForm(player: Player) {
+    override fun sendGoHomeForm(player: Player) {
         val atPlayer = ATPlayer.getPlayer(player)
         val playerHomesList = atPlayer.homes
         val form = SimpleForm.builder()
@@ -43,7 +43,7 @@ class ATForm {
         BedrockPlayerSupport.floodgateApi.sendForm(player.uniqueId, form)
     }
 
-    fun sendWarpForm(player: Player) {
+    override fun sendWarpForm(player: Player) {
         val warps = AdvancedTeleportAPI.getWarps()
         val form = SimpleForm.builder()
             .title(

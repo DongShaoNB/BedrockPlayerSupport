@@ -1,10 +1,13 @@
 package cc.dsnb.bedrockplayersupport.form
 
-import cc.dsnb.bedrockplayersupport.BasicPlugin.*
+import cc.dsnb.bedrockplayersupport.BasicPlugin.HUSKHOMES
 import cc.dsnb.bedrockplayersupport.BedrockPlayerSupport
 import cc.dsnb.bedrockplayersupport.TeleportType
 import cc.dsnb.bedrockplayersupport.config.LangConfig
 import cc.dsnb.bedrockplayersupport.config.MainConfig
+import cc.dsnb.bedrockplayersupport.form.basic.CMIForm
+import cc.dsnb.bedrockplayersupport.form.basic.EssXForm
+import cc.dsnb.bedrockplayersupport.form.basic.SunLightForm
 import cc.dsnb.bedrockplayersupport.util.StringUtil
 import net.william278.huskhomes.BukkitHuskHomes
 import net.william278.huskhomes.api.HuskHomesAPI
@@ -14,7 +17,6 @@ import org.bukkit.entity.Player
 import org.geysermc.cumulus.form.CustomForm
 import org.geysermc.cumulus.form.ModalForm
 import org.geysermc.cumulus.form.SimpleForm
-import java.util.*
 
 /**
  * @author DongShaoNB
@@ -128,31 +130,8 @@ class MainForm {
             .validResultHandler { simpleFormResponse ->
                 when (simpleFormResponse.clickedButtonId()) {
                     0 -> openBedrockPlayerSetHomeForm(player)
-                    1 -> {
-                        when (BedrockPlayerSupport.basicPlugin) {
-                            CMI -> BedrockPlayerSupport.cmiForm.sendDelHomeForm(player)
-                            ESSENTIALS -> BedrockPlayerSupport.essxForm.sendDelHomeForm(player)
-                            HUSKHOMES -> BedrockPlayerSupport.huskhomesForm.sendDelHomeForm(player)
-                            ADVANCEDTELEPORT -> BedrockPlayerSupport.atForm.sendDelHomeForm(player)
-                            SUNLIGHT -> BedrockPlayerSupport.sunlightForm.sendDelHomeForm(player)
-                            NONE -> {
-                                // Don't need to do anything
-                            }
-                        }
-                    }
-
-                    2 -> {
-                        when (BedrockPlayerSupport.basicPlugin) {
-                            CMI -> BedrockPlayerSupport.cmiForm.sendGoHomeForm(player)
-                            ESSENTIALS -> BedrockPlayerSupport.essxForm.sendGoHomeForm(player)
-                            HUSKHOMES -> BedrockPlayerSupport.huskhomesForm.sendGoHomeForm(player)
-                            ADVANCEDTELEPORT -> BedrockPlayerSupport.atForm.sendGoHomeForm(player)
-                            SUNLIGHT -> BedrockPlayerSupport.sunlightForm.sendGoHomeForm(player)
-                            NONE -> {
-                                // Don't need to do anything
-                            }
-                        }
-                    }
+                    1 -> BedrockPlayerSupport.basicForm.sendDelHomeForm(player)
+                    2 -> BedrockPlayerSupport.basicForm.sendGoHomeForm(player)
                 }
             }
         BedrockPlayerSupport.floodgateApi.sendForm(uuid, form)
@@ -184,26 +163,15 @@ class MainForm {
     }
 
     fun openBedrockWarpForm(player: Player) {
-        when (BedrockPlayerSupport.basicPlugin) {
-            CMI -> BedrockPlayerSupport.cmiForm.sendWarpForm(player)
-            ESSENTIALS -> BedrockPlayerSupport.essxForm.sendWarpForm(player)
-            HUSKHOMES -> BedrockPlayerSupport.huskhomesForm.sendWarpForm(player)
-            ADVANCEDTELEPORT -> BedrockPlayerSupport.atForm.sendWarpForm(player)
-            SUNLIGHT -> BedrockPlayerSupport.sunlightForm.sendWarpForm(player)
-            NONE -> {
-                // Don't need to do anything
-            }
-        }
+        BedrockPlayerSupport.basicForm.sendWarpForm(player)
     }
 
     fun openBedrockKitForm(player: Player) {
-        when (BedrockPlayerSupport.basicPlugin) {
-            CMI -> BedrockPlayerSupport.cmiForm.sendKitForm(player)
-            ESSENTIALS -> BedrockPlayerSupport.essxForm.sendKitForm(player)
-            SUNLIGHT -> BedrockPlayerSupport.sunlightForm.sendKitForm(player)
-            else -> {
-                // Don't need to do anything
-            }
+        val basicForm = BedrockPlayerSupport.basicForm
+        when (basicForm) {
+            is CMIForm -> basicForm.sendKitForm(player)
+            is EssXForm -> basicForm.sendKitForm(player)
+            is SunLightForm -> basicForm.sendKitForm(player)
         }
     }
 }
