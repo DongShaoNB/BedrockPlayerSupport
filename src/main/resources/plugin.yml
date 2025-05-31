@@ -57,6 +57,9 @@ permissions:
   bedrockplayersupport.command.homegui:
     description: "Bedrock player home form permission"
     default: true
+  bedrockplayersupport.command.phomegui:
+    description: "Bedrock player public home form permission"
+    default: true
   bedrockplayersupport.command.warpgui:
     description: "Bedrock player warp form permission"
     default: true
