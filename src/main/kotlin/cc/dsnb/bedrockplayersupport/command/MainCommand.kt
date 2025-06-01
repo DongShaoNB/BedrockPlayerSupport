@@ -14,56 +14,46 @@ import org.bukkit.entity.Player
 class MainCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
-        if (args.isNotEmpty()) {
-            when (args[0]) {
-                "status" -> {
-                    if (sender is Player) {
-                        if ("zh_cn".equals(BedrockPlayerSupport.languageInUse, ignoreCase = true)) {
-                            sender.sendMessage("基础插件: " + BedrockPlayerSupport.basicPlugin.pluginName)
-                            sender.sendMessage("验证插件: " + BedrockPlayerSupport.authPlugin.pluginName)
-                        } else {
-                            sender.sendMessage("Basic plugin: " + BedrockPlayerSupport.basicPlugin.pluginName)
-                            sender.sendMessage("Auth plugin: " + BedrockPlayerSupport.authPlugin.pluginName)
-                        }
-                    } else {
-                        if ("zh_cn".equals(BedrockPlayerSupport.languageInUse, ignoreCase = true)) {
-                            sender.sendMessage(BedrockPlayerSupport.PREFIX + "基础插件: " + BedrockPlayerSupport.basicPlugin.pluginName)
-                            sender.sendMessage(BedrockPlayerSupport.PREFIX + "验证插件: " + BedrockPlayerSupport.authPlugin.pluginName)
-                        } else {
-                            sender.sendMessage(BedrockPlayerSupport.PREFIX + "Basic plugin: " + BedrockPlayerSupport.basicPlugin.pluginName)
-                            sender.sendMessage(BedrockPlayerSupport.PREFIX + "Auth plugin: " + BedrockPlayerSupport.authPlugin.pluginName)
-                        }
-                    }
-                    return true
+        if (args.isEmpty()) return false
+        
+        val isZh = BedrockPlayerSupport.languageInUse.equals("zh_cn", ignoreCase = true)
+        val isPlayer = sender is Player
+
+        when (args[0].lowercase()) {
+            "status" -> {
+                val basicPluginName = BedrockPlayerSupport.basicPlugin.pluginName
+                val authPluginName = BedrockPlayerSupport.authPlugin.pluginName
+
+                val prefix = if (isPlayer) "" else BedrockPlayerSupport.PREFIX
+                val basicMessage = if (isZh) "基础插件: $basicPluginName" else "Basic plugin: $basicPluginName"
+                val authMessage = if (isZh) "验证插件: $authPluginName" else "Auth plugin: $authPluginName"
+
+                sender.sendMessage(prefix + basicMessage)
+                sender.sendMessage(prefix + authMessage)
+                return true
+            }
+
+            "reload" -> {
+                val langConfig = BedrockPlayerSupport.langConfigManager.getConfigData()
+                val time = TimeUtil.measureTimeMillis {
+                    BedrockPlayerSupport.mainConfigManager.reloadConfig()
+                    BedrockPlayerSupport.langConfigManager.reloadConfig()
                 }
 
-                "reload" -> {
-                    val langConfig = BedrockPlayerSupport.langConfigManager.getConfigData()
-                    val time = TimeUtil.measureTimeMillis {
-                        BedrockPlayerSupport.mainConfigManager.reloadConfig()
-                        BedrockPlayerSupport.langConfigManager.reloadConfig()
-                    }
-                    if (sender is Player) {
-                        sender.sendMessage(
-                            StringUtil.formatTextToComponent(
-                                sender, langConfig.reloadSuccessfully()
-                                    .replace("%time%", time.toString())
-                            )
-                        )
-                    } else {
-                        sender.sendMessage(
-                            StringUtil.formatTextToComponent(
-                                null, BedrockPlayerSupport.PREFIX +
-                                        langConfig.reloadSuccessfully()
-                                            .replace("%time%", time.toString())
-                            )
-                        )
-                    }
-                    return true
-                }
+                val reloadMessage = langConfig.reloadSuccessfully().replace("%time%", time.toString())
+                val formattedMessage = StringUtil.formatTextToComponent(sender as? Player, reloadMessage)
+
+                sender.sendMessage(
+                    if (isPlayer) formattedMessage else StringUtil.formatTextToComponent(
+                        null,
+                        BedrockPlayerSupport.PREFIX + reloadMessage
+                    )
+                )
+                return true
             }
+
+            else -> return false
         }
-        return false
     }
 
 }
