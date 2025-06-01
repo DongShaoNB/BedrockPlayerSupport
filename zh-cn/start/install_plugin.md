@@ -9,7 +9,7 @@
 ### 正式版
 [GitHub Releases](https://github.com/DongShaoNB/BedrockPlayerSupport/releases)  
 ### 测试版
-!> 测试版可能出现问题，不推荐在正式环境使用
+!> 测试版可能出现问题，除非作者告知，否则不建议在正式环境使用
 
 [GitHub Action](https://github.com/DongShaoNB/BedrockPlayerSupport/actions/workflows/gradle.yml)
 ## 安装

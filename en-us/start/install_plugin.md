@@ -9,7 +9,7 @@ Apply Version: `1.19+`
 ### Release
 [GitHub Releases](https://github.com/DongShaoNB/BedrockPlayerSupport/releases)  
 ### Beta
-!> Beta version may have issues and is not recommended for use in formal environments
+!> The beta version may have problems. Unless the author informs you, it is not recommended to use it in the official environment
 
 [GitHub Action](https://github.com/DongShaoNB/BedrockPlayerSupport/actions/workflows/gradle.yml)
 ## Install
