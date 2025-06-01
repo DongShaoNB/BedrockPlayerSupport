@@ -1,66 +1,96 @@
-<p align="center" style="font-size:38px">BedrockPlayerSupport</p>
-<p align="center"><b>讓其他插件對基岩版玩家更加友善</b></p>
+<div align="center">
+  <font size="6"><b>BedrockPlayerSupport</b></font><br>
+  <font size="4"><b>讓其他插件對基岩版玩家更加友善</b></font>
+</div>
+
 <p align="center">
-    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/DongShaoNB/BedrockPlayerSupport">
-    <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/DongShaoNB/BedrockPlayerSupport/total">
-    <img alt="GitHub Release" src="https://img.shields.io/github/v/release/DongShaoNB/BedrockPlayerSupport">
-    <a title="Crowdin" target="_blank" href="https://crowdin.com/project/mcbps"><img src="https://badges.crowdin.net/mcbps/localized.svg"></a>
-    <img alt="GitHub License" src="https://img.shields.io/github/license/DongShaoNB/BedrockPlayerSupport">
-    <br>
-    <img alt="bStats Players" src="https://img.shields.io/bstats/players/17107">
-    <img alt="bStats Servers" src="https://img.shields.io/bstats/servers/17107">
-	<br>
-    <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README.md">简体中文</a>
-     | 
-    <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README_TW.md">正體中文</a>
-     | 
-    <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README_EN.md">English</a>
-        <img src="https://bstats.org/signatures/bukkit/BedrockPlayerSupport.svg"></p>
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/DongShaoNB/BedrockPlayerSupport">
+  <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/DongShaoNB/BedrockPlayerSupport/total">
+  <img alt="GitHub Release" src="https://img.shields.io/github/v/release/DongShaoNB/BedrockPlayerSupport">
+  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/mcbps"><img src="https://badges.crowdin.net/mcbps/localized.svg"></a>
+  <img alt="GitHub License" src="https://img.shields.io/github/license/DongShaoNB/BedrockPlayerSupport">
+  <br>
+  <img src="https://bstats.org/signatures/bukkit/BedrockPlayerSupport.svg">
+</p>
 
-------------------------------
+<p align="center">
+  <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README.md">簡體中文</a> |
+  <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README_TW.md">正體中文</a> |
+  <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README_EN.md">English</a>
+</p>
 
-## 功能
+---
 
- 1. 基岩版玩家收到 `tpa/tpahere` 申請時顯示選擇同意/拒絕/忽略
- 2. 基岩版玩家使用指令 `/tpgui` 顯示選擇要 tpa (tpahere) 的玩家 
- 3. 基岩版玩家進服註冊時自動使用隨機密碼註冊
- 4. 基岩版玩家進服登入時直接跳過玩家登入
- 5. 基岩版玩家使用指令 `/msggui` 顯示畫面發送訊息
- 6. 基岩版玩家使用指令 `/homegui` 顯示畫面傳送回家
- 7. 基岩版玩家重生後顯示傳回死亡點畫面
- 8. 基岩版玩家使用指令 `/warpgui` 顯示畫面傳送到傳送點
- 9. 基岩版玩家使用指令 `/kitgui` 顯示畫面領取禮包
+## 📖 介紹
 
-## 前置
+**BedrockPlayerSupport** 是一款專為 Bukkit/Spigot 伺服器設計的插件，旨在提升 Minecraft Java 版伺服器中基岩版玩家的體驗，為常用指令和功能提供基於 GUI 的介面，使習慣於觸控和表單介面的基岩版玩家能夠更加直觀地進行互動，從而彌合 Java 版與基岩版之間的操作差異。
 
-[floodgate][floodgate-download]
+---
 
-## 安裝
+## ✨ 功能特性
 
-直接將插件放進 `plugins` 資料夾，修改設定檔即可  
+### 📦 傳送相關
 
-**Tip: Geyser 必須按照 [floodgate說明][floodgate-setup] 設定 `auth-type` 為 `floodgate`**  
-**如果你使用了代理伺服器(BungeeCord/Velocity)，你還需要將代理伺服器的 floodgate 設定檔中的`send-floodgate-data`設定為`true`**
+- `/tpgui`：開啟傳送請求 GUI，選擇要傳送的玩家。
+- `/warpgui`：開啟傳送點 GUI，選擇目標傳送點進行傳送。
+- 收到 `tpa/tpahere` 請求時，基岩版玩家將看到表單選擇 同意 / 拒絕 / 忽略。
 
-### 連結
+### 🏠 家相關
 
-- [線上說明][docs]
-- [Crowdin][crowdin]
+- `/homegui`：開啟個人家列表 GUI，快速傳送回家。
+- `/phomegui`：開啟公共家列表 GUI，訪問其他玩家的公共家。
 
-## 社群
+### 💬 訊息相關
 
-QQ群: `159323818`
+- `/msggui`：開啟訊息發送 GUI，方便與其他玩家交流。
 
-Discord: [https://discord.gg/bnpzsmPz26][discord]
+### 🎁 其他功能
 
-## 感謝
-感謝 [JetBrains 開源許可][jetbrains-oss]  
-![JetBrains Logo (Main) logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)
+- `/kitgui`：開啟禮包領取 GUI。
+- 基岩版玩家進服時自動使用隨機密碼註冊並自動登入。
+- 玩家死亡後自動彈出返回死亡點的表單。
 
+---
 
-[floodgate-setup]: https://wiki.geysermc.org/floodgate/setup/
-[floodgate-download]: https://geysermc.org/download#floodgate
-[docs]: https://docs.bps.dsnb.cc
-[crowdin]: https://zh.crowdin.com/project/mcbps
-[discord]: https://discord.gg/bnpzsmPz26
-[jetbrains-oss]: https://jb.gg/OpenSourceSupport
+## ⚙️ 安裝與配置
+
+### 📥 安裝步驟
+
+1. 下載插件並放入伺服器的 `plugins` 資料夾。
+2. 重啟伺服器以生成預設配置檔。
+3. 配置檔內註解十分完整，根據需要修改配置檔。
+
+### 🔗 前置依賴
+
+- 伺服器端：支援 Paper 及其分支 / Folia 及其分支。
+- 插件：需安裝 [Floodgate](https://geysermc.org/download#floodgate)。
+
+> **注意：** 使用 Geyser 時，請確保在其配置檔中將 `auth-type` 設定為 `floodgate`。
+>
+> 如果使用代理伺服器（如 BungeeCord 或 Velocity），請在代理伺服器的 Floodgate 配置檔中將 `send-floodgate-data` 設定為 `true`。
+
+---
+
+## 📚 文件與支援
+
+- 📖 [線上文件](https://docs.bps.dsnb.cc)：表單圖片，插件相容性表格，指令和權限。
+- 🌐 [Crowdin 翻譯平台](https://zh.crowdin.com/project/mcbps)：參與插件的在地化翻譯工作。
+
+---
+
+## 👥 社群與交流
+
+- 💬 QQ 群：`159323818`
+- 💬 Discord： [加入我們的 Discord 伺服器](https://discord.gg/bnpzsmPz26)
+
+歡迎加入社群，回饋問題、提出建議或參與開發！
+
+---
+
+## 🙏 鳴謝
+
+特別感謝 [JetBrains](https://jb.gg/OpenSourceSupport) 提供的開源授權支援。
+
+<p align="left">
+  <img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg" alt="JetBrains Logo" width="150">
+</p>

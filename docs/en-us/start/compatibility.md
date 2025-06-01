@@ -8,6 +8,7 @@ The compatibility of plugins supported by BedrockPlayerSupport is shown in the f
 |      Teleport form       |   ✅   |      ✅      |     ✅     |        ✅         |    ✅     |
 |         Msg form         |   ✅   |      ✅      |     ✅     |        ✅         |    ✅     |
 |        Home form         |   ✅   |      ✅      |     ✅     |        ✅         |    ✅     |
+|     Public home form     |   ❌   |      ❌      |     ✅     |        ❌         |    ❌     |
 | Back death location form |   ✅   |      ✅      |     ✅     |        ✅         |    ✅     |
 |        Warp form         |   ✅   |      ✅      |     ✅     |        ✅         |    ✅     |
 |         Kit form         |   ✅   |      ✅      |     ❌     |        ❌         |    ✅     |
