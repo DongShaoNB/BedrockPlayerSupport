@@ -4,7 +4,7 @@ package cc.dsnb.bedrockplayersupport
  * @author DongShaoNB
  */
 enum class BasicPlugin(
-    val pluginName: String = "",
+    val pluginName: String = "None",
     val tpaCommand: String = "/tpa",
     val tpaHereCommand: String = "/tpahere",
     val tpaAcceptCommand: String = "/tpaccept",
