@@ -60,7 +60,7 @@ form:
   phome:
     #公共家表单的标题
     #Title of the public home form
-    title: '<gold>公共家'
+    title: '<gold>Public home'
   received-teleport:
     #传送表单的 '接受' 按钮文本
     #Text of the 'Accept' button in teleport form
