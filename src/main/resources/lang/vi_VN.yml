@@ -46,7 +46,7 @@ form:
   kit:
     #礼包表单的标题
     #Title of the kit form
-    title: '<gold>礼包表单'
+    title: '<gold>Chọn kit'
   msg:
     #消息表单的选择接收消息玩家提示语
     #Text of choose receive message player in msg form
@@ -60,7 +60,7 @@ form:
   phome:
     #公共家表单的标题
     #Title of the public home form
-    title: '<gold>公共家'
+    title: '<gold>Chọn nhà công cộng của bạn'
   received-teleport:
     #传送表单的 '接受' 按钮文本
     #Text of the 'Accept' button in teleport form
@@ -106,7 +106,7 @@ form:
   warp:
     #传送点表单的标题
     #Title of the warp form
-    title: '<gold>传送点表单'
+    title: '<gold>Chọn warp của bạn'
 message:
   #自动登录成功后发送给玩家的消息
   #Text of successful automatic login after send to player
