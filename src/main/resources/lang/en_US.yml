@@ -9,71 +9,19 @@
 #The language file default to Chinese Simplified. If you need another language, please visit Crowdin
 #We use MiniMessage format, Please refer to the MiniMessage format document to modify the language file
 form:
-  teleport:
-    #传送表单的标题
-    #Title of the teleport form
-    title: '<gold>Teleport form'
-    #传送表单的选择传送类型提示语
-    #Text of choose teleport type in teleport form
-    choose-type: '<green>Please select the type of teleport'
-    #传送表单的选择传送玩家提示语
-    #Text of choose teleport player in teleport form
-    choose-player: '<green>Please select a player to teleport'
-  received-teleport:
-    tpa:
-      #玩家请求传送到你的表单的标题
-      #Title of the player requests to teleport to you form
-      title: '<green>Player request to teleport to your location <white>(TPA)'
-      #玩家请求传送到你的表单的描述文本
-      #可用变量: %requesterName% 请求者名字
-      #Description text of the player requests to teleport to you form
-      #Available variable: %requesterName% requester name
-      text: 'Player %requesterName% request to teleport to your location'
-    tpahere:
-      #玩家请求你传送到他的表单的标题
-      #Title of the player requests you to teleport to him form
-      title: '<green>Player request you to teleport to his location <white>(TPAHERE)'
-      #玩家请求你传送到他的表单的描述文本
-      #可用变量: %requesterName% 请求者名字
-      #Description text of the player requests you to teleport to him form
-      #Available variable: %requesterName% requester name
-      text: 'Player %requesterName% request you to teleport to his location'
-    #传送表单的 '接受' 按钮文本
-    #Text of the 'Accept' button in teleport form
-    accept: '<green>Accept'
-    #传送表单的 '拒绝' 按钮文本
-    #Text of the 'Deny' button in teleport form
-    deny: '<red>Deny'
-  msg:
-    #消息表单的标题
-    #Title of the msg form
-    title: '<gold>Msg form'
-    #消息表单的选择接收消息玩家提示语
-    #Text of choose receive message player in msg form
-    choose-player: '<green>Please select a player to receive message'
-    #消息表单的输入消息提示语
-    #Text of input message in msg form
-    input-message: '<green>Please input the message to send'
-  home:
-    #家表单的标题
-    #Title of the home form
-    title: '<gold>Home'
-    #家表单的 '设置家' 按钮文本
-    #Text of the 'SetHome' button in home form
-    sethome-button: '<green>Set home'
-    #家表单的 '删除家' 按钮文本
-    #Text of the 'DelHome' button in home form
-    delhome-button: '<red>Delete home'
-    #家表单的 '回家' 按钮文本
-    #Text of the 'GoHome' button in home form
-    gohome-button: '<gold>Go home'
-  sethome:
-    #设置家表单的标题
-    #Title of the set home form
-    title: '<gold>Set home form'
-    #设置家表单的描述文本
-    #Text of the set home form
-    text: '<gold>Home name'
+  back:
+    #返回死亡点表单的 '否' 按钮文本
+    #Text of the 'NO' button in back death location form
+    button-no: '<red>No'
+    #返回死亡点表单的 '是' 按钮文本
+    #Text of the 'YES' button in back death location form
+    button-yes: '<green>Yes'
+    #返回死亡点表单的描述文本
+    #Text of the back death location form
+    text: 'Do you want to back to last death location?'
+    #返回死亡点表单的标题
+    #Title of the back death location form
+    title: '<gold>Back death location form'
   delhome:
     #删除家表单的标题
     #Title of the delete home form
@@ -82,38 +30,98 @@ form:
     #回家表单的标题
     #Title of the go home form
     title: '<gold>Go home form'
-  back:
-    #返回死亡点表单的标题
-    #Title of the back death location form
-    title: '<gold>Back death location form'
-    #返回死亡点表单的描述文本
-    #Text of the back death location form
-    text: 'Do you want to back to last death location?'
-    #返回死亡点表单的 '是' 按钮文本
-    #Text of the 'YES' button in back death location form
-    button-yes: '<green>Yes'
-    #返回死亡点表单的 '否' 按钮文本
-    #Text of the 'NO' button in back death location form
-    button-no: '<red>No'
+  home:
+    #家表单的 '删除家' 按钮文本
+    #Text of the 'DelHome' button in home form
+    delhome-button: '<red>Delete home'
+    #家表单的 '回家' 按钮文本
+    #Text of the 'GoHome' button in home form
+    gohome-button: '<gold>Go home'
+    #家表单的 '设置家' 按钮文本
+    #Text of the 'SetHome' button in home form
+    sethome-button: '<green>Set home'
+    #家表单的标题
+    #Title of the home form
+    title: '<gold>Home'
+  kit:
+    #礼包表单的标题
+    #Title of the kit form
+    title: '<gold>Kit form'
+  msg:
+    #消息表单的选择接收消息玩家提示语
+    #Text of choose receive message player in msg form
+    choose-player: '<green>Please select a player to receive message'
+    #消息表单的输入消息提示语
+    #Text of input message in msg form
+    input-message: '<green>Please input the message to send'
+    #消息表单的标题
+    #Title of the msg form
+    title: '<gold>Msg form'
+  phome:
+    #公共家表单的标题
+    #Title of the public home form
+    title: '<gold>Public home'
+  received-teleport:
+    #传送表单的 '接受' 按钮文本
+    #Text of the 'Accept' button in teleport form
+    accept: '<green>Accept'
+    #传送表单的 '拒绝' 按钮文本
+    #Text of the 'Deny' button in teleport form
+    deny: '<red>Deny'
+    tpa:
+      #玩家请求传送到你的表单的描述文本
+      #可用变量: %requesterName% 请求者名字
+      #Description text of the player requests to teleport to you form
+      #Available variable: %requesterName% requester name
+      text: 'Player %requesterName% request to teleport to your location'
+      #玩家请求传送到你的表单的标题
+      #Title of the player requests to teleport to you form
+      title: '<green>Player request to teleport to your location <white>(TPA)'
+    tpahere:
+      #玩家请求你传送到他的表单的描述文本
+      #可用变量: %requesterName% 请求者名字
+      #Description text of the player requests you to teleport to him form
+      #Available variable: %requesterName% requester name
+      text: 'Player %requesterName% request you to teleport to his location'
+      #玩家请求你传送到他的表单的标题
+      #Title of the player requests you to teleport to him form
+      title: '<green>Player request you to teleport to his location <white>(TPAHERE)'
+  sethome:
+    #设置家表单的描述文本
+    #Text of the set home form
+    text: '<gold>Home name'
+    #设置家表单的标题
+    #Title of the set home form
+    title: '<gold>Set home form'
+  teleport:
+    #传送表单的选择传送玩家提示语
+    #Text of choose teleport player in teleport form
+    choose-player: '<green>Please select a player to teleport'
+    #传送表单的选择传送类型提示语
+    #Text of choose teleport type in teleport form
+    choose-type: '<green>Please select the type of teleport'
+    #传送表单的标题
+    #Title of the teleport form
+    title: '<gold>Teleport form'
   warp:
     #传送点表单的标题
     #Title of the warp form
     title: '<gold>Warp form'
 message:
-  #不是基岩版的玩家使用表单命令的错误提示
-  #Error of player use form command but is not bedrock player
-  not-bedrock-player: '<red>You are not a bedrock player!'
+  #自动登录成功后发送给玩家的消息
+  #Text of successful automatic login after send to player
+  login-successfully: '<green>Detected you are a bedrock player, logged in automatically!'
   #玩家使用表单命令但没有其他在线玩家的错误提示
   #Error of player use form command but no other online player
   no-other-online-player: '<red>No other players are currently online!'
+  #不是基岩版的玩家使用表单命令的错误提示
+  #Error of player use form command but is not bedrock player
+  not-bedrock-player: '<red>You are not a bedrock player!'
   #自动注册成功后发送给玩家的消息
   #可用变量: %password% 密码
   #Text of successful automatic register after send to player
   #Available variable: %password% password
   register-successfully: '<green>Detected you are a bedrock player, register automatically! Your password is %password%, use /changepassword command to change password'
-  #自动登录成功后发送给玩家的消息
-  #Text of successful automatic login after send to player
-  login-successfully: '<green>Detected you are a bedrock player, logged in automatically!'
 plugin:
   #插件重载成功后发送给命令发送者的消息
   #可用变量: %time% 重载耗时(毫秒)
