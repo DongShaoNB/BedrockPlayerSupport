@@ -80,7 +80,7 @@ dependencies {
     // DazzleConf
     implementation("space.arim.dazzleconf:dazzleconf-ext-snakeyaml:1.3.0-M2")
     // UniversalScheduler
-    implementation("com.github.Anon8281:UniversalScheduler:0.1.6")
+    implementation("com.github.Anon8281:UniversalScheduler:0.1.7")
 }
 
 tasks {
