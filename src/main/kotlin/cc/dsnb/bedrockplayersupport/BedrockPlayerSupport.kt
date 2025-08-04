@@ -14,6 +14,7 @@ import cc.dsnb.bedrockplayersupport.listener.auth.CatSeedLoginListener
 import cc.dsnb.bedrockplayersupport.listener.auth.NexAuthListener
 import cc.dsnb.bedrockplayersupport.listener.auth.OtherAuthListener
 import cc.dsnb.bedrockplayersupport.listener.basic.*
+import cc.dsnb.bedrockplayersupport.listener.folia.FoliaPlayerRespawnListener
 import cc.dsnb.bedrockplayersupport.manager.ConfigManager
 import cc.dsnb.bedrockplayersupport.util.UpdateUtil
 import com.github.Anon8281.universalScheduler.UniversalScheduler
@@ -178,7 +179,8 @@ class BedrockPlayerSupport : JavaPlugin() {
             }
         }
         if (mainConfigManager.getConfigData().enableBackDeathLocForm()) {
-            pluginManager.registerEvents(PlayerRespawnListener(), this)
+            if (UniversalScheduler.isFolia) pluginManager.registerEvents(FoliaPlayerRespawnListener(), this)
+            else pluginManager.registerEvents(PlayerRespawnListener(), this)
         }
         if (mainConfigManager.getConfigData().enableOnJoinCommands()) {
             pluginManager.registerEvents(PlayerJoinListener(), this)
