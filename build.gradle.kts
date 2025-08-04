@@ -56,7 +56,7 @@ dependencies {
     // CMI-API
     compileOnly(files("lib/CMI-API9.7.0.1.jar"))
     // EssentialsX
-    compileOnly("net.essentialsx:EssentialsX:2.21.1") {
+    compileOnly("net.essentialsx:EssentialsX:2.21.2") {
         exclude("org.spigotmc", "spigot-api")
     }
     // HuskHomes
