@@ -55,7 +55,7 @@ class ConfigManager<C> private constructor(private val configHelper: Configurati
                 .build()
             val configFactory = SnakeYamlConfigurationFactory.create(
                 configClass,
-                ConfigurationOptions.defaults(), // change this if desired
+                ConfigurationOptions.Builder().setDottedPathInConfKey(true).build(), // change this if desired
                 yamlOptions
             )
             return ConfigManager(ConfigurationHelper(configFolder, fileName, configFactory))
