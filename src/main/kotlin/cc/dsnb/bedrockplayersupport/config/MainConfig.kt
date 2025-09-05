@@ -258,7 +258,7 @@ interface MainConfig {
         "Fill in the payment command of the points plugin you are using here",
         "Available variables: %playerName% player name, %amount% amount"
     )
-    @DefaultString("points pay %playerName% %amount%")
+    @DefaultString("/points pay %playerName% %amount%")
     fun payPointsCommand(): String
 
     @ConfKey("auth.register.enable")
