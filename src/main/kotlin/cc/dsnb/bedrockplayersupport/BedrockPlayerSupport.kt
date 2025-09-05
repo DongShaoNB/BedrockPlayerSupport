@@ -230,7 +230,7 @@ class BedrockPlayerSupport : JavaPlugin() {
     private fun checkUpdate() {
         if (!mainConfigManager.getConfigData().enableCheckUpdate()) return
         scheduler.runTaskAsynchronously {
-            val currentVersion = description.version
+            val currentVersion = pluginMeta.version
             UpdateUtil.getLatestVersion { latestVersion ->
                 val isZh = languageInUse.equals("zh_cn", ignoreCase = true)
                 if (currentVersion == latestVersion) {
