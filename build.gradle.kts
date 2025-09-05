@@ -60,7 +60,7 @@ dependencies {
         exclude("org.spigotmc", "spigot-api")
     }
     // HuskHomes
-    compileOnly("net.william278.huskhomes:huskhomes-bukkit:4.9.6")
+    compileOnly("net.william278.huskhomes:huskhomes-bukkit:4.9.9")
     // AdvancedTeleport
     compileOnly(files("lib/AdvancedTeleport-Bukkit-6.1.1-all.jar"))
     // nightcore
