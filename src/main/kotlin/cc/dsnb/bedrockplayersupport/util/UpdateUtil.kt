@@ -28,9 +28,4 @@ object UpdateUtil {
         }
     }
 
-    // 如果仍需要 Java 端调用，可保留一个桥接方法
-    @JvmStatic
-    fun getLatestVersion(consumer: java.util.function.Consumer<String>) {
-        getLatestVersion { consumer.accept(it) }
-    }
 }
