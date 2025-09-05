@@ -40,4 +40,11 @@ object StringUtil {
         )
     }
 
+    fun String.ensureStartsWithSlash(): String {
+        return if (this.startsWith("/")) {
+            this
+        } else {
+            "/$this"
+        }
+    }
 }
