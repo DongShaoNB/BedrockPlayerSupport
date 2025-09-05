@@ -167,11 +167,55 @@ class MainForm {
     }
 
     fun openBedrockKitForm(player: Player) {
-        val basicForm = BedrockPlayerSupport.basicForm
-        when (basicForm) {
+        when (val basicForm = BedrockPlayerSupport.basicForm) {
             is CMIForm -> basicForm.sendKitForm(player)
             is EssXForm -> basicForm.sendKitForm(player)
             is SunLightForm -> basicForm.sendKitForm(player)
         }
     }
+
+    fun openBedrockMoneyForm(player: Player) {
+        val uuid = player.uniqueId
+        val onlinePlayerName = ArrayList<String>()
+        for (onlinePlayer in Bukkit.getOnlinePlayers()) {
+            if (onlinePlayer !== player) {
+                onlinePlayerName.add(onlinePlayer.name)
+            }
+        }
+        val form = CustomForm.builder()
+            .title(StringUtil.formatTextToString(player, langConfig.moneyFormTitle()))
+            .dropdown(StringUtil.formatTextToString(player, langConfig.moneyFormChoosePlayerText()), onlinePlayerName)
+            .input(StringUtil.formatTextToString(player, langConfig.moneyFormInputAmountText()))
+            .validResultHandler { customFormResponse ->
+                player.chat(
+                    mainConfig.payMoneyCommand()
+                        .replace("%playerName%", onlinePlayerName[customFormResponse.asDropdown(0)])
+                        .replace("%amount%", customFormResponse.asInput(1) ?: "0")
+                )
+            }
+        BedrockPlayerSupport.floodgateApi.sendForm(uuid, form)
+    }
+
+    fun openBedrockPointsForm(player: Player) {
+        val uuid = player.uniqueId
+        val onlinePlayerName = ArrayList<String>()
+        for (onlinePlayer in Bukkit.getOnlinePlayers()) {
+            if (onlinePlayer !== player) {
+                onlinePlayerName.add(onlinePlayer.name)
+            }
+        }
+        val form = CustomForm.builder()
+            .title(StringUtil.formatTextToString(player, langConfig.pointsFormTitle()))
+            .dropdown(StringUtil.formatTextToString(player, langConfig.pointsFormChoosePlayerText()), onlinePlayerName)
+            .input(StringUtil.formatTextToString(player, langConfig.pointsFormInputAmountText()))
+            .validResultHandler { customFormResponse ->
+                player.chat(
+                    mainConfig.payPointsCommand()
+                        .replace("%playerName%", onlinePlayerName[customFormResponse.asDropdown(0)])
+                        .replace("%amount%", customFormResponse.asInput(1) ?: "0")
+                )
+            }
+        BedrockPlayerSupport.floodgateApi.sendForm(uuid, form)
+    }
+
 }

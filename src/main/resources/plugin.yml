@@ -43,6 +43,12 @@ commands:
   kitgui:
     description: "Bedrock player kit form"
     permission: bedrockplayersupport.command.kitgui
+  paygui:
+    description: "Bedrock player pay form"
+    permission: bedrockplayersupport.command.paygui
+  pointsgui:
+    description: "Bedrock player points form"
+    permission: bedrockplayersupport.command.pointsgui
 
 permissions:
   bedrockplayersupport.admin:
@@ -68,4 +74,10 @@ permissions:
     default: true
   bedrockplayersupport.form.backdeath:
     description: "Bedrock player back death location form permission"
+    default: true
+  bedrockplayersupport.command.paygui:
+    description: "Bedrock player pay form permission"
+    default: true
+  bedrockplayersupport.command.pointsgui:
+    description: "Bedrock player points form permission"
     default: true
