@@ -19,8 +19,7 @@ object UpdateUtil {
                     }
                 }
         }.onFailure { exception ->
-            val zh = BedrockPlayerSupport.languageInUse.equals("zh_cn", ignoreCase = true)
-            val message = if (zh) {
+            val message = if (BedrockPlayerSupport.languageInUse == "zh_cn") {
                 "无法检查更新: ${exception.message}"
             } else {
                 "Unable to check for update: ${exception.message}"
