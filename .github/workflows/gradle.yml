@@ -11,12 +11,12 @@ name: Gradle CI
 on:
   push:
     branches: [ "master" ]
-    paths:
-      - "src/**"
+    paths-ignore:
+      - "docs/**"
   pull_request:
     branches: [ "master" ]
-    paths:
-      - "src/**"
+    paths-ignore:
+      - "docs/**"
 
 jobs:
 
