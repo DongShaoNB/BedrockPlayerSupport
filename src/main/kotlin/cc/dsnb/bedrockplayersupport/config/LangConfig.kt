@@ -218,6 +218,48 @@ interface LangConfig {
     @DefaultString("<gold>礼包表单")
     fun kitFormTitle(): String
 
+    @ConfKey("form.money.title")
+    @ConfComments(
+        "经济支付表单的标题", "Title of the money form"
+    )
+    @DefaultString("<gold>经济支付表单")
+    fun moneyFormTitle(): String
+
+    @ConfKey("form.money.choose-player")
+    @ConfComments(
+        "经济支付表单的选择接收转账玩家提示语", "Text of choose receive transfer player in money form"
+    )
+    @DefaultString("<green>请选择接收转账的玩家")
+    fun moneyFormChoosePlayerText(): String
+
+    @ConfKey("form.money.input-money")
+    @ConfComments(
+        "经济支付表单的输入转账金额提示语", "Text of input transfer money in money form"
+    )
+    @DefaultString("<green>请填写要转账的金额")
+    fun moneyFormInputAmountText(): String
+
+    @ConfKey("form.points.title")
+    @ConfComments(
+        "点券支付表单的标题", "Title of the points form"
+    )
+    @DefaultString("<gold>点券支付表单")
+    fun pointsFormTitle(): String
+
+    @ConfKey("form.points.choose-player")
+    @ConfComments(
+        "点券支付表单的选择接收点券玩家提示语", "Text of choose receive points player in points form"
+    )
+    @DefaultString("<green>请选择接收点券的玩家")
+    fun pointsFormChoosePlayerText(): String
+
+    @ConfKey("form.point.input-points")
+    @ConfComments(
+        "点券支付表单的输入转账点券数量提示语", "Text of input transfer points in points form"
+    )
+    @DefaultString("<green>请填写要转账的点券数量")
+    fun pointsFormInputAmountText(): String
+
     @ConfKey("message.not-bedrock-player")
     @ConfComments(
         "不是基岩版的玩家使用表单命令的错误提示", "Error of player use form command but is not bedrock player"

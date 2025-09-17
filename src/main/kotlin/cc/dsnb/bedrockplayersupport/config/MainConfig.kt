@@ -221,6 +221,46 @@ interface MainConfig {
     @DefaultBoolean(true)
     fun enableKitForm(): Boolean
 
+    @ConfKey("form.money.enable")
+    @ConfComments(
+        "启用基岩版经济支付表单(/paygui)",
+        "Enable bedrock economy pay form (/paygui)"
+    )
+    @DefaultBoolean(false)
+    fun enableMoneyForm(): Boolean
+
+    @ConfKey("form.money.pay-command")
+    @ConfComments(
+        "经济支付命令(玩家发送)",
+        "在此处填写你使用的经济插件的支付命令",
+        "可用变量: %playerName% 玩家名, %amount% 金额",
+        "The economy pay command (send by player)",
+        "Fill in the payment command of the economy plugin you are using here",
+        "Available variables: %playerName% player name, %amount% amount"
+    )
+    @DefaultString("pay %playerName% %amount%")
+    fun payMoneyCommand(): String
+
+    @ConfKey("form.points.enable")
+    @ConfComments(
+        "启用基岩版点券支付表单(/pointsgui)",
+        "Enable bedrock points pay form (/pointsgui)"
+    )
+    @DefaultBoolean(false)
+    fun enablePointsForm(): Boolean
+
+    @ConfKey("form.points.pay-command")
+    @ConfComments(
+        "点券支付命令(玩家发送)",
+        "在此处填写你使用的点券插件的支付命令",
+        "可用变量: %playerName% 玩家名, %amount% 点券数",
+        "The points pay command (send by player)",
+        "Fill in the payment command of the points plugin you are using here",
+        "Available variables: %playerName% player name, %amount% amount"
+    )
+    @DefaultString("/points pay %playerName% %amount%")
+    fun payPointsCommand(): String
+
     @ConfKey("auth.register.enable")
     @ConfComments(
         "启用基岩版玩家自动注册功能", "Enable bedrock player automatic register function"
