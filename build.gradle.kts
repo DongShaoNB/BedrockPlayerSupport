@@ -80,7 +80,7 @@ dependencies {
     // bStats
     implementation("org.bstats:bstats-bukkit:3.1.0")
     // DazzleConf
-    implementation("space.arim.dazzleconf:dazzleconf-ext-snakeyaml:1.3.0-RC1")
+    implementation("space.arim.dazzleconf:dazzleconf-ext-snakeyaml:1.4.0-M1")
     // UniversalScheduler
     implementation("com.github.Anon8281:UniversalScheduler:0.1.7")
 }
