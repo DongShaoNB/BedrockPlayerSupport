@@ -215,7 +215,7 @@ class BedrockPlayerSupport : JavaPlugin() {
             getCommand("kitgui")?.setExecutor(KitFormCommand())
         }
         if (config.enableMoneyForm()) {
-            getCommand("moneygui")?.setExecutor(MoneyFormCommand())
+            getCommand("paygui")?.setExecutor(MoneyFormCommand())
         }
         if (config.enablePointsForm()) {
             getCommand("pointsgui")?.setExecutor(PointsFormCommand())
