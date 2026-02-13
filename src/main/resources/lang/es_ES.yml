@@ -46,7 +46,7 @@ form:
   kit:
     #礼包表单的标题
     #Title of the kit form
-    title: '<gold>礼包表单'
+    title: 'kit'
   msg:
     #消息表单的选择接收消息玩家提示语
     #Text of choose receive message player in msg form
