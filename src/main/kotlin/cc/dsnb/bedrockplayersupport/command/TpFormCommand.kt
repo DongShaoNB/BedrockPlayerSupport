@@ -28,9 +28,11 @@ class TpFormCommand : CommandExecutor {
                     )
                 }
             } else {
-                StringUtil.formatTextToComponent(
-                    sender,
-                    BedrockPlayerSupport.langConfigManager.getConfigData().notBedrockPlayer()
+                sender.sendMessage(
+                    StringUtil.formatTextToComponent(
+                        sender,
+                        BedrockPlayerSupport.langConfigManager.getConfigData().notBedrockPlayer()
+                    )
                 )
             }
         }
