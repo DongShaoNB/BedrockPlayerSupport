@@ -15,7 +15,7 @@ class MainCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         if (args.isEmpty()) return false
-        
+
         val isZh = BedrockPlayerSupport.languageInUse.equals("zh_cn", ignoreCase = true)
         val isPlayer = sender is Player
 
@@ -38,6 +38,7 @@ class MainCommand : CommandExecutor {
                 val time = TimeUtil.measureTimeMillis {
                     BedrockPlayerSupport.mainConfigManager.reloadConfig()
                     BedrockPlayerSupport.langConfigManager.reloadConfig()
+                    BedrockPlayerSupport.mainForm.refreshConfig()
                 }
 
                 val reloadMessage = langConfig.reloadSuccessfully().replace("%time%", time.toString())

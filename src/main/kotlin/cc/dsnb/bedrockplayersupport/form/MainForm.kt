@@ -27,6 +27,11 @@ class MainForm {
     private var mainConfig: MainConfig = BedrockPlayerSupport.mainConfigManager.getConfigData()
     private var langConfig: LangConfig = BedrockPlayerSupport.langConfigManager.getConfigData()
 
+    fun refreshConfig() {
+        mainConfig = BedrockPlayerSupport.mainConfigManager.getConfigData()
+        langConfig = BedrockPlayerSupport.langConfigManager.getConfigData()
+    }
+
     fun openBedrockTeleportForm(player: Player) {
         val uuid = player.uniqueId
         val onlinePlayerNameList = ArrayList<String>()
