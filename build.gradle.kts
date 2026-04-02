@@ -76,7 +76,7 @@ dependencies {
     // NexAuth
     compileOnly(files("lib/NexAuth-2.0.5.jar"))
     // PlaceholderAPI
-    compileOnly("me.clip:placeholderapi:2.11.6")
+    compileOnly("me.clip:placeholderapi:2.11.7")
     // bStats
     implementation("org.bstats:bstats-bukkit:3.1.0")
     // DazzleConf
