@@ -78,7 +78,7 @@ dependencies {
     // PlaceholderAPI
     compileOnly("me.clip:placeholderapi:2.12.2")
     // bStats
-    implementation("org.bstats:bstats-bukkit:3.1.0")
+    implementation("org.bstats:bstats-bukkit:3.2.1")
     // DazzleConf
     implementation("space.arim.dazzleconf:dazzleconf-ext-snakeyaml:1.3.0-RC1")
     // UniversalScheduler
