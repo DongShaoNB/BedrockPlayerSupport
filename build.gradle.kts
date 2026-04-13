@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "2.3.20"
-    id("com.gradleup.shadow") version "9.2.2"
+    id("com.gradleup.shadow") version "9.4.1"
 }
 
 group = "cc.dsnb"
