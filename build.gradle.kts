@@ -68,7 +68,7 @@ dependencies {
     // SunLight
     compileOnly(files("lib/SunLight-3.12.1.jar"))
     // AuthMe
-    compileOnly("fr.xephi:authme:5.7.0-SNAPSHOT")
+    compileOnly("fr.xephi:authme:5.7.1-SNAPSHOT")
     // CatSeedLogin
     compileOnly(files("lib/CatSeedLogin-1.4.1-SNAPSHOT.jar"))
     // NexEngine (use NexAuth API to login or register player depend on NexEngine)
