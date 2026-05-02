@@ -11,7 +11,7 @@ import space.arim.dazzleconf.annote.ConfKey
 @ConfHeader(
     " -------------------------------------------------------------",
     " BedrockPlayerSupport Config File | Made by DongShaoNB",
-    " Docs: https://docs.bps.dsnb.cc",
+    " Docs: https://docs.dsnb.cc/en/plugins/bps/config",
     " GitHub: https://github.com/DongShaoNB/BedrockPlayerSupport",
     " -------------------------------------------------------------"
 )

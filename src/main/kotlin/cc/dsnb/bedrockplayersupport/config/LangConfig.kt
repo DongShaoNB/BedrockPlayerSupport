@@ -11,13 +11,14 @@ import space.arim.dazzleconf.annote.ConfKey
 @ConfHeader(
     " -------------------------------------------------------------",
     " BedrockPlayerSupport Language File | Made by DongShaoNB",
+    " Docs: https://docs.dsnb.cc/en/plugins/bps/config",
     " Crowdin: https://crowdin.com/project/mcbps",
     " MiniMessage: https://docs.advntr.dev/minimessage/format.html",
     " GitHub: https://github.com/DongShaoNB/BedrockPlayerSupport",
     " -------------------------------------------------------------",
-    " 语言文件默认简体中文。如果需要其他语言，请访问 Crowdin",
+    " 语言文件默认简体中文。如果需要其他语言，请访问插件文档",
     " 我们使用 MiniMessage 格式，请查看 MiniMessage 格式文档修改语言",
-    " The language file default to Chinese Simplified. If you need another language, please visit Crowdin",
+    " The language file default to Chinese Simplified. If you need another language, please visit the docs",
     " We use MiniMessage format, Please refer to the MiniMessage format document to modify the language file"
 )
 interface LangConfig {
