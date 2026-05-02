@@ -34,13 +34,12 @@ class MainCommand : CommandExecutor {
             }
 
             "reload" -> {
-                val langConfig = BedrockPlayerSupport.langConfigManager.getConfigData()
                 val time = TimeUtil.measureTimeMillis {
-                    BedrockPlayerSupport.mainConfigManager.reloadConfig()
-                    BedrockPlayerSupport.langConfigManager.reloadConfig()
+                    BedrockPlayerSupport.instance.reloadPluginConfig()
                     BedrockPlayerSupport.mainForm.refreshConfig()
                 }
 
+                val langConfig = BedrockPlayerSupport.langConfigManager.getConfigData()
                 val reloadMessage = langConfig.reloadSuccessfully().replace("%time%", time.toString())
                 val formattedMessage = StringUtil.formatTextToComponent(sender as? Player, reloadMessage)
 

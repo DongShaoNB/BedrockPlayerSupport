@@ -54,7 +54,7 @@ class BedrockPlayerSupport : JavaPlugin() {
         instance = this
         scheduler = UniversalScheduler.getScheduler(this)
         floodgateApi = FloodgateApi.getInstance()
-        loadConfig()
+        reloadPluginConfig()
         setPluginRunningStatus()
         loadFunction()
         loadCommand()
@@ -66,7 +66,7 @@ class BedrockPlayerSupport : JavaPlugin() {
         // Don't need to do anything
     }
 
-    private fun loadConfig() {
+    fun reloadPluginConfig() {
         mainConfigManager =
             ConfigManager.create(dataFolder.toPath(), "config.yml", MainConfig::class.java).also {
                 it.reloadConfig()
