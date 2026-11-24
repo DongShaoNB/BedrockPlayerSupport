@@ -1,29 +1,31 @@
 <div align="center">
-  <font size="6"><b>BedrockPlayerSupport</b></font><br>
-  <font size="4"><b>Make it easier for bedrock player to use other plugins</b></font>
+  <h1>BedrockPlayerSupport</h1>
+  <p><strong>Make it easier for Bedrock players to use Java server plugins</strong></p>
+
+  <p>
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/DongShaoNB/BedrockPlayerSupport">
+    <img alt="GitHub Downloads" src="https://img.shields.io/github/downloads/DongShaoNB/BedrockPlayerSupport/total">
+    <img alt="GitHub Release" src="https://img.shields.io/github/v/release/DongShaoNB/BedrockPlayerSupport">
+    <a title="Crowdin" target="_blank" href="https://crowdin.com/project/mcbps"><img alt="Crowdin" src="https://badges.crowdin.net/mcbps/localized.svg"></a>
+    <img alt="GitHub License" src="https://img.shields.io/github/license/DongShaoNB/BedrockPlayerSupport">
+  </p>
+
+  <p>
+    <img alt="bStats" src="https://bstats.org/signatures/bukkit/BedrockPlayerSupport.svg">
+  </p>
+
+  <p>
+    <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README.md">简体中文</a> |
+    <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README_TW.md">正體中文</a> |
+    <strong>English</strong>
+  </p>
 </div>
-
-<p align="center">
-  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/DongShaoNB/BedrockPlayerSupport">
-  <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/DongShaoNB/BedrockPlayerSupport/total">
-  <img alt="GitHub Release" src="https://img.shields.io/github/v/release/DongShaoNB/BedrockPlayerSupport">
-  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/mcbps"><img src="https://badges.crowdin.net/mcbps/localized.svg"></a>
-  <img alt="GitHub License" src="https://img.shields.io/github/license/DongShaoNB/BedrockPlayerSupport">
-  <br>
-  <img src="https://bstats.org/signatures/bukkit/BedrockPlayerSupport.svg">
-</p>
-
-<p align="center">
-  <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README.md">简体中文</a> |
-  <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README_TW.md">正體中文</a> |
-  <a href="https://github.com/DongShaoNB/BedrockPlayerSupport/blob/master/README_EN.md">English</a>
-</p>
 
 ---
 
 ## 📖 Introduction
 
-**BedrockPlayerSupport** is a plugin designed specifically for Bukkit/Spigot servers. It aims to improve the experience of Bedrock Edition players in Minecraft Java Edition servers, providing a GUI-based interface for commonly used commands and functions, allowing Bedrock Edition players who are accustomed to touch and form interfaces to interact more intuitively, thereby bridging the operational differences between Java Edition and Bedrock Edition.
+**BedrockPlayerSupport** enhances the experience of Bedrock Edition players on Java crossplay servers running **Geyser & Floodgate**. Instead of typing complex chat commands, Bedrock players get native touch-friendly Bedrock Forms (GUIs) for everyday features—bridging the gap between Java and Bedrock gameplay.
 
 ---
 
@@ -31,59 +33,69 @@
 
 ### 📦 Teleportation
 
-- `/tpgui`: Open the teleport request GUI to select the player to teleport to.
-- `/warpgui`: Open the warp point GUI to select a warp for teleportation.
-- When receiving `tpa/tpahere` requests, Bedrock players will see a form to choose accept / reject / ignore.
+- **`/tpgui`** — Open a form to select a player and send teleport requests.
+- **`/warpgui`** — Browse and teleport to server warps through a clean GUI.
+- **Interactive TPA Prompts** — Incoming `/tpa` and `/tpahere` requests automatically pop up a form for Bedrock players to **Accept**, **Reject**, or **Ignore**.
 
-### 🏠 Home
+### 🏠 Homes
 
-- `/homegui`: Open the personal home list GUI for quick teleportation home.
-- `/phomegui`: Open the public home list GUI to access other players' public homes.
+- **`/homegui`** — View and teleport to your personal homes.
+- **`/phomegui`** — Browse and visit public homes shared by other players.
 
 ### 💬 Messaging
 
-- `/msggui`: Open the message sending GUI for convenient communication with other players.
+- **`/msggui`** — Send private messages to other players via a simple form interface.
 
-### 🎁 Other Features
+### 🎁 Quality of Life
 
-- `/kitgui`: Open the kit claiming GUI.
-- Bedrock players will automatically register with a random password upon joining the server and log in automatically.
-- After respawning, a form will automatically pop up to return to the death location.
+- **`/kitgui`** — Claim available kits from a form menu.
+- **Auto Register & Login** — Automatically registers new Bedrock players with a random password and logs them in seamlessly on join.
+- **Death Return Prompt** — Automatically opens a form after respawning so players can quickly return to their death location.
 
 ---
 
-## ⚙️ Installation & Configuration
+## ⚙️ Requirements & Installation
 
-### 📥 Installation Steps
+### 🔗 Requirements
 
-1. Download the plugin and place it into the server's `plugins` folder.
-2. Restart the server to generate the default configuration file.
-3. The configuration file contains comprehensive comments; modify it as needed.
+- **Server:** Paper (and its forks) or Folia (and its forks).
+- **Dependency:** [Floodgate](https://geysermc.org/download#floodgate) is required.
 
-### 🔗 Dependencies
-
-- Server: Supports Paper and its forks / Folia and its forks.
-- Plugin: Requires installation of [Floodgate](https://geysermc.org/download#floodgate).
-
-> **Note:** When using Geyser, ensure that `auth-type` in its configuration file is set to `floodgate`.
+> [!IMPORTANT]
 >
-> If using a proxy server (such as BungeeCord or Velocity), set `send-floodgate-data` to `true` in the proxy server's Floodgate configuration file.
+> - In your **Geyser** config, make sure `auth-type` is set to `floodgate`.
+> - If you run a proxy (such as **Velocity** or **BungeeCord**), set `send-floodgate-data` to `true` in your proxy's Floodgate config.
+
+### 📥 Installation
+
+1. Download the plugin `.jar` and place it into your server's `plugins` folder.
+2. Restart the server to generate the default configuration files.
+3. Customize the config as needed (detailed comments are included in the file).
 
 ---
 
-## 📚 Documentation & Support
+## 📚 Documentation & Community
 
-- 📖 [Online Documentation](https://docs.bps.dsnb.cc): Form images, plugin compatibility tables, commands, and permissions.
-- 🌐 [Crowdin Translation Platform](https://zh.crowdin.com/project/mcbps): Participate in the plugin's localization efforts.
+- 📖 **Documentation:** [docs.bps.dsnb.cc](https://docs.bps.dsnb.cc) — Form previews, supported plugins list, commands, and permissions.
+- 🌐 **Translations:** [Crowdin](https://crowdin.com/project/mcbps) — Help translate the plugin into your language.
+- 💬 **Discord:** [Join our Discord server](https://discord.gg/bnpzsmPz26)
+- 💬 **QQ Group:** `159323818`
+
+Feedback, feature requests, and contributions are always welcome!
 
 ---
 
-## 👥 Community & Communication
+## 🚀 Server Hosting _(Affiliate)_
 
-- 💬 QQ Group: `159323818`
-- 💬 Discord: [Join our Discord server](https://discord.gg/bnpzsmPz26)
-
-Feel free to join the community to provide feedback, suggest features, or contribute to development!
+<div align="center">
+  <a href="https://realisticnode.com/bps" target="_blank">
+    <img src="https://cdn.modrinth.com/data/cached_images/e3096eacdfbee0e214e8fccb389a96d302162e87.png" alt="RealisticNode Hosting - Use code BPS for 10% off">
+  </a>
+  <p>
+    Looking for a server host for your server?<br>
+    Order through <a href="https://realisticnode.com/bps" target="_blank"><strong>this affiliate link</strong> for <strong>10% off</strong> while supporting the development of BedrockPlayerSupport!
+  </p>
+</div>
 
 ---
 
